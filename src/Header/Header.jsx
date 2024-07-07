@@ -15,8 +15,8 @@ export default function Header(){
 
         </div>
         <div className=" border-solid font-semibold ml-auto justify-end flex gap-5">
-            <button className=" text-lg">Log in</button>
-            <button className="px-6 py-2 text-black rounded-lg border border-slate-950 font-bold" >Sign up free</button>
+            <button className=" px-5 text-lg rounded-lg hover:bg-slate-100">Log in</button>
+            <button className="px-6 py-2 text-black rounded-lg border border-slate-950 font-bold  hover:bg-red-500 hover:border-red-500 hover:text-white" >Sign up free</button>
         </div>
         </div>
         
