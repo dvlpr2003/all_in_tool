@@ -15,7 +15,7 @@ export default function Header(){
 
         </div>
         <div className=" border-solid ml-auto justify-end">
-            <button className="px-12 py-3 text-white rounded-md bg-gradient-to-r from-blue-600  to-cyan-400 hover:from-pink-500 hover:to-yellow-500"  >login</button>
+            <button className="px-12 py-3 text-black rounded-md border-point border-slate-950" >Sign up free</button>
         </div>
         </div>
         
