@@ -2,6 +2,8 @@ import { useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md";
 export default function Header(){
     const [enter,setEnter]=useState(false)
+    const [About,setAbout]=useState(false)
+    
     return(
         <>
         <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl relative">
@@ -15,11 +17,11 @@ export default function Header(){
 
         <div className="flex flex-wrap font-semibold justify-center items-center cursor-pointer">
             
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base flex items-center justify-center `} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)} ><span>About</span> <MdKeyboardArrowDown className="c-menu-arrow"/></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Contact</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center `} onPointerLeave={()=>{setEnter(false); setAbout(false)}} onPointerEnter={()=>{setEnter(true);setAbout(true)}} ><span>About</span> <MdKeyboardArrowDown className="c-menu-arrow"/></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Contact</span></div>
 
         </div>
 
@@ -32,14 +34,15 @@ export default function Header(){
 
 
         </div>
-        <ProductDt/>
+        <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter}/>
         
         </>
     )
 }
-function ProductDt(){
+function ProductDt({About,enter,setAbout,setEnter}){
+    console.log(About)
     return(
-        <div className="absolute border border-slate-950 about-menu">
+        <div className={` absolute border border-slate-950 about-menu ${About?"block":"hidden"}`} onPointerLeave={()=>{setEnter(false); setAbout(false)}} onPointerEnter={()=>{setEnter(true);setAbout(true)}}>
             
         </div>
     )
