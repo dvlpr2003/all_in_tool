@@ -3,3 +3,8 @@
 @tailwind utilities;
 
 
+.c-menu-arrow{
+    font-weight: bold;
+    margin-left: .5rem;
+    font-size: 1.5rem;
+}
