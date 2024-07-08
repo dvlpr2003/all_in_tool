@@ -5,7 +5,7 @@ export default function Header(){
         <div className=" justify-start">
             <h1>LOGO</h1>
         </div>
-        <div className="flex flex-wrap gap-5 border-solid border border-green-500 justify-center items-center">
+        <div className="flex flex-wrap gap-8 font-semibold border-solid border border-green-500 justify-center items-center">
             <span>About</span>
             <span>Services</span>
             <span>Cases</span>
