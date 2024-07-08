@@ -4,7 +4,7 @@ export default function Header(){
     const [enter,setEnter]=useState(false)
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl ">
+        <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl relative">
 
 
         <div className=" justify-start">
@@ -32,7 +32,15 @@ export default function Header(){
 
 
         </div>
+        <ProductDt/>
         
         </>
+    )
+}
+function ProductDt(){
+    return(
+        <div className="absolute border border-slate-950 about-menu">
+            
+        </div>
     )
 }
