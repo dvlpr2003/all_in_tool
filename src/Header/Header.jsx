@@ -12,14 +12,14 @@ export default function Header(){
             <h1>LOGO</h1>
 
         </div>
-        
+
         <div className="flex flex-wrap font-semibold justify-center items-center cursor-pointer">
             
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-lg`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)} ><span>About</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-lg`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-lg`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-lg`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-lg`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Contact</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)} ><span>About</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-2 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Contact</span></div>
 
         </div>
 
