@@ -1,9 +1,25 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md";
 export default function Header(){
     const [enter,setEnter]=useState(false)
     const [About,setAbout]=useState(false)
-    console.log(About)
+    console.log(enter)
+    // console.log(About)
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
     
     return(
         <>
@@ -18,7 +34,7 @@ export default function Header(){
 
         <div className="flex flex-wrap font-semibold justify-center items-center cursor-pointer">
             
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center `} onMouseLeave={()=>{setEnter(false); setAbout(false)}} onMouseEnter={()=>{setEnter(true);setAbout(true)}} ><div className="flex" onClick={()=>{setEnter((e)=>!e);setAbout((e)=>!e)}}><span >About</span> <MdKeyboardArrowDown className="c-menu-arrow"/> </div></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center `} onMouseLeave={!isMobile?()=>{setEnter(false); setAbout(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true); setAbout(true)}:null} ><div className="flex" onClick={isMobile?()=>{setEnter((e)=>!e); setAbout((e)=>!e)}:null}><span >About</span> <MdKeyboardArrowDown className="c-menu-arrow"/> </div></div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
