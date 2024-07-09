@@ -48,8 +48,9 @@ export default function Header(){
 
         </div>
 
-        <div className=" border-solid font-semibold ml-auto justify-end ">
-            <div className="sm:block lg:hidden">
+        <div className=" font-semibold ml-auto justify-end">
+            <div className="sm:flex lg:hidden justify-center items-center py-2">
+            
             <IconMenu />
             </div>
             <div className="flex gap-5 sm:hidden min-[55px]:hidden lg:flex">
