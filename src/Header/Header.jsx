@@ -21,7 +21,7 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl relative">
+        <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl ">
 
 
         <div className=" justify-start">
@@ -32,7 +32,14 @@ export default function Header(){
 
         <div className="flex flex-wrap font-semibold justify-center items-center cursor-pointer">
             
-            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center `} onMouseLeave={!isMobile?()=>{setEnter(false); setAbout(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true); setAbout(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setAbout((e)=>!e)}:()=>{setEnter((e)=>!e); setAbout((e)=>!e)}} ><div className="flex" ><span >About</span> <MdKeyboardArrowDown className="c-menu-arrow"/> </div></div>
+            <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center relative `} onMouseLeave={!isMobile?()=>{setEnter(false); setAbout(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true); setAbout(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setAbout((e)=>!e)}:()=>{setEnter((e)=>!e); setAbout((e)=>!e)}} >
+                <div className="flex" >
+                <span >Tools</span>
+             <MdKeyboardArrowDown className="c-menu-arrow"/> 
+            </div>
+        <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
+
+            </div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Services</span></div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Cases</span></div>
             <div className={`text-slate-950 hover:text-black ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onPointerLeave={()=>setEnter(false)} onPointerEnter={()=>setEnter(true)}><span>Blog</span></div>
@@ -49,7 +56,6 @@ export default function Header(){
 
 
         </div>
-        <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
         
         </>
     )
