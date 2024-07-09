@@ -70,6 +70,18 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
         <div className={` absolute border border-slate-950 about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
+            <div className="border border-green-500 w-full mt-9">
+                <div className="flex gap-7 justify-center flex-wrap">
+                    <div>Convert & Compress</div>
+                    <div>Convert & Compress</div>
+                    <div>Convert & Compress</div>
+                    <div>Convert & Compress</div>
+                    <div>Convert & Compress</div>
+                    <div>Convert & Compress</div>
+
+                </div>
+
+            </div>
  
             <RxCross2 className="absolute right-3 top-2 font-bold text-2xl cursor-pointer hover:text-indigo-600" onClick={()=>setAbout(false)}/>
         </div>
