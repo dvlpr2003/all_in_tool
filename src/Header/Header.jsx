@@ -72,7 +72,57 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
         <div className={` absolute border border-slate-950 about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
             <div className="border border-green-500 w-full mt-9">
                 <div className="flex gap-7 justify-center flex-wrap">
-                    <div>Convert & Compress</div>
+                    <div>
+                        <span>POPULAR</span>
+                        <ul className="flex flex-col gap-4">
+                            <li className=" w-48">
+                                <a href="#" >
+                                    <span>Crop</span>
+                                    <p className="text-xs">Trim PDF margins, change PDF page size</p>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                                <a href="#">
+                                    <span>Flatten</span>
+                                    <p className="text-xs">Makes fillable PDFs read-only. Print & scan in one step</p>
+                                </a>
+                            </li>
+                            <li className="w-48">
+                                <a href="#">
+                                    <span>
+                                    Edit
+                                    </span>
+                                    <p className="text-xs">Edit PDF files for free. Fill & sign PDF</p>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                                <a href="#">
+                                    <span>
+                                    Compress
+                                    </span>
+                                    <p className="text-xs">Reduce the size of your PDF</p>
+                                </a>
+                            </li>
+                            <li className="w-48">
+                                <a href="#">
+                                    <span>
+
+                                    Extract pages
+                                    </span>
+                                    <p className="text-xs">Get a new document containing only the desired pages</p>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                                <a href="#">
+                                    <span>
+                                    Merge
+                                    </span>
+                                <p className="text-xs">Combine multiple PDFs and images into one</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
                     <div>Convert & Compress</div>
                     <div>Convert & Compress</div>
                     <div>Convert & Compress</div>
