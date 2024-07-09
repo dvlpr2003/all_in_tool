@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { RxCross2 } from "react-icons/rx";
 import IconMenu from "./MenuIcon";
 export default function Header(){
     const [enter,setEnter]=useState(false)
@@ -68,7 +69,7 @@ export default function Header(){
 function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
-        <div className={` absolute border border-slate-950 about-menu ${About?"block":"hidden"} flex gap-5 text-black`}>
+        <div className={` absolute border border-slate-950 about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
             <div>
                 <span>Convert & PDF</span>
             </div>
@@ -79,7 +80,7 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
             <div>
                 <span>Convert from PDF</span>
             </div>
-            
+            <RxCross2 className="absolute right-3 top-2 font-bold text-2xl cursor-pointer" onClick={()=>setAbout(false)}/>
         </div>
     )
 }
