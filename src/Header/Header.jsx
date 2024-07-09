@@ -80,7 +80,7 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
             <div>
                 <span>Convert from PDF</span>
             </div>
-            <RxCross2 className="absolute right-3 top-2 font-bold text-2xl cursor-pointer" onClick={()=>setAbout(false)}/>
+            <RxCross2 className="absolute right-3 top-2 font-bold text-2xl cursor-pointer hover:text-indigo-600" onClick={()=>setAbout(false)}/>
         </div>
     )
 }
