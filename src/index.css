@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 
+
 .c-menu-arrow{
     font-weight: bold;
     margin-left: .5rem;
     font-size: 1.5rem;
 }
+
+
 
 .about-menu {
     width: 30rem;
@@ -16,9 +19,11 @@
     left: 1rem;
     border-radius: 10px;
 }
+
+
+
 .menu-icon{
     font-weight: bold;
     /* margin-left: .5rem; */
     font-size: 2rem;
-
 }
