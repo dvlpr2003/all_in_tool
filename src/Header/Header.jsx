@@ -70,37 +70,43 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
         <div className={` absolute border border-slate-950 about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
-            <div className="border border-green-500 w-full mt-9">
-                <div className="flex gap-7 justify-center flex-wrap">
-                    <div>
-                        <span>POPULAR</span>
-                        <ul className="flex flex-col gap-4">
-                            <li className=" w-48">
-                                <a href="#" >
-                                    <span>Crop</span>
-                                    <p className="text-xs">Trim PDF margins, change PDF page size</p>
+            <div className=" w-full mt-9">
+                <div className="flex gap-7 ">
+                    <div className="border border-red-500 w-60">
+                        <span>Convert to PDF</span>
+                        <ul className="flex flex-col gap-4 justify-center items-center mt-5">
+                            <li className="w-48">
+                                <a href="#" className="flex h-9 items-center" >
+                                    <div className="flex justify-center items-center">
+                                    <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-14"/>
+                                    <span>PDF to JPG</span>
+                                    </div>
                                 </a>
                             </li>
                             <li className=" w-48">
-                                <a href="#">
-                                    <span>Flatten</span>
-                                    <p className="text-xs">Makes fillable PDFs read-only. Print & scan in one step</p>
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+
+                                   <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-14"/>
+
+                                    <span>PDF to PNG</span>
+                                </div>
                                 </a>
                             </li>
                             <li className="w-48">
-                                <a href="#">
-                                    <span>
-                                    Edit
-                                    </span>
-                                    <p className="text-xs">Edit PDF files for free. Fill & sign PDF</p>
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/pdf to word.png" alt="" className="max-w-full h-14"/>
+                                    <span>PDF to Word</span>
+                                </div>
                                 </a>
                             </li>
                             <li className=" w-48">
-                                <a href="#">
-                                    <span>
-                                    Compress
-                                    </span>
-                                    <p className="text-xs">Reduce the size of your PDF</p>
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/pdf to excel.png" alt="" className="max-w-full h-14"/>
+                                    <span>PDF to Word</span>
+                                </div>
                                 </a>
                             </li>
                             <li className="w-48">
@@ -123,11 +129,20 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                         </ul>
 
                     </div>
-                    <div>Convert & Compress</div>
-                    <div>Convert & Compress</div>
-                    <div>Convert & Compress</div>
-                    <div>Convert & Compress</div>
-                    <div>Convert & Compress</div>
+                    <div>
+                        <span>Organize</span>
+
+                    </div>
+                    <div>
+                        <span>Edit</span>
+                    </div>
+                    <div>
+                        <span>Convert from PDF</span>
+                    </div>
+                    <div>
+                        <span>View</span>
+                    </div>
+                    
 
                 </div>
 
