@@ -105,32 +105,79 @@ function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                             <a href="#" className="flex h-9 items-center">
                                 <div className="flex justify-center items-center">
                                    <img src="img/pdf to excel.png" alt="" className="max-w-full h-14"/>
-                                    <span>PDF to Word</span>
+                                    <span>PDF to Excel</span>
                                 </div>
                                 </a>
                             </li>
                             <li className="w-48">
-                                <a href="#">
-                                    <span>
-
-                                    Extract pages
-                                    </span>
-                                    <p className="text-xs">Get a new document containing only the desired pages</p>
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/pdf to ppt.png" alt="" className="max-w-full h-14"/>
+                                    <span>PDF to ppt</span>
+                                </div>
                                 </a>
                             </li>
                             <li className=" w-48">
-                                <a href="#">
-                                    <span>
-                                    Merge
-                                    </span>
-                                <p className="text-xs">Combine multiple PDFs and images into one</p>
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/pdf to html.png" alt="" className="max-w-full h-14"/>
+                                    <span>PDF to HTML</span>
+                                </div>
                                 </a>
+
                             </li>
                         </ul>
 
                     </div>
                     <div>
+                        <div className="border border-red-500 w-60">
                         <span>Organize</span>
+                        <ul className="flex flex-col gap-4 justify-center items-center mt-5">
+                            <li className="w-48">
+                                <a href="#" className="flex h-9 items-center" >
+                                    <div className="flex justify-center items-center">
+                                    <img src="img/organize/add.png" alt="" className="max-w-full h-14"/>
+                                    <span>Add page</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+
+                                   <img src="img/organize/pdf rotate.png" alt="" className="max-w-full h-14"/>
+
+                                    <span>Rotate PDF</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li className="w-48">
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/organize/trash.png" alt="" className="max-w-full h-14"/>
+                                    <span>Delete page</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/organize/split.png" alt="" className="max-w-full h-14"/>
+                                    <span>Split PDF</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li className="w-48">
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/organize/rearrange.png" alt="" className="max-w-full h-14"/>
+                                    <span>Rearrage PDF</span>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
 
                     </div>
                     <div>
