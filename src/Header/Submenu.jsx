@@ -1,3 +1,6 @@
+import { RxCross2 } from "react-icons/rx";
+
+
 export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
@@ -69,7 +72,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                                 <a href="#" className="flex h-9 items-center" >
                                     <div className="flex justify-center items-center">
                                     <img src="img/organize/add.png" alt="" className="max-w-full h-14"/>
-                                    <span>Add page</span>
+                                    <span>Merge PDF</span>
                                     </div>
                                 </a>
                             </li>
