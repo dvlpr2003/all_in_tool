@@ -4,10 +4,10 @@ import { RxCross2 } from "react-icons/rx";
 export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
-        <div className={` absolute border border-slate-950 about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
-            <div className=" w-full mt-9">
+        <div className={` absolute border bg-slate-50  about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
+            <div className=" w-full mt-9 flex justify-center pb-7">
                 <div className="flex gap-7 ">
-                    <div className="border border-red-500 w-60">
+                    <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
                         <span>Convert to PDF</span>
                         <ul className="flex flex-col gap-4 justify-center items-center mt-5">
                             <li className="w-48">
@@ -65,7 +65,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
 
                     </div>
                     <div>
-                        <div className="border border-red-500 w-60">
+                        <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
                         <span>Organize</span>
                         <ul className="flex flex-col gap-4 justify-center items-center mt-5">
                             <li className="w-48">
@@ -116,16 +116,46 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
 
                     </div>
                     <div>
+                    <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
                         <span>Edit</span>
-                    </div>
-                    <div>
-                        <span>Convert from PDF</span>
-                    </div>
-                    <div>
-                        <span>View</span>
-                    </div>
-                    
+                        <ul className="flex flex-col gap-4 justify-center items-center mt-5">
+                            <li className="w-48">
+                                <a href="#" className="flex h-9 items-center" >
+                                    <div className="flex justify-center items-center">
+                                    <img src="img/edit/crop.png" alt="" className="max-w-full h-14"/>
+                                    <span>Crop PDF</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li className=" w-48">
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/edit/edit pdf.png" alt="" className="max-w-full h-14"/>
+                                    <span>Edit PDF</span>
+                                </div>
+                                </a>
+                            </li>
 
+                            <li className=" w-48">
+                            <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/edit/read pdf.png" alt="" className="max-w-full h-14"/>
+                                    <span>Read PDF</span>
+                                </div>
+                                </a>
+                            </li>
+                            <li className="w-48">
+                                <a href="#" className="flex h-9 items-center">
+                                <div className="flex justify-center items-center">
+                                   <img src="img/edit/page number copy.png" alt="" className="max-w-full h-14"/>
+                                    <span>Page Number</span>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    </div>            
                 </div>
 
             </div>
