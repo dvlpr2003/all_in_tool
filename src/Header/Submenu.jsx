@@ -7,7 +7,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
         <div className={` absolute border bg-slate-50  about-menu ${About?"flex":"hidden"} gap-5 text-black `}>
             <div className=" w-full mt-9 flex justify-center pb-7">
                 <div className="flex gap-7 ">
-                    <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
+                    <div className="border border-white w-60 pb-2 bg-white py-5 pb-6 rounded-lg shadow-sm hover:shadow-md">
                         <span className=" ml-6">Convert to PDF</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
@@ -65,7 +65,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
 
                     </div>
                     <div>
-                        <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
+                        <div className="border border-white w-60 pb-2 bg-white py-5 pb-6 rounded-lg shadow-sm hover:shadow-md">
                         <span className="ml-6">Organize</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
@@ -116,7 +116,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
 
                     </div>
                     <div>
-                    <div className="border border-white w-60 bg-white py-5 rounded-lg shadow-sm hover:shadow-md">
+                    <div className="border border-white w-60  bg-white py-5 pb-6 rounded-lg shadow-sm hover:shadow-md">
                         <span className="ml-6">Edit</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-blue-100 hover:bg-blue-100 hover:rounded-sm hover:shadow-md">
