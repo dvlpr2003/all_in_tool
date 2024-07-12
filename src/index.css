@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 body {
-    font-family: "Poppins", sans-serif;
+    
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
 }
 
 .c-menu-arrow{
