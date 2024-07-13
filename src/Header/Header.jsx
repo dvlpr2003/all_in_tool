@@ -23,12 +23,12 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-10 max-w-screen-xl relative">
+        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative">
 
 
         <div className=" justify-start">
 
-            <h1>LOGO</h1>
+            <img src="img/logo-image/company.png" alt="" className="max-w-full h-11"/>
 
         </div>
 
