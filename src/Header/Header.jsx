@@ -6,6 +6,7 @@ import SideMenu from "./side menu/SideMenu";
 export default function Header(){
     const [enter,setEnter]=useState(false)
     const [About,setAbout]=useState(false)
+    const [MenuIcon,setMenuIcon]=useState(false)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 // screen innerWidth listener useEffect function
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function Header(){
         <div className=" font-semibold ml-auto justify-end  ">
             <div className="sm:flex lg:hidden justify-center items-center py-2">
             
-            <IconMenu />
+            <IconMenu setMenuIcon={setMenuIcon}/>
            
             </div>
             <div className="flex gap-5 sm:hidden min-[55px]:hidden lg:flex">
@@ -63,7 +64,7 @@ export default function Header(){
 
 
         <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
-        <SideMenu/>
+        {MenuIcon&&<SideMenu/>}
 
         </div>
         
