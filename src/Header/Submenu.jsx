@@ -8,7 +8,7 @@ import Edit from "./submenu items/Edit";
 export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
    
     return(
-        <div className={` absolute border about-menu ${About?"flex":"hidden"} gap-5 text-black  shadow-md`}>
+        <div className={` absolute border about-menu ${About?"flex":"hidden"} ${isMobile?"hidden":""} gap-5 text-black  shadow-md`}>
             <div className=" w-full mt-9 flex justify-center pb-7">
                 <div className="flex justify-evenly  flex-wrap  w-full">
                     <ConvertFromPdf/>
