@@ -23,38 +23,38 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative">
+        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative ">
 
 
-        <div className=" justify-start">
-
-            <img src="img/logo-image/company.png" alt="" className="max-w-full h-11"/>
+        <div className=" justify-start h-auto">
+          {/* logo */}
+            <img src="img/logo-image/company.png" alt="logo" className="max-w-full h-9"/>
 
         </div>
 
-        <div className="flex flex-wrap font-semibold justify-center items-center cursor-pointer sm:hidden lg:flex min-[55px]:hidden">
+        <div className="flex flex-wrap  justify-center items-center ml-3 cursor-pointer sm:hidden lg:flex min-[55px]:hidden ">
             
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 text-base flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setAbout((e)=>!e)}:()=>{setEnter((e)=>!e); setAbout((e)=>!e)}} >
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3  flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setAbout((e)=>!e)}:()=>{setEnter((e)=>!e); setAbout((e)=>!e)}} >
                 <div className="flex" >
                 <span >Tools</span>
                 <MdKeyboardArrowDown className="c-menu-arrow"/> 
                 </div>
             </div>
 
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Services</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Cases</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Blog</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 text-base`} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Contact</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Services</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Cases</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Blog</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Contact</span></div>
 
         </div>
 
-        <div className=" font-semibold ml-auto justify-end">
+        <div className=" font-semibold ml-auto justify-end ">
             <div className="sm:flex lg:hidden justify-center items-center py-2">
             
             <IconMenu />
             </div>
             <div className="flex gap-5 sm:hidden min-[55px]:hidden lg:flex">
-            <button className=" px-5 text-lg rounded-lg hover:bg-slate-100 border-0">Log in</button>
+            <button className=" px-5  rounded-lg hover:bg-slate-100 border-0">Log in</button>
             <button className="px-6 py-2 text-lg text-white rounded-lg border border-indigo-600 bg-indigo-600 font-bold  hover:bg-indigo-500 hover:border-indigo-500 hover:text-white" >Sign up free</button>
             </div>
         </div>
