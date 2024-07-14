@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { ConvertFromPdfItems } from "../submenu items/converfrompdf";
+import { ConverttoPdfItems } from "../submenu items/converttopdf";
 
 
 
@@ -35,8 +36,8 @@ export default function SideMenu(){
                         <IoIosArrowDropdownCircle className="text-xl cursor-pointer" />
                         </div>
                         </div>
-                        <div className={`w-full h-72 ${toPdf?"block":"hidden"}`}>
-
+                        <div className={`w-full h-auto ${toPdf?"block":"hidden"} pb-3`}>
+                            <ConverttoPdfItems/>
                         </div>
 
                     </li>
@@ -49,7 +50,7 @@ export default function SideMenu(){
                             <IoIosArrowDropdownCircle className="text-xl cursor-pointer" />
                             </div>
                         </div>
-                        <div className={`w-full h-72 ${Organize?"block":"hidden"}`}></div>
+                        <div className={`w-full h-72 ${Organize?"block":"hidden"} pb-3`}></div>
                     </li>
                     <li className="border-b border-black " >
                         <div className="flex items-end pb-2 h-14" onClick={()=>setEdit(e=>!e)}>
@@ -60,7 +61,7 @@ export default function SideMenu(){
                                 <IoIosArrowDropdownCircle className="text-xl cursor-pointer" />
                                 </div>
                         </div>
-                        <div className={`w-full h-72 ${Edit?"block":"hidden"}`}></div>
+                        <div className={`w-full h-72 ${Edit?"block":"hidden"} pb-3`}></div>
                     </li>
                 </ul>
             </div>
