@@ -12,48 +12,48 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
-                                    <div className="flex justify-center items-center">
-                                    <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-14"/>
+                                    <div className="flex justify-center items-center gap-6">
+                                    <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to JPEG</span>
                                     </div>
                                 </a>
                             </li>
                             <li className=" w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/pdf to jpeg.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to PNG</span>
                                 </div>
                                 </a>
                             </li>
                             <li className="w-48 py-2 hover:border-purple-100 hover:bg-purple-100 hover:rounded-sm hover:shadow-md">
                             <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/pdf to html.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/pdf to html.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to HTML</span>
                                 </div>
                                 </a>
                             </li>
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/pdf to word.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/pdf to word.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to Word</span>
                                 </div>
                                 </a>
                             </li>
                             <li className=" w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                             <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/pdf to excel.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/pdf to excel.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to Excel</span>
                                 </div>
                                 </a>
                             </li>
                             <li className="w-48 py-2 hover:border-purple-100 hover:bg-purple-100 hover:rounded-sm hover:shadow-md">
                             <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/pdf to ppt.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/pdf to ppt.png" alt="" className="max-w-full h-10"/>
                                     <span>PDF to PPT</span>
                                 </div>
                                 </a>
@@ -69,17 +69,17 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
-                                    <div className="flex justify-center items-center">
-                                    <img src="img/organize/add.png" alt="" className="max-w-full h-14"/>
+                                    <div className="flex justify-center items-center gap-6">
+                                    <img src="img/organize/add.png" alt="" className="max-w-full h-10"/>
                                     <span>Merge PDF</span>
                                     </div>
                                 </a>
                             </li>
                             <li className=" w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
+                                <div className="flex justify-center items-center gap-6">
 
-                                   <img src="img/organize/pdf rotate.png" alt="" className="max-w-full h-14"/>
+                                   <img src="img/organize/pdf rotate.png" alt="" className="max-w-full h-10"/>
 
                                     <span>Rotate PDF</span>
                                 </div>
@@ -87,25 +87,17 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                             </li>
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/organize/trash.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/organize/trash.png" alt="" className="max-w-full h-10"/>
                                     <span>Delete page</span>
                                 </div>
                                 </a>
                             </li>
                             <li className=" w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                             <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/organize/split.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/organize/split.png" alt="" className="max-w-full h-10"/>
                                     <span>Split PDF</span>
-                                </div>
-                                </a>
-                            </li>
-                            <li className="w-48 py-2 hover:border-purple-100 hover:bg-purple-100 hover:rounded-sm hover:shadow-md">
-                            <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/organize/rearrange.png" alt="" className="max-w-full h-14"/>
-                                    <span>Rearrage PDF</span>
                                 </div>
                                 </a>
                             </li>
@@ -120,16 +112,16 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-blue-100 hover:bg-blue-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
-                                    <div className="flex justify-center items-center">
-                                    <img src="img/edit/crop.png" alt="" className="max-w-full h-14"/>
+                                    <div className="flex justify-center items-center gap-6">
+                                    <img src="img/edit/crop.png" alt="" className="max-w-full h-10"/>
                                     <span>Crop PDF</span>
                                     </div>
                                 </a>
                             </li>
                             <li className=" w-48 py-2 hover:border-violet-100 hover:bg-violet-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/edit/edit pdf.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/edit/edit pdf.png" alt="" className="max-w-full h-10"/>
                                     <span>Edit PDF</span>
                                 </div>
                                 </a>
@@ -137,16 +129,16 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
 
                             <li className=" w-48 py-2 hover:border-violet-100 hover:bg-violet-100 hover:rounded-sm hover:shadow-md">
                             <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/edit/read pdf.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/edit/read pdf.png" alt="" className="max-w-full h-10"/>
                                     <span>Read PDF</span>
                                 </div>
                                 </a>
                             </li>
                             <li className="w-48 py-2 hover:border-zinc-100 hover:bg-zinc-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center">
-                                <div className="flex justify-center items-center">
-                                   <img src="img/edit/page number.png" alt="" className="max-w-full h-14"/>
+                                <div className="flex justify-center items-center gap-6">
+                                   <img src="img/edit/page number.png" alt="" className="max-w-full h-10"/>
                                     <span>Page Number</span>
                                 </div>
                                 </a>
