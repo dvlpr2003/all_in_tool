@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 body {
-    
-    font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 
 .c-menu-arrow{

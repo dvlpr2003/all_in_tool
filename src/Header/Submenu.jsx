@@ -8,7 +8,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
             <div className=" w-full mt-9 flex justify-center pb-7">
                 <div className="flex gap-7 ">
                 <div className="border border-white w-60  bg-white py-5 pb-6 rounded-lg  hover:shadow-sm">
-                        <span className="ml-6">Convert from pdf</span>
+                        <span className="ml-6">CONVERT FROM PDF</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
@@ -64,7 +64,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                     </div>
                     <div>
                     <div className="border border-white w-60  bg-white py-5 pb-6 rounded-lg hover:shadow-sm">
-                        <span className="ml-6">Convert to PDF</span>
+                        <span className="ml-6">CONVERT TO PDF</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-blue-100 hover:bg-blue-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
@@ -122,7 +122,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
     
                     <div>
                         <div className="border border-white w-60  bg-white py-5 pb-6 rounded-lg  hover:shadow-sm">
-                        <span className="ml-6">Organize</span>
+                        <span className="ml-6">ORGANIZE</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-indigo-100 hover:bg-indigo-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
@@ -165,7 +165,7 @@ export function ProductDt({About,enter,setAbout,setEnter,isMobile}){
                     </div>
                     <div>
                     <div className="border border-white w-60  bg-white py-5 pb-6 rounded-lg hover:shadow-sm">
-                        <span className="ml-6">Edit</span>
+                        <span className="ml-6">EDIT</span>
                         <ul className="flex flex-col gap-5 justify-center items-center mt-5">
                             <li className="w-48 py-2 hover:border-blue-100 hover:bg-blue-100 hover:rounded-sm hover:shadow-md">
                                 <a href="#" className="flex h-9 items-center" >
