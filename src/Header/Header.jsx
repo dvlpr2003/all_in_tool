@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md";
 import IconMenu from "./MenuIcon";
 import { ProductDt } from "./Submenu";
+import SideMenu from "./side menu/SideMenu";
 export default function Header(){
     const [enter,setEnter]=useState(false)
     const [About,setAbout]=useState(false)
@@ -48,10 +49,11 @@ export default function Header(){
 
         </div>
 
-        <div className=" font-semibold ml-auto justify-end ">
+        <div className=" font-semibold ml-auto justify-end  ">
             <div className="sm:flex lg:hidden justify-center items-center py-2">
             
             <IconMenu />
+           
             </div>
             <div className="flex gap-5 sm:hidden min-[55px]:hidden lg:flex">
             <button className=" px-5  rounded-lg hover:bg-slate-100 border-0">Log in</button>
@@ -61,6 +63,8 @@ export default function Header(){
 
 
         <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
+        <SideMenu/>
+
         </div>
         
         </>
