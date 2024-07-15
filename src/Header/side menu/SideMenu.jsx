@@ -14,7 +14,7 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border border-red-700 w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute">
+        <div className="border border-red-700 w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute overflow-hidden">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
                     <li className="flex flex-col border-b border-black " >
@@ -89,7 +89,7 @@ function LoginNSignup(){
                     <input type="text" placeholder="Enter your email" className="w-full h-14 pl-4"/>
                 </form>
                 <div className="border border-black bg-black text-white  rounded-sm  flex justify-center items-center">
-                <button className="h-14 w-40 ">sign up free</button>
+                <button className="min-[55px]:w-28  min-[55px]:text-sm h-14  min-[660px]:w-40">sign up free</button>
                 </div>
 
             </div>
