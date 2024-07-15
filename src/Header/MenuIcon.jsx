@@ -1,9 +1,14 @@
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-function IconMenu({setMenuIcon}){
+import { RxCross2 } from "react-icons/rx";
+
+function IconMenu({setMenuIcon,MenuIcon}){
     return(
-        <div className="flex justify-center items-center gap-5 menu">
+        <div className="flex justify-center items-center gap-5 menu" onClick={()=>setMenuIcon((e)=>!e)}>
         <span className="text-2xl">Menu</span>
-        <HiOutlineMenuAlt1 className="menu-icon" onClick={()=>setMenuIcon((e)=>!e)}/>
+        {MenuIcon?<RxCross2  className="menu-icon"/>:<HiOutlineMenuAlt1 className="menu-icon" />}
+        
+
+
         </div>
     )
 }

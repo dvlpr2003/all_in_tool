@@ -25,7 +25,7 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative ">
+        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative  ">
 
 
         <div className=" justify-start h-auto">
@@ -53,7 +53,7 @@ export default function Header(){
         <div className=" font-semibold ml-auto justify-end  ">
             <div className="sm:flex lg:hidden justify-center items-center py-2">
             
-            <IconMenu setMenuIcon={setMenuIcon}/>
+            <IconMenu setMenuIcon={setMenuIcon} MenuIcon={MenuIcon}/>
            
             </div>
             <Buttons/>
@@ -62,8 +62,8 @@ export default function Header(){
 
 
         <ProductDt About={About} setAbout={setAbout} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
-        {MenuIcon&&<SideMenu/>}
 
+        {MenuIcon&&<SideMenu/>}
         </div>
         
         </>
