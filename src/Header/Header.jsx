@@ -30,7 +30,7 @@ export default function Header(){
 
         <div className=" justify-start h-auto">
           {/* logo */}
-            <img src="img/logo-image/company.png" alt="logo" className="max-w-full h-9"/>
+            <img src="img/logo-image/company.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
 
         </div>
 
