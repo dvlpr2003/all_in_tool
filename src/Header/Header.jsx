@@ -72,7 +72,7 @@ export default function Header(){
 
 
 
-export function Buttons(){
+function Buttons(){
   return(
     <div className="flex gap-5  min-[55px]:hidden lg:flex">
     <button className=" px-5  rounded-lg hover:bg-slate-100 border-0">Log in</button>

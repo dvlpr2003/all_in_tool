@@ -4,7 +4,7 @@ import { ConvertFromPdfItems } from "../submenu items/converfrompdf";
 import { ConverttoPdfItems } from "../submenu items/converttopdf";
 import { EditItems } from "../submenu items/Edit";
 import { OrganizeItems } from "../submenu items/Organize";
-import { Buttons } from "../Header";
+
 
 
 
@@ -14,7 +14,7 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border border-red-700 w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden items-start absolute">
+        <div className="border border-red-700 w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
                     <li className="flex flex-col border-b border-black " >
@@ -72,15 +72,36 @@ export default function SideMenu(){
                     </li>
                 </ul>
             </div>
-            <LoginNdSignup/>
+            <LoginNSignup/>
         </div>
     )
 }
 
 
-function LoginNdSignup(){
+function LoginNSignup(){
     return(
-        <Buttons/>
+        <div className="w-full h-64 flex flex-col justify-center px-7">
+
+        
+        <div className="w-full border border-slate-500 rounded-md ">
+            <div className="flex w-full justify-center items-center ">
+                <form action="none" className="w-full  flex justify-center items-center">
+                    <input type="text" placeholder="Enter your email" className="w-full h-14 pl-4"/>
+                </form>
+                <div className="border border-black bg-black text-white  rounded-sm  flex justify-center items-center">
+                <button className="h-14 w-40 ">sign up free</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div className="w-full flex justify-center items-center mt-5">
+            <div className="flex gap-1">
+                <span>Already a customer?</span>
+                <span className="text-blue-500">Log in</span>
+            </div>
+        </div>
+
+        </div>
     )
 }
-
