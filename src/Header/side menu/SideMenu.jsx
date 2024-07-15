@@ -13,7 +13,7 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border border-red-700 w-full absolute top-16  flex">
+        <div className="border border-red-700 w-full absolute top-16  min-[55px]:flex lg:hidden">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
                     <li className="flex flex-col border-b border-black " >
