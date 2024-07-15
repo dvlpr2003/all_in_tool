@@ -4,6 +4,7 @@ import { ConvertFromPdfItems } from "../submenu items/converfrompdf";
 import { ConverttoPdfItems } from "../submenu items/converttopdf";
 import { EditItems } from "../submenu items/Edit";
 import { OrganizeItems } from "../submenu items/Organize";
+import { Buttons } from "../Header";
 
 
 
@@ -13,7 +14,7 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border border-red-700 w-full absolute top-16  min-[55px]:flex lg:hidden">
+        <div className="border border-red-700 w-full min-h-lvh absolute top-16  min-[55px]:flex lg:hidden items-start">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
                     <li className="flex flex-col border-b border-black " >
@@ -71,7 +72,15 @@ export default function SideMenu(){
                     </li>
                 </ul>
             </div>
-
+            <LoginNdSignup/>
         </div>
     )
 }
+
+
+function LoginNdSignup(){
+    return(
+        <Buttons/>
+    )
+}
+
