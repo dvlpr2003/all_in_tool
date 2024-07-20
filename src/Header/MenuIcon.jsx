@@ -10,6 +10,7 @@ function IconMenu({setMenuIcon,MenuIcon}){
 
 
         </div>
+        
     )
 }
 export default IconMenu;

@@ -14,10 +14,10 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border border-red-700 w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute overflow-hidden">
+        <div className="border w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute overflow-hidden">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
-                    <li className="flex flex-col border-b border-black " >
+                    <li className="flex flex-col border-b  " >
                         <div className="flex items-end pb-2 h-14" onClick={()=>setFromPdf(e=>!e)}>
                         <div className="pl-4 flex justify-center items-center">
                             <span className="font-bold">CONVERT FROM PDF</span>
@@ -30,7 +30,7 @@ export default function SideMenu(){
                             <ConvertFromPdfItems/>
                         </div>
                     </li>
-                    <li className="border-b border-black flex flex-col" >
+                    <li className="border-b  flex flex-col" >
                     <div className="flex items-end pb-2 h-14" onClick={()=>setToPdf((e)=>!e)}>
                         <div className="pl-4 flex justify-center items-center">
                             <span className="font-bold">CONVERT TO PDF</span>
@@ -44,7 +44,7 @@ export default function SideMenu(){
                         </div>
 
                     </li>
-                    <li className="border-b border-black " >
+                    <li className="border-b " >
                         <div className="flex items-end pb-2 h-14" onClick={()=>setOrganize(e=>!e)}>
                             <div className="pl-4 flex justify-center items-center">
                                 <span className="font-bold">ORGANIZE</span>
@@ -57,7 +57,7 @@ export default function SideMenu(){
                             <OrganizeItems/>
                         </div>
                     </li>
-                    <li className="border-b border-black " >
+                    <li className="border-b " >
                         <div className="flex items-end pb-2 h-14" onClick={()=>setEdit(e=>!e)}>
                                 <div className="pl-4 flex justify-center items-center">
                                     <span className="font-bold">EDIT</span>                            
