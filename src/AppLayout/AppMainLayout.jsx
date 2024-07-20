@@ -8,7 +8,7 @@ export default function AppLayout(){
            <Header/>
            
         </header>
-        <main  >
+        <main className="flex justify-center" >
             <Outlet/>
         </main>
         </>
