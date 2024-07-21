@@ -15,7 +15,7 @@ function App(){
           },
           {
             element:(<Jpgtopdf/>),
-            path:"jpg-to-pdf"
+            path:"/jpg-to-pdf"
           }
 
 
