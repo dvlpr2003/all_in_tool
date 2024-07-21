@@ -15,7 +15,7 @@ export function EditItems(){
         <li className="lg:w-56 min-[55px]:w-full py-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
             <a href="#" className="flex h-9 items-center" >
                 <div className="flex justify-center items-center gap-6">
-                <img src="img/edit/crop.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
+                <img src="https://d3jq6id3uwlfp0.cloudfront.net/edit/crop.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
                 <span className="group-hover:font-bold">Crop PDF</span>
                 </div>
             </a>
@@ -23,7 +23,7 @@ export function EditItems(){
         <li className="lg:w-56 min-[55px]:w-full py-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
             <a href="#" className="flex h-9 items-center">
             <div className="flex justify-center items-center gap-6">
-               <img src="img/edit/edit pdf.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
+               <img src="https://d3jq6id3uwlfp0.cloudfront.net/edit/edit pdf.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
                 <span className="group-hover:font-bold">Edit PDF</span>
             </div>
             </a>
@@ -32,7 +32,7 @@ export function EditItems(){
         <li className="lg:w-56 min-[55px]:w-full py-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
         <a href="#" className="flex h-9 items-center">
             <div className="flex justify-center items-center gap-6">
-               <img src="img/edit/read pdf.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
+               <img src="https://d3jq6id3uwlfp0.cloudfront.net/edit/read pdf.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
                 <span className="group-hover:font-bold">Read PDF</span>
             </div>
             </a>
@@ -40,7 +40,7 @@ export function EditItems(){
         <li className="lg:w-56 min-[55px]:w-fullpy-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
             <a href="#" className="flex h-9 items-center">
             <div className="flex justify-center items-center gap-6">
-               <img src="img/edit/page number.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
+               <img src="https://d3jq6id3uwlfp0.cloudfront.net/edit/page number.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
                 <span className="group-hover:font-bold">Page Number</span>
             </div>
             </a>

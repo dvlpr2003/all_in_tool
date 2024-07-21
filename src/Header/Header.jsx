@@ -29,7 +29,7 @@ export default function Header(){
 
         <div className=" justify-start h-auto cursor-pointer">
           {/* logo */}
-            <img src="img/logo-image/company.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
+            <img src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/company.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
         </div>
 
         <div className="flex flex-wrap  justify-center items-center ml-3 cursor-pointer sm:hidden lg:flex min-[55px]:hidden ">
