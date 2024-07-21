@@ -7,7 +7,7 @@ export default function Jpgtopdf(){
         <section className="  min-h-svh pt-28 w-full  flex justify-center">
             <div className=" w-full max-w-screen-2xl flex flex-col items-center ">
 
-                <div className=" border-4 border-slate-200 rounded-3xl w-auto flex justify-center items-center p-0 mt-12 overflow-hidden group">
+                <div className=" border-4 border-slate-200 rounded-3xl w-auto flex justify-center items-center p-0 mt-12 overflow-hidden group cursor-pointer">
                     <div className=" rounded-3xl w-full flex justify-center items-center">
                         <div className=" py-10 upload-container flex flex-col justify-center items-center gap-4">
                             <div className="w-full flex justify-center items-center">
