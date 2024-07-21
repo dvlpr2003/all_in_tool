@@ -37,7 +37,7 @@ export function EditItems(){
             </div>
             </a>
         </li>
-        <li className="lg:w-56 min-[55px]:w-fullpy-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
+        <li className="lg:w-56 min-[55px]:w-full py-2  hover:border-slate-100 hover:bg-slate-100 hover:rounded-sm hover:shadow-md group">
             <a href="#" className="flex h-9 items-center">
             <div className="flex justify-center items-center gap-6">
                <img src="https://d3jq6id3uwlfp0.cloudfront.net/edit/page number.png" alt="" className="max-w-full h-10 group-hover:h-11"/>
