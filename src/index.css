@@ -37,3 +37,10 @@ body {
     flex-direction: column;
     position: relative;
 }
+.upload-container{
+    width: 56rem;
+}
+.radius-ind{
+    border-radius: 40px;
+
+}
