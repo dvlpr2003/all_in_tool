@@ -5,6 +5,9 @@ import { HiMiniRectangleGroup } from "react-icons/hi2";
 import { RxBorderSolid } from "react-icons/rx";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
+import { IoArrowForwardCircleSharp } from "react-icons/io5";
+
+
 
 
 
@@ -73,7 +76,12 @@ function DashboardNav(){
 
             </div>
             </div>
-            <div className="h-10 mt-auto ">
+            <div className="h-24 mt-auto w-full px-3 flex justify-center items-center">
+                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-2 pl-1 bg-indigo-600 ">
+                    <span className="font-bold text-white">Convert to PDF</span>
+                <IoArrowForwardCircleSharp className="text-2xl text-white"/>
+
+                </div>
 
             </div>
         </div>
