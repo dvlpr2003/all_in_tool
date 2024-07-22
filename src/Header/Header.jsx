@@ -37,7 +37,7 @@ export default function Header(){
             <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3  flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setTool((e)=>!e)}:()=>{setEnter((e)=>!e); setTool((e)=>!e)}} >
                 <div className="flex" >
                 <span >Tools</span>
-                <MdKeyboardArrowDown className={`c-menu-arrow ${Tool?"rotate-180":"rotate-0"} transition-all`}/> 
+                <MdKeyboardArrowDown className={`c-menu-arrow ${Tool?"rotate-180":"rotate-0"} transition-all duration-300`}/> 
                 </div>
             </div>
 

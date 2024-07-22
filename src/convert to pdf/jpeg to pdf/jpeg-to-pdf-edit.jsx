@@ -1,10 +1,11 @@
 import { RxMargin } from "react-icons/rx";
 import { TbBoxMargin } from "react-icons/tb";
 import { PiSquareLogoDuotone } from "react-icons/pi";
-import { HiMiniRectangleGroup } from "react-icons/hi2";
+import { HiOutlineRectangleGroup } from "react-icons/hi2";
+import { MdOutlineDocumentScanner } from "react-icons/md";
 import { RxBorderSolid } from "react-icons/rx";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { RiPagesLine } from "react-icons/ri";
+import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
 
 
@@ -37,48 +38,48 @@ export default function JpgToPdfEdit(){
 
 function DashboardNav(){
     return(
-        <div className="w-72 border border-black h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
-            <div className=" flex flex-col  gap-2 items-center mt-7 w-full px-3">
-            <div className="border  rounded-md  flex  items-center gap-2 w-full py-2 pl-1">
+        <div className="w-72 border  h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
+            <div className=" flex flex-col  gap-4 items-center mt-7 w-full px-3">
+            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600  transition-all duration-150">
                 <div>
-                    <PiSquareLogoDuotone className="text-2xl"/>
+                    <PiSquareLogoDuotone className="text-2xl  group-hover:text-indigo-600"/>
                 </div>
-                <span>Margin</span>
-                <div className="flex justify-center items-center ml-auto"><MdOutlineKeyboardArrowRight /></div>
+                <span className="font-normal  group-hover:text-indigo-600">Margin</span>
+                <div className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
 
             </div>
-            <div className="border  rounded-md  flex  items-center gap-2 w-full py-2 pl-1">
+            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600 transition-all duration-150">
                 <div className="">
-                <HiMiniRectangleGroup className="text-2xl"/>
+                <HiOutlineRectangleGroup className="text-2xl group-hover:text-indigo-600"/>
                 </div>
-                <span>Page Orientation</span>
-                <div  className="flex justify-center items-center ml-auto"><MdOutlineKeyboardArrowRight /></div>
+                <span className="font-normal group-hover:text-indigo-600">Page Orientation</span>
+                <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
 
 
             </div>
-            <div className="border  rounded-md  flex items-center gap-2 w-full py-2 pl-1">
+            <div className="border  rounded-lg  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600 transition-all duration-150">
                 <div>
-                <RiPagesLine className="text-2xl"/>
+                <MdOutlineDocumentScanner className="text-2xl group-hover:text-indigo-600"/>
 
                 </div>
-                <span>Page size</span>
-                <div  className="flex justify-center items-center ml-auto"><MdOutlineKeyboardArrowRight /></div>
+                <span className="font-normal group-hover:text-indigo-600">Page size</span>
+                <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
 
             </div>
-            <div className="border  rounded-md flex items-center gap-2 w-full py-2 pl-1">
+            <div className="border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600 transition-all duration-150">
                 <div>
 
-                <RxBorderSolid className="text-2xl"/>
+                <RxBorderWidth className="text-2xl group-hover:text-indigo-600"/>
                 </div>
 
-                <span>Border</span>
-                <div  className="flex justify-center items-center ml-auto"><MdOutlineKeyboardArrowRight /></div>
+                <span className="font-normal group-hover:text-indigo-600">Border</span>
+                <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
 
             </div>
             </div>
-            <div className="h-24 mt-auto w-full px-3 flex justify-center items-center">
-                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-2 pl-1 bg-indigo-600 ">
-                    <span className="font-bold text-white">Convert to PDF</span>
+            <div className="h-24 mt-auto w-full px-3 flex justify-center items-center cursor-pointer">
+                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600 ">
+                    <span className="font-bold text-white ">Convert to PDF</span>
                 <IoArrowForwardCircleSharp className="text-2xl text-white"/>
 
                 </div>
