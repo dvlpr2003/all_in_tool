@@ -21,11 +21,22 @@ export default function JpgToPdfEdit(){
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
-            <div className=" w-full max-w-screen-2xl h-full bg-inherit">
-                <div className="h-full"> 
+            <div className=" w-full max-w-screen-2xl h-full bg-inherit flex">
+                {/* dashboard nav */}
+                <div className="h-full">  
                     <DashboardNav/>
-                    
+                </div>
+                {/* dashboard edit container*/}
+                <div className="border border-blue-600 w-full flex  justify-center">
+                    <div className="flex m-7">
+                    <div className="border border-black w-48 h-60 bg-blue-700 flex items-center justify-center rounded-lg py-4 px-2 ">
+                        <div className=" bg-white w-full h-auto flex justify-center items-center ">
+                            <img src="/img/sakthi.png" alt=""  className="w-36 h-auto " draggable={false}/>
+                        </div>
+                        </div>
 
+                    </div>
+                    
                 </div>
 
             </div>
@@ -78,7 +89,7 @@ function DashboardNav(){
             </div>
             </div>
             <div className="h-24 mt-auto w-full px-3 flex justify-center items-center cursor-pointer">
-                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600 ">
+                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600 hover:bg-indigo-500">
                     <span className="font-bold text-white ">Convert to PDF</span>
                 <IoArrowForwardCircleSharp className="text-2xl text-white"/>
 
