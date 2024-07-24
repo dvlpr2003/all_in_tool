@@ -61,11 +61,11 @@ function DashboardNav({setOrientation,Orientation}){
 
 
             {/* page orientation */}
-            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative group hover:border-1 hover:border-indigo-600 transition-all duration-150" onClick={()=>setOrientation((e)=>!e)}>
+            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>setOrientation((e)=>!e)}>
                 <div className="">
-                <HiOutlineRectangleGroup className="text-2xl group-hover:text-indigo-600"/>
+                <HiOutlineRectangleGroup className={`text-2xl group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""}`}/>
                 </div>
-                <span className="font-normal group-hover:text-indigo-600">Page Orientation</span>
+                <span className={`font-normal group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""} `}>Page Orientation</span>
                 <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
               
 
@@ -103,11 +103,11 @@ function DashboardNav({setOrientation,Orientation}){
             </div>
             {/* orientaion options */}
             <div className={`absolute border  w-52 h-60 left-80 top-48 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 rounded-md`}>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" />
                     <span className="mt-3 group-hover:text-indigo-600">Portrait</span>
                     </div>
