@@ -9,6 +9,8 @@ import { IoTabletLandscapeOutline } from "react-icons/io5";
 import { IoTabletPortraitOutline } from "react-icons/io5";
 import { RxMargin } from "react-icons/rx";
 import { TbBoxMargin } from "react-icons/tb";
+import { MdOutlineBorderStyle } from "react-icons/md";
+import { TbBorderRadius } from "react-icons/tb";
 
 import { useState } from "react";
 
@@ -88,7 +90,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                 <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${PageSize?"text-indigo-600":""}`}/></div>
 
             </div>
-            <div className={`border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`}>
+            <div className={`border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{setMargin(false); setBorder((e)=>!e); setOrientation(false); setPageSize(false)}}>
                 <div>
 
                 <RxBorderWidth className={`text-2xl group-hover:text-indigo-600 ${Border?"text-indigo-600":""}`}/>
@@ -143,6 +145,17 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     {/* <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" /> */}
                     <span className="mt-3 group-hover:text-indigo-600">Letter(US)</span>
+                    </div>
+                </div>
+                {/*Border options*/}
+                <div className={`absolute border  w-52 h-auto left-80 top-56 ${Border?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
+                    <span className="mt-3 group-hover:text-indigo-600">Normal</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
+                    <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
                     </div>
                 </div>
 
