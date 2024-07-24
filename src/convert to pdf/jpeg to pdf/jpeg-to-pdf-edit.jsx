@@ -1,12 +1,14 @@
-import { RxMargin } from "react-icons/rx";
-import { TbBoxMargin } from "react-icons/tb";
+
 import { PiSquareLogoDuotone } from "react-icons/pi";
 import { HiOutlineRectangleGroup } from "react-icons/hi2";
 import { MdOutlineDocumentScanner } from "react-icons/md";
-import { RxBorderSolid } from "react-icons/rx";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
+import { IoTabletLandscapeOutline } from "react-icons/io5";
+import { IoTabletPortraitOutline } from "react-icons/io5";
+import { useState } from "react";
+
 
 
 
@@ -18,24 +20,18 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 
 
 export default function JpgToPdfEdit(){
+    const [Orientation,setOrientation]=useState(false)
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
             <div className=" w-full max-w-screen-2xl h-full bg-inherit flex">
                 {/* dashboard nav */}
                 <div className="h-full">  
-                    <DashboardNav/>
+                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation}/>
                 </div>
                 {/* dashboard edit container*/}
                 <div className="border border-blue-600 w-full flex  justify-center">
-                    <div className="flex m-7">
-                    <div className="border border-black w-48 h-60 bg-blue-700 flex items-center justify-center rounded-lg py-4 px-2 ">
-                        <div className=" bg-white w-full h-auto flex justify-center items-center ">
-                            <img src="/img/sakthi.png" alt=""  className="w-36 h-auto " draggable={false}/>
-                        </div>
-                        </div>
 
-                    </div>
                     
                 </div>
 
@@ -47,10 +43,12 @@ export default function JpgToPdfEdit(){
     )
 }
 
-function DashboardNav(){
+function DashboardNav({setOrientation,Orientation}){
     return(
+    
         <div className="w-72 border  h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
             <div className=" flex flex-col  gap-4 items-center mt-7 w-full px-3">
+                {/* margin */}
             <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600  transition-all duration-150">
                 <div>
                     <PiSquareLogoDuotone className="text-2xl  group-hover:text-indigo-600"/>
@@ -59,15 +57,22 @@ function DashboardNav(){
                 <div className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
 
             </div>
-            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600 transition-all duration-150">
+
+
+
+            {/* page orientation */}
+            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative group hover:border-1 hover:border-indigo-600 transition-all duration-150" onClick={()=>setOrientation((e)=>!e)}>
                 <div className="">
                 <HiOutlineRectangleGroup className="text-2xl group-hover:text-indigo-600"/>
                 </div>
                 <span className="font-normal group-hover:text-indigo-600">Page Orientation</span>
                 <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
-
+              
 
             </div>
+
+
+            {/* page size */}
             <div className="border  rounded-lg  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600 transition-all duration-150">
                 <div>
                 <MdOutlineDocumentScanner className="text-2xl group-hover:text-indigo-600"/>
@@ -96,6 +101,18 @@ function DashboardNav(){
                 </div>
 
             </div>
+            {/* orientaion options */}
+            <div className={`absolute border  w-52 h-60 left-80 top-48 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 rounded-md`}>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md">
+                    <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
+                    <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md">
+                    <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" />
+                    <span className="mt-3 group-hover:text-indigo-600">Portrait</span>
+                    </div>
+                </div>
+
         </div>
     
     )
@@ -104,7 +121,14 @@ function DashboardNav(){
 function DashboardEdit(){
     return(
         <>
-        hello
+                    <div className="flex m-7">
+                    <div className="border border-black w-48 h-60 bg-blue-700 flex items-center justify-center rounded-lg py-4 px-2 ">
+                        <div className=" bg-white w-full h-auto flex justify-center items-center ">
+                            <img src="/img/sakthi.png" alt=""  className="w-36 h-auto " draggable={false}/>
+                        </div>
+                        </div>
+
+                    </div>
         </>
     )
 }
