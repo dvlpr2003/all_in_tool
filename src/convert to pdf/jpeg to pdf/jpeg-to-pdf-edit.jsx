@@ -7,6 +7,9 @@ import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { IoTabletLandscapeOutline } from "react-icons/io5";
 import { IoTabletPortraitOutline } from "react-icons/io5";
+import { RxMargin } from "react-icons/rx";
+import { TbBoxMargin } from "react-icons/tb";
+
 import { useState } from "react";
 
 
@@ -21,13 +24,16 @@ import { useState } from "react";
 
 export default function JpgToPdfEdit(){
     const [Orientation,setOrientation]=useState(false)
+    const [Margin,setMargin]=useState(false)
+    const [PageSize,setPageSize]=useState(false)
+    const [Border,setBorder]=useState(false)
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
             <div className=" w-full max-w-screen-2xl h-full bg-inherit flex">
                 {/* dashboard nav */}
                 <div className="h-full">  
-                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation}/>
+                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder}/>
                 </div>
                 {/* dashboard edit container*/}
                 <div className="border border-blue-600 w-full flex  justify-center">
@@ -43,30 +49,30 @@ export default function JpgToPdfEdit(){
     )
 }
 
-function DashboardNav({setOrientation,Orientation}){
+function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setPageSize,setBorder,Border}){
     return(
     
         <div className="w-72 border  h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
             <div className=" flex flex-col  gap-4 items-center mt-7 w-full px-3">
                 {/* margin */}
-            <div className="border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer group hover:border-1 hover:border-indigo-600  transition-all duration-150">
+            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600  transition-all duration-150`} onClick={()=>{setMargin((e)=>!e); setBorder(false); setOrientation(false); setPageSize(false)}}>
                 <div>
-                    <PiSquareLogoDuotone className="text-2xl  group-hover:text-indigo-600"/>
+                    <PiSquareLogoDuotone className={`text-2xl  group-hover:text-indigo-600 ${Margin?"text-indigo-600":""}`}/>
                 </div>
-                <span className="font-normal  group-hover:text-indigo-600">Margin</span>
-                <div className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
+                <span className={`font-normal  group-hover:text-indigo-600 ${Margin?"text-indigo-600":""}`}>Margin</span>
+                <div className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${Margin?"text-indigo-600":""}`}/></div>
 
             </div>
 
 
 
             {/* page orientation */}
-            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>setOrientation((e)=>!e)}>
+            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{setMargin(false); setBorder(false); setOrientation((e)=>!e); setPageSize(false)}}>
                 <div className="">
                 <HiOutlineRectangleGroup className={`text-2xl group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""}`}/>
                 </div>
                 <span className={`font-normal group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""} `}>Page Orientation</span>
-                <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className="group-hover:text-indigo-600"/></div>
+                <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""}`}/></div>
               
 
             </div>
@@ -101,6 +107,18 @@ function DashboardNav({setOrientation,Orientation}){
                 </div>
 
             </div>
+
+                {/*margin optioins */}
+                <div className={`absolute border  w-52 h-60 left-80 top-36 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 rounded-md`}>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
+                    <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <RxMargin className="group-hover:text-lg group-hover:text-indigo-600" />
+                    <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
+                    </div>
+                </div>
             {/* orientaion options */}
             <div className={`absolute border  w-52 h-60 left-80 top-48 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 rounded-md`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
