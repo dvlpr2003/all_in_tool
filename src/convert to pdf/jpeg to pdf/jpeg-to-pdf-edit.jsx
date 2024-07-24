@@ -11,17 +11,7 @@ import { RxMargin } from "react-icons/rx";
 import { TbBoxMargin } from "react-icons/tb";
 import { MdOutlineBorderStyle } from "react-icons/md";
 import { TbBorderRadius } from "react-icons/tb";
-
-import { useState } from "react";
-
-
-
-
-
-
-
-
-
+import { useReducer, useState } from "react";
 
 
 export default function JpgToPdfEdit(){
@@ -29,16 +19,45 @@ export default function JpgToPdfEdit(){
     const [Margin,setMargin]=useState(false)
     const [PageSize,setPageSize]=useState(false)
     const [Border,setBorder]=useState(false)
+    const [state,dispatch]=useReducer(reducer,null)
+    function reducer(state,action){
+        if(action.type === "margin"){
+            setMargin((e)=>!e); 
+            setBorder(false);
+            setOrientation(false);
+            setPageSize(false)
+        }
+        if(action.type==="orientation"){
+            setMargin(false);
+            setBorder(false); 
+            setOrientation((e)=>!e); 
+            setPageSize(false)
+        }
+        if (action.type==="page size"){
+            setMargin(false);
+            setBorder(false);
+            setOrientation(false);
+            setPageSize((e)=>!e)
+        }
+        if(action.type==="border"){
+            setMargin(false);
+            setBorder((e)=>!e);
+            setOrientation(false);
+            setPageSize(false)
+        }
+    
+    }
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
             <div className=" w-full max-w-screen-2xl h-full bg-inherit flex">
                 {/* dashboard nav */}
                 <div className="h-full">  
-                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder}/>
+                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder} dispatch={dispatch}/>
                 </div>
                 {/* dashboard edit container*/}
-                <div className="border border-blue-600 w-full flex  justify-center">
+                <div className="border border-blue-600 w-full flex  justify-center relative">
+                    <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
 
                     
                 </div>
@@ -51,13 +70,13 @@ export default function JpgToPdfEdit(){
     )
 }
 
-function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setPageSize,setBorder,Border}){
+function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
     return(
     
         <div className="w-72 border  h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
             <div className=" flex flex-col  gap-4 items-center mt-7 w-full px-3">
                 {/* margin */}
-            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600  transition-all duration-150`} onClick={()=>{setMargin((e)=>!e); setBorder(false); setOrientation(false); setPageSize(false)}}>
+            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600  transition-all duration-150`} onClick={()=>{dispatch({"type":"margin"})}}>
                 <div>
                     <PiSquareLogoDuotone className={`text-2xl  group-hover:text-indigo-600 ${Margin?"text-indigo-600":""}`}/>
                 </div>
@@ -69,7 +88,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
 
 
             {/* page orientation */}
-            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{setMargin(false); setBorder(false); setOrientation((e)=>!e); setPageSize(false)}}>
+            <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{dispatch({"type":"orientation"})}}>
                 <div className="">
                 <HiOutlineRectangleGroup className={`text-2xl group-hover:text-indigo-600 ${Orientation?"text-indigo-600":""}`}/>
                 </div>
@@ -81,7 +100,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
 
 
             {/* page size */}
-            <div className={`border  rounded-lg  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${PageSize?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{setMargin(false); setBorder(false); setOrientation(false); setPageSize((e)=>!e)}}>
+            <div className={`border  rounded-lg  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${PageSize?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{dispatch({"type":"page size"})}}>
                 <div>
                 <MdOutlineDocumentScanner className={`text-2xl group-hover:text-indigo-600 ${PageSize?"text-indigo-600":""}`}/>
 
@@ -90,7 +109,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                 <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${PageSize?"text-indigo-600":""}`}/></div>
 
             </div>
-            <div className={`border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{setMargin(false); setBorder((e)=>!e); setOrientation(false); setPageSize(false)}}>
+            <div className={`border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{dispatch({"type":"border"})}}>
                 <div>
 
                 <RxBorderWidth className={`text-2xl group-hover:text-indigo-600 ${Border?"text-indigo-600":""}`}/>
@@ -110,8 +129,17 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
 
             </div>
 
-                {/*margin optioins */}
-                <div className={`absolute border  w-52 h-auto left-80 top-36 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+               
+
+        </div>
+    
+    )
+}
+function Options({Orientation,Margin,Border,PageSize}){
+    return(
+        <>
+         {/*margin optioins */}
+         <div className={`absolute border  w-52 h-auto left-4 top-5 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
@@ -122,7 +150,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                     </div>
                 </div>
             {/* orientaion options */}
-            <div className={`absolute border  w-52 h-auto left-80 top-48 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+            <div className={`absolute border  w-52 h-auto left-4 top-16 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
@@ -133,7 +161,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                     </div>
                 </div>
                 {/* page size options*/}
-                <div className={`absolute border  w-52 h-auto left-80 top-56 ${PageSize?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+                <div className={`absolute border  w-52 h-auto left-4 top-24 ${PageSize?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     {/* <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/> */}
                     <span className="mt-3 group-hover:text-indigo-600">Auto</span>
@@ -148,7 +176,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                     </div>
                 </div>
                 {/*Border options*/}
-                <div className={`absolute border  w-52 h-auto left-80 top-56 ${Border?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+                <div className={`absolute border  w-52 h-auto left-4 top-48 ${Border?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Normal</span>
@@ -158,9 +186,7 @@ function DashboardNav({setOrientation,Orientation,setMargin,Margin,PageSize,setP
                     <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
                     </div>
                 </div>
-
-        </div>
-    
+        </>
     )
 }
 
