@@ -153,7 +153,7 @@ function DashboardNavMobRes(){
                 {/* Orientation */}
                 <div className="flex flex-col justify-center items-center gap-2">
                 <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
-                <span className="text-sm">Orientaion</span>
+                <span className="text-sm">Orientation</span>
 
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
