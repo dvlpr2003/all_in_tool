@@ -50,13 +50,16 @@ export default function JpgToPdfEdit(){
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
-            <div className=" w-full max-w-screen-2xl h-full bg-inherit flex">
+            <div className=" w-full max-w-screen-2xl h-full bg-inherit flex min-[55px]:flex-col lg:flex-row">
+
                 {/* dashboard nav */}
-                <div className="h-full">  
-                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder} dispatch={dispatch}/>
+                <div className="lg:h-full min-[55px]:order-2 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
+                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder} dispatch={dispatch} />
+                    <DashboardNavMobRes/>
                 </div>
+
                 {/* dashboard edit container*/}
-                <div className="border border-blue-600 w-full flex  justify-center relative">
+                <div className="border border-blue-600 w-full flex  justify-center relative min-[55px]:order-1 lg:order-2">
                     <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
 
                     
@@ -73,8 +76,8 @@ export default function JpgToPdfEdit(){
 function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
     return(
     
-        <div className="w-72 border  h-full rounded-md bg-white flex flex-col  gap-2 items-center ">
-            <div className=" flex flex-col  gap-4 items-center mt-7 w-full px-3">
+        <div className="w-72 border  h-full rounded-md bg-white lg:flex min-[55px]:hidden flex-col  gap-2 items-center  ">
+            <div className="  flex flex-col  gap-4 items-center mt-7 w-full px-3 ">
                 {/* margin */}
             <div className={`border  rounded-lg  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600  transition-all duration-150`} onClick={()=>{dispatch({"type":"margin"})}}>
                 <div>
@@ -109,6 +112,7 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
                 <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${PageSize?"text-indigo-600":""}`}/></div>
 
             </div>
+            {/* border */}
             <div className={`border  rounded-lg flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?"border-1 border-indigo-600":""} group hover:border-1 hover:border-indigo-600 transition-all duration-150`} onClick={()=>{dispatch({"type":"border"})}}>
                 <div>
 
@@ -120,7 +124,7 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
             </div>
             </div>
-            <div className="h-24 mt-auto w-full px-3 flex justify-center items-center cursor-pointer">
+            <div className="h-24 mt-auto w-full px-3 lg:flex min-[55px]:hidden justify-center items-center cursor-pointer ">
                 <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600 hover:bg-indigo-500">
                     <span className="font-bold text-white ">Convert to PDF</span>
                 <IoArrowForwardCircleSharp className="text-2xl text-white"/>
@@ -133,6 +137,38 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
         </div>
     
+    )
+}
+function DashboardNavMobRes(){
+    return(
+        <>
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center ">
+            <div className="flex w-full justify-around gap-1 p-5">
+                {/* margin */}
+                <div className="flex flex-col justify-center items-center gap-2">
+                <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
+                <span>Margin</span>
+                
+                </div>
+                {/* Orientation */}
+                <div className="flex flex-col justify-center items-center gap-2">
+                <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
+                <span>Orientaion</span>
+
+                </div>
+                <div className="flex flex-col justify-center items-center gap-2">
+                <MdOutlineDocumentScanner className={`text-xl group-hover:text-indigo-600`}/>
+                <span>Size</span>
+                </div>
+                <div className="flex flex-col justify-center items-center gap-2">
+                <RxBorderWidth className={`text-xl group-hover:text-indigo-600`}/>
+
+                <span>Border</span>
+                </div>
+            </div>
+        </div>
+        </>
+
     )
 }
 function Options({Orientation,Margin,Border,PageSize}){
