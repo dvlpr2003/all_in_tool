@@ -147,27 +147,27 @@ function DashboardNavMobRes(){
                 {/* margin */}
                 <div className="flex flex-col justify-center items-center gap-2">
                 <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
-                <span>Margin</span>
+                <span className="text-sm">Margin</span>
                 
                 </div>
                 {/* Orientation */}
                 <div className="flex flex-col justify-center items-center gap-2">
                 <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
-                <span>Orientaion</span>
+                <span className="text-sm">Orientaion</span>
 
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
                 <MdOutlineDocumentScanner className={`text-xl group-hover:text-indigo-600`}/>
-                <span>Size</span>
+                <span className="text-sm">Size</span>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
                 <RxBorderWidth className={`text-xl group-hover:text-indigo-600`}/>
 
-                <span>Border</span>
+                <span className="text-sm">Border</span>
                 </div>
                 <div className="flex flex-col justify-center items-center gap-2">
-                <IoArrowForwardCircleSharp className="text-2xl text-indigo-600"/>
-                <span>Convert</span>
+                <IoArrowForwardCircleSharp className="text-xl text-indigo-600"/>
+                <span className="text-sm">Convert</span>
                 </div>
             </div>
         </div>
