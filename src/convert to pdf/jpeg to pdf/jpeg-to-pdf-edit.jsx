@@ -143,7 +143,7 @@ function DashboardNavMobRes(){
     return(
         <>
         <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center ">
-            <div className="flex w-full justify-around gap-1 p-5">
+            <div className="flex w-full justify-around gap-2 m-4">
                 {/* margin */}
                 <div className="flex flex-col justify-center items-center gap-2">
                 <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
@@ -164,6 +164,10 @@ function DashboardNavMobRes(){
                 <RxBorderWidth className={`text-xl group-hover:text-indigo-600`}/>
 
                 <span>Border</span>
+                </div>
+                <div className="flex flex-col justify-center items-center gap-2">
+                <IoArrowForwardCircleSharp className="text-2xl text-indigo-600"/>
+                <span>Convert</span>
                 </div>
             </div>
         </div>

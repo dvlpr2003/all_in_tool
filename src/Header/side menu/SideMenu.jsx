@@ -14,7 +14,7 @@ export default function SideMenu(){
     const [Edit,setEdit]=useState(false)
     const [Organize,setOrganize]=useState(false)
     return(
-        <div className="border w-full  min-h-screen  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute overflow-hidden">
+        <div className="border bg-white w-full  h-svh  top-16  min-[55px]:flex lg:hidden flex-col items-start absolute overflow-hidden">
             <div className="flex flex-col justify-center w-full">
                 <ul className="flex flex-col justify-evenly ">
                     <li className="flex flex-col border-b  " >

@@ -11,7 +11,7 @@ function App(){
         element:(<AppLayout/>),
         children:[
           {
-            element:(<Home/>),
+            element:(<JpgToPdfEdit/>),
             path:"/"
           },
           {
