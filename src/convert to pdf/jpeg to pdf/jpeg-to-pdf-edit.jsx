@@ -171,7 +171,7 @@ function DashboardNavMobRes(){
                 </div>
             </div>
             <div className={`myPopup popuptext ${isPopup?"show":""} w-full `}>
-                A Simple Popup!
+                
             </div>
         </div>
         </>
