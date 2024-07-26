@@ -204,7 +204,7 @@ function Options({Orientation,Margin,Border,PageSize}){
     return(
         <>
          {/*margin optioins */}
-         <div className={`absolute border  w-52 h-auto left-4 top-5 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md `}>
+         <div className={`absolute border  w-52 h-auto left-4 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
@@ -215,7 +215,7 @@ function Options({Orientation,Margin,Border,PageSize}){
                     </div>
                 </div>
             {/* orientaion options */}
-            <div className={`absolute border  w-52 h-auto left-4 top-16 ${Orientation?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+            <div className={`absolute border  w-52 h-auto left-4 top-16 ${Orientation?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
@@ -226,7 +226,7 @@ function Options({Orientation,Margin,Border,PageSize}){
                     </div>
                 </div>
                 {/* page size options*/}
-                <div className={`absolute border  w-52 h-auto left-4 top-24 ${PageSize?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+                <div className={`absolute border  w-52 h-auto left-4 top-24 ${PageSize?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     {/* <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/> */}
                     <span className="mt-3 group-hover:text-indigo-600">Auto</span>
@@ -241,7 +241,7 @@ function Options({Orientation,Margin,Border,PageSize}){
                     </div>
                 </div>
                 {/*Border options*/}
-                <div className={`absolute border  w-52 h-auto left-4 top-48 ${Border?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+                <div className={`absolute border  w-52 h-auto left-4 top-48 ${Border?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden`}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Normal</span>
