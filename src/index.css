@@ -67,8 +67,7 @@ body {
   /* The actual popup */
   .popup .popuptext {
     visibility: hidden;
-    background-color: #555;
-    color: #fff;
+
     text-align: center;
     border-radius: 6px;
     position: absolute;
@@ -100,11 +99,11 @@ body {
   }
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
-    from {height: 20rem;} 
+    from {height: 5rem;} 
     to {height: 30rem;}
   }
   
   @keyframes fadeIn {
-    from {height: 20rem;}
+    from {height: 5rem;}
     to {height: 30rem;}
   }

@@ -142,40 +142,61 @@ function DashboardNavMobRes(){
     const [isPopup,setPopup]=useState(false)
     return(
         <>
-        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup" onClick={()=>setPopup(e=>!e)}>
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup" >
             <div className="flex w-full justify-around gap-2 m-4">
                 {/* margin */}
-                <div className="flex flex-col justify-center items-center gap-2">
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
                 <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
                 <span className="text-sm">Margin</span>
                 
                 </div>
                 {/* Orientation */}
-                <div className="flex flex-col justify-center items-center gap-2">
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
                 <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
                 <span className="text-sm">Orientation</span>
 
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2">
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
                 <MdOutlineDocumentScanner className={`text-xl group-hover:text-indigo-600`}/>
                 <span className="text-sm">Size</span>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2">
+                {/* Border */}
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
                 <RxBorderWidth className={`text-xl group-hover:text-indigo-600`}/>
 
                 <span className="text-sm">Border</span>
                 </div>
+                {/* convert */}
                 <div className="flex flex-col justify-center items-center gap-2">
                 <IoArrowForwardCircleSharp className="text-xl text-indigo-600"/>
                 <span className="text-sm">Convert</span>
                 </div>
             </div>
-            <div className={`myPopup popuptext ${isPopup?"show":""} w-full `}>
-                
-            </div>
+            <MobPopup isPopup={isPopup}/>
+
         </div>
         </>
 
+    )
+
+}
+
+function MobPopup({isPopup}){
+    return(
+        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 bg-slate-100 pt-11`}>
+            <div className="flex flex-col gap-3">
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                        <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
+                        <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
+                </div>
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                        <RxMargin className="group-hover:text-lg group-hover:text-indigo-600" />
+                        <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
+                </div>
+
+            </div>
+                
+        </div>
     )
 }
 function Options({Orientation,Margin,Border,PageSize}){
