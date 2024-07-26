@@ -142,8 +142,10 @@ function DashboardNavMobRes(){
     const [isPopup,setPopup]=useState(false)
     return(
         <>
-        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white " >
-            <div className="flex w-full justify-around gap-2 m-4">
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white z-0" >
+         <MobPopup isPopup={isPopup}/>
+
+            <div className="flex w-full justify-around gap-2 m-4 ">
                 {/* margin */}
                 <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
                 <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
@@ -172,7 +174,6 @@ function DashboardNavMobRes(){
                 <span className="text-sm">Convert</span>
                 </div>
             </div>
-            <MobPopup isPopup={isPopup}/>
 
         </div>
         </>
@@ -183,7 +184,7 @@ function DashboardNavMobRes(){
 
 function MobPopup({isPopup}){
     return(
-        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 bg-slate-100 pt-11 absolute `} style={{zIndex:"-1"}}>
+        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
             <div className="flex flex-col gap-3">
                 <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" style={{zIndex:"0"}}>
                         <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
@@ -253,15 +254,7 @@ function Options({Orientation,Margin,Border,PageSize}){
         </>
     )
 }
-// function OptionsMob(){
-//     const [isPopup,setPopup]=useState(false)
-//     return(
-//         <div className="border border-black w-20 h-7 popup" onClick={()=>setPopup((e)=>!e)}>
-//             <span className={`myPopup popuptext ${isPopup?"show":""}`}>A Simple Popup!</span>
 
-//         </div>
-//     )
-// }
 function DashboardEdit(){
     return(
         <>
