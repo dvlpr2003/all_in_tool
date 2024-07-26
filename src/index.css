@@ -73,7 +73,7 @@ body {
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    height: 30rem;
+    height: auto;
     
    
   }
@@ -99,11 +99,11 @@ body {
   }
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
-    from {height: 5rem;} 
-    to {height: 30rem;}
+    from {height: 2rem;} 
+    to {height: 30;}
   }
   
   @keyframes fadeIn {
-    from {height: 5rem;}
+    from {height: 2rem;}
     to {height: 30rem;}
   }

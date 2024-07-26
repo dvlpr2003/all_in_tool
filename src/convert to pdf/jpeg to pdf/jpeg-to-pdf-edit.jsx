@@ -142,7 +142,7 @@ function DashboardNavMobRes(){
     const [isPopup,setPopup]=useState(false)
     return(
         <>
-        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup" >
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white " >
             <div className="flex w-full justify-around gap-2 m-4">
                 {/* margin */}
                 <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
@@ -183,13 +183,13 @@ function DashboardNavMobRes(){
 
 function MobPopup({isPopup}){
     return(
-        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 bg-slate-100 pt-11`}>
+        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 bg-slate-100 pt-11 absolute `} style={{zIndex:"-1"}}>
             <div className="flex flex-col gap-3">
-                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" style={{zIndex:"0"}}>
                         <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                         <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
                 </div>
-                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer"style={{zIndex:"0"}}>
                         <RxMargin className="group-hover:text-lg group-hover:text-indigo-600" />
                         <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
                 </div>
