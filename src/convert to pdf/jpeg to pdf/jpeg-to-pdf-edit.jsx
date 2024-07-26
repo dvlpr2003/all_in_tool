@@ -59,9 +59,8 @@ export default function JpgToPdfEdit(){
                 </div>
 
                 {/* dashboard edit container*/}
-                <div className="border border-blue-600 w-full flex  justify-center relative min-[55px]:order-1 lg:order-2">
+                <div className="border border-blue-600 w-full h-full flex  justify-center relative min-[55px]:order-1 lg:order-2">
                     <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
-
                     
                 </div>
 
@@ -140,9 +139,10 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
     )
 }
 function DashboardNavMobRes(){
+    const [isPopup,setPopup]=useState(false)
     return(
         <>
-        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center ">
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup" onClick={()=>setPopup(e=>!e)}>
             <div className="flex w-full justify-around gap-2 m-4">
                 {/* margin */}
                 <div className="flex flex-col justify-center items-center gap-2">
@@ -170,6 +170,9 @@ function DashboardNavMobRes(){
                 <span className="text-sm">Convert</span>
                 </div>
             </div>
+            <div className={`myPopup popuptext ${isPopup?"show":""} w-full `}>
+                A Simple Popup!
+            </div>
         </div>
         </>
 
@@ -179,7 +182,7 @@ function Options({Orientation,Margin,Border,PageSize}){
     return(
         <>
          {/*margin optioins */}
-         <div className={`absolute border  w-52 h-auto left-4 top-5 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md`}>
+         <div className={`absolute border  w-52 h-auto left-4 top-5 ${Margin?"flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md `}>
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
                     <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
@@ -229,7 +232,15 @@ function Options({Orientation,Margin,Border,PageSize}){
         </>
     )
 }
+// function OptionsMob(){
+//     const [isPopup,setPopup]=useState(false)
+//     return(
+//         <div className="border border-black w-20 h-7 popup" onClick={()=>setPopup((e)=>!e)}>
+//             <span className={`myPopup popuptext ${isPopup?"show":""}`}>A Simple Popup!</span>
 
+//         </div>
+//     )
+// }
 function DashboardEdit(){
     return(
         <>
