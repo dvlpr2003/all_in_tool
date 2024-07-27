@@ -19,6 +19,7 @@ export default function JpgToPdfEdit(){
     const [Margin,setMargin]=useState(false)
     const [PageSize,setPageSize]=useState(false)
     const [Border,setBorder]=useState(false)
+    const [isPopup,setPopup]=useState(false)
     const [state,dispatch]=useReducer(reducer,null)
     function reducer(state,action){
         if(action.type === "margin"){
@@ -34,19 +35,23 @@ export default function JpgToPdfEdit(){
             setPageSize(false)
         }
         if (action.type==="page size"){
+            setPopup(e=>!e)
             setMargin(false);
             setBorder(false);
             setOrientation(false);
             setPageSize((e)=>!e)
         }
         if(action.type==="border"){
+            setPopup(e=>!e)
             setMargin(false);
             setBorder((e)=>!e);
             setOrientation(false);
             setPageSize(false)
         }
     
+
     }
+
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center">
@@ -54,8 +59,8 @@ export default function JpgToPdfEdit(){
 
                 {/* dashboard nav */}
                 <div className="lg:h-full min-[55px]:order-2 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
-                    <DashboardNav setOrientation={setOrientation} Orientation={Orientation} Margin={Margin} setMargin={setMargin} PageSize={PageSize} setPageSize={setPageSize} Border={Border} setBorder={setBorder} dispatch={dispatch} />
-                    <DashboardNavMobRes/>
+                    <DashboardNav  Orientation={Orientation} Margin={Margin}  PageSize={PageSize}  Border={Border}  dispatch={dispatch} />
+                    <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
                 </div>
 
                 {/* dashboard edit container*/}
@@ -138,32 +143,31 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
     
     )
 }
-function DashboardNavMobRes(){
-    const [isPopup,setPopup]=useState(false)
+function DashboardNavMobRes({isPopup,setPopup,dispatch,Margin,Orientation,PageSize,Border}){
     return(
         <>
         <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white z-0" >
-         <MobPopup isPopup={isPopup}/>
+         <MobPopup isPopup={isPopup} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
 
             <div className="flex w-full justify-around gap-2 m-4 ">
                 {/* margin */}
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"margin"})}}>
                 <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
                 <span className="text-sm">Margin</span>
                 
                 </div>
                 {/* Orientation */}
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"orientation"})}}>
                 <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
                 <span className="text-sm">Orientation</span>
 
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"page size"})}}>
                 <MdOutlineDocumentScanner className={`text-xl group-hover:text-indigo-600`}/>
                 <span className="text-sm">Size</span>
                 </div>
                 {/* Border */}
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>setPopup(e=>!e)}>
+                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"border"})}}>
                 <RxBorderWidth className={`text-xl group-hover:text-indigo-600`}/>
 
                 <span className="text-sm">Border</span>
@@ -182,10 +186,14 @@ function DashboardNavMobRes(){
 
 }
 
-function MobPopup({isPopup}){
+function MobPopup({isPopup,Margin,Orientation,PageSize,Border}){
+
     return(
-        <div className={`myPopup popuptext ${isPopup?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
-            <div className="flex flex-col gap-3">
+        <>
+            {/* margin for mobpopub */}
+        <div className={`myPopup popuptext ${Margin?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
+            <div className={`flex-col gap-3 ${Margin?"flex":"hidden"}`}>
+                
                 <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" style={{zIndex:"0"}}>
                         <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                         <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
@@ -195,9 +203,50 @@ function MobPopup({isPopup}){
                         <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
                 </div>
 
-            </div>
-                
+            </div>  
         </div>
+         {/* Orientation for mobpopup */}
+        <div className={`myPopup popuptext ${Orientation?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
+
+            <div className={`flex-col gap-3 ${Orientation?"flex":"hidden"}`}>
+                        <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                        <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
+                        <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
+                        </div>
+                        <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                        <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" />
+                        <span className="mt-3 group-hover:text-indigo-600">Portrait</span>
+                        </div>
+
+                </div>
+        </div>
+        {/* page size for mobpopup*/}
+        <div className={`myPopup popuptext ${PageSize?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    {/* <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/> */}
+                    <span className="mt-3 group-hover:text-indigo-600">Auto</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    {/* <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" /> */}
+                    <span className="mt-3 group-hover:text-indigo-600">A4</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    {/* <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" /> */}
+                    <span className="mt-3 group-hover:text-indigo-600">Letter(US)</span>
+                    </div>
+        </div>
+        {/* border for mobpopup */}
+        <div className={`myPopup popuptext ${Border?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
+                    <span className="mt-3 group-hover:text-indigo-600">Normal</span>
+                    </div>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
+                    <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
+                    </div>
+        </div>
+        </>
     )
 }
 function Options({Orientation,Margin,Border,PageSize}){
