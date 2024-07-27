@@ -304,30 +304,5 @@ function Options({Orientation,Margin,Border,PageSize}){
     )
 }
 
-function DashboardEdit(){
-    return(
-        <>
-                    <div className="flex m-7">
-                    <div className="border border-black w-48 h-60 bg-blue-700 flex items-center justify-center rounded-lg py-4 px-2 ">
-                        <div className=" bg-white w-full h-auto flex justify-center items-center ">
-                            <img src="/img/sakthi.png" alt=""  className="w-36 h-auto " draggable={false}/>
-                        </div>
-                        </div>
-
-                    </div>
-        </>
-    )
-}
 
 
-
-{/* <div className="flex gap-2 mt-1">
-<div className="border border-slate-100 bg-slate-100 w-36 h-20 flex justify-center items-center rounded-md shadow-sm group hover:border-indigo-600 hover:border-2">
-<RxMargin className="text-3xl text-slate-500 group-hover:text-indigo-600 group-hover:text-5xl" />
-
-</div>
-<div className="border border-slate-100 bg-slate-100 w-36 h-20 flex justify-center items-center rounded-md shadow-sm group hover:border-indigo-600 hover:border-2"> 
-<TbBoxMargin className="text-3xl text-slate-500 group-hover:text-indigo-600 group-hover:text-5xl" />
-
-</div>
-</div> */}
