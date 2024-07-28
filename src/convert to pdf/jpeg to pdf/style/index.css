@@ -1,0 +1,11 @@
+.grid-ind{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.icon-color-ind {
+    color: rgb(85, 83, 83);
+}
