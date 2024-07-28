@@ -4,7 +4,7 @@ import { MdOutlineUploadFile } from "react-icons/md";
 export default function Jpgtopdf(){
     return(
         <>
-        <section className="  min-h-svh pt-28 w-full  flex justify-center">
+        <section className="  min-h-svh pt-28 w-full  flex justify-center ">
             <div className=" w-full max-w-screen-2xl flex flex-col items-center min-[55px]:px-3 min-[1024px]:px-0">
 
                 <div className=" border-2 border-slate-100 rounded-3xl min-[1024px]:w-auto flex justify-center items-center p-0 mt-12 overflow-hidden group cursor-pointer min-[55px]:w-full bg-white shadow-sm ">

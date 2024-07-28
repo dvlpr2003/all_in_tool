@@ -4,8 +4,11 @@
 
 body {
     font-family: "IBM Plex Sans", sans-serif;
+    overflow-x:hidden;
+    overflow-y:hidden;
     
 }
+
 
 .c-menu-arrow{
     font-weight: bold;
