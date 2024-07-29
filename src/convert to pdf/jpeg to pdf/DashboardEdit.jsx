@@ -3,20 +3,49 @@ import { FaDropbox } from "react-icons/fa6";
 import { FaGoogleDrive } from "react-icons/fa";
 
 import { MdOutlineAddCircle } from "react-icons/md";
-import { useState } from "react";
-const emptydt = [
-    {
-        "id":1,
-        
-    }
-]
+import { useRef, useState } from "react";
+import { make } from "./utils/process";
+
 
 export default function DashboardEdit(){
+    const [array,setArray]=useState([
+        {
+            "id":1,
+            "name":"raja"
+        },
+            {
+            "id":2,
+            "name":"gayathri"
+        },
+             {
+            "id":3,
+            "name":"vinupriya"
+        },
+            {
+            "id":4,
+            "name":"vijiyalakshmi"
+        },
+            {
+            "id":5,
+            "name":"prabavathi"
+        },
+        ])
+    const DragStart=useRef(null)
+    const DragEnter = useRef(null)
+    function handleEvent(){
+        setArray(make(array,DragStart.current,DragEnter.current))
+
+        
+    }
+   
     return(
         <>
         <div className="flex justify-center items-center flex-wrap  mt-12 mx-10 mb-8 gap-3">
-
-            
+            {
+            array.map((e,index)=><div className="w-32 h-40 border border-green-600 text-current bg-white" 
+            draggable 
+            onDragStart={()=>DragStart.current=index} onDragEnter={()=>DragEnter.current=index} onDragEnd={()=>handleEvent()}  onDrag={(e)=>e.preventDefault()}>{e.name}</div>)
+            }            
         </div>
                
         </>
