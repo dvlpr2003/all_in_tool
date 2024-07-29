@@ -9,3 +9,7 @@
 .icon-color-ind {
     color: rgb(85, 83, 83);
 }
+
+.draggable-element {  
+    touch-action: pan-x pan-y; /* Enable horizontal and vertical dragging */  
+  }

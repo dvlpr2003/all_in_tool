@@ -42,7 +42,7 @@ export default function DashboardEdit(){
         <>
         <div className="flex justify-center items-center flex-wrap  mt-12 mx-10 mb-8 gap-3">
             {
-            array.map((e,index)=><div className="w-32 h-40 border border-green-600 text-current bg-white" 
+            array.map((e,index)=><div className="w-32 h-40 border border-green-600 text-current bg-white draggable-element" 
             draggable 
             onDragStart={()=>DragStart.current=index} onDragEnter={()=>DragEnter.current=index} onDragEnd={()=>handleEvent()}  onDrag={(e)=>e.preventDefault()}>{e.name}</div>)
             }            
