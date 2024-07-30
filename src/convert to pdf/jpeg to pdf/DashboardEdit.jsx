@@ -1,52 +1,65 @@
 import { HiComputerDesktop } from "react-icons/hi2";
 import { FaDropbox } from "react-icons/fa6";
 import { FaGoogleDrive } from "react-icons/fa";
+import { DragDropContext,Droppable ,Draggable} from '@hello-pangea/dnd';
 
 import { MdOutlineAddCircle } from "react-icons/md";
 import { useRef, useState } from "react";
 import { make } from "./utils/process";
 import "./style/index.css"
+const initialItems = [
+    { id: '1', content: 'Item 1' },
+    { id: '2', content: 'Item 2' },
+    { id: '3', content: 'Item 3' },
+    { id: '4', content: 'Item 4' },
+  ];
 
 export default function DashboardEdit(){
-    const [array,setArray]=useState([
-        {
-            "id":1,
-            "name":"raja"
-        },
-            {
-            "id":2,
-            "name":"gayathri"
-        },
-             {
-            "id":3,
-            "name":"vinupriya"
-        },
-            {
-            "id":4,
-            "name":"vijiyalakshmi"
-        },
-            {
-            "id":5,
-            "name":"prabavathi"
-        },
-        ])
-    const DragStart=useRef(null)
-    const DragEnter = useRef(null)
-    function handleEvent(){
-        setArray(make(array,DragStart.current,DragEnter.current))
-
-        
-    }
    
+    const [items, setItems] = useState(initialItems);
+    const handleOnDragEnd = (result) => {
+        if (!result.destination) return;
+    
+        const updatedItems = Array.from(items);
+        const [reorderedItem] = updatedItems.splice(result.source.index, 1);
+        updatedItems.splice(result.destination.index, 0, reorderedItem);
+    
+        setItems(updatedItems);
+      };
+    
     return(
         <>
-        <div className="flex justify-center items-center flex-wrap  mt-12 mx-10 mb-8 gap-3">
-            {/* {
-            array.map((e,index)=><div className="w-32 h-40 border border-green-600 text-current bg-white draggable-element" 
-            draggable 
-            onDragStart={()=>DragStart.current=index} onDragEnter={()=>DragEnter.current=index} onDragEnd={()=>handleEvent()}  onDrag={(e)=>e.preventDefault()}>{e.name}</div>)
-            }             */}
-        </div>
+<DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {items.map(({ id, content }, index) => (
+              <Draggable key={id} draggableId={id} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    style={{
+                      userSelect: 'none',
+                      padding: 16,
+                      margin: '0 0 8px 0',
+                      minHeight: '50px',
+                      backgroundColor: '#456C86',
+                      color: 'white',
+                      ...provided.draggableProps.style,
+                    }}
+                  >
+                    {content}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
                
         </>
     )
