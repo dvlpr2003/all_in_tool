@@ -1,69 +1,142 @@
 import { HiComputerDesktop } from "react-icons/hi2";
 import { FaDropbox } from "react-icons/fa6";
 import { FaGoogleDrive } from "react-icons/fa";
-import { DragDropContext,Droppable ,Draggable} from '@hello-pangea/dnd';
+// import { DragDropContext,Droppable ,Draggable} from '@hello-pangea/dnd';
 
 import { MdOutlineAddCircle } from "react-icons/md";
-import { useRef, useState } from "react";
+import {  useState,useEffect,useRef} from "react";
 import { make } from "./utils/process";
 import "./style/index.css"
-const initialItems = [
+
+
+
+
+export default function DashboardEdit() {
+  const [array, setArray] = useState([
     { id: '1', content: 'Item 1' },
     { id: '2', content: 'Item 2' },
     { id: '3', content: 'Item 3' },
     { id: '4', content: 'Item 4' },
-  ];
+    { id: '5', content: 'Item 5' },
+    { id: '6', content: 'Item 6' },
+    { id: '7', content: 'Item 7' },
+    { id: '8', content: 'Item 8' },
+    { id: '9', content: 'Item 9' },
+    { id: '10', content: 'Item 10' },
+    { id: '11', content: 'Item 11' },
+    { id: '12', content: 'Item 12' },
+    { id: '13', content: 'Item 13' },
+    { id: '14', content: 'Item 14' },
+  ]);
 
-export default function DashboardEdit(){
-   
-    const [items, setItems] = useState(initialItems);
-    const handleOnDragEnd = (result) => {
-        if (!result.destination) return;
-    
-        const updatedItems = Array.from(items);
-        const [reorderedItem] = updatedItems.splice(result.source.index, 1);
-        updatedItems.splice(result.destination.index, 0, reorderedItem);
-    
-        setItems(updatedItems);
-      };
-    
-    return(
-        <>
-<DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="droppable">
-        {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {items.map(({ id, content }, index) => (
-              <Draggable key={id} draggableId={id} index={index}>
-                {(provided) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={{
-                      userSelect: 'none',
-                      padding: 16,
-                      margin: '0 0 8px 0',
-                      minHeight: '50px',
-                      backgroundColor: '#456C86',
-                      color: 'white',
-                      ...provided.draggableProps.style,
-                    }}
-                  >
-                    {content}
-                  </div>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
-               
-        </>
-    )
-}
+  const listRef = useRef(null);
+  const draggingItemRef = useRef(null);
+
+  const handleDragStart = (e) => {
+    draggingItemRef.current = e.target;
+    e.target.classList.add('dragging');
+  };
+
+  const handleDragEnd = (e) => {
+    e.target.classList.remove('dragging');
+    draggingItemRef.current = null;
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    const draggingItem = draggingItemRef.current;
+    const dropTarget = e.target.closest('.draggable');
+
+    if (draggingItem && dropTarget && draggingItem !== dropTarget) {
+      const items = Array.from(listRef.current.children);
+      const draggingIndex = items.indexOf(draggingItem);
+      const dropIndex = items.indexOf(dropTarget);
+      
+      const updatedArray = [...array];
+      const [removed] = updatedArray.splice(draggingIndex, 1);
+      updatedArray.splice(dropIndex, 0, removed);
+
+      setArray(updatedArray);
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    const target = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (target && target.classList.contains('draggable')) {
+      draggingItemRef.current = target;
+      target.classList.add('dragging');
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (draggingItemRef.current && dropTarget && dropTarget.classList.contains('draggable') && draggingItemRef.current !== dropTarget) {
+      const items = Array.from(listRef.current.children);
+      const draggingIndex = items.indexOf(draggingItemRef.current);
+      const dropIndex = items.indexOf(dropTarget);
+
+      const updatedArray = [...array];
+      const [removed] = updatedArray.splice(draggingIndex, 1);
+      updatedArray.splice(dropIndex, 0, removed);
+
+      setArray(updatedArray);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (draggingItemRef.current) {
+      draggingItemRef.current.classList.remove('dragging');
+      draggingItemRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    const listItems = listRef.current.querySelectorAll('.draggable');
+    listItems.forEach((item) => {
+      item.ondragstart = handleDragStart;
+      item.ondragend = handleDragEnd;
+    });
+
+    const sortableList = listRef.current;
+    sortableList.addEventListener('dragover', handleDragOver);
+
+    sortableList.addEventListener('touchstart', handleTouchStart);
+    sortableList.addEventListener('touchmove', handleTouchMove);
+    sortableList.addEventListener('touchend', handleTouchEnd);
+
+    // Cleanup function
+    return () => {
+      listItems.forEach((item) => {
+        item.ondragstart = null;
+        item.ondragend = null;
+      });
+      sortableList.removeEventListener('dragover', handleDragOver);
+
+      sortableList.removeEventListener('touchstart', handleTouchStart);
+      sortableList.removeEventListener('touchmove', handleTouchMove);
+      sortableList.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [array]);
+
+  return (
+    <ul ref={listRef} className="sortable-list">
+      {array.map((item) => (
+        <li key={item.id} className="draggable" draggable="true">
+          {item.content}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+
+
+
+
+
 
 
 export function AddImg(){

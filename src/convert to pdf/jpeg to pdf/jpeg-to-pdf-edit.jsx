@@ -69,8 +69,8 @@ export default function JpgToPdfEdit(){
                 <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap ">
                 <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
                 <AddImg/>
-                <div className="w-full h-full overflow-y-scroll">
-                    <div className="flex h-max">
+                <div className="w-full h-full flex justify-center  overflow-y-scroll flex-wrap">
+                    <div className="flex h-max w-full justify-center items-center flex-wrap ">
                     <DashboardEdit/>
                     </div>
                 </div>
