@@ -30,108 +30,61 @@ export default function DashboardEdit() {
   ]);
 
   const listRef = useRef(null);
-  const draggingItemRef = useRef(null);
-
-  const handleDragStart = (e) => {
-    draggingItemRef.current = e.target;
-    e.target.classList.add('dragging');
-  };
-
-  const handleDragEnd = (e) => {
-    e.target.classList.remove('dragging');
-    draggingItemRef.current = null;
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    const draggingItem = draggingItemRef.current;
-    const dropTarget = e.target.closest('.draggable');
-
-    if (draggingItem && dropTarget && draggingItem !== dropTarget) {
-      const items = Array.from(listRef.current.children);
-      const draggingIndex = items.indexOf(draggingItem);
-      const dropIndex = items.indexOf(dropTarget);
-      
-      const updatedArray = [...array];
-      const [removed] = updatedArray.splice(draggingIndex, 1);
-      updatedArray.splice(dropIndex, 0, removed);
-
-      setArray(updatedArray);
-    }
-  };
-
-  const handleTouchStart = (e) => {
-    const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (target && target.classList.contains('draggable')) {
-      draggingItemRef.current = target;
-      target.classList.add('dragging');
-    }
-  };
-
-  const handleTouchMove = (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (draggingItemRef.current && dropTarget && dropTarget.classList.contains('draggable') && draggingItemRef.current !== dropTarget) {
-      const items = Array.from(listRef.current.children);
-      const draggingIndex = items.indexOf(draggingItemRef.current);
-      const dropIndex = items.indexOf(dropTarget);
-
-      const updatedArray = [...array];
-      const [removed] = updatedArray.splice(draggingIndex, 1);
-      updatedArray.splice(dropIndex, 0, removed);
-
-      setArray(updatedArray);
-    }
-  };
-
-  const handleTouchEnd = (e) => {
-    if (draggingItemRef.current) {
-      draggingItemRef.current.classList.remove('dragging');
-      draggingItemRef.current = null;
-    }
-  };
+  const draggingItemRef = useRef(null)
 
   useEffect(() => {
+    function listItemDragged(e) {
+      draggingItemRef.current = e.target;
+      e.target.classList.add('dragging');
+
+    }
+
+    function listItemDropped(e) {
+      e.target.classList.remove('dragging');
+      draggingItemRef.current = null;
+    }
+    function handleDragOver(e) {
+        e.preventDefault();
+        const draggingItem = draggingItemRef.current;
+        const dropTarget = e.target.closest('.draggable');
+        if (draggingItem && dropTarget && draggingItem !== dropTarget) {
+          const items = Array.from(listRef.current.children);
+          const draggingIndex = items.indexOf(draggingItem);
+          const dropIndex = items.indexOf(dropTarget);
+          setArray(make(array,draggingIndex,dropIndex));
+        }
+    }
+
     const listItems = listRef.current.querySelectorAll('.draggable');
     listItems.forEach((item) => {
-      item.ondragstart = handleDragStart;
-      item.ondragend = handleDragEnd;
+      item.ondrag = listItemDragged;
+      item.ondragend = listItemDropped;
     });
 
     const sortableList = listRef.current;
     sortableList.addEventListener('dragover', handleDragOver);
 
-    sortableList.addEventListener('touchstart', handleTouchStart);
-    sortableList.addEventListener('touchmove', handleTouchMove);
-    sortableList.addEventListener('touchend', handleTouchEnd);
-
     // Cleanup function
     return () => {
       listItems.forEach((item) => {
-        item.ondragstart = null;
+        item.ondrag = null;
         item.ondragend = null;
       });
       sortableList.removeEventListener('dragover', handleDragOver);
-
-      sortableList.removeEventListener('touchstart', handleTouchStart);
-      sortableList.removeEventListener('touchmove', handleTouchMove);
-      sortableList.removeEventListener('touchend', handleTouchEnd);
     };
   }, [array]);
+  console.log(array)
 
   return (
-    <ul ref={listRef} className="sortable-list">
+    <ul ref={listRef} className="flex  gap-7 flex-wrap">
       {array.map((item) => (
-        <li key={item.id} className="draggable" draggable="true">
+        <li key={item.id} className="draggable  tail" draggable="true">
           {item.content}
         </li>
       ))}
     </ul>
   );
 };
-
 
 
 
@@ -172,3 +125,9 @@ export function AddImg(){
     
     )
 }
+
+
+
+
+
+
