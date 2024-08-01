@@ -60,7 +60,9 @@ export default function DashboardEdit() {
 
     // drag and drop option for the mob responsive with array process    
     const handleTouchStart = (e, index) => {
-      if (e.touches.length > 1) return;
+      if (e.touches.length === 2) return;
+      if (e.touches.length === 3) return;
+      if (e.touches.length === 4) return;
       const touch = e.touches[0];
       const target = document.elementFromPoint(touch.clientX, touch.clientY);
       if (target && target.classList.contains('draggable')) {
@@ -79,7 +81,10 @@ export default function DashboardEdit() {
 
     const handleTouchMove = (e) => {
       e.preventDefault();
-      if (e.touches.length > 1) return;
+      if (e.touches.length === 2) return;
+      if (e.touches.length === 3) return;
+      if (e.touches.length === 4) return;
+
       const touch = e.touches[0];
 
       if (placeholderRef.current) {
