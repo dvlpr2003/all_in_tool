@@ -60,7 +60,7 @@ export default function JpgToPdfEdit(){
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0">
 
                 {/* dashboard nav */}
-                <div className="lg:h-full min-[55px]:order-2 min-[55px]:absolute lg:relative bottom-0 z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
+                <div className="lg:h-full min-[55px]:order-2   z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
                     <DashboardNav  Orientation={Orientation} Margin={Margin}  PageSize={PageSize}  Border={Border}  dispatch={dispatch} />
                     <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
                 </div>
