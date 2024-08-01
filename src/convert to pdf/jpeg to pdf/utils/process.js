@@ -1,6 +1,6 @@
 
 
-export function make(array,st,en){
+export function ArrangedList(array,st,en){
     const start = st
     const end = en
     const start_ele = array[start]

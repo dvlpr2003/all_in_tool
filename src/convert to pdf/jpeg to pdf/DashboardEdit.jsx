@@ -5,7 +5,7 @@ import { FaGoogleDrive } from "react-icons/fa";
 
 import { MdOutlineAddCircle } from "react-icons/md";
 import {  useState,useEffect,useRef} from "react";
-import { make } from "./utils/process";
+import { ArrangedList } from "./utils/process";
 import "./style/index.css"
 
 
@@ -17,16 +17,11 @@ export default function DashboardEdit() {
     { id: '2', content: 'Item 2' },
     { id: '3', content: 'Item 3' },
     { id: '4', content: 'Item 4' },
-    { id: '5', content: 'Item 5' },
-    { id: '6', content: 'Item 6' },
-    { id: '7', content: 'Item 7' },
-    { id: '8', content: 'Item 8' },
-    { id: '9', content: 'Item 9' },
-    { id: '10', content: 'Item 10' },
-    { id: '11', content: 'Item 11' },
-    { id: '12', content: 'Item 12' },
-    { id: '13', content: 'Item 13' },
-    { id: '14', content: 'Item 14' },
+    { id: '5', content: 'Item 5' },{ id: '6', content: 'Item 6' },{ id: '7', content: 'Item 7' },
+    { id: '8', content: 'Item 8' },{ id: '9', content: 'Item 9' },{ id: '10', content: 'Item 10' },
+    { id: '8', content: 'Item 8' },{ id: '9', content: 'Item 9' },{ id: '10', content: 'Item 10' },
+
+ 
   ]);
 
   const listRef = useRef(null);
@@ -49,6 +44,7 @@ export default function DashboardEdit() {
       draggingItemRef.current = null;
     };
 
+    // drag and drop option for the web responsive with array process
     const handleDragOver = (e) => {
       e.preventDefault();
       const draggingItem = draggingItemRef.current;
@@ -59,20 +55,17 @@ export default function DashboardEdit() {
         const draggingIndex = items.indexOf(draggingItem);
         const dropIndex = items.indexOf(dropTarget);
 
-        const updatedArray = [...array];
-        const [removed] = updatedArray.splice(draggingIndex, 1);
-        updatedArray.splice(dropIndex, 0, removed);
-
-        setArray(updatedArray);
+        setArray(ArrangedList(array,draggingIndex,dropIndex));
       }
     };
 
+    // drag and drop option for the mob responsive with array process    
     const handleTouchStart = (e, index) => {
       const touch = e.touches[0];
       const target = document.elementFromPoint(touch.clientX, touch.clientY);
       if (target && target.classList.contains('draggable')) {
         draggingItemRef.current = target;
-        target.classList.add('dragging');
+        target.classList.add('dragging-mob');
 
         placeholderRef.current = target.cloneNode(true);
         placeholderRef.current.style.position = 'absolute';
@@ -99,17 +92,15 @@ export default function DashboardEdit() {
         const draggingIndex = items.indexOf(draggingItemRef.current);
         const dropIndex = items.indexOf(dropTarget);
 
-        const updatedArray = [...array];
-        const [removed] = updatedArray.splice(draggingIndex, 1);
-        updatedArray.splice(dropIndex, 0, removed);
 
-        setArray(updatedArray);
+
+        setArray(ArrangedList(array,draggingIndex,dropIndex));
       }
     };
 
     const handleTouchEnd = (e) => {
       if (draggingItemRef.current) {
-        draggingItemRef.current.classList.remove('dragging', 'invisible');
+        draggingItemRef.current.classList.remove('dragging-mob', 'invisible');
         draggingItemRef.current = null;
       }
       if (placeholderRef.current) {
@@ -143,9 +134,9 @@ export default function DashboardEdit() {
   }, [array]);
 
   return (
-    <ul ref={listRef} className="flex  gap-7 flex-wrap">
+    <ul ref={listRef} className="flex  h-full gap-7 flex-wrap px-14 py-4 border border-red-600 justify-center  overflow-y-scroll">
       {array.map((item) => (
-        <li key={item.id} className="draggable  tail" draggable="true">
+        <li key={item.id} className="draggable w-48 h-64" draggable="true">
           {item.content}
         </li>
       ))}

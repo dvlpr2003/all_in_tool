@@ -56,21 +56,21 @@ export default function JpgToPdfEdit(){
 
     return(
         <>
-        <section className="h-screen pt-28 w-full  flex justify-center">
+        <section className="h-screen pt-28 w-full  flex justify-center ">
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0">
 
                 {/* dashboard nav */}
-                <div className="lg:h-full min-[55px]:order-2 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
+                <div className="lg:h-full min-[55px]:order-2 min-[55px]:absolute lg:relative bottom-0 z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
                     <DashboardNav  Orientation={Orientation} Margin={Margin}  PageSize={PageSize}  Border={Border}  dispatch={dispatch} />
                     <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
                 </div>
 
                 {/* dashboard edit container*/}
-                <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap ">
+                <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap overflow-scroll">
                 <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
                 <AddImg/>
-                <div className="w-full h-full flex justify-center  overflow-y-scroll flex-wrap">
-                    <div className="flex h-max w-full justify-center items-center flex-wrap ">
+                <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
+                    <div className="flex h-full w-full justify-center items-center overflow-scroll flex-wrap border border-green-600">
                     <DashboardEdit/>
                     </div>
                 </div>
