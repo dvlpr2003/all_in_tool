@@ -144,7 +144,7 @@ export default function DashboardEdit({stateMargin}) {
     <ul ref={listRef} className="flex  h-auto gap-7 flex-wrap px-20 py-4  justify-center  overflow-y-scroll bg-slate-50">
       {array.map((item) => (
         <li key={item.id} className="draggable w-40 h-auto " draggable="true">
-          <div className={`w-auto h-auto ${stateMargin==="small-m"?"m-1":""} ${stateMargin ==="big-m"?"m-2":""}`} draggable="false">
+          <div className={`w-auto h-auto ${stateMargin==="small-m"?"m-1":""} ${stateMargin ==="big-m"?"m-2":""} `} draggable="false">
             <img src="img/sakthi.png" alt="" draggable="false" className="w-auto h-auto "/>
 
           </div>

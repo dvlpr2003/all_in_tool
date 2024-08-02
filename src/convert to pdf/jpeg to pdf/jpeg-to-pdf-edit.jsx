@@ -280,6 +280,9 @@ function Options({Orientation,Margin,Border,PageSize,setMargin,setBorder,setOrie
         <>
          {/*margin optioins */}
          <div className={`absolute border bg-blue-400  w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>{Margin_dispatch({"type":""});setMargin(false)}}>
+                    <span className="mt-3 group-hover:text-indigo-600">None</span>
+                    </div>  
                     <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>{Margin_dispatch({"type":"small-m"});setMargin(false)}}>
                     <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
