@@ -4,8 +4,8 @@
 
 body {
     font-family: "IBM Plex Sans", sans-serif;
-    /* overflow-x:hidden; */
-    /* overflow-y:hidden; */
+    overflow-x:hidden;
+    overflow-y:hidden;
     
 }
 

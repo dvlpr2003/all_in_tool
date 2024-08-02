@@ -24,11 +24,14 @@ export default function JpgToPdfEdit(){
     const [isPopup,setPopup]=useState(false)
     const [state,dispatch]=useReducer(reducer,null)
     function reducer(state,action){
+
+    
         if(action.type === "margin"){
             setMargin((e)=>!e); 
             setBorder(false);
             setOrientation(false);
             setPageSize(false)
+            
         }
         if(action.type==="orientation"){
             setMargin(false);
@@ -54,6 +57,8 @@ export default function JpgToPdfEdit(){
 
     }
 
+
+
     return(
         <>
         <section className="h-screen pt-28 w-full  flex justify-center ">
@@ -67,10 +72,10 @@ export default function JpgToPdfEdit(){
 
                 {/* dashboard edit container*/}
                 <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap overflow-scroll">
-                <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin}/>
+                <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation}/>
                 <AddImg/>
                 <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
-                    <div className="flex h-full w-full justify-center items-center overflow-scroll flex-wrap border border-green-600">
+                    <div className="flex h-full w-full justify-center items-center overflow-scroll flex-wrap">
                     <DashboardEdit/>
                     </div>
                 </div>
@@ -257,53 +262,53 @@ function MobPopup({isPopup,Margin,Orientation,PageSize,Border}){
         </>
     )
 }
-function Options({Orientation,Margin,Border,PageSize}){
+function Options({Orientation,Margin,Border,PageSize,setMargin,setBorder,setOrientation,setPageSize}){
     return(
         <>
          {/*margin optioins */}
          <div className={`absolute border bg-blue-400  w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setMargin(false)}>
                     <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setMargin(false)}>
                     <RxMargin className="group-hover:text-lg group-hover:text-indigo-600" />
                     <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
                     </div>
                 </div>
             {/* orientaion options */}
             <div className={`absolute border  bg-white  w-52 h-auto left-4 top-16 ${Orientation?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setOrientation(false)}>
                     <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Landscape</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setOrientation(false)}>
                     <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" />
                     <span className="mt-3 group-hover:text-indigo-600">Portrait</span>
                     </div>
                 </div>
                 {/* page size options*/}
                 <div className={`absolute border   bg-white w-52 h-auto left-4 top-24 ${PageSize?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setPageSize(false)}>
                     {/* <IoTabletLandscapeOutline className="group-hover:text-lg group-hover:text-indigo-600"/> */}
                     <span className="mt-3 group-hover:text-indigo-600">Auto</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setPageSize(false)}>
                     {/* <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" /> */}
                     <span className="mt-3 group-hover:text-indigo-600">A4</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setPageSize(false)}>
                     {/* <IoTabletPortraitOutline className="group-hover:text-lg group-hover:text-indigo-600" /> */}
                     <span className="mt-3 group-hover:text-indigo-600">Letter(US)</span>
                     </div>
                 </div>
                 {/*Border options*/}
                 <div className={`absolute border  bg-white  w-52 h-auto left-4 top-48 ${Border?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setBorder(false)}>
                     <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
                     <span className="mt-3 group-hover:text-indigo-600">Normal</span>
                     </div>
-                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer">
+                    <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>setBorder(false)}>
                     <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
                     <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
                     </div>

@@ -36,6 +36,8 @@ export default function DashboardEdit() {
       setTimeout(() => {
         e.target.classList.add('invisible');
       }, 0);
+
+
     };
 
     const handleDragEnd = (e) => {
@@ -76,6 +78,7 @@ export default function DashboardEdit() {
         placeholderRef.current.classList.add('dragging-clone');
         document.body.appendChild(placeholderRef.current);
       }
+      
     };
 
     const handleTouchMove = (e) => {
@@ -138,10 +141,13 @@ export default function DashboardEdit() {
   }, [array]);
 
   return (
-    <ul ref={listRef} className="flex  h-full gap-7 flex-wrap px-14 py-4 border border-red-600 justify-center  overflow-y-scroll">
+    <ul ref={listRef} className="flex  h-auto gap-7 flex-wrap px-20 py-4  justify-center  overflow-y-scroll bg-slate-50">
       {array.map((item) => (
-        <li key={item.id} className="draggable w-48 h-64" draggable="true">
-          {item.content}
+        <li key={item.id} className="draggable w-40 h-auto " draggable="true">
+          <div className="w-auto h-auto m-1" draggable="false">
+            <img src="img/sakthi.png" alt="" draggable="false" className="w-auto h-auto "/>
+
+          </div>
         </li>
       ))}
     </ul>
@@ -163,7 +169,7 @@ export function AddImg(){
     
     return(
         
-            <div className=" w-auto h-auto absolute right-10 top-4 " >
+            <div className=" w-auto h-auto absolute right-5 top-4 " >
                 <div className="relative">
                     <MdOutlineAddCircle className="text-5xl text-indigo-600 cursor-pointer" onClick={()=>handleMouseMove()}/>
                     <div className={`h-auto w-auto sticky right-0 left-0   mt-1 flex flex-col items-center gap-2 transition-opacity duration-300 opacity-0 ${Opacity?"opacity-100":""} z-40`}  >
