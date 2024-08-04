@@ -69,8 +69,15 @@ export default function JpgToPdfEdit(){
     const [stateBorder,Border_dispatch]=useReducer(Margin_reducer,"")
     const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
+    
+    const [array, setArray] = useState([
 
+      
+     
+      ]);
+  
 
+      console.log(array)
     
     return(
         <>
@@ -80,16 +87,16 @@ export default function JpgToPdfEdit(){
                 {/* dashboard nav */}
                 <div className="lg:h-full min-[55px]:order-2   z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
                     <DashboardNav  Orientation={Orientation} Margin={Margin}  PageSize={PageSize}  Border={Border}  dispatch={dispatch} />
-                    <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
+                    <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
                 </div>
 
                 {/* dashboard edit container*/}
                 <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap overflow-scroll">
                 <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
-                <AddImg/>
+                <AddImg setArray={setArray} array={array}/>
                 <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
                     <div className="flex h-full w-full justify-center items-center overflow-scroll flex-wrap">
-                    <DashboardEdit stateMargin={stateMargin} stateBorder={stateBorder} stateOrientation={stateOrientation} statePageSz={statePageSz}/>
+                    <DashboardEdit stateMargin={stateMargin} stateBorder={stateBorder} stateOrientation={stateOrientation} statePageSz={statePageSz} setArray={setArray} array={array}/>
                     </div>
                 </div>
                 </div>
@@ -169,11 +176,11 @@ function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
     
     )
 }
-function DashboardNavMobRes({isPopup,setPopup,dispatch,Margin,Orientation,PageSize,Border}){
+function DashboardNavMobRes({isPopup,setPopup,dispatch,Margin,Orientation,PageSize,Border,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch}){
     return(
         <>
         <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white z-0" >
-         <MobPopup isPopup={isPopup} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border}/>
+         <MobPopup isPopup={isPopup} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
 
             <div className="flex w-full justify-around gap-2 m-4 ">
                 {/* margin */}
@@ -212,19 +219,22 @@ function DashboardNavMobRes({isPopup,setPopup,dispatch,Margin,Orientation,PageSi
 
 }
 
-function MobPopup({isPopup,Margin,Orientation,PageSize,Border}){
+function MobPopup({isPopup,Margin,Orientation,PageSize,Border,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch}){
 
     return(
         <>
             {/* margin for mobpopub */}
         <div className={`myPopup popuptext ${Margin?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
             <div className={`flex-col gap-3 ${Margin?"flex":"hidden"}`}>
+            <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" onClick={()=>{Margin_dispatch({"type":""});setMargin(false)}}>
+                    <span className="mt-3 group-hover:text-indigo-600">None</span>
+                    </div> 
                 
-                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" style={{zIndex:"0"}}>
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" style={{zIndex:"0"}} onClick={()=>{Margin_dispatch({"type":"small-m"});setMargin(false)}}>
                         <TbBoxMargin className="group-hover:text-lg group-hover:text-indigo-600"/>
                         <span className="mt-3 group-hover:text-indigo-600">Small margin</span>
                 </div>
-                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer"style={{zIndex:"0"}}>
+                <div className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer"style={{zIndex:"0"}} onClick={()=>{Margin_dispatch({"type":"big-m"});setMargin(false)}}>
                         <RxMargin className="group-hover:text-lg group-hover:text-indigo-600" />
                         <span className="mt-3 group-hover:text-indigo-600">Big margin</span>
                 </div>
