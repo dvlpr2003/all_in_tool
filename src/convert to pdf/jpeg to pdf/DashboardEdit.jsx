@@ -130,13 +130,14 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       sortableList.removeEventListener('dragover', handleDragOver);
     };
   }, [array]);
+  console.log(array)
 
   return (
-    <ul ref={listRef} className="flex  h-auto gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
+    <ul ref={listRef} className="flex gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
       {array.map((item) => (
-        <li key={item.id} className={`draggable w-36 ${stateOrientation === "port"?"h-52":""} border flex justify-center items-center`} draggable="true">
-          <div className={`w-auto h-auto ${stateMargin==="small-m"?"m-1":""} ${stateMargin ==="big-m"?"m-2":""} `} draggable="false">
-            <img src={`${item.image}`} alt="" draggable="false" className={`max-w-full ${item.width <700 && stateOrientation === "land" ?"h-28":"h-auto"}`}/>
+        <li key={item.id} className={`draggable w-64   ${stateOrientation === "port"?"w-36 h-80":""}  ${stateOrientation === "land"?"h-48":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="true">
+          <div className={`  ${item.width === item.height && stateOrientation === "land" ?" w-48 h-auto":""} ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="false">
+            <img src={`${item.image}`} alt="" draggable="false" className={`w-auto h-auto`}/>
 
           </div>
         </li>
@@ -164,9 +165,10 @@ export function AddImg({setArray,array}){
       img.onload  = function(){
         setDimensity({
           width:img.naturalWidth,
-          height:img.naturalHeight
+          height:img.naturalHeight,
+         
+          
         })
-
       }
       img.src = Imagefile
 

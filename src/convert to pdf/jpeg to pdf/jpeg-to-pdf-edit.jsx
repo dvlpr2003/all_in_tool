@@ -67,7 +67,7 @@ export default function JpgToPdfEdit(){
 
     const [stateMargin,Margin_dispatch]=useReducer(Margin_reducer,"")
     const [stateBorder,Border_dispatch]=useReducer(Margin_reducer,"")
-    const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"")
+    const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"port")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
     
     const [array, setArray] = useState([
