@@ -77,7 +77,6 @@ export default function JpgToPdfEdit(){
       ]);
   
 
-      console.log(array)
     
     return(
         <>

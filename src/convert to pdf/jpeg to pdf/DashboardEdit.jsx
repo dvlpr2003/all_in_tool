@@ -11,7 +11,7 @@ import "./style/index.css"
 
 
 
-export default function DashboardEdit({stateMargin,array,setArray}) {
+export default function DashboardEdit({stateMargin,array,setArray,stateOrientation}) {
 
 
   const listRef = useRef(null);
@@ -134,9 +134,9 @@ export default function DashboardEdit({stateMargin,array,setArray}) {
   return (
     <ul ref={listRef} className="flex  h-auto gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
       {array.map((item) => (
-        <li key={item.id} className={`draggable w-36 h-32 border flex justify-center items-center`} draggable="true">
+        <li key={item.id} className={`draggable w-36 ${stateOrientation === "port"?"h-52":""} border flex justify-center items-center`} draggable="true">
           <div className={`w-auto h-auto ${stateMargin==="small-m"?"m-1":""} ${stateMargin ==="big-m"?"m-2":""} `} draggable="false">
-            <img src={`${item.image}`} alt="" draggable="false" className="max-w-full h-auto"/>
+            <img src={`${item.image}`} alt="" draggable="false" className={`max-w-full ${item.width <700 && stateOrientation === "land" ?"h-28":"h-auto"}`}/>
 
           </div>
         </li>
@@ -154,20 +154,42 @@ export default function DashboardEdit({stateMargin,array,setArray}) {
 export function AddImg({setArray,array}){
     const [Opacity,setOpacity]=useState(false)
     const inputref = useRef(null)
+    const [Dimensity,setDimensity]=useState(null)
+    const [Imgfile,setImgfile]= useState(null)
     function handleInputEvent(Event){
-      const Imagefile = `img/${Event.target.files[0].name}`
-      setArray((e)=>[...e,{id:array.length+1,image:Imagefile}])
-      inputref.current.value = ""
+      const Imagefile= `img/${Event.target.files[0].name}`
+      setImgfile(Imagefile)
+      const img = new Image();
+   
+      img.onload  = function(){
+        setDimensity({
+          width:img.naturalWidth,
+          height:img.naturalHeight
+        })
+
+      }
+      img.src = Imagefile
 
 
     }
+
+    useEffect(()=>{
+
+      if (Dimensity){
+        
+        setArray((e)=>[...e,{id:array.length+1,image:Imgfile,width:Dimensity.width,height:Dimensity.height}])
+        inputref.current.value = ""
+        setDimensity(null)
+
+      }
+    },[Dimensity])
+
+
 
     function handleMouseMove(){
         setOpacity((e)=>!e)
         
     }
-    
-  
     return(
         
             <div className=" w-auto h-auto absolute right-5 top-4 " >
