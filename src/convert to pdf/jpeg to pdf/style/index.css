@@ -9,7 +9,17 @@
 .icon-color-ind {
     color: rgb(85, 83, 83);
 }
+.img-w-h-port {
+  width: 169px;
+  height: 218.706px;
+}
+.img-w-h-land {
+  width: 218.706px;
+  height:  170px;
+}
+.img-w {
 
+}
 /* .draggable {
     display: flex;
     margin-top: 10px;

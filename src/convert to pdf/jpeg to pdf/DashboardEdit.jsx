@@ -135,11 +135,9 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
   return (
     <ul ref={listRef} className="flex gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
       {array.map((item) => (
-        <li key={item.id} className={`draggable w-64   ${stateOrientation === "port"?"w-36 h-80":""}  ${stateOrientation === "land"?"h-48":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="true">
-          <div className={`  ${item.width === item.height && stateOrientation === "land" ?" w-48 h-auto":""} ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="false">
-            <img src={`${item.image}`} alt="" draggable="false" className={`w-auto h-auto`}/>
+        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="true">
+            <img src={`${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `}/>
 
-          </div>
         </li>
       ))}
     </ul>
@@ -169,6 +167,8 @@ export function AddImg({setArray,array}){
          
           
         })
+        
+
       }
       img.src = Imagefile
 
