@@ -17,83 +17,10 @@
   width: 218.706px;
   height:  170px;
 }
-.img-w {
-
-}
-/* .draggable {
-    display: flex;
-    margin-top: 10px;
-    padding: 10px 12px;
-    border-radius: 5px;
-    border: 1px solid #5c636a;
-    margin-right: 5px;
-    background-color: #212529;
-    cursor: grab;
-    color: #ffffff;
-    touch-action: none
-}
-.dragging {
-    cursor: grabbing;
-    background: transparent;
-    color: transparent;
-    border: none;
-} */
-/* .draggable {
-    display: flex;
-    margin-top: 10px;
-    padding: 10px 12px;
-    border-radius: 5px;
-    border: 1px solid #5c636a;
-    margin-right: 5px;
-    background-color: #212529;
-    cursor: grab;
-    color: #ffffff;
-    touch-action: none;
-    transition: transform 0.2s ease;
-  }
-  
-  .dragging {
-    cursor: grabbing;
-    transform: scale(1.05);
-  }
-  
-  .invisible {
-    opacity: 0;
-  }
- */
-
-
-  /* .draggable {
-    display: flex;
-    margin-top: 10px;
-    padding: 10px 12px;
-    border-radius: 5px;
-    border: 1px solid #5c636a;
-    margin-right: 5px;
-    background-color: #212529;
-    cursor: grab;
-    color: #ffffff;
-    touch-action: none;
-    transition: transform 0.2s ease;
-  }
-  
-  .dragging {
-    cursor: grabbing;
-    transform: scale(1.05);
-  }
-  
-  .invisible {
-    opacity: 0;
-  } */
-  
-  
 
 
   .draggable {
     display: flex;
-    border-radius: 5px;
-    border: 1px solid #d0d0d0;
-   
     background-color: white;
     cursor: grab;
     color: #ffffff;

@@ -130,7 +130,6 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       sortableList.removeEventListener('dragover', handleDragOver);
     };
   }, [array]);
-  console.log(array)
 
   return (
     <ul ref={listRef} className="flex gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
@@ -156,7 +155,9 @@ export function AddImg({setArray,array}){
     const [Dimensity,setDimensity]=useState(null)
     const [Imgfile,setImgfile]= useState(null)
     function handleInputEvent(Event){
+      console.log(Event.target.files[1])
       const Imagefile= `img/${Event.target.files[0].name}`
+    
       setImgfile(Imagefile)
       const img = new Image();
    
@@ -201,7 +202,7 @@ export function AddImg({setArray,array}){
                       <label htmlFor="computer-upload">
                         <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
                         <HiComputerDesktop className="text-xl text-white"/>
-                        <input type="file"  id="computer-upload" className="hidden" onChange={handleInputEvent} ref={inputref}/>
+                        <input type="file"  id="computer-upload" className="hidden" onChange={handleInputEvent} ref={inputref} multiple/>
 
                         </div>
                         </label>
