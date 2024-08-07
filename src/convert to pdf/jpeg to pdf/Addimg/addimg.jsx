@@ -32,19 +32,6 @@ export function AddImg({setArray,array}){
       inputref.current.value = ""
     }
 
-    // useEffect(()=>{
-
-    //   if (Imgfile){
-        
-    //     setArray((e)=>[...e,...Imgfile])
-    //     inputref.current.value = ""
-
-    //   }
-    // },[Imgfile])
-
-
-
-
     function handleMouseMove(){
         setOpacity((e)=>!e)
         

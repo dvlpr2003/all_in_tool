@@ -1,6 +1,12 @@
 import {  useState,useEffect,useRef} from "react";
 import { ArrangedList } from "./utils/process";
 import "./style/index.css"
+import { MdOutlineDeleteForever } from "react-icons/md";
+import { MdOutlineRotateLeft } from "react-icons/md";
+import { MdOutlineRotateRight } from "react-icons/md";
+
+
+
 
 export default function DashboardEdit({stateMargin,array,setArray,stateOrientation}) {
 
@@ -123,9 +129,11 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
   }, [array]);
 
   return (
-    <ul ref={listRef} className="flex gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
+    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
       {array.map((item) => (
-        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="true">
+        
+        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""} relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1`} draggable="true">
+          <ImageOptions/>
             <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `}/>
 
         </li>
@@ -133,3 +141,16 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
     </ul>
   );
 };
+
+
+
+function ImageOptions(){
+  return(
+    <div className="absolute  w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
+    <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600"/>
+    <MdOutlineRotateRight className="text-slate-400 text-xl hover:text-red-600" />
+    <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600"/>
+
+    </div>
+  )
+}
