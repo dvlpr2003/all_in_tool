@@ -1,7 +1,7 @@
 import { MdOutlineUploadFile } from "react-icons/md";
 
 
-export default function Jpgtopdf(){
+export default function AddImgHome(){
     return(
         <>
         <section className="min-h-svh pt-28 w-full  flex justify-center ">

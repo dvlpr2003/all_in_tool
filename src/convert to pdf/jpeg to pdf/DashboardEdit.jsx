@@ -1,15 +1,6 @@
-import { HiComputerDesktop } from "react-icons/hi2";
-import { FaDropbox } from "react-icons/fa6";
-import { FaGoogleDrive } from "react-icons/fa";
-// import { DragDropContext,Droppable ,Draggable} from '@hello-pangea/dnd';
-
-import { MdOutlineAddCircle } from "react-icons/md";
 import {  useState,useEffect,useRef} from "react";
 import { ArrangedList } from "./utils/process";
 import "./style/index.css"
-
-
-
 
 export default function DashboardEdit({stateMargin,array,setArray,stateOrientation}) {
 
@@ -135,96 +126,10 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
     <ul ref={listRef} className="flex gap-7 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
       {array.map((item) => (
         <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""}`} draggable="true">
-            <img src={`${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `}/>
+            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `}/>
 
         </li>
       ))}
     </ul>
   );
 };
-
-
-
-
-
-
-
-export function AddImg({setArray,array}){
-    const [Opacity,setOpacity]=useState(false)
-    const inputref = useRef(null)
-    const [Dimensity,setDimensity]=useState(null)
-    const [Imgfile,setImgfile]= useState(null)
-    function handleInputEvent(Event){
-      console.log(Event.target.files[1])
-      const Imagefile= `img/${Event.target.files[0].name}`
-    
-      setImgfile(Imagefile)
-      const img = new Image();
-   
-      img.onload  = function(){
-        setDimensity({
-          width:img.naturalWidth,
-          height:img.naturalHeight,
-         
-          
-        })
-        
-
-      }
-      img.src = Imagefile
-
-
-    }
-
-    useEffect(()=>{
-
-      if (Dimensity){
-        
-        setArray((e)=>[...e,{id:array.length+1,image:Imgfile,width:Dimensity.width,height:Dimensity.height}])
-        inputref.current.value = ""
-        setDimensity(null)
-
-      }
-    },[Dimensity])
-
-
-
-    function handleMouseMove(){
-        setOpacity((e)=>!e)
-        
-    }
-    return(
-        
-            <div className=" w-auto h-auto absolute right-5 top-4 " >
-                <div className="relative">
-                    <MdOutlineAddCircle className="text-5xl text-indigo-600 cursor-pointer" onClick={()=>handleMouseMove()}/>
-                    <div className={`h-auto w-auto sticky right-0 left-0   mt-1 flex flex-col items-center gap-2 transition-opacity duration-300 opacity-0 ${Opacity?"opacity-100":""} z-40`}  >
-                      <label htmlFor="computer-upload">
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <HiComputerDesktop className="text-xl text-white"/>
-                        <input type="file"  id="computer-upload" className="hidden" onChange={handleInputEvent} ref={inputref} multiple/>
-
-                        </div>
-                        </label>
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <FaDropbox className="text-xl text-white"/>
-
-                        </div>
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <FaGoogleDrive className="text-xl text-white"/>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-    
-    )
-}
-
-
-
-
-
-

@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./AppLayout/AppMainLayout";
 import Home from "./UI/Home";
-import Jpgtopdf from "./convert to pdf/jpeg to pdf/jpg-to-pdf";
 import JpgToPdfEdit from "./convert to pdf/jpeg to pdf/jpeg-to-pdf-edit";
+import AddImgHome from "./convert to pdf/jpeg to pdf/Addimg/AddImgHome";
 
 function App(){
   const router = createBrowserRouter(
@@ -15,7 +15,7 @@ function App(){
             path:"/"
           },
           {
-            element:(<Jpgtopdf/>),
+            element:(<AddImgHome/>),
             path:"jpg-to-pdf/",
           },
           {
