@@ -38,7 +38,6 @@ export function AddImg({setArray,array}){
         setOpacity((e)=>!e)
         
     }
-    console.log(array)
     return(
         
             <div className=" w-auto h-auto absolute right-5 top-4 " >
