@@ -25,14 +25,14 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-4 max-w-screen-xl relative  ">
+        <div className="flex w-full justify-center items-center gap-4 max-w-screen-2xl relative  ">
 
         <div className=" justify-start h-auto cursor-pointer">
           {/* logo */}
-            <img src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/company.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
+            <img src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ_log.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
         </div>
 
-        <div className="flex flex-wrap  justify-center items-center ml-3 cursor-pointer sm:hidden lg:flex min-[55px]:hidden ">
+        <div className="flex flex-wrap  justify-center items-center ml-auto mr-auto cursor-pointer sm:hidden lg:flex min-[55px]:hidden ">
             
             <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3  flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setTool((e)=>!e)}:()=>{setEnter((e)=>!e); setTool((e)=>!e)}} >
                 <div className="flex" >

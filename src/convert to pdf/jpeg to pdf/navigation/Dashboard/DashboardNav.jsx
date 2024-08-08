@@ -3,6 +3,7 @@ import { HiOutlineRectangleGroup } from "react-icons/hi2";
 import { MdOutlineDocumentScanner } from "react-icons/md";
 import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
+import { HiOutlineUpload } from "react-icons/hi";
 
 
 export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
@@ -56,8 +57,14 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
             </div>
             </div>
-            <div className="h-24 mt-auto w-full px-3 lg:flex min-[55px]:hidden justify-center items-center cursor-pointer ">
-                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600 hover:bg-indigo-500">
+
+            <div className="h-auto  mt-auto mb-2  w-full px-3 lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
+                {/* <div className=" border  rounded-md mb-10 flex  items-center justify-center gap-2 w-full py-3 pl-1 hover:shadow-md" style={{backgroundColor:"#6C448E"}}>
+                <HiOutlineUpload className="text-2xl text-white"/>
+
+                <span className="font-bold text-white ">Upload image</span>
+                </div> */}
+                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600  hover:shadow-md">
                     <span className="font-bold text-white ">Convert to PDF</span>
                 <IoArrowForwardCircleSharp className="text-2xl text-white"/>
 
