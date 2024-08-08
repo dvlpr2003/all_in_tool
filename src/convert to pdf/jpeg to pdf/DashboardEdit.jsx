@@ -130,9 +130,9 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
     <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50" >
       {array.map((item,index) => (
         
-        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center  relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1 overflow-hidden`} draggable="true" >
+        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""}  relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1 overflow-hidden`} draggable="true" >
           <ImageOptions id ={item.id} setArray={setArray} array={array} index={index}/>
-            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle ${stateMargin==="small-m"?"border-4 border-white":""} ${stateMargin ==="big-m"?"border-8 border-white":""}`} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 != 0 ?".85":"1"}`}} />
+            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 != 0 ?".85":"1"}`}} />
 
         </li>
       ))}
