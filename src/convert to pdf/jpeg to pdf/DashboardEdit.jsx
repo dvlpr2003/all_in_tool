@@ -11,7 +11,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
   const placeholderRef = useRef(null);
-
+  const RotateRef = useRef(0)
   useEffect(() => {
     const listItems = listRef.current.querySelectorAll('.draggable');
 
@@ -125,13 +125,14 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
     };
   }, [array]);
 
+
   return (
-    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50">
-      {array.map((item) => (
+    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50" >
+      {array.map((item,index) => (
         
-        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""} relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1`} draggable="true">
-          <ImageOptions id ={item.id} setArray={setArray} array={array}/>
-            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `} />
+        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""} relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1 overflow-hidden`} draggable="true" >
+          <ImageOptions id ={item.id} setArray={setArray} array={array} index={index}/>
+            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate}deg)`}}/>
 
         </li>
       ))}
@@ -141,15 +142,23 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
 
-function ImageOptions({id,setArray,array}){
+function ImageOptions({id,setArray,array,index}){
   const handleEvent= ()=>{
     const Filtered_array = array.filter((e)=>e.id !=id);
     setArray(Filtered_array)
   }
+  const handleRotateFor = ()=>{
+    array[index].rotate =array[index].rotate +90
+   setArray((e)=>[...e])
+  }
+  const handleRotateBack = ()=>{
+    array[index].rotate =array[index].rotate -90
+   setArray((e)=>[...e])
+  }
   return(
-    <div className="absolute  w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
-    <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600"/>
-    <MdOutlineRotateRight className="text-slate-400 text-xl hover:text-red-600" />
+    <div className="absolute z-50 w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
+    <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600" onClick={handleRotateBack} />
+    <MdOutlineRotateRight className="text-slate-400 text-xl hover:text-red-600" onClick={handleRotateFor} />
     <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600" onClick={handleEvent}/>
 
     </div>

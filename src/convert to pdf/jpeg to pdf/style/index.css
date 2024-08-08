@@ -5,7 +5,9 @@
     justify-items: center;
     align-items: center;
 }
-
+.scale-ind{
+  scale: 0.8;
+}
 .icon-color-ind {
     color: rgb(85, 83, 83);
 }

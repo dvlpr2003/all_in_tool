@@ -18,16 +18,13 @@ export function AddImg({setArray,array}){
       }, -Infinity);
 
 
-      console.log(len)
       finalItems.forEach((element,i )=> {
         if(array.length === 0){
-          console.log("0 list")
-          let content = {id:i+1,image:element[1][1].name}
+          let content = {id:i+1,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
           empty.push(content)
         }
         if (array.length >0){
-          console.log("greater 0")
-          let content = {id:len,image:element[1][1].name}
+          let content = {id:len,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
           empty.push(content)
           len+=1;
         }
@@ -41,7 +38,7 @@ export function AddImg({setArray,array}){
         setOpacity((e)=>!e)
         
     }
-   console.log(array)
+    console.log(array)
     return(
         
             <div className=" w-auto h-auto absolute right-5 top-4 " >
