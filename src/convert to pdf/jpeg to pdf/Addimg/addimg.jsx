@@ -12,8 +12,13 @@ export function AddImg({setArray,array}){
       const Imagefile= Object.entries(Event.target.files)
       const finalItems = Object.entries(Imagefile)
       const empty = []
-      let len = array.length+1
 
+      let len = array.reduce((max, obj) => {
+        return obj.id > max ? obj.id+1 : max+1;
+      }, -Infinity);
+
+
+      console.log(len)
       finalItems.forEach((element,i )=> {
         if(array.length === 0){
           console.log("0 list")
@@ -36,7 +41,7 @@ export function AddImg({setArray,array}){
         setOpacity((e)=>!e)
         
     }
-    console.log(array)
+   console.log(array)
     return(
         
             <div className=" w-auto h-auto absolute right-5 top-4 " >

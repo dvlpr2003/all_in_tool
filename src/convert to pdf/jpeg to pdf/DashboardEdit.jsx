@@ -5,9 +5,6 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { MdOutlineRotateLeft } from "react-icons/md";
 import { MdOutlineRotateRight } from "react-icons/md";
 
-
-
-
 export default function DashboardEdit({stateMargin,array,setArray,stateOrientation}) {
 
 
@@ -133,8 +130,8 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       {array.map((item) => (
         
         <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-1":""} ${stateMargin ==="big-m"?"p-2":""} relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1`} draggable="true">
-          <ImageOptions/>
-            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `}/>
+          <ImageOptions id ={item.id} setArray={setArray} array={array}/>
+            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full `} />
 
         </li>
       ))}
@@ -144,12 +141,16 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
 
-function ImageOptions(){
+function ImageOptions({id,setArray,array}){
+  const handleEvent= ()=>{
+    const Filtered_array = array.filter((e)=>e.id !=id);
+    setArray(Filtered_array)
+  }
   return(
     <div className="absolute  w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
     <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600"/>
     <MdOutlineRotateRight className="text-slate-400 text-xl hover:text-red-600" />
-    <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600"/>
+    <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600" onClick={handleEvent}/>
 
     </div>
   )
