@@ -19,7 +19,14 @@
   width: 218.706px;
   height:  170px;
 }
-
+.usletter-port {
+  width: 165px;
+  height: 218.706px;
+}
+.usletter-land {
+  width: 218.706px;
+  height: 168px;
+}
 
   .draggable {
     display: flex;

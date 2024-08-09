@@ -67,7 +67,7 @@ export default function JpgToPdfEdit(){
     
     return(
         <>
-        <section className="h-screen pt-28 w-full  flex justify-center ">
+        <section className="h-screen pt-20 w-full border flex justify-center ">
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0">
 
                 {/* dashboard nav */}
@@ -79,7 +79,7 @@ export default function JpgToPdfEdit(){
                 </div>
 
                 {/* dashboard edit container*/}
-                <div className=" w-full h-full flex relative min-[55px]:order-1 lg:order-2 flex-wrap overflow-scroll">
+                <div className=" w-full h-full pt-3 flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
                 <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
                 <AddImg setArray={setArray} array={array}/>
                 <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">

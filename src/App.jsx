@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./AppLayout/AppMainLayout";
 import Home from "./UI/Home";
-import JpgToPdfEdit from "./convert to pdf/jpeg to pdf/jpeg-to-pdf-edit";
+import JpgToPdfEdit from "./convert to pdf/jpeg to pdf/jpg_to_pdf_main";
 import AddImgHome from "./convert to pdf/jpeg to pdf/Addimg/AddImgHome";
 
 function App(){

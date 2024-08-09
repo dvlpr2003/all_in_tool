@@ -5,8 +5,12 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { MdOutlineRotateLeft } from "react-icons/md";
 import { MdOutlineRotateRight } from "react-icons/md";
 
-export default function DashboardEdit({stateMargin,array,setArray,stateOrientation}) {
 
+export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}) {
+  const [array,setArray]=useState([
+    {id:1,image:"img/download.jpeg"},
+    {id:2,image:"img/mark.jpg"},
+  ])
 
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
@@ -127,13 +131,15 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
   return (
-    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll bg-slate-50" >
+    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll " >
       {array.map((item,index) => (
         
-        <li key={item.id} className={`draggable   ${stateOrientation === "port"?"img-w-h-port":""}  ${stateOrientation === "land"?"img-w-h-land":""}  border flex justify-center items-center ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""}  relative group hover:shadow-slate-400 hover:shadow-xl hover:border-1 overflow-hidden`} draggable="true" >
+        <li key={item.id} className={`draggable bg-inherit  flex flex-col justify-center items-center   relative `} draggable="true" >
+          <div className={`bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center   group hover:shadow-xl overflow-hidden`}>
           <ImageOptions id ={item.id} setArray={setArray} array={array} index={index}/>
-            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 != 0 ?".85":"1"}`}} />
-
+            <img src={`${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 != 0 ?".85":"1"}`}} />
+            </div>
+            {/* <div className="text-black  mt-2">{item.name}</div> */}
         </li>
       ))}
     </ul>
@@ -169,7 +175,7 @@ function ImageOptions({id,setArray,array,index}){
   }
   console.log(array)
   return(
-    <div className="absolute z-50 w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
+    <div className="absolute z-30 w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
     <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600" onClick={handleRotateBack} />
     <MdOutlineRotateRight className="text-slate-400 text-xl hover:text-red-600" onClick={handleRotateFor} />
     <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600" onClick={handleEvent}/>

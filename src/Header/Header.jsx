@@ -36,15 +36,15 @@ export default function Header(){
             
             <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3  flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setTool((e)=>!e)}:()=>{setEnter((e)=>!e); setTool((e)=>!e)}} >
                 <div className="flex" >
-                <span >Tools</span>
+                <span className="text-md ">Tools</span>
                 <MdKeyboardArrowDown className={`c-menu-arrow ${Tool?"rotate-180":"rotate-0"} transition-all duration-300`}/> 
                 </div>
             </div>
 
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Services</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Cases</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Blog</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span>Contact</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Services</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Cases</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Blog</span></div>
+            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Contact</span></div>
 
         </div>
 

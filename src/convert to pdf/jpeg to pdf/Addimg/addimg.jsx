@@ -20,11 +20,15 @@ export function AddImg({setArray,array}){
 
       finalItems.forEach((element,i )=> {
         if(array.length === 0){
-          let content = {id:i+1,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
+          let img_name = element[1][1].name.split(".")[0]
+
+          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
           empty.push(content)
         }
         if (array.length >0){
-          let content = {id:len,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
+          let img_name = element[1][1].name.split(".")[0]
+
+          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
           empty.push(content)
           len+=1;
         }
@@ -40,7 +44,7 @@ export function AddImg({setArray,array}){
     }
     return(
         
-            <div className=" w-auto h-auto absolute right-5 top-4 " >
+            <div className=" w-auto h-auto absolute right-6 top-8 z-50" >
                 <div className="relative">
                     <MdOutlineAddCircle className="text-5xl text-indigo-600 cursor-pointer" onClick={()=>handleMouseMove()}/>
                     <div className={`h-auto w-auto sticky right-0 left-0   mt-1 flex flex-col items-center gap-2 transition-opacity duration-300 opacity-0 ${Opacity?"opacity-100":""} z-40`}  >
