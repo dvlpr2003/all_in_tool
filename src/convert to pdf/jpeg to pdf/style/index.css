@@ -42,22 +42,20 @@
     transform: scale(1.05);
     
   }
-  .dragging-mob {
-    cursor: grabbing;
-    transform: scale(1.05);
-    background: transparent;
-    
-  }
-  
+
   .invisible {
     opacity: 0.5;
   }
+  .draggable .prevent {
+    pointer-events: none;
+}
+  .dragging-mob {
+    opacity: 0.7;
+    transform: scale(1.05); 
+  }
   
   .dragging-clone {
-    z-index: 1000;
-    opacity: 0.7;
+    z-index: 1000; 
     pointer-events: none;
-    background-color: blue;
-    
   }
   
