@@ -72,19 +72,70 @@ export default function JpgToPdfEdit(){
 
                 {/* dashboard nav */}
                 <div className="lg:h-full min-[55px]:order-2   z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto border ">  
-                    <DashboardNav  Orientation={Orientation} Margin={Margin}  PageSize={PageSize}  Border={Border}  dispatch={dispatch} />
+                    <DashboardNav  
+                    Orientation={Orientation} 
+                    Margin={Margin}  
+                    PageSize={PageSize} 
+                    Border={Border}  
+                    dispatch={dispatch} 
+                    />
                     
-                    <DashboardNavMobRes isPopup={isPopup} setPopup={setPopup} dispatch={dispatch} Margin={Margin} Orientation={Orientation} PageSize={PageSize} Border={Border} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
+                    <DashboardNavMobRes 
+                    isPopup={isPopup} 
+                    setPopup={setPopup} 
+                    dispatch={dispatch} 
+                    Margin={Margin} 
+                    Orientation={Orientation} 
+                    PageSize={PageSize} 
+                    Border={Border} 
+                    setMargin={setMargin} 
+                    setBorder={setBorder} 
+                    setPageSize={setPageSize} 
+                    setOrientation={setOrientation} 
+                    Margin_dispatch={Margin_dispatch} 
+                    Border_dispatch={Border_dispatch} 
+                    Orientation_dispatch={Orientation_dispatch} 
+                    PageSz_dispatch={PageSz_dispatch}
+                    />
                     
                 </div>
 
                 {/* dashboard edit container*/}
                 <div className=" w-full h-full pt-3 flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
-                <Options Border={Border} Orientation={Orientation} PageSize={PageSize} Margin={Margin} setMargin={setMargin} setBorder={setBorder} setPageSize={setPageSize} setOrientation={setOrientation} Margin_dispatch={Margin_dispatch} Border_dispatch={Border_dispatch} Orientation_dispatch={Orientation_dispatch} PageSz_dispatch={PageSz_dispatch}/>
-                <AddImg setArray={setArray} array={array}/>
+
+                <Options 
+                Border={Border} 
+                Orientation={Orientation} 
+                PageSize={PageSize}
+                Margin={Margin} 
+                setMargin={setMargin} 
+                setBorder={setBorder} 
+                setPageSize={setPageSize} 
+                setOrientation={setOrientation} 
+                Margin_dispatch={Margin_dispatch} 
+                Border_dispatch={Border_dispatch} 
+                Orientation_dispatch={Orientation_dispatch} 
+                PageSz_dispatch={PageSz_dispatch}
+                />
+
+
+                <AddImg 
+                setArray={setArray}
+                array={array}
+                />
+
                 <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
                     <div className="flex h-full w-full justify-center items-center overflow-scroll flex-wrap">
-                    <DashboardEdit stateMargin={stateMargin} stateBorder={stateBorder} stateOrientation={stateOrientation} statePageSz={statePageSz} setArray={setArray} array={array}/>
+
+                    <DashboardEdit 
+                    stateMargin={stateMargin} 
+                    stateBorder={stateBorder} 
+                    stateOrientation={stateOrientation} 
+                    statePageSz={statePageSz} 
+                    setArray={setArray} 
+                    array={array}
+                    />
+                    
                     </div>
                 </div>
                 </div>

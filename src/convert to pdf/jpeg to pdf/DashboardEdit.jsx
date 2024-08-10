@@ -10,7 +10,6 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
   const placeholderRef = useRef(null);
-  const RotateRef = useRef(0)
   useEffect(() => {
     const listItems = listRef.current.querySelectorAll('.draggable');
 

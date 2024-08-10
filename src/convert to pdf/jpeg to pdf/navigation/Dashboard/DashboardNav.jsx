@@ -12,7 +12,10 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
         <div className="w-72  h-full rounded-md lg:flex min-[55px]:hidden flex-col  gap-2 items-center  ">
             <div className="  flex flex-col  gap-4 items-center mt-7 w-full px-3 ">
                 {/* margin */}
-            <div className={`  rounded-2xl  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} onClick={()=>{dispatch({"type":"margin"})}}>
+            <div 
+            className={`  rounded-2xl  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} 
+            onClick={()=>{dispatch({"type":"margin"})}}
+            >
                 <div>
                     <PiSquareLogoDuotone className={`text-2xl  group-hover:text-white ${Margin?"text-white":""} icon-color-ind`}/>
                 </div>
@@ -24,7 +27,10 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
 
             {/* page orientation */}
-            <div className={` rounded-2xl  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?" bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} onClick={()=>{dispatch({"type":"orientation"})}}>
+            <div 
+            className={` rounded-2xl  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer relative ${Orientation?" bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} 
+            onClick={()=>{dispatch({"type":"orientation"})}}
+            >
                 <div className="">
                 <HiOutlineRectangleGroup className={`text-2xl group-hover:text-white ${Orientation?"text-white":""} icon-color-ind`}/>
                 </div>
@@ -36,7 +42,10 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
 
             {/* page size */}
-            <div className={` rounded-2xl  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${PageSize?"bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} onClick={()=>{dispatch({"type":"page size"})}}>
+            <div 
+            className={` rounded-2xl  flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${PageSize?"bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} 
+            onClick={()=>{dispatch({"type":"page size"})}}
+            >
                 <div>
                 <MdOutlineDocumentScanner className={`text-2xl group-hover:text-white ${PageSize?"text-white":""} icon-color-ind`}/>
 
@@ -46,7 +55,10 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
             </div>
             {/* border */}
-            <div className={`  rounded-2xl flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?" bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} onClick={()=>{dispatch({"type":"border"})}}>
+            <div 
+            className={`  rounded-2xl flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?" bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`}
+            onClick={()=>{dispatch({"type":"border"})}}
+            >
                 <div>
 
                 <RxBorderWidth className={`text-2xl group-hover:text-white ${Border?"text-white":""} icon-color-ind`}/>

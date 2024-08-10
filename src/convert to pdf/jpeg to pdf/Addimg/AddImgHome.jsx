@@ -17,7 +17,10 @@ export default function AddImgHome(){
                                 </div>
                             </div>
                             <div className="w-full flex flex-col gap-1 justify-center items-center">
-                                <div className="flex justify-center items-center gap-2 min-[55px]:text-sm min-[1024px]:text-lg font-bold"><span className="text-indigo-600 group-hover:text-indigo-500">Click to upload</span><span className="text-black group-hover:text-slate-600">your file or drag and drop.</span></div>
+                                <div className="flex justify-center items-center gap-2 min-[55px]:text-sm min-[1024px]:text-lg font-bold">
+                                    <span className="text-indigo-600 group-hover:text-indigo-500">Click to upload</span>
+                                    <span className="text-black group-hover:text-slate-600">your file or drag and drop.</span>
+                                </div>
                                 <span className="text-gray-500 font-medium text-sm">Supported format:JPG,PNG</span>
                                 
                             </div>
