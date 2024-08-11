@@ -6,15 +6,18 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { HiOutlineUpload } from "react-icons/hi";
 
 
-export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
+export function DashboardNav({Orientation,Margin,PageSize,Border,handleConvert,dispatch,array}){
+
     return(
     
+
         <div className="w-72  h-full rounded-md lg:flex min-[55px]:hidden flex-col  gap-2 items-center  ">
             <div className="  flex flex-col  gap-4 items-center mt-7 w-full px-3 ">
                 {/* margin */}
             <div 
             className={`  rounded-2xl  flex  items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Margin?"border-1 bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`} 
             onClick={()=>{dispatch({"type":"margin"})}}
+            
             >
                 <div>
                     <PiSquareLogoDuotone className={`text-2xl  group-hover:text-white ${Margin?"text-white":""} icon-color-ind`}/>
@@ -76,7 +79,7 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,dispatch}){
 
                 <span className="font-bold text-white ">Upload image</span>
                 </div> */}
-                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600  hover:shadow-md">
+                <div className=" border  rounded-md  flex  items-center justify-center gap-2 w-full py-3 pl-1 bg-indigo-600  hover:shadow-md" onClick={handleConvert}>
                     <span className="font-bold text-white ">Convert to PDF</span>
                 <IoArrowForwardCircleSharp className="text-2xl text-white"/>
 

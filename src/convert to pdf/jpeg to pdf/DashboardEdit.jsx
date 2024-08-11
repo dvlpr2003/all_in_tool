@@ -168,7 +168,7 @@ function ImageOptions({id,setArray,array,index}){
     setArray((e)=>[...e])
     }
   }
-  console.log(array)
+
   return(
     <div className="absolute z-30 w-36 h-8 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl hidden group-hover:flex"> 
     <MdOutlineRotateLeft className="text-slate-400 text-xl hover:text-red-600" onClick={handleRotateBack} />

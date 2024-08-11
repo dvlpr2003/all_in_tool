@@ -22,13 +22,13 @@ export function AddImg({setArray,array}){
         if(array.length === 0){
           let img_name = element[1][1].name.split(".")[0]
 
-          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
+          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0}
           empty.push(content)
         }
         if (array.length >0){
           let img_name = element[1][1].name.split(".")[0]
 
-          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,orientation:"",margin:"",pageSize:""}
+          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0}
           empty.push(content)
           len+=1;
         }

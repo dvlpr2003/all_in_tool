@@ -42,7 +42,9 @@ export default function JpgToPdfEdit(){
 
     }
     function Margin_reducer(state,action){
+
            return action.type;
+       
       
 
     }
@@ -56,14 +58,27 @@ export default function JpgToPdfEdit(){
     const [state,dispatch]=useReducer(reducer,null)
 
 
-    const [stateMargin,Margin_dispatch]=useReducer(Margin_reducer,"")
-    const [stateBorder,Border_dispatch]=useReducer(Margin_reducer,"")
+    const [stateMargin,Margin_dispatch]=useReducer(Margin_reducer,null)
+    const [stateBorder,Border_dispatch]=useReducer(Margin_reducer,null)
     const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"port")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
     
     const [array, setArray] = useState([]);
   
+    const formData = new FormData();
 
+
+
+    function handleConvert(){
+        formData.append("username", JSON.stringify(array));
+        formData.append("margin",stateMargin)
+        formData.append("orientation",stateOrientation)
+        formData.append("page_size",statePageSz)
+        
+        for (let i of formData.values()){
+            console.log(i)
+        }
+    }
     
     return(
         <>
@@ -78,6 +93,7 @@ export default function JpgToPdfEdit(){
                     PageSize={PageSize} 
                     Border={Border}  
                     dispatch={dispatch} 
+                    handleConvert={handleConvert}
                     />
                     
                     <DashboardNavMobRes 
@@ -104,6 +120,10 @@ export default function JpgToPdfEdit(){
                 <div className=" w-full h-full pt-3 flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
 
                 <Options 
+                formData={formData}
+                setArray={setArray}
+                array={array}
+                stateMargin={stateMargin}
                 Border={Border} 
                 Orientation={Orientation} 
                 PageSize={PageSize}

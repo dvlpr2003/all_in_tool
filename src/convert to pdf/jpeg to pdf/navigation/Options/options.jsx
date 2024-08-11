@@ -9,7 +9,9 @@ import { TbBorderRadius } from "react-icons/tb";
 
 
 
-export function Options({Orientation,Margin,Border,PageSize,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch}){
+export function Options({array,Orientation,Margin,Border,PageSize,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch,stateMargin,formData}){
+
+    
     return(
         <>
          {/*margin optioins */}
