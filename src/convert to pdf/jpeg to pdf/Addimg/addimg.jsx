@@ -10,7 +10,9 @@ export function AddImg({setArray,array}){
     function handleInputEvent(Event){
       
       const Imagefile= Object.entries(Event.target.files)
+      
       const finalItems = Object.entries(Imagefile)
+      
       const empty = []
 
       let len = array.reduce((max, obj) => {
@@ -19,16 +21,18 @@ export function AddImg({setArray,array}){
 
 
       finalItems.forEach((element,i )=> {
+
         if(array.length === 0){
           let img_name = element[1][1].name.split(".")[0]
-
-          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0}
+     
+          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
           empty.push(content)
         }
         if (array.length >0){
           let img_name = element[1][1].name.split(".")[0]
+          
 
-          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0}
+          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
           empty.push(content)
           len+=1;
         }
@@ -37,7 +41,6 @@ export function AddImg({setArray,array}){
       setArray((e)=>[...e,...empty])
       inputref.current.value = ""
     }
-
     function handleMouseMove(){
         setOpacity((e)=>!e)
         
@@ -53,7 +56,7 @@ export function AddImg({setArray,array}){
                       <label htmlFor="computer-upload">
                         <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
                         <HiComputerDesktop className="text-xl text-white"/>
-                        <input type="file"  id="computer-upload" className="hidden" onChange={handleInputEvent} ref={inputref} multiple/>
+                        <input type="file"  id="computer-upload" className="hidden" accept="image/*" onChange={handleInputEvent} ref={inputref} multiple/>
 
                         </div>
                         </label>

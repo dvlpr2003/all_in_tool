@@ -5,6 +5,7 @@ import "./style/index.css"
 import { Options } from "./navigation/Options/options";
 import { DashboardNav } from "./navigation/Dashboard/DashboardNav";
 import { DashboardNavMobRes } from "./navigation/Dashboard/DashboardNavMobRes";
+import axios from "axios";
 
 
 export default function JpgToPdfEdit(){
@@ -70,14 +71,46 @@ export default function JpgToPdfEdit(){
 
 
     function handleConvert(){
-        formData.append("username", JSON.stringify(array));
-        formData.append("margin",stateMargin)
-        formData.append("orientation",stateOrientation)
-        formData.append("page_size",statePageSz)
+        const image_file = array.map((e)=>e.image_file)
+        formData.delete("array")
+        formData.append("array",JSON.stringify(array))
+        console.log(image_file)
+        image_file.forEach((element,i)=>{
+            formData.delete(`image[${i}]`)
+
+            formData.append(`image[${i}]`,element)
+        })
         
-        for (let i of formData.values()){
-            console.log(i)
+        // formData.delete("username")
+        // formData.delete("margin")
+        // formData.delete("orientation")
+        // formData.delete("page_size")
+
+
+        // formData.append("username", JSON.stringify(array));
+        // formData.append("margin",stateMargin)
+        // formData.append("orientation",stateOrientation)
+        // formData.append("page_size",statePageSz)
+        async function ConvertPdf(formData){
+            // const axiosInstance = axios.create({  
+            //     headers: {  
+            //      'Content-Type': 'ultipart/form-data'  
+            //     }  
+            //   }); 
+            try{
+                const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/tryone/",formData,{  
+                    headers: {  
+                     'Content-Type': 'ultipart/form-data',  
+                    },  
+                   
+            })
+                console.log(response)
+            }catch(error){
+                console.log(error)
+            }
+
         }
+        ConvertPdf(formData)
     }
     
     return(
