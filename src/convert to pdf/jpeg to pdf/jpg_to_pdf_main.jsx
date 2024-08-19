@@ -74,6 +74,13 @@ export default function JpgToPdfEdit(){
         const image_file = array.map((e)=>e.image_file)
         formData.delete("array")
         formData.append("array",JSON.stringify(array))
+        formData.delete("margin")
+        formData.append("margin",stateMargin)
+        formData.delete("page-size")
+        formData.append("page-size",statePageSz)
+        formData.delete("orientation")
+        formData.append("orientation",stateOrientation)
+
         console.log(image_file)
         image_file.forEach((element,i)=>{
             formData.delete(`image[${i}]`)
