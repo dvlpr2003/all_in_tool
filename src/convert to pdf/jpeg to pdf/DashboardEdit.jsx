@@ -1,4 +1,4 @@
-import {  useState,useEffect,useRef} from "react";
+import { useEffect,useRef} from "react";
 import { ArrangedList } from "./utils/process";
 import "./style/index.css"
 import { MdOutlineDeleteForever } from "react-icons/md";
@@ -121,7 +121,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       });
       sortableList.removeEventListener('dragover', handleDragOver);
     };
-  }, [array]);
+  }, [array,setArray]);
 
 
   return (
@@ -131,10 +131,11 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
         <li key={item.id} className={`draggable bg-inherit  flex flex-col justify-center items-center   relative group  `} draggable="true" >
           <ImageOptions id ={item.id} setArray={setArray} array={array} index={index}/>
           
-          <div className={`prevent bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center     overflow-hidden shadow-md`}>
-            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 != 0 ?".85":"1"}`}} />
+          <div 
+          className={`prevent bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center     overflow-hidden shadow-md`}>
+            <img src={`img/${item.image}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 !== 0 ?".85":"1"}`}} />
             </div>
-            <div className="text-black  mt-2 bg-transparent overflow-hidden">{item.name}</div>
+            <div className="text-black  mt-2 bg-transparent overflow-hidden"><span >{item.name}</span></div>
         </li>
       ))}
     </ul>
@@ -145,7 +146,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 function ImageOptions({id,setArray,array,index}){
   const handleEvent= ()=>{
-    const Filtered_array = array.filter((e)=>e.id !=id);
+    const Filtered_array = array.filter((e)=>e.id !==id);
     setArray(Filtered_array)
   }
   const handleRotateFor = ()=>{
