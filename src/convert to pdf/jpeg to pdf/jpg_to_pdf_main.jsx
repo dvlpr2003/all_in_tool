@@ -70,7 +70,6 @@ export default function JpgToPdfEdit(){
         formData.delete("orientation")
         formData.append("orientation",stateOrientation)
 
-        console.log(image_file)
         image_file.forEach((element,i)=>{
             formData.delete(`image[${i}]`)
 

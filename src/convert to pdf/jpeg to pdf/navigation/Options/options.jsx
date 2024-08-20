@@ -15,7 +15,7 @@ export function Options({array,Orientation,Margin,PageSize,setMargin,setOrientat
     return(
         <>
          {/*margin optioins */}
-         <div className={`absolute border   w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+         <div className={`absolute border bg-white   w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
                     <div 
                     className={`border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer ${stateMargin === ""? " border-2 border-indigo-600":""}` }
                     onClick={()=>{Margin_dispatch({"type":""});setMargin(false)}}
@@ -78,23 +78,7 @@ export function Options({array,Orientation,Margin,PageSize,setMargin,setOrientat
                     <span className={`mt-3 group-hover:text-indigo-600 ${statePageSz === "us-letter"? "text-indigo-600":""}`}>Letter(US)</span>
                     </div>
                 </div>
-                {/*Border options*/}
-                {/* <div className={`absolute border  bg-white  w-52 h-auto left-4 top-48 ${Border?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
-                    <div 
-                    className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" 
-                    onClick={()=>{Border_dispatch({"type":"normal"});setBorder(false)}}
-                    >
-                    <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
-                    <span className="mt-3 group-hover:text-indigo-600">Normal</span>
-                    </div>
-                    <div 
-                    className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" 
-                    onClick={()=>{Border_dispatch({"type":"rounded"});setBorder(false)}}
-                    >
-                    <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
-                    <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
-                    </div>
-                </div> */}
+
         </>
     )
 }
