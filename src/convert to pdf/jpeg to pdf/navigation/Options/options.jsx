@@ -9,7 +9,7 @@ import { TbBorderRadius } from "react-icons/tb";
 
 
 
-export function Options({array,Orientation,Margin,Border,PageSize,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch,stateMargin,formData}){
+export function Options({array,Orientation,Margin,Border,PageSize,setMargin,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch,stateMargin,formData}){
 
     
     return(
@@ -79,7 +79,7 @@ export function Options({array,Orientation,Margin,Border,PageSize,setMargin,setB
                     </div>
                 </div>
                 {/*Border options*/}
-                <div className={`absolute border  bg-white  w-52 h-auto left-4 top-48 ${Border?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+                {/* <div className={`absolute border  bg-white  w-52 h-auto left-4 top-48 ${Border?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
                     <div 
                     className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer" 
                     onClick={()=>{Border_dispatch({"type":"normal"});setBorder(false)}}
@@ -94,7 +94,7 @@ export function Options({array,Orientation,Margin,Border,PageSize,setMargin,setB
                     <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
                     <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
                     </div>
-                </div>
+                </div> */}
         </>
     )
 }

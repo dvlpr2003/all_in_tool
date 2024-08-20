@@ -3,11 +3,10 @@ import { RxMargin } from "react-icons/rx";
 import { TbBoxMargin } from "react-icons/tb";
 import { IoTabletLandscapeOutline } from "react-icons/io5";
 import { IoTabletPortraitOutline } from "react-icons/io5";
-import { MdOutlineBorderStyle } from "react-icons/md";
-import { TbBorderRadius } from "react-icons/tb";
 
 
-export function MobPopup({Margin,Orientation,PageSize,Border,setMargin,setBorder,setOrientation,setPageSize,Margin_dispatch,Border_dispatch,Orientation_dispatch,PageSz_dispatch}){
+
+export function MobPopup({Margin,Orientation,PageSize,setMargin,setOrientation,setPageSize,Margin_dispatch,Orientation_dispatch,PageSz_dispatch}){
 
     return(
         <>
@@ -85,23 +84,7 @@ export function MobPopup({Margin,Orientation,PageSize,Border,setMargin,setBorder
                     <span className="mt-3 group-hover:text-indigo-600">Letter(US)</span>
                     </div>
         </div>
-        {/* border for mobpopup */}
-        <div className={`myPopup popuptext ${Border?"show":""} w-full px-7 py-5 bg-slate-100 pt-11 absolute z-50 `}  >
-                    <div 
-                    className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer"
-                    onClick={()=>{Border_dispatch({"type":"normal"});setBorder(false)}}
-                    >
-                    <MdOutlineBorderStyle className="group-hover:text-lg group-hover:text-indigo-600"/>
-                    <span className="mt-3 group-hover:text-indigo-600">Normal</span>
-                    </div>
-                    <div 
-                    className="border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-indigo-600 shadow-md cursor-pointer"
-                    onClick={()=>{Border_dispatch({"type":"rounded"});setBorder(false)}}
-                    >
-                    <TbBorderRadius className="group-hover:text-lg group-hover:text-indigo-600" />
-                    <span className="mt-3 group-hover:text-indigo-600">Rounded</span>
-                    </div>
-        </div>
+
         </>
     )
 }

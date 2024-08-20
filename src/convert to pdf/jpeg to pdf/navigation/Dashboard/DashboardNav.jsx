@@ -6,7 +6,7 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { HiOutlineUpload } from "react-icons/hi";
 
 
-export function DashboardNav({Orientation,Margin,PageSize,Border,handleConvert,dispatch,array}){
+export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch,array}){
 
     return(
     
@@ -57,20 +57,8 @@ export function DashboardNav({Orientation,Margin,PageSize,Border,handleConvert,d
                 {/* <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${PageSize?"text-indigo-600":""}`}/></div> */}
 
             </div>
-            {/* border */}
-            <div 
-            className={`  rounded-2xl flex items-center gap-4 w-full py-3 pl-2 pr-2 cursor-pointer ${Border?" bg-blue-500":""} group hover:border-1 hover:bg-blue-500 transition-all duration-150`}
-            onClick={()=>{dispatch({"type":"border"})}}
-            >
-                <div>
 
-                <RxBorderWidth className={`text-2xl group-hover:text-white ${Border?"text-white":""} icon-color-ind`}/>
-                </div>
 
-                <span className={`font-normal group-hover:text-white ${Border?"text-white":""}`}>Border</span>
-                {/* <div  className="flex justify-center items-center ml-auto text-lg font-bold text-slate-400"><MdOutlineKeyboardArrowRight  className={`group-hover:text-indigo-600 ${Border?"text-indigo-600":""}`}/></div> */}
-
-            </div>
             </div>
 
             <div className="h-auto  mt-auto mb-2  w-full px-3 lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">

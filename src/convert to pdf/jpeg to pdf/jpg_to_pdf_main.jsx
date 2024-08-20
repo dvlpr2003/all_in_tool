@@ -14,31 +14,22 @@ export default function JpgToPdfEdit(){
     
         if(action.type === "margin"){
             setMargin((e)=>!e); 
-            setBorder(false);
             setOrientation(false);
             setPageSize(false)
             
         }
         if(action.type==="orientation"){
             setMargin(false);
-            setBorder(false); 
             setOrientation((e)=>!e); 
             setPageSize(false)
         }
         if (action.type==="page size"){
             setPopup(e=>!e)
             setMargin(false);
-            setBorder(false);
             setOrientation(false);
             setPageSize((e)=>!e)
         }
-        if(action.type==="border"){
-            setPopup(e=>!e)
-            setMargin(false);
-            setBorder((e)=>!e);
-            setOrientation(false);
-            setPageSize(false)
-        }
+
     
 
     }
@@ -54,13 +45,11 @@ export default function JpgToPdfEdit(){
     const [Orientation,setOrientation]=useState(false)
     const [Margin,setMargin]=useState(false)
     const [PageSize,setPageSize]=useState(false)
-    const [Border,setBorder]=useState(false)
     const [isPopup,setPopup]=useState(false)
     const [state,dispatch]=useReducer(reducer,null)
 
 
     const [stateMargin,Margin_dispatch]=useReducer(Margin_reducer,null)
-    const [stateBorder,Border_dispatch]=useReducer(Margin_reducer,null)
     const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"port")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
     
@@ -88,27 +77,12 @@ export default function JpgToPdfEdit(){
             formData.append(`image[${i}]`,element)
         })
         
-        
-        // formData.delete("username")
-        // formData.delete("margin")
-        // formData.delete("orientation")
-        // formData.delete("page_size")
-
-
-        // formData.append("username", JSON.stringify(array));
-        // formData.append("margin",stateMargin)
-        // formData.append("orientation",stateOrientation)
-        // formData.append("page_size",statePageSz)
         async function ConvertPdf(formData){
-            // const axiosInstance = axios.create({  
-            //     headers: {  
-            //      'Content-Type': 'ultipart/form-data'  
-            //     }  
-            //   }); 
+
             try{
                 const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/tryone/",formData,{  
                     headers: {  
-                     'Content-Type': 'ultipart/form-data',  
+                     'Content-Type': 'multipart/form-data',  
                     },  
                    
             })
@@ -132,7 +106,7 @@ export default function JpgToPdfEdit(){
                     Orientation={Orientation} 
                     Margin={Margin}  
                     PageSize={PageSize} 
-                    Border={Border}  
+               
                     dispatch={dispatch} 
                     handleConvert={handleConvert}
                     />
@@ -144,13 +118,12 @@ export default function JpgToPdfEdit(){
                     Margin={Margin} 
                     Orientation={Orientation} 
                     PageSize={PageSize} 
-                    Border={Border} 
+   
                     setMargin={setMargin} 
-                    setBorder={setBorder} 
                     setPageSize={setPageSize} 
                     setOrientation={setOrientation} 
                     Margin_dispatch={Margin_dispatch} 
-                    Border_dispatch={Border_dispatch} 
+      
                     Orientation_dispatch={Orientation_dispatch} 
                     PageSz_dispatch={PageSz_dispatch}
                     />
@@ -165,16 +138,15 @@ export default function JpgToPdfEdit(){
                 setArray={setArray}
                 array={array}
                 stateMargin={stateMargin}
-                Border={Border} 
+
                 Orientation={Orientation} 
                 PageSize={PageSize}
                 Margin={Margin} 
                 setMargin={setMargin} 
-                setBorder={setBorder} 
                 setPageSize={setPageSize} 
                 setOrientation={setOrientation} 
                 Margin_dispatch={Margin_dispatch} 
-                Border_dispatch={Border_dispatch} 
+         
                 Orientation_dispatch={Orientation_dispatch} 
                 PageSz_dispatch={PageSz_dispatch}
                 />
@@ -190,7 +162,7 @@ export default function JpgToPdfEdit(){
 
                     <DashboardEdit 
                     stateMargin={stateMargin} 
-                    stateBorder={stateBorder} 
+ 
                     stateOrientation={stateOrientation} 
                     statePageSz={statePageSz} 
                     setArray={setArray} 
