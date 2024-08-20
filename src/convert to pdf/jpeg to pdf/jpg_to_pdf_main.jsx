@@ -134,11 +134,11 @@ export default function JpgToPdfEdit(){
                 <div className=" w-full h-full pt-3 flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
 
                 <Options 
-                formData={formData}
                 setArray={setArray}
                 array={array}
                 stateMargin={stateMargin}
-
+                stateOrientation={stateOrientation}
+                statePageSz ={statePageSz}
                 Orientation={Orientation} 
                 PageSize={PageSize}
                 Margin={Margin} 
