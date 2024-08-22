@@ -25,25 +25,25 @@ export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize
          
             <div className="flex w-full justify-around gap-2 m-4 ">
                 {/* margin */}
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"margin"})}}>
-                <PiSquareLogoDuotone className={`text-xl  group-hover:text-indigo-600 `}/>
+                <div className=" text-gray-500 flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"margin"})}}>
+                <PiSquareLogoDuotone className={`text-xl  `}/>
                 <span className="text-sm">Margin</span>
                 
                 </div>
                 {/* Orientation */}
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"orientation"})}}>
-                <HiOutlineRectangleGroup className={`text-xl group-hover:text-indigo-600 `}/>
+                <div className="text-gray-500 flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"orientation"})}}>
+                <HiOutlineRectangleGroup className={`text-xl `}/>
                 <span className="text-sm">Orientation</span>
 
                 </div>
-                <div className="flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"page size"})}}>
-                <MdOutlineDocumentScanner className={`text-xl group-hover:text-indigo-600`}/>
+                <div className="text-gray-500 flex flex-col justify-center items-center gap-2" onClick={()=>{dispatch({"type":"page size"})}}>
+                <MdOutlineDocumentScanner className={`text-xl`}/>
                 <span className="text-sm">Size</span>
                 </div>
 
                 {/* convert */}
-                <div className="flex flex-col justify-center items-center gap-2">
-                <IoArrowForwardCircleSharp className="text-xl text-indigo-600"/>
+                <div className=" text-gray-500 flex flex-col justify-center items-center gap-2">
+                <IoArrowForwardCircleSharp className="text-xl text-blue-600"/>
                 <span className="text-sm">Convert</span>
                 </div>
             </div>
