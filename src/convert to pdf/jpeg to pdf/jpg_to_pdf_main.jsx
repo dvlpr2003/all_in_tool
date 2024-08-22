@@ -131,7 +131,7 @@ export default function JpgToPdfEdit(){
                 </div>
 
                 {/* dashboard edit container*/}
-                <div className=" w-full h-full pt-3 flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
+                <div className=" w-full h-full padd flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
 
                 <Options 
                 setArray={setArray}

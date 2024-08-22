@@ -125,7 +125,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
   return (
-    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll " >
+    <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll overflow-x-hidden" >
       {array.map((item,index) => (
         
         <li key={item.id} className={`draggable bg-inherit  flex flex-col justify-center items-center   relative group  `} draggable="true" >
