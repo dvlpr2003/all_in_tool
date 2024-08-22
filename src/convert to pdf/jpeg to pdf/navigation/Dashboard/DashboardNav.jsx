@@ -52,9 +52,9 @@ export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch
                 className="flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg    cursor-pointer"
                 for='check'
                 >
-                <input type="checkbox"  className="w-5 h-5 ml-1" id="check"/>
+                <input type="checkbox"  className="w-6 h-6 ml-1" id="check"/>
 
-                <span className="mx-4 font-medium">Settings</span>
+                <span className="mx-4 font-medium">Merge all images in one file</span>
                 </label>
             </nav>
 

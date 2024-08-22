@@ -73,35 +73,6 @@ export function AddImg({setArray,array}){
 
 
               </div>
-
-
-
-
-
-                {/* <div className="relative">
-                    <MdOutlineAddCircle className="text-5xl text-indigo-600 cursor-pointer" onClick={()=>handleMouseMove()}/>
-                    <div 
-                    className={`h-auto w-auto sticky right-0 left-0   mt-1 flex flex-col items-center gap-2 transition-opacity duration-300 opacity-0 ${Opacity?"opacity-100":""} z-40`}  
-                    >
-                      <label htmlFor="computer-upload">
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <HiComputerDesktop className="text-xl text-white"/>
-                        <input type="file"  id="computer-upload" className="hidden" accept="image/*" onChange={handleInputEvent} ref={inputref} multiple/>
-
-                        </div>
-                        </label>
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <FaDropbox className="text-xl text-white"/>
-
-                        </div>
-                        <div className=" bg-indigo-600 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
-                        <FaGoogleDrive className="text-xl text-white"/>
-
-                        </div>
-
-                    </div>
-
-                </div> */}
             </div>
     
     )
