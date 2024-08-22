@@ -8,9 +8,9 @@ import { MobPopup } from "../mobileRes/MobPopup";
 export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize,setMargin,setOrientation,setPageSize,Margin_dispatch,Orientation_dispatch,PageSz_dispatch}){
     return(
         <>
-        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center popup bg-white z-0" >
-{/*         
-         <MobPopup 
+        <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center bg-white z-0" >
+        
+         {/* <MobPopup 
          isPopup={isPopup} 
          Margin={Margin} 
          Orientation={Orientation} 

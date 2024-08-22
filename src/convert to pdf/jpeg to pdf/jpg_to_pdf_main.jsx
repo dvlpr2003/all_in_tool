@@ -6,6 +6,7 @@ import { Options } from "./navigation/Options/options";
 import { DashboardNav } from "./navigation/Dashboard/DashboardNav";
 import { DashboardNavMobRes } from "./navigation/Dashboard/DashboardNavMobRes";
 import axios from "axios";
+import { MobPopup } from "./navigation/mobileRes/MobPopup";
 
 
 export default function JpgToPdfEdit(){
@@ -149,7 +150,20 @@ export default function JpgToPdfEdit(){
                 Orientation_dispatch={Orientation_dispatch} 
                 PageSz_dispatch={PageSz_dispatch}
                 />
-
+                <MobPopup 
+                         Margin={Margin} 
+                         Orientation={Orientation} 
+                         PageSize={PageSize} 
+                         setMargin={setMargin} 
+                         setPageSize={setPageSize} 
+                         setOrientation={setOrientation} 
+                         Margin_dispatch={Margin_dispatch} 
+                         Orientation_dispatch={Orientation_dispatch} 
+                         PageSz_dispatch={PageSz_dispatch}
+                         stateMargin={stateMargin}
+                         stateOrientation={stateOrientation}
+                         statePageSz={statePageSz}
+                />
 
                 <AddImg 
                 setArray={setArray}
