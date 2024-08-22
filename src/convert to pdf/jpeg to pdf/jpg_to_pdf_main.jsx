@@ -96,7 +96,7 @@ export default function JpgToPdfEdit(){
     
     return(
         <>
-        <section className="h-screen pt-20 w-full border flex justify-center ">
+        <section className="h-screen  w-full border flex justify-center ">
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0">
 
                 {/* dashboard nav */}

@@ -8,6 +8,7 @@ export default function Header(){
     const [Tool,setTool]=useState(false)
     const [MenuIcon,setMenuIcon]=useState(false)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+    const [isOpen,setIsOpen] = useState(false)
 // screen innerWidth listener useEffect function
   useEffect(() => {
     const handleResize = () => {
@@ -25,45 +26,60 @@ export default function Header(){
     
     return(
         <>
-        <div className="flex w-full justify-center items-center gap-4 max-w-screen-2xl relative  ">
+      <nav className="container  p-6 mx-auto lg:flex lg:justify-between lg:items-center">
+        <div className="flex items-center justify-between">
+          <a href="#">
+            <img className="w-auto h-6 sm:h-7" src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ.png" alt="" />
+          </a>
 
-        <div className=" justify-start h-auto cursor-pointer">
-          {/* logo */}
-            <img src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ_log.png" alt="logo" className="max-w-full h-9 min-[55px]:h-7 min-[660px]:h-7"/>
+          {/* Mobile menu button */}
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+              aria-label="toggle menu"
+            >
+              {isOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="black" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="black" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
-        <div className="flex flex-wrap  justify-center items-center ml-auto mr-auto cursor-pointer sm:hidden lg:flex min-[55px]:hidden ">
-            
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3  flex items-center justify-center  `} onMouseLeave={!isMobile?()=>{setEnter(false)}:null} onMouseEnter={!isMobile?()=>{setEnter(true)}:null} onClick={isMobile?()=>{setEnter((e)=>!e); setTool((e)=>!e)}:()=>{setEnter((e)=>!e); setTool((e)=>!e)}} >
-                <div className="flex" >
-                <span className="text-md ">Tools</span>
-                <MdKeyboardArrowDown className={`c-menu-arrow ${Tool?"rotate-180":"rotate-0"} transition-all duration-300`}/> 
-                </div>
-            </div>
+        {/* Mobile Menu open: "block", Menu closed: "hidden" */}
+        <div
+          className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:bg-transparent lg:dark:bg-transparent lg:shadow-none lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${
+            isOpen ? 'translate-x-0 opacity-100' : 'opacity-0 -translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:-px-8 lg:space-y-0">
+            <a className="text-gray-700 transition-colors duration-300 transform lg:mx-8  dark:hover:text-blue-400 hover:text-blue-500" href="#">
+              Home
+            </a>
+            <a className="text-gray-700 transition-colors duration-300 transform lg:mx-8  dark:hover:text-blue-400 hover:text-blue-500" href="#">
+              Components
+            </a>
+            <a className="text-gray-700 transition-colors duration-300 transform lg:mx-8  dark:hover:text-blue-400 hover:text-blue-500" href="#">
+              Pricing
+            </a>
+            <a className="text-gray-700 transition-colors duration-300 transform lg:mx-8  dark:hover:text-blue-400 hover:text-blue-500" href="#">
+              Contact
+            </a>
+          </div>
 
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Services</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Cases</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Blog</span></div>
-            <div className={`text-slate-950 hover:text-indigo-600 ${enter?'text-zinc-500':""} px-5 py-3 `} onMouseLeave={()=>setEnter(false)} onMouseEnter={()=>setEnter(true)}><span className="text-md ">Contact</span></div>
-
+          <a className="block px-5 py-2 mt-4 text-sm text-center text-white capitalize bg-blue-600 rounded-lg lg:mt-0 hover:bg-blue-500 lg:w-auto" href="#">
+            Get started
+          </a>
         </div>
+      </nav>
 
-        <div className=" font-semibold ml-auto justify-end  ">
-            <div className="sm:flex lg:hidden justify-center items-center py-2">
-            
-            <IconMenu setMenuIcon={setMenuIcon} MenuIcon={MenuIcon}/>
-           
-            </div>
-            <Buttons/>
-
-        </div>
-
-
-        <ProductDt Tool={Tool} setTool={setTool} enter={enter} setEnter={setEnter} isMobile={isMobile}/>
-
-        {MenuIcon&&<SideMenu/>}
-
-        </div>
         
         </>
     )
