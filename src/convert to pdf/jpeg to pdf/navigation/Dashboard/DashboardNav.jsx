@@ -54,7 +54,7 @@ export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch
                 >
                 <input type="checkbox"  className="w-6 h-6 ml-1" id="check"/>
 
-                <span className="mx-4 font-medium">Merge all images in one file</span>
+                <span className="mx-4 font-medium">Merge all images in one PDF file</span>
                 </label>
             </nav>
 
