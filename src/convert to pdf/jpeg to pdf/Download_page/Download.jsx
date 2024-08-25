@@ -16,9 +16,13 @@ export const DownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center px-10">
+      <section className="w-full min-h-screen bg-white flex flex-col pt-40 items-center px-10">
 
-        <div className='  h-auto flex flex-col gap-8'>
+        <div className='  h-auto flex flex-col gap-8 '>
+            <span className='w-full flex justify-center'>
+            <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl">Yeah! Your file is ready</h2>
+
+            </span>
 
             <div className='flex justify-center items-center gap-2 relative'>
                 <div className='flex gap-3'>
