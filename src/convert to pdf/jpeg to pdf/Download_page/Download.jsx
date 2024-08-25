@@ -20,7 +20,7 @@ export const DownloadPage = ()=>{
 
         <div className='  h-auto flex flex-col gap-8 '>
             <span className='w-full flex justify-center'>
-            <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl">Yeah! Your file is ready</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 lg:text-4xl">Yeah! Your file is ready</h2>
 
             </span>
 
