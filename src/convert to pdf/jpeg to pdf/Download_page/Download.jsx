@@ -37,15 +37,22 @@ export const DownloadPage = ()=>{
                 >
                 <a
                     href="#"
-                    className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform "
+                    className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform  "
                 >
-                    Your profile
+                    <div className='flex items-center gap-1 ml-0'>
+                        <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" />
+                        <span className='ml-2'>upload to dropbox</span>
+                    </div>
                 </a>
                 <a
                     href="#"
                     className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform "
                 >
-                    Your projects
+                    <div className='flex items-center gap-3 ml-1'>
+                        <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="dropbox" />
+                
+                        <span className='ml-1'>upload to Drive</span>
+                    </div>
                 </a>
                 
                 </div>
