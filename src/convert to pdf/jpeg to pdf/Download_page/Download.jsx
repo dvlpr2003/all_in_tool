@@ -18,7 +18,7 @@ export const DownloadPage = ()=>{
     return (
       <section className="w-full min-h-screen bg-white flex flex-col pt-40 items-center px-10">
 
-        <div className='  h-auto flex flex-col gap-8 '>
+        <div className='  h-auto flex flex-col gap-8 justify-center items-center'>
             <span className='w-full flex justify-center'>
             <h2 class="text-2xl font-semibold text-gray-800 lg:text-4xl">Yeah! Your file is ready</h2>
 
@@ -64,7 +64,7 @@ export const DownloadPage = ()=>{
                     
 
             </div>
-            <div className={`flex  justify-center items-center gap-9 ${isOpen?"mt-24":""} flex-wrap`}>
+            <div className={`flex w-full lg:w-3/4  justify-center items-center gap-9 ${isOpen?"mt-28":""} flex-wrap`}>
                 <div className=' flex flex-col justify-center items-center  text-gray-500  hover:text-gray-700 hover:bg-gray-100 w-32 h-20 rounded-md cursor-pointer shadow-md'>
                 <AiOutlineMergeCells className='text-xl font-bold'/>
                 <span className='mt-1 text-sm'>Merge PDF</span>
