@@ -11,12 +11,11 @@ import { LuFileEdit } from "react-icons/lu";
 
 
 
-
 export const DownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <section className="w-full min-h-screen bg-white flex flex-col pt-40 items-center px-10">
+      <section className="w-full min-h-screen bg-white flex flex-col pt-40 items-center  px-10">
 
         <div className='  h-auto flex flex-col gap-8 justify-center items-center'>
             <span className='w-full flex justify-center'>
@@ -108,6 +107,10 @@ export const DownloadPage = ()=>{
             </div>
 
         </div>
+        {/* <div className=' w-full h-screen flex justify-center items-center'>
+
+    
+        </div> */}
 
       </section>
     
