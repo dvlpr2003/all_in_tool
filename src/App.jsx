@@ -12,7 +12,10 @@ function App(){
         element:(<AppLayout/>),
         children:[
           {
-            element:(<DownloadPage/>),
+            // element:(<DownloadPage/>),
+            element:(<JpgToPdfEdit/>),
+
+
             path:"/"
           },
           {

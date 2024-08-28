@@ -6,7 +6,7 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { HiOutlineUpload } from "react-icons/hi";
 
 
-export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch,array}){
+export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch,array,setMerge}){
 
     return(
     
@@ -50,18 +50,18 @@ export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch
 
                 <label
                 className="flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg    cursor-pointer"
-                for='check'
+                htmlFor='check'
                 >
-                <input type="checkbox"  className="w-6 h-6 ml-1" id="check"/>
+                <input type="checkbox"  className="w-8 h-8 ml-1" id="check" onChange={()=>setMerge((e)=>!e)}/>
 
-                <span className="mx-4 font-medium">Merge all images in one PDF file</span>
+                <span className="mx-4 font-medium ">Merge all images in one PDF file</span>
                 </label>
             </nav>
 
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
-            <button className="cssbuttons-io-button bg-blue-600 border-blue-600 ">
+            <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " onClick={handleConvert}>
             convert to PDF
-            <div class="icon">
+            <div className="icon">
                 <svg
                 height="24"
                 width="24"

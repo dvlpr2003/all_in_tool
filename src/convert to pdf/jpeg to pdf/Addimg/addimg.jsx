@@ -47,9 +47,9 @@ export function AddImg({setArray,array}){
     }
     return(
         
-            <div className=" w-auto h-auto absolute top-1 right-0 left-0 z-50 p-2 flex justify-center items-center" >
+            <div className=" w-auto h-auto absolute top-1 right-0 left-0 z-40 p-2 flex justify-center items-center" >
               <div className=" w-auto h-auto  flex gap-2">
-                <label for = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 ">
+                <label htmlFor = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 ">
 
                 <HiComputerDesktop className="min-[55px]:text-lg min-[600px]:text-2xl text-gray-600"/>
                 <span className="min-[55px]:text-sm min-[600px]:text-md">Computer</span>

@@ -7,8 +7,6 @@ const Loader = () => {
 
 
 <div class="loader">
-<span class="loader-text">loading</span>
-  <span class="load"></span>
 </div>
 
   );

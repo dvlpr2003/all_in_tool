@@ -7,6 +7,7 @@ import { DashboardNav } from "./navigation/Dashboard/DashboardNav";
 import { DashboardNavMobRes } from "./navigation/Dashboard/DashboardNavMobRes";
 import axios from "axios";
 import { MobPopup } from "./navigation/mobileRes/MobPopup";
+import Loader from "../../Loader/Loader";
 
 
 export default function JpgToPdfEdit(){
@@ -53,11 +54,13 @@ export default function JpgToPdfEdit(){
     const [stateMargin,Margin_dispatch]=useReducer(Margin_reducer,null)
     const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"port")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
+    const [Merge,setMerge]=useState(false)
     
     const [array, setArray] = useState([]);
+    console.log(Merge)
   
     const formData = new FormData();
-
+    
 
 
     function handleConvert(){
@@ -70,6 +73,8 @@ export default function JpgToPdfEdit(){
         formData.append("page-size",statePageSz)
         formData.delete("orientation")
         formData.append("orientation",stateOrientation)
+        formData.delete("merge")
+        formData.append("merge",Merge)
 
         image_file.forEach((element,i)=>{
             formData.delete(`image[${i}]`)
@@ -101,11 +106,12 @@ export default function JpgToPdfEdit(){
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0">
 
                 {/* dashboard nav */}
-                <div className="lg:h-full min-[55px]:order-2   z-50 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto  ">  
+                <div className="lg:h-full min-[55px]:order-2   z-30 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto  ">  
                     <DashboardNav  
                     Orientation={Orientation} 
                     Margin={Margin}  
                     PageSize={PageSize} 
+                    setMerge={setMerge}
                
                     dispatch={dispatch} 
                     handleConvert={handleConvert}
@@ -185,8 +191,13 @@ export default function JpgToPdfEdit(){
                     </div>
                 </div>
                 </div>
-
-
+                <div className="  absolute z-50  w-full h-full bg-white opacity-65 flex justify-center items-center">
+                    <div className="opacity-100 flex flex-col justify-center items-center gap-3">
+                        <Loader/>
+                        <span>Uploading</span>
+                    </div>
+                </div>
+                
             </div>
             
 
