@@ -2,45 +2,92 @@ import { MdOutlineAddCircle } from "react-icons/md";
 import { HiComputerDesktop } from "react-icons/hi2";
 import { FaDropbox } from "react-icons/fa6";
 import { FaGoogleDrive } from "react-icons/fa";
+import axios from "axios";
 import { useState,useRef,useEffect } from "react";
-export function AddImg({setArray,array}){
+import { useDispatch } from "react-redux";
+import { setItems } from "../jpgtopdfSlicer";
+import { useNavigate } from "react-router-dom";
+
+export function AddImg({setArray,array,setLoading}){
     const [Opacity,setOpacity]=useState(false)
     const inputref = useRef(null)
     const [Imgfile,setImgfile]= useState(null)
-    function handleInputEvent(Event){
+
+
+    const formData = new FormData();
+    const globDispatch = useDispatch();
+    const navigate = useNavigate()
+    // function handleInputEvent(Event){
       
-      const Imagefile= Object.entries(Event.target.files)
+    //   const Imagefile= Object.entries(Event.target.files)
       
-      const finalItems = Object.entries(Imagefile)
+    //   const finalItems = Object.entries(Imagefile)
       
-      const empty = []
+    //   const empty = []
 
-      let len = array.reduce((max, obj) => {
-        return obj.id > max ? obj.id+1 : max+1;
-      }, -Infinity);
+    //   let len = array.reduce((max, obj) => {
+    //     return obj.id > max ? obj.id+1 : max+1;
+    //   }, -Infinity);
 
 
-      finalItems.forEach((element,i )=> {
+    //   finalItems.forEach((element,i )=> {
 
-        if(array.length === 0){
-          let img_name = element[1][1].name.split(".")[0]
+    //     if(array.length === 0){
+    //       let img_name = element[1][1].name.split(".")[0]
      
-          let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
-          empty.push(content)
-        }
-        if (array.length >0){
-          let img_name = element[1][1].name.split(".")[0]
+    //       let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
+    //       empty.push(content)
+    //     }
+    //     if (array.length >0){
+    //       let img_name = element[1][1].name.split(".")[0]
           
 
-          let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
-          empty.push(content)
-          len+=1;
-        }
+    //       let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
+    //       empty.push(content)
+    //       len+=1;
+    //     }
         
-      });
-      setArray((e)=>[...e,...empty])
-      inputref.current.value = ""
+    //   });
+    //   setArray((e)=>[...e,...empty])
+      // inputref.current.value = ""
+  
+    // }
+    function handleInputEvent(Event){
+            const Imagefile= Object.entries(Event.target.files)
+      
+            const finalItems = Object.entries(Imagefile)
+            finalItems.forEach((element,i )=> {
+              formData.append(`file[${i}]`,element[1][1])
+              
+            });
+            inputref.current.value = ""
+            async function uploadFile(formData){
+
+              try{
+                  setLoading(true)
+                  const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/v1/",formData,{  
+                      headers: {  
+                       'Content-Type': 'multipart/form-data',  
+                      },  
+                     
+              })
+                  // console.log(response.data)
+
+                  setLoading(false)
+                  globDispatch(setItems(response.data))
+
+                
+              }catch(error){
+                  console.log(error)
+                  setLoading(false)
+              }
+  
+          }
+          uploadFile(formData)
+      
     }
+
+
     function handleMouseMove(){
         setOpacity((e)=>!e)
         
@@ -64,7 +111,7 @@ export function AddImg({setArray,array}){
 
                 </div>
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44" >
-                <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="dropbox" />
+                <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" />
                 <span className="min-[55px]:text-sm min-[600px]:text-md ">Drive</span>
 
 

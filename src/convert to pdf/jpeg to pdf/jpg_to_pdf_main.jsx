@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import DashboardEdit from "./DashboardEdit";
 import { AddImg } from "./Addimg/addimg";
 import "./style/index.css"
@@ -8,7 +8,9 @@ import { DashboardNavMobRes } from "./navigation/Dashboard/DashboardNavMobRes";
 import axios from "axios";
 import { MobPopup } from "./navigation/mobileRes/MobPopup";
 import Loader from "../../Loader/Loader";
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { setItems } from "./jpgtopdfSlicer";
 
 export default function JpgToPdfEdit(){
     function reducer(state,action){
@@ -55,10 +57,19 @@ export default function JpgToPdfEdit(){
     const [stateOrientation,Orientation_dispatch]=useReducer(Margin_reducer,"port")
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
     const [Merge,setMerge]=useState(false)
-    
+    const [isLoading,setLoading]=useState(false)
+    const items = useSelector((state) => state.items.items);
+
+
+
+    console.log(items)
     const [array, setArray] = useState([]);
-    console.log(Merge)
-  
+    const globDispatch = useDispatch()
+    useEffect(()=>{
+        globDispatch(setItems(array))
+
+    },[array])
+    const navigate = useNavigate()
     const formData = new FormData();
     
 
@@ -85,6 +96,7 @@ export default function JpgToPdfEdit(){
         async function ConvertPdf(formData){
 
             try{
+                setLoading(true)
                 const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/tryone/",formData,{  
                     headers: {  
                      'Content-Type': 'multipart/form-data',  
@@ -92,8 +104,11 @@ export default function JpgToPdfEdit(){
                    
             })
                 console.log(response)
+                setLoading(false)
+                navigate("jpg-to-pdf/edit-page/download/")
             }catch(error){
                 console.log(error)
+                setLoading(false)
             }
 
         }
@@ -174,6 +189,7 @@ export default function JpgToPdfEdit(){
                 <AddImg 
                 setArray={setArray}
                 array={array}
+                setLoading = {setLoading}
                 />
 
                 <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
@@ -191,12 +207,15 @@ export default function JpgToPdfEdit(){
                     </div>
                 </div>
                 </div>
-                <div className="  absolute z-50  w-full h-full bg-white opacity-65 flex justify-center items-center">
+                {
+
+                isLoading&&<div className="  absolute z-50  w-full h-full bg-white opacity-80 flex justify-center items-center">
                     <div className="opacity-100 flex flex-col justify-center items-center gap-3">
                         <Loader/>
                         <span>Uploading</span>
                     </div>
                 </div>
+                }
                 
             </div>
             
