@@ -38,6 +38,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
         const items = Array.from(listRef.current.children);
         const draggingIndex = items.indexOf(draggingItem);
         const dropIndex = items.indexOf(dropTarget);
+        console.log(draggingIndex,dropIndex)
 
         setArray(ArrangedList(array,draggingIndex,dropIndex));
       }

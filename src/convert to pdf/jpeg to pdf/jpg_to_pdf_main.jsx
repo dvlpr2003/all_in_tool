@@ -191,13 +191,13 @@ export default function JpgToPdfEdit(){
                     </div>
                 </div>
                 </div>
-                <div className="  absolute z-50  w-full h-full bg-white opacity-65 flex justify-center items-center">
+                {/* <div className="  absolute z-50  w-full h-full bg-white opacity-65 flex justify-center items-center">
                     <div className="opacity-100 flex flex-col justify-center items-center gap-3">
                         <Loader/>
                         <span>Uploading</span>
                     </div>
                 </div>
-                
+                 */}
             </div>
             
 
