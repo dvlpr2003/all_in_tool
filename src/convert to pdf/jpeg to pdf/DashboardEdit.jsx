@@ -1,15 +1,32 @@
-import { useEffect,useRef} from "react";
+import { useEffect,useRef, useState} from "react";
 import { ArrangedList } from "./utils/process";
 import "./style/index.css"
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { MdOutlineRotateLeft } from "react-icons/md";
 import { MdOutlineRotateRight } from "react-icons/md";
 
-export default function DashboardEdit({stateMargin,array,setArray,stateOrientation,statePageSz}) {
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import {rotateItems,removeItem,ListItems} from "../jpeg to pdf/jpgtopdfSlicer"
+
+
+export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}) {
+  const [array,setArray]=useState([])
 
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
   const placeholderRef = useRef(null);
+  const globalDispatch = useDispatch()
+
+  const items = useSelector((state) => state.items.items);
+  
+  useEffect(()=>{
+    setArray([...items])
+
+
+  },[items]);
+
+
   useEffect(() => {
     const listItems = listRef.current.querySelectorAll('.draggable');
 
@@ -41,6 +58,8 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
         console.log(draggingIndex,dropIndex)
 
         setArray(ArrangedList(array,draggingIndex,dropIndex));
+        // globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
+
       }
     };
 
@@ -86,6 +105,8 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
         setArray(ArrangedList(array,draggingIndex,dropIndex));
+        // globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
+
       }
     };
 
@@ -130,14 +151,17 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       {array.map((item,index) => (
         
         <li key={item.id} className={`draggable bg-inherit  flex flex-col justify-center items-center   relative group  `} draggable="true" >
-          <ImageOptions id ={item.id} setArray={setArray} array={array} index={index}/>
-          
+          <ImageOptions id ={item.id} setArray={setArray} array={array} index={index} items={items} globalDispatch={globalDispatch}/>
           <div 
+   
           className={`prevent bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center     overflow-hidden shadow-md`}>
-            <img src={URL.createObjectURL(item.image_file)} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 !== 0 ?".85":"1"}`}} />
+            <img src={`https://d3jq6id3uwlfp0.cloudfront.net/${item.img_path}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 !== 0 ?".85":"1"}`}} />
             </div>
-            <div className="text-black  mt-2 bg-transparent overflow-hidden">{item.name.slice(0,16)}</div>
+            <div className="text-black  mt-2 bg-transparent overflow-hidden">{item.img_name.slice(0,16)}</div>
+
+          
         </li>
+  
       ))}
     </ul>
   );
@@ -145,29 +169,40 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
 
-function ImageOptions({id,setArray,array,index}){
+function ImageOptions({id,items,index,globalDispatch}){
+  
   const handleEvent= ()=>{
-    const Filtered_array = array.filter((e)=>e.id !==id);
-    setArray(Filtered_array)
+    // const Filtered_array = array.filter((e)=>e.id !==id);
+    globalDispatch(removeItem({id:id}))
+    // setArray(Filtered_array)
   }
   const handleRotateFor = ()=>{
-    if ( array[index].rotate ===4){
-      array[index].rotate =0
-      setArray((e)=>[...e])
+    if ( items[index].rotate ===4){
+      // array[index].rotate =0
+      globalDispatch(rotateItems({id:id,rotate:0}))
+      // setArray((e)=>[...e])
 
     }else{
-    array[index].rotate =array[index].rotate +1
-    setArray((e)=>[...e])
+    // array[index].rotate =array[index].rotate +1
+    
+    globalDispatch(rotateItems({id:id,rotate:items[index].rotate+1}))
+
+    // setArray((e)=>[...e])
     }
   }
   const handleRotateBack = ()=>{
-    if ( array[index].rotate === -4){
-      array[index].rotate = 0
-      setArray((e)=>[...e])
+    if ( items[index].rotate === -4){
+
+      // array[index].rotate = 0
+      globalDispatch(rotateItems({id:id,rotate:0}))
+
+      // setArray((e)=>[...e])
 
     }else{
-    array[index].rotate =array[index].rotate -1
-    setArray((e)=>[...e])
+    // array[index].rotate =array[index].rotate -1
+    globalDispatch(rotateItems({id:id,rotate:items[index].rotate-1}))
+
+    // setArray((e)=>[...e])
     }
   }
 

@@ -12,19 +12,23 @@ function App(){
         element:(<AppLayout/>),
         children:[
           {
-            // element:(<DownloadPage/>),
+            
             element:(<JpgToPdfEdit/>),
-
-
             path:"/"
           },
+
           {
             element:(<AddImgHome/>),
-            path:"jpg-to-pdf/",
+            path:"add-img/",
           },
+
           {
             element:(<JpgToPdfEdit/>),
             path:"jpg-to-pdf/edit-page/",
+          },
+          {
+            element:(<DownloadPage/>),
+            path:"jpg-to-pdf/edit-page/download/"
           }
 
 
