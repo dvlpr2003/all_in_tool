@@ -86,6 +86,7 @@ export default function JpgToPdfEdit(){
         formData.append("orientation",stateOrientation)
         formData.delete("merge")
         formData.append("merge",Merge)
+        
 
         // items.forEach((element,i)=>{
         //     formData.delete(`files[${i}]`)
