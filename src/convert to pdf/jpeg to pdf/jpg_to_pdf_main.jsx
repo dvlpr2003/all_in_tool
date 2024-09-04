@@ -62,7 +62,7 @@ export default function JpgToPdfEdit(){
 
 
 
-    console.log(items)
+
     const [array, setArray] = useState([]);
     const globDispatch = useDispatch()
     useEffect(()=>{
@@ -75,9 +75,9 @@ export default function JpgToPdfEdit(){
 
 
     function handleConvert(){
-        const image_file = array.map((e)=>e.image_file)
-        formData.delete("array")
-        formData.append("array",JSON.stringify(array))
+
+        formData.delete("items")
+        formData.append("items",JSON.stringify(items))
         formData.delete("margin")
         formData.append("margin",stateMargin)
         formData.delete("page-size")
@@ -87,11 +87,11 @@ export default function JpgToPdfEdit(){
         formData.delete("merge")
         formData.append("merge",Merge)
 
-        image_file.forEach((element,i)=>{
-            formData.delete(`image[${i}]`)
+        // items.forEach((element,i)=>{
+        //     formData.delete(`files[${i}]`)
 
-            formData.append(`image[${i}]`,element)
-        })
+        //     formData.append(`files[${i}]`,element)
+        // })
         
         async function ConvertPdf(formData){
 

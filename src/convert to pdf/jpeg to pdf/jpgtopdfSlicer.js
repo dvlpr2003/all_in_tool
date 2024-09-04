@@ -8,9 +8,9 @@ const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
-    ListItems: (state, action) => {
-      state.items = action.payload; // Sets the array to a new array
-    },
+    // ListItems: (state, action) => {
+    //   state.items = action.payload; // Sets the array to a new array
+    // },
 
     setItems: (state, action) => {
       state.items = [...state.items,...action.payload]; // Sets the array to a new array

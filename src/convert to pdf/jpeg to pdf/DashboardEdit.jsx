@@ -1,4 +1,4 @@
-import { useEffect,useRef} from "react";
+import { useEffect,useRef, useState} from "react";
 import { ArrangedList } from "./utils/process";
 import "./style/index.css"
 import { MdOutlineDeleteForever } from "react-icons/md";
@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import {rotateItems,removeItem,ListItems} from "../jpeg to pdf/jpgtopdfSlicer"
 
 
-export default function DashboardEdit({stateMargin,array,setArray,stateOrientation,statePageSz}) {
-
+export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}) {
+  const [array,setArray]=useState([])
 
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
@@ -19,6 +19,13 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
   const globalDispatch = useDispatch()
 
   const items = useSelector((state) => state.items.items);
+  
+  useEffect(()=>{
+    setArray([...items])
+
+
+  },[items]);
+
 
   useEffect(() => {
     const listItems = listRef.current.querySelectorAll('.draggable');
@@ -49,8 +56,8 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
         const draggingIndex = items.indexOf(draggingItem);
         const dropIndex = items.indexOf(dropTarget);
 
-        // setArray(ArrangedList(array,draggingIndex,dropIndex));
-        globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
+        setArray(ArrangedList(array,draggingIndex,dropIndex));
+        // globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
 
       }
     };
@@ -96,8 +103,8 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
 
-        // setArray(ArrangedList(array,draggingIndex,dropIndex));
-        globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
+        setArray(ArrangedList(array,draggingIndex,dropIndex));
+        // globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
 
       }
     };
@@ -135,12 +142,12 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
       });
       sortableList.removeEventListener('dragover', handleDragOver);
     };
-  }, [globalDispatch,items]);
+  }, [array,setArray]);
 
 
   return (
     <ul ref={listRef} className="flex  gap-x-9 gap-y-10 flex-wrap px-20 py-4  justify-center   overflow-y-scroll overflow-x-hidden" >
-      {items.map((item,index) => (
+      {array.map((item,index) => (
         
         <li key={item.id} className={`draggable bg-inherit  flex flex-col justify-center items-center   relative group  `} draggable="true" >
           <ImageOptions id ={item.id} setArray={setArray} array={array} index={index} items={items} globalDispatch={globalDispatch}/>
@@ -161,7 +168,7 @@ export default function DashboardEdit({stateMargin,array,setArray,stateOrientati
 
 
 
-function ImageOptions({id,setArray,array,items,index,globalDispatch}){
+function ImageOptions({id,items,index,globalDispatch}){
   
   const handleEvent= ()=>{
     // const Filtered_array = array.filter((e)=>e.id !==id);
