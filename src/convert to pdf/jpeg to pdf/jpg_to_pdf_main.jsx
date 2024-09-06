@@ -8,9 +8,12 @@ import { DashboardNavMobRes } from "./navigation/Dashboard/DashboardNavMobRes";
 import axios from "axios";
 import { MobPopup } from "./navigation/mobileRes/MobPopup";
 import Loader from "../../Loader/Loader";
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { setItems } from "./jpgtopdfSlicer";
 
 export default function JpgToPdfEdit(){
+    
     function reducer(state,action){
 
     
@@ -93,6 +96,8 @@ export default function JpgToPdfEdit(){
                    
             })
                 console.log(response)
+                setLoading(false)
+                navigate("jpg-to-pdf/edit-page/download/")
             }catch(error){
                 console.log(error)
             }
