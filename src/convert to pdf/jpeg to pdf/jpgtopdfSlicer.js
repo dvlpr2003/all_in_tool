@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: [], // This will be your array
+  items: [], 
+  downloadID:""
+
 };
 
 const itemsSlice = createSlice({
@@ -28,12 +30,16 @@ const itemsSlice = createSlice({
     removeItem: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload.id);
     },
+    setDonwloadID:(state,action)=>{
+      state.downloadID = action.payload
+
+    }
   
   },
 });
 
 // Export actions
-export const {  setItems,rotateItems,removeItem,ListItems } = itemsSlice.actions;
+export const {  setItems,rotateItems,removeItem,ListItems,setDonwloadID } = itemsSlice.actions;
 
 // Export the reducer to be included in the store
 export default itemsSlice.reducer;
