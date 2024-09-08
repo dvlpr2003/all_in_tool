@@ -15,7 +15,7 @@ export function Options({array,Orientation,Margin,PageSize,setMargin,setOrientat
     return(
         <>
          {/*margin optioins */}
-         <div className={`absolute border bg-white   w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+         <div className={`absolute border bg-white   w-52 h-auto left-5 top-5 ${Margin?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-50`}>
                     <div 
                     className={`border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-blue-600 shadow-md cursor-pointer ${stateMargin === ""? " border-2 border-blue-600":""}` }
                     onClick={()=>{Margin_dispatch({"type":""});setMargin(false)}}
@@ -38,7 +38,7 @@ export function Options({array,Orientation,Margin,PageSize,setMargin,setOrientat
                     </div>
                 </div>
             {/* orientaion options */}
-            <div className={`absolute border  bg-white  w-52 h-auto left-4 top-16 ${Orientation?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+            <div className={`absolute border  bg-white  w-52 h-auto left-4 top-16 ${Orientation?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-50`}>
                     <div 
                     className={`border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-blue-600 shadow-md cursor-pointer ${stateOrientation === "land"? " border-2 border-blue-600":""}`}
                     onClick={()=>{Orientation_dispatch({"type":"land"});setOrientation(false)}}
@@ -55,7 +55,7 @@ export function Options({array,Orientation,Margin,PageSize,setMargin,setOrientat
                     </div>
                 </div>
                 {/* page size options*/}
-                <div className={`absolute border   bg-white w-52 h-auto left-4 top-24 ${PageSize?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-40`}>
+                <div className={`absolute border   bg-white w-52 h-auto left-4 top-24 ${PageSize?"lg:flex":"hidden"} flex-col justify-center gap-5 px-3 py-3 rounded-md min-[55px]:hidden z-50`}>
                     <div 
                     className={`border w-full h-20 flex flex-col justify-center items-center rounded-xl group hover:border-2 hover:border-blue-600 shadow-md cursor-pointer ${statePageSz === "auto"? " border-2 border-blue-600":""}`}
                     onClick={()=>{PageSz_dispatch({"type":"auto"});setPageSize(false)}}

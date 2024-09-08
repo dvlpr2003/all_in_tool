@@ -10,7 +10,7 @@ import { MobPopup } from "./navigation/mobileRes/MobPopup";
 import Loader from "../../Loader/Loader";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setItems,setDonwloadID } from "./jpgtopdfSlicer";
+import { setItems,setDonwloadID,MarginSet,MergeSet,OrientationSet,PgSet } from "./jpgtopdfSlicer";
 
 export default function JpgToPdfEdit(){
     
@@ -59,19 +59,32 @@ export default function JpgToPdfEdit(){
     const [statePageSz,PageSz_dispatch]=useReducer(Margin_reducer,"")
     const [Merge,setMerge]=useState(false)
     const [isLoading,setLoading]=useState(false)
-    const items = useSelector((state) => state.items.items);
-
-
-
-
-    const [array, setArray] = useState([]);
+    
+    
+    
     const globDispatch = useDispatch()
-    useEffect(()=>{
-        globDispatch(setItems(array))
 
-    },[array])
+    useEffect(()=>{
+        globDispatch(MarginSet(stateMargin))
+        globDispatch(MergeSet(Merge))
+        globDispatch(OrientationSet(stateOrientation))
+        globDispatch(PgSet(statePageSz))
+        
+        
+        
+    },[stateMargin,stateOrientation,statePageSz,Merge])
+    const items = useSelector((state) => state.items.items);
+    const marginDispatch = useSelector((state)=> state.items.margin)
+    const orientationDispatch = useSelector((state)=> state.items.orientation)
+    const Page_size_Dispatch = useSelector((state)=>state.items.page_size)
+    // const mergeDispatch = useSelector((state)=>state.items.merge)
+    
+
+
+
     const navigate = useNavigate()
     const formData = new FormData();
+
     
 
 
@@ -159,11 +172,10 @@ export default function JpgToPdfEdit(){
                 <div className=" w-full h-full padd flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
 
                 <Options 
-                setArray={setArray}
-                array={array}
-                stateMargin={stateMargin}
-                stateOrientation={stateOrientation}
-                statePageSz ={statePageSz}
+  
+                stateMargin={marginDispatch}
+                stateOrientation={orientationDispatch}
+                statePageSz ={Page_size_Dispatch}
                 Orientation={Orientation} 
                 PageSize={PageSize}
                 Margin={Margin} 
@@ -185,14 +197,14 @@ export default function JpgToPdfEdit(){
                          Margin_dispatch={Margin_dispatch} 
                          Orientation_dispatch={Orientation_dispatch} 
                          PageSz_dispatch={PageSz_dispatch}
-                         stateMargin={stateMargin}
-                         stateOrientation={stateOrientation}
-                         statePageSz={statePageSz}
+                         stateMargin={marginDispatch}
+                         stateOrientation={orientationDispatch}
+                         statePageSz={Page_size_Dispatch}
                 />
 
                 <AddImg 
-                setArray={setArray}
-                array={array}
+         
+ 
                 setLoading = {setLoading}
                 />
 
@@ -204,8 +216,7 @@ export default function JpgToPdfEdit(){
  
                     stateOrientation={stateOrientation} 
                     statePageSz={statePageSz} 
-                    setArray={setArray} 
-                    array={array}
+
                     />
                     
                     </div>
@@ -213,10 +224,21 @@ export default function JpgToPdfEdit(){
                 </div>
                 {
 
-                isLoading&&<div className="  absolute z-50  w-full h-full bg-white opacity-80 flex justify-center items-center">
-                    <div className="opacity-100 flex flex-col justify-center items-center gap-3">
+                isLoading&&<div className="  absolute z-50  w-full h-full bg-white opacity-95 flex justify-center items-center">
+                    <div className="opacity-100 flex flex-col justify-center items-center ">
+
+                        <div className="flex flex-col justify-center items-center gap-3">
                         <Loader/>
                         <span>Uploading</span>
+
+                        </div>
+                        {/* <div className=" border border-red-600 w-96 h-28 rounded-xl flex justify-center items-center">
+                            <span className="text-red-600 text-base">Something went wrong</span>
+
+                        </div> */}
+
+
+
                     </div>
                 </div>
                 }

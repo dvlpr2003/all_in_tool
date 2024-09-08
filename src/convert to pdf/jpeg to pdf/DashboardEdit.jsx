@@ -11,17 +11,20 @@ import {rotateItems,removeItem,ListItems} from "../jpeg to pdf/jpgtopdfSlicer"
 
 
 export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}) {
-  const [array,setArray]=useState([])
-
+  
   const listRef = useRef(null);
   const draggingItemRef = useRef(null);
   const placeholderRef = useRef(null);
   const globalDispatch = useDispatch()
-
+  
   const items = useSelector((state) => state.items.items);
+  const [array,setArray]=useState([...items])
   
   useEffect(()=>{
-    setArray([...items])
+  //   setArray([...items])
+  if (JSON.stringify(items) !== JSON.stringify(array)) {
+    setArray([...items]); 
+  }
 
 
   },[items]);
@@ -55,7 +58,7 @@ export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}
         const items = Array.from(listRef.current.children);
         const draggingIndex = items.indexOf(draggingItem);
         const dropIndex = items.indexOf(dropTarget);
-        console.log(draggingIndex,dropIndex)
+   
 
         setArray(ArrangedList(array,draggingIndex,dropIndex));
         // globalDispatch(ListItems(ArrangedList(array,draggingIndex,dropIndex)))
@@ -143,7 +146,17 @@ export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}
       });
       sortableList.removeEventListener('dragover', handleDragOver);
     };
+
+    
   }, [array,setArray]);
+
+  useEffect(()=>{
+    globalDispatch(ListItems(array))
+
+
+  },[array])
+
+
 
 
   return (
