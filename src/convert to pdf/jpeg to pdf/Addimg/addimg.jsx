@@ -96,23 +96,23 @@ export function AddImg({setArray,array,setLoading}){
         
             <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
               <div className=" w-auto h-auto  flex gap-2">
-                <label htmlFor = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 ">
+                <label htmlFor = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md">
 
                 <HiComputerDesktop className="min-[55px]:text-lg min-[600px]:text-2xl text-gray-600"/>
-                <span className="min-[55px]:text-sm min-[600px]:text-md">Computer</span>
+                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Computer</span>
                 <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple/>
                   
                 </label>
-                <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44" >
+                <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
                 <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" />
-                <span className="min-[55px]:text-sm min-[600px]:text-md ">Dropbox</span>
+                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Dropbox</span>
 
 
 
                 </div>
-                <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44" >
+                <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
                 <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" />
-                <span className="min-[55px]:text-sm min-[600px]:text-md ">Drive</span>
+                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
 
 
 
