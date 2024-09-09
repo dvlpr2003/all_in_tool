@@ -122,7 +122,7 @@ export default function JpgToPdfEdit(){
                 globDispatch(setDonwloadID(response.data["id"]))
 
                 setLoading(false)
-                navigate("jpg-to-pdf/edit-page/download/")
+                navigate("/jpg-to-pdf/download/")
             }catch(error){
                 console.log(error)
                 setLoading(false)

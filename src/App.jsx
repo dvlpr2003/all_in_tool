@@ -24,11 +24,11 @@ function App(){
 
           {
             element:(<JpgToPdfEdit/>),
-            path:"jpg-to-pdf/edit-page/",
+            path:"jpg-to-pdf/",
           },
           {
             element:(<DownloadPage/>),
-            path:"jpg-to-pdf/edit-page/download/"
+            path:"jpg-to-pdf/download/"
           }
 
 

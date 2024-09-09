@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HiDotsHorizontal } from "react-icons/hi";
 import { VscOpenPreview } from "react-icons/vsc";
 import { AiOutlineMergeCells } from "react-icons/ai";
@@ -11,11 +11,20 @@ import { LuFileEdit } from "react-icons/lu";
 
 import { useSelector } from 'react-redux';
 
-
+import { useNavigate } from 'react-router-dom';
 
 export const DownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate()
     const downloadID = useSelector((state) => state.items.downloadID);
+    useEffect(()=>{
+        if (downloadID === ""){
+            navigate("jpg-to-pdf/")
+
+
+        }
+
+    },[])
     
 
     return (

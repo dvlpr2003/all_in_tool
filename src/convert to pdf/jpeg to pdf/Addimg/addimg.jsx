@@ -100,7 +100,7 @@ export function AddImg({setArray,array,setLoading}){
 
                 <HiComputerDesktop className="min-[55px]:text-lg min-[600px]:text-2xl text-gray-600"/>
                 <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Computer</span>
-                <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple/>
+                <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple accept=".jpg,.jpeg,.png"/>
                   
                 </label>
                 <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
