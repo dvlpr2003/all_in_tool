@@ -5,16 +5,17 @@ export default function AppLayout(){
     const loaction = useLocation()
     return(
         <>
-        {loaction.pathname != "/"?
-        <header className=" flex gap-5 w-full justify-center  absolute top-0 border bg-white z-40">
+       
+        <header className=" flex gap-5 w-full justify-center px-5 fixed border top-0 bg-white z-50 shadow-md">
            <Header/>
            
-        </header>:""
-
-        }
-        <main className="flex justify-center h-full overflow-scroll z-30" >
-            <Outlet/>
+        </header>
+    
+        <main className="flex justify-center min-h-full overflow-scroll z-30 " >
+            <Outlet
+            />
         </main>
+
         </>
     )
 }

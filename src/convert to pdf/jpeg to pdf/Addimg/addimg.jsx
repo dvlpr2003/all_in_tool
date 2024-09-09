@@ -94,7 +94,7 @@ export function AddImg({setArray,array,setLoading}){
     }
     return(
         
-            <div className=" w-auto h-auto absolute top-1 right-0 left-0 z-40 p-2 flex justify-center items-center" >
+            <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
               <div className=" w-auto h-auto  flex gap-2">
                 <label htmlFor = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 ">
 
