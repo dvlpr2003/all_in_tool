@@ -4,11 +4,11 @@ import { FaDropbox } from "react-icons/fa6";
 import { FaGoogleDrive } from "react-icons/fa";
 import axios from "axios";
 import { useState,useRef,useEffect } from "react";
-import { useDispatch } from "react-redux";
-// import { setItems } from "../jpgtopdfSlicer";
+import { useDispatch, useSelector } from "react-redux";
+import {setWordItems} from "../wordtopdfSlicer"
 import { useNavigate } from "react-router-dom";
 
-export function AddImg(){
+export function AddImg({setLoading}){
 
     const inputref = useRef(null)
    
@@ -18,40 +18,43 @@ export function AddImg(){
     const globDispatch = useDispatch();
     const navigate = useNavigate()
 
-    // function handleInputEvent(Event){
-    //         const Imagefile= Object.entries(Event.target.files)
-      
-    //         const finalItems = Object.entries(Imagefile)
-    //         finalItems.forEach((element,i )=> {
-    //           formData.append(`file[${i}]`,element[1][1])
+    function handleInputEvent(Event){
+
+            const WORDfile= Object.entries(Event.target.files)
+           
+            const finalItems = Object.entries(WORDfile)
+           
+            finalItems.forEach((element,i )=> {
+           
+              formData.append(`file[${i}]`,element[1][1])
               
-    //         });
-    //         inputref.current.value = ""
-    //         async function uploadFile(formData){
+            });
+            inputref.current.value = ""
+            async function uploadFile(formData){
 
-    //           try{
-    //               setLoading(true)
-    //               const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/v1/",formData,{  
-    //                   headers: {  
-    //                    'Content-Type': 'multipart/form-data',  
-    //                   },  
+              try{
+                  setLoading(true)
+                  const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/word/v1/",formData,{  
+                      headers: {  
+                       'Content-Type': 'multipart/form-data',  
+                      },  
                      
-    //           })
-    //               // console.log(response.data)
+              })
 
-    //               setLoading(false)
-    //               globDispatch(setItems(response.data))
+                  setLoading(false)
+                  globDispatch(setWordItems(response.data))
 
                 
-    //           }catch(error){
-    //               console.log(error)
-    //               setLoading(false)
-    //           }
+              }catch(error){
+                  console.log(error)
+                  setLoading(false)
+              }
   
-    //       }
-    //       uploadFile(formData)
+          }
+          uploadFile(formData)
       
-    // }
+    }
+
 
 
     // function handleMouseMove(){
@@ -66,7 +69,7 @@ export function AddImg(){
 
                 <HiComputerDesktop className="min-[55px]:text-lg min-[600px]:text-2xl text-gray-600"/>
                 <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Computer</span>
-                <input type="file" className="hidden" id="flupload-com"   ref={inputref} multiple accept=".doc,.docx"/>
+                <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple accept=".doc,.docx"/>
                   
                 </label>
                 <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >

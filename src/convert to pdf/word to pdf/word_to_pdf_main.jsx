@@ -18,7 +18,7 @@ export default function Wordtopdf(){
                 <DashboardNav/>
                 </div> 
                 <div className=" w-full h-full padd flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
-                    <AddImg/>
+                    <AddImg setLoading={setLoading}/>
 
 
                     <div className="w-full h-full flex justify-center overflow-scroll  flex-wrap">
