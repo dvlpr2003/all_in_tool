@@ -4,6 +4,7 @@ import Home from "./UI/Home";
 import JpgToPdfEdit from "./convert to pdf/jpeg to pdf/jpg_to_pdf_main";
 import AddImgHome from "./convert to pdf/jpeg to pdf/Addimg/AddImgHome";
 import { DownloadPage } from "./convert to pdf/jpeg to pdf/Download_page/Download";
+import Wordtopdf from "./convert to pdf/word to pdf/word_to_pdf_main";
 
 function App(){
   const router = createBrowserRouter(
@@ -13,15 +14,9 @@ function App(){
         children:[
           {
             
-            element:(<JpgToPdfEdit/>),
+            element:(<Wordtopdf/>),
             path:"/"
           },
-
-          {
-            element:(<AddImgHome/>),
-            path:"add-img/",
-          },
-
           {
             element:(<JpgToPdfEdit/>),
             path:"jpg-to-pdf/",

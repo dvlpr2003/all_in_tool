@@ -29,7 +29,7 @@ export default function Header(){
       <nav className="container  py-4 mx-auto lg:flex lg:justify-between lg:items-center">
         <div className="flex items-center justify-between">
           <a href="#">
-            <img className="w-auto h-6 sm:h-7" src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ.png" alt="" />
+            <img className="w-auto h-6 sm:h-7" src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ.png" alt="" draggable={false}/>
           </a>
 
           {/* Mobile menu button */}
