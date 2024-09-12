@@ -14,11 +14,13 @@ const wordSlice = createSlice({
 
 
     setWordItems: (state, action) => {
-        console.log(action.payload)
+
       state.WordItems = [...state.WordItems,...action.payload]; // Sets the array to a new array
     },
     removeWordItem: (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+  
+      state.WordItems = state.WordItems.filter(item => item.id !== action.payload);
+      
     },
     setDonwloadID:(state,action)=>{
       state.downloadID = action.payload
@@ -33,7 +35,7 @@ const wordSlice = createSlice({
 });
 
 // Export actions
-export const {  setWordItems,removeItem,setDonwloadID,MergeSet } =wordSlice.actions;
+export const {  setWordItems,removeWordItem,setDonwloadID,MergeSet } =wordSlice.actions;
 
 // Export the reducer to be included in the store
 export default wordSlice.reducer;

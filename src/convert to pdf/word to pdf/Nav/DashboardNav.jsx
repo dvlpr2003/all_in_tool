@@ -6,7 +6,7 @@ import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { HiOutlineUpload } from "react-icons/hi";
 
 
-export function DashboardNav(){
+export function DashboardNav({handleConvert}){
 
     return(
     
@@ -59,7 +59,7 @@ export function DashboardNav(){
             </nav> */}
 
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
-            <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " >
+            <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " onClick={handleConvert} >
             convert to PDF
             <div className="icon">
                 <svg

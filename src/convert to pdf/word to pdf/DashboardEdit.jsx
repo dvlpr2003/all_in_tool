@@ -1,9 +1,14 @@
 import { MdOutlineDeleteForever } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeWordItem } from "./wordtopdfSlicer";
 
 
 export default function DashboardEdit(){
     const wordItems = useSelector((state)=>state.word.WordItems)
+
+    const globDispatch = useDispatch()
+    console.log(wordItems)
+    
 
     return(
         <>
@@ -12,7 +17,7 @@ export default function DashboardEdit(){
             <div className="flex flex-col justify-center items-center" key={e.id}>
             
             <div className="border bg-white  w-44 h-52 p-9 shadow-lg group relative">
-                <WordDelete/>
+                <WordDelete globDispatch = {globDispatch}  id = {e.id}/>
 
                 <div className="w-full h-full border border-gray-300 flex justify-center items-center shadow-md">
                     <img src="https://d3jq6id3uwlfp0.cloudfront.net/utils/word.png" alt=""  className="w-auto h-16" draggable={false}/>
@@ -35,11 +40,16 @@ export default function DashboardEdit(){
 }
 
 
-function WordDelete(){
+function WordDelete({globDispatch,id}){
+    function handleEvent(){
+        
+        globDispatch(removeWordItem(id))
+        
+    }
     return(
         <div className="absolute z-30 w-36 h-8 left-4 right-0 top-0 border border-slate-100 bg-white cursor-pointer  justify-around items-center group-hover:shadow-2xl shadow-2xl hidden group-hover:flex"> 
 
-        <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600" />
+        <MdOutlineDeleteForever className="text-slate-400 text-xl hover:text-red-600" onClick={handleEvent}/>
     
         </div>
     )
