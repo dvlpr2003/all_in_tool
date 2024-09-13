@@ -5,7 +5,7 @@ import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { MobPopup } from "../mobileRes/MobPopup";
 
-export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize,setMargin,setOrientation,setPageSize,Margin_dispatch,Orientation_dispatch,PageSz_dispatch}){
+export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize,setMargin,setOrientation,setPageSize,Margin_dispatch,Orientation_dispatch,PageSz_dispatch,handleConvert}){
     return(
         <>
         <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center bg-white z-0" >
@@ -43,7 +43,7 @@ export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize
 
                 {/* convert */}
                 <div className=" text-gray-500 flex flex-col justify-center items-center gap-2 cursor-pointer">
-                <IoArrowForwardCircleSharp className="text-xl text-blue-600"/>
+                <IoArrowForwardCircleSharp className="text-xl text-blue-600" onClick={handleConvert} />
                 <span className="text-sm">Convert</span>
                 </div>
             </div>

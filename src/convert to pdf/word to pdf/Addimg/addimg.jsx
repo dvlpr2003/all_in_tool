@@ -7,6 +7,8 @@ import { useState,useRef,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {setWordItems} from "../wordtopdfSlicer"
 import { useNavigate } from "react-router-dom";
+import DropboxChooser from 'react-dropbox-chooser';
+
 
 export function AddImg({setLoading}){
 
@@ -72,13 +74,17 @@ export function AddImg({setLoading}){
                 <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple accept=".doc,.docx"/>
                   
                 </label>
+
                 <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
-                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Dropbox</span>
+                <DropboxChooser appKey ={"omvo50s697s13xb"}>
+                <div className="flex flex-col w-auto justify-center items-center">
+                  <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
 
-
-
+                  <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500 ">Dropbox</span>
                 </div>
+                </DropboxChooser>
+                </div>
+
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
                 <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
                 <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>

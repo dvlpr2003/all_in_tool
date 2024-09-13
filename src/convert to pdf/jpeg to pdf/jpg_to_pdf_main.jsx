@@ -167,6 +167,7 @@ export default function JpgToPdfEdit(){
       
                     Orientation_dispatch={Orientation_dispatch} 
                     PageSz_dispatch={PageSz_dispatch}
+                    handleConvert = {handleConvert}
                     />
                     
                 </div>
