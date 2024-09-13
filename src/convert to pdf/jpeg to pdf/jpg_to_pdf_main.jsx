@@ -10,7 +10,7 @@ import { MobPopup } from "./navigation/mobileRes/MobPopup";
 import Loader from "../../Loader/Loader";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { setItems,setDonwloadID,MarginSet,MergeSet,OrientationSet,PgSet } from "./jpgtopdfSlicer";
+import { setDonwloadID,MarginSet,MergeSet,OrientationSet,PgSet } from "./jpgtopdfSlicer";
 
 export default function JpgToPdfEdit(){
     
@@ -109,27 +109,30 @@ export default function JpgToPdfEdit(){
         // })
         
         async function ConvertPdf(formData){
-
+            
+            
             try{
                 setLoading(true)
                 const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/tryone/",formData,{  
                     headers: {  
-                     'Content-Type': 'multipart/form-data',  
+                        'Content-Type': 'multipart/form-data',  
                     },  
-                   
-            })
+                    
+                })
                 
                 globDispatch(setDonwloadID(response.data["id"]))
-
+                
                 setLoading(false)
                 navigate("/jpg-to-pdf/download/")
             }catch(error){
                 console.log(error)
                 setLoading(false)
             }
-
+            
         }
-        ConvertPdf(formData)
+        if (items.length !== 0){
+            ConvertPdf(formData)
+        }
     }
     
     return(

@@ -167,8 +167,8 @@ export default function DashboardEdit({stateMargin,stateOrientation,statePageSz}
           <ImageOptions id ={item.id} setArray={setArray} array={array} index={index} items={items} globalDispatch={globalDispatch}/>
           <div 
    
-          className={`prevent bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center     overflow-hidden shadow-md`}>
-            <img src={`https://d3jq6id3uwlfp0.cloudfront.net/${item.img_path}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle `} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 !== 0 ?".85":"1"}`}} />
+          className={`prevent bg-white ${statePageSz ==="us-letter" && stateOrientation === "port" ?"usletter-port":""}  ${statePageSz ==="us-letter" && stateOrientation === "land" ?"usletter-land":""} ${stateOrientation === "port" ?"img-w-h-port":""}  ${stateOrientation === "land" ?"img-w-h-land":""}  ${stateMargin==="small-m"?"p-2":""} ${stateMargin ==="big-m"?"p-4":""} border flex justify-center items-center     overflow-hidden shadow-md `}>
+            <img src={`https://d3jq6id3uwlfp0.cloudfront.net/${item.img_path}`} alt="" draggable="false" className={`max-w-full max-h-full align-middle bg-transparent`} style={{transform:`rotate(${item.rotate*90}deg)`,scale:`${item.rotate%2 !== 0 ?".85":"1"}`}} />
             </div>
             <div className="text-black  mt-2 bg-transparent overflow-hidden">{item.img_name.slice(0,16)}</div>
 

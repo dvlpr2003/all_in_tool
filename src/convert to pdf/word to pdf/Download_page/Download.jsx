@@ -13,13 +13,13 @@ import { useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 
-export const JpgDownloadPage = ()=>{
+export const WordDownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
-    const downloadID = useSelector((state) => state.items.downloadID);
+    const downloadID = useSelector((state) => state.word.downloadID);
     useEffect(()=>{
         if (downloadID === ""){
-            navigate("jpg-to-pdf/")
+            navigate("word-to-pdf/")
 
 
         }
@@ -29,7 +29,6 @@ export const JpgDownloadPage = ()=>{
 
     return (
       <section className="w-full min-h-screen bg-white flex flex-col pt-40 items-center  px-10">
-
 
         <div className='  h-auto flex flex-col gap-8 justify-center items-center'>
             <span className='w-full flex justify-center'>
@@ -48,11 +47,10 @@ export const JpgDownloadPage = ()=>{
                     </div>
                 </div>
                 {isOpen && (
-                    <div
-                    className={`absolute top-11 z-20 w-72 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl 
+                <div
+                className={`absolute top-11 z-20 w-72 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl 
                     transition ease-out duration-100 transform ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                    >
-                       
+                >
                 <a
                     href="#"
                     className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform  "

@@ -6,30 +6,39 @@ import DashboardEdit from "./DashboardEdit"
 import { DashboardNav } from "./Nav/DashboardNav"
 import "./style/index.css"
 import { useState } from "react"
-import { useSelector } from "react-redux"
-
+import { useDispatch, useSelector } from "react-redux"
+import {setDonwloadID} from "./wordtopdfSlicer"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Wordtopdf(){
     const [isLoading,setLoading]=useState(false)
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
+    const globDispatch = useDispatch()
+    const navigate = useNavigate()
 
     async function handleConvert(){
             formdata.append("items",JSON.stringify(wordItems))
-        try{
-            setLoading(true)
-            const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/convert-word-to-pdf/",formdata,{
-                headers: {  
-                    'Content-Type': 'multipart/form-data',  
-                   }, 
-            });
-            console.log(response.data)
-            setLoading(false)
-        }catch(error){
-            setLoading(false)
-            console.log(error)
-        }
+            if (wordItems.length != 0 ){
+                    
+                try{
+                    setLoading(true)
+                    const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/convert-word-to-pdf/",formdata,{
+                        headers: {  
+                            'Content-Type': 'multipart/form-data',  
+                        }, 
+                    });
+                    console.log(response.data)
+                    globDispatch(setDonwloadID(response.data["id"]))
+                    setLoading(false)
+                    navigate("/word-to-pdf/download")
+                }catch(error){
+                    setLoading(false)
+                    console.log(error)
+                }
+    }
+
 
     }
 
