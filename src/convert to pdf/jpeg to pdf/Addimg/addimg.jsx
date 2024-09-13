@@ -93,6 +93,10 @@ export function AddImg({setArray,array,setLoading}){
         setOpacity((e)=>!e)
         
     }
+    const handleSuccess = (files) => {
+      console.log('Selected file:', files[0]);
+    };
+  
     return(
         
             <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
@@ -106,7 +110,7 @@ export function AddImg({setArray,array,setLoading}){
                 </label>
 
                 <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                <DropboxChooser appKey ={"omvo50s697s13xb"}>
+                <DropboxChooser appKey ={"omvo50s697s13xb"}  success={handleSuccess}>
                 <div className="flex flex-col w-auto justify-center items-center">
                   <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
 
