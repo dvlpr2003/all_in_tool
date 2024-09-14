@@ -107,6 +107,7 @@ export function AddImg({setArray,array,setLoading}){
           console.log(error)
         }
       }
+      uploadDropboxFile()
     };
 
     return(
