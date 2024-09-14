@@ -94,7 +94,7 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      console.log(files[0]["thumbnailLink"]);
+      console.log(files);
     };
 
     return(
