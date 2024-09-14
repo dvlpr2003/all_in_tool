@@ -94,10 +94,19 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      
-      files.forEach((element,i)=>{
-        console.log(element)
-      })
+      formData.append("dropbox-file",JSON.stringify(files))
+      async function uploadDropboxFile(){
+        try{
+          const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
+            headers: {  
+              'Content-Type': 'multipart/form-data',  
+             }, 
+          })
+          console.log(response.data)
+        }catch(error){
+          console.log(error)
+        }
+      }
     };
 
     return(
