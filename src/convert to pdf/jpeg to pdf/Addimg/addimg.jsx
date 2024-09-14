@@ -104,6 +104,7 @@ export function AddImg({setArray,array,setLoading}){
              }, 
           })
           console.log(response.data)
+          globDispatch(setItems(response.data))
         }catch(error){
           console.log(error)
         }
