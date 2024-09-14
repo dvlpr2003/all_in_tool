@@ -19,7 +19,7 @@ export const JpgDownloadPage = ()=>{
     const downloadID = useSelector((state) => state.items.downloadID);
     useEffect(()=>{
         if (downloadID === ""){
-            navigate("jpg-to-pdf/")
+            navigate("/jpg-to-pdf")
 
 
         }
