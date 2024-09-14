@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { setItems } from "../jpgtopdfSlicer";
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
-import GooglePicker from 'react-google-picker';
 
 export function AddImg({setArray,array,setLoading}){
     const [Opacity,setOpacity]=useState(false)
@@ -95,7 +94,7 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      console.log('Selected file:', files[0]);
+      console.log(files[0]["thumbnailLink"]);
     };
 
     return(
@@ -121,22 +120,13 @@ export function AddImg({setArray,array,setLoading}){
                 </div>
                 
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                  <GooglePicker
-                          clientId={'147520737867-bbo44ffprqqh7d76gocir1dt9l79svjc.apps.googleusercontent.com'}
-                          developerKey={'AIzaSyDEJYMiedbP6K7K1pAxcmUeWN0BfMSBxlI'}
-                          scope={['https://www.googleapis.com/auth/drive.file']}
-                          onChange={(data) => console.log('on change:', data)}
-                          onAuthFailed={(data) => console.log('on auth failed:', data)}
-                          multiselect={true}
-                          navHidden={true}
-                          authImmediate={false}
-                          viewId={'DOCS'}>
+
                 <div className="flex flex-col w-auto justify-center items-center">
 
                       <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
                       <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
                 </div>
-                  </GooglePicker>
+       
 
 
 
