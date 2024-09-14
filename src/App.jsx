@@ -20,7 +20,7 @@ function App(){
           },
           {
             element:(<Wordtopdf/>),
-            path:"word-to-pdf/"
+            path:"word-to-pdf"
           },
           {
             element:(<WordDownloadPage/>),
@@ -29,11 +29,11 @@ function App(){
 
           {
             element:(<JpgToPdfEdit/>),
-            path:"jpg-to-pdf/",
+            path:"jpg-to-pdf",
           },
           {
             element:(<JpgDownloadPage/>),
-            path:"jpg-to-pdf/download/"
+            path:"jpg-to-pdf/download"
           }
 
 
