@@ -94,7 +94,9 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      console.log(files);
+      files.forEach((element)=>{
+        console.log(element)
+      })
     };
 
     return(
