@@ -29,7 +29,7 @@ function App(){
 
           {
             element:(<JpgToPdfEdit/>),
-            path:"jpg-to-pdf/",
+            path:"/jpg-to-pdf/",
           },
           {
             element:(<JpgDownloadPage/>),
