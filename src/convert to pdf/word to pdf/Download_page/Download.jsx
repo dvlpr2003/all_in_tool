@@ -19,7 +19,7 @@ export const WordDownloadPage = ()=>{
     const downloadID = useSelector((state) => state.word.downloadID);
     useEffect(()=>{
         if (downloadID === ""){
-            navigate("word-to-pdf/")
+            navigate("/word-to-pdf")
 
 
         }
