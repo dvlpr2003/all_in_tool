@@ -95,14 +95,10 @@ export function AddImg({setArray,array,setLoading}){
     }
     const handleSuccess = (files) => {
       let originalLink = files[0].link;
-      if (originalLink.includes('?dl=0')) {
-        originalLink = originalLink.replace('?dl=0', '?dl=1');
-      } else {
-        originalLink += '?dl=1';
-      }
-      console.log(originalLink)
+      const contentLink = originalLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+      console.log(contentLink)
       formData.delete("dropbox-file")
-      formData.append("dropbox-file",JSON.stringify(originalLink))
+      formData.append("dropbox-file",JSON.stringify(contentLink))
       async function uploadDropboxFile(){
         try{
           const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
