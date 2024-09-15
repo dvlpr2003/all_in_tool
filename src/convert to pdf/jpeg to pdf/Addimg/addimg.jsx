@@ -96,7 +96,7 @@ export function AddImg({setArray,array,setLoading}){
     const handleSuccess = (files) => {
       let originalLink = [];
       files.forEach((element,i)=>{
-        console.log(element)
+        console.log(element.name)
 
       })
       // const contentLink = originalLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
