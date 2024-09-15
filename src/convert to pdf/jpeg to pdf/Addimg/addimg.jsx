@@ -96,17 +96,7 @@ export function AddImg({setArray,array,setLoading}){
     const handleSuccess = (files) => {
 
 
-      files.forEach((element,i)=>{
-        Olink = element.link
-        const contentLink = Olink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
 
-        formData.append(`file[${i}]`,{
-          name:element.name,
-          fileLink:contentLink,
-
-        })
-
-      })
       // console.log(originalLink)
       // const contentLink = originalLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
       // // console.log(contentLink)
