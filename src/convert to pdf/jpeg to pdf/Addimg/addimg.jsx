@@ -94,22 +94,23 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      formData.delete("dropbox-file")
-      formData.append("dropbox-file",JSON.stringify(files))
-      async function uploadDropboxFile(){
-        try{
-          const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
-            headers: {  
-              'Content-Type': 'multipart/form-data',  
-             }, 
-          })
-          console.log(response.data)
-          globDispatch(setItems(response.data))
-        }catch(error){
-          console.log(error)
-        }
-      }
-      uploadDropboxFile()
+      console.log(files[0].link)
+      // formData.delete("dropbox-file")
+      // formData.append("dropbox-file",JSON.stringify(files[0].link))
+      // async function uploadDropboxFile(){
+      //   try{
+      //     const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
+      //       headers: {  
+      //         'Content-Type': 'multipart/form-data',  
+      //        }, 
+      //     })
+      //     console.log(response.data)
+      //     globDispatch(setItems(response.data))
+      //   }catch(error){
+      //     console.log(error)
+      //   }
+      // }
+      // uploadDropboxFile()
     };
 
     return(
