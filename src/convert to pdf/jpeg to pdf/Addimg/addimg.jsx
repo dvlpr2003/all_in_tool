@@ -18,41 +18,7 @@ export function AddImg({setArray,array,setLoading}){
     const formData = new FormData();
     const globDispatch = useDispatch();
     const navigate = useNavigate()
-    // function handleInputEvent(Event){
-      
-    //   const Imagefile= Object.entries(Event.target.files)
-      
-    //   const finalItems = Object.entries(Imagefile)
-      
-    //   const empty = []
 
-    //   let len = array.reduce((max, obj) => {
-    //     return obj.id > max ? obj.id+1 : max+1;
-    //   }, -Infinity);
-
-
-    //   finalItems.forEach((element,i )=> {
-
-    //     if(array.length === 0){
-    //       let img_name = element[1][1].name.split(".")[0]
-     
-    //       let content = {id:i+1,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
-    //       empty.push(content)
-    //     }
-    //     if (array.length >0){
-    //       let img_name = element[1][1].name.split(".")[0]
-          
-
-    //       let content = {id:len,name:img_name,image:element[1][1].name,rotate:0,image_file:element[1][1]}
-    //       empty.push(content)
-    //       len+=1;
-    //     }
-        
-    //   });
-    //   setArray((e)=>[...e,...empty])
-      // inputref.current.value = ""
-  
-    // }
     function handleInputEvent(Event){
             const Imagefile= Object.entries(Event.target.files)
       
@@ -116,7 +82,7 @@ export function AddImg({setArray,array,setLoading}){
               'Content-Type': 'multipart/form-data',  
              }, 
           })
-          console.log(response.data)
+
           globDispatch(setItems(response.data))
           setLoading(false)
         }catch(error){
