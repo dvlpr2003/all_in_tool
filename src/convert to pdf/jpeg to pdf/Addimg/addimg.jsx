@@ -100,7 +100,7 @@ export function AddImg({setArray,array,setLoading}){
       } else {
         originalLink += '?dl=1';
       }
-
+      console.log(originalLink)
       formData.delete("dropbox-file")
       formData.append("dropbox-file",JSON.stringify(originalLink))
       async function uploadDropboxFile(){
