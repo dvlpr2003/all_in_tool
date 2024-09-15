@@ -94,6 +94,10 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
+      files.forEach((element,i )=> {
+        formData.append(`file[${i}]`,element.link)
+        
+      });
 
 
 
