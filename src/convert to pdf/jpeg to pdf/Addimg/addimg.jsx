@@ -104,7 +104,7 @@ export function AddImg({setArray,array,setLoading}){
         })
 
       })
-      console.log(originalLink)
+      // console.log(originalLink)
       // const contentLink = originalLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
       // // console.log(contentLink)
       // formData.delete("dropbox-file")
