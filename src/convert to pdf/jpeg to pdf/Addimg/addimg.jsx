@@ -107,13 +107,10 @@ export function AddImg({setArray,array,setLoading}){
 
 
 
-      // console.log(originalLink)
-      // const contentLink = originalLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-      // // console.log(contentLink)
-      // formData.delete("dropbox-file")
-      // formData.append("dropbox-file",JSON.stringify(contentLink))
+
       async function uploadDropboxFile(){
         try{
+          setLoading(true)
           const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
             headers: {  
               'Content-Type': 'multipart/form-data',  
@@ -121,8 +118,10 @@ export function AddImg({setArray,array,setLoading}){
           })
           console.log(response.data)
           globDispatch(setItems(response.data))
+          setLoading(false)
         }catch(error){
           console.log(error)
+          setLoading(false)
         }
       }
       uploadDropboxFile()
