@@ -94,9 +94,9 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
-      console.log(files[0].link)
+
       formData.delete("dropbox-file")
-      formData.append("dropbox-file",JSON.stringify(files[0].link))
+      formData.append("dropbox-file",JSON.stringify(files[0].thumbnailLink))
       async function uploadDropboxFile(){
         try{
           const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/dropbox/",formData,{
