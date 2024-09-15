@@ -94,6 +94,7 @@ export function AddImg({setArray,array,setLoading}){
         
     }
     const handleSuccess = (files) => {
+      console.log(files[0].link)
       formData.delete("dropbox-file")
       formData.append("dropbox-file",JSON.stringify(files[0].link))
       async function uploadDropboxFile(){
