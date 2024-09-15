@@ -109,6 +109,7 @@ export function AddImg({setArray,array,setLoading}){
                 <DropboxChooser appKey ={"omvo50s697s13xb"}  
                 success={handleSuccess} 
                 multiselect ={true}
+                extensions={['.png', '.jpg', '.jpeg']}
                 >
                 <div className="flex flex-col w-auto justify-center items-center">
                   <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
@@ -126,9 +127,6 @@ export function AddImg({setArray,array,setLoading}){
                       <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
                 </div>
        
-
-
-
                 </div>
 
 

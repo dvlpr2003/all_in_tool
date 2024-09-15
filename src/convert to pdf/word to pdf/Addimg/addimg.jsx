@@ -76,7 +76,11 @@ export function AddImg({setLoading}){
                 </label>
 
                 <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                <DropboxChooser appKey ={"omvo50s697s13xb"}>
+                <DropboxChooser 
+                appKey ={"omvo50s697s13xb"}
+                multiselect={true}
+                extensions={['.png', '.jpg', '.jpeg']}
+                >
                 <div className="flex flex-col w-auto justify-center items-center">
                   <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
 
