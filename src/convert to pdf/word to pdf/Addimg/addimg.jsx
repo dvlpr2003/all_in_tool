@@ -61,8 +61,36 @@ export function AddImg({setLoading}){
       files.forEach((element,i )=> {
         const link = element.link
         const contentLink = link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-        console.log(contentLink)
+        // console.log(contentLink)
+        formData.append(`file[${i}]`,JSON.stringify({
+          name:element.name,
+          file:contentLink,
+        }))
       })
+      inputref.current.value = ""
+      async function uploadFile(formData){
+            try{
+              setLoading(true)
+              const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/v1/",formData,{  
+                  headers: {  
+                  'Content-Type': 'multipart/form-data',  
+                  },  
+                
+          })
+              // console.log(response.data)
+
+              setLoading(false)
+              globDispatch(setItems(response.data))
+
+            
+          }catch(error){
+              console.log(error)
+              setLoading(false)
+          }
+
+      }
+      uploadFile(formData)
+      
     }
 
 

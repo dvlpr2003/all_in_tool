@@ -32,7 +32,7 @@ export function AddImg({setArray,array,setLoading}){
 
               try{
                   setLoading(true)
-                  const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/v1/",formData,{  
+                  const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/word/vi/dropbox/",formData,{  
                       headers: {  
                        'Content-Type': 'multipart/form-data',  
                       },  
