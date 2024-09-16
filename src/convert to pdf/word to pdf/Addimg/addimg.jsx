@@ -56,7 +56,9 @@ export function AddImg({setLoading}){
           uploadFile(formData)
       
     }
-
+    const handleSuccess = (files) => {
+      console.log(files)
+    }
 
 
     // function handleMouseMove(){
@@ -80,6 +82,7 @@ export function AddImg({setLoading}){
                 appKey ={"omvo50s697s13xb"}
                 multiselect={true}
                 extensions={[".doc",".docx"]}
+                success={handleSuccess} 
                 >
                 <div className="flex flex-col w-auto justify-center items-center">
                   <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
