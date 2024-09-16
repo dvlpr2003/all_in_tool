@@ -80,7 +80,7 @@ export function AddImg({setLoading}){
               // console.log(response.data)
 
               setLoading(false)
-              globDispatch(setItems(response.data))
+              globDispatch(setWordItems(response.data))
 
             
           }catch(error){
