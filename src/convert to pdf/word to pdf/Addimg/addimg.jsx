@@ -57,7 +57,12 @@ export function AddImg({setLoading}){
       
     }
     const handleSuccess = (files) => {
-      console.log(files)
+      
+      files.forEach((element,i )=> {
+        const link = element.link
+        const contentLink = link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+        console.log(contentLink)
+      })
     }
 
 
