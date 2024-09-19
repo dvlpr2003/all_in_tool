@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {setWordItems} from "../wordtopdfSlicer"
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
+import GooglePicker from "react-google-picker";
 
 
 export function AddImg({setLoading}){
@@ -98,6 +99,21 @@ export function AddImg({setLoading}){
     //     setOpacity((e)=>!e)
         
     // }
+    const [selectedFiles, setSelectedFiles] = useState([]);
+
+    const handleFileSelection = (data) => {
+      console.log(data)
+    };
+  
+    const handleAuthFailure = (error) => {
+      console.error('Authorization failed:', error);
+    };
+  
+    const handlePickerClose = () => {
+      console.log('Google Picker closed');
+   
+    };
+  
     return(
         
             <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
@@ -126,9 +142,24 @@ export function AddImg({setLoading}){
                 </div>
 
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
+                <GooglePicker
+                                clientId="147520737867-bbo44ffprqqh7d76gocir1dt9l79svjc.apps.googleusercontent.com"
+                                developerKey="AIzaSyDEJYMiedbP6K7K1pAxcmUeWN0BfMSBxlI"
+                                scope={['https://www.googleapis.com/auth/drive.file']}
+                                onChange={handleFileSelection}
+                                onAuthFailed={handleAuthFailure}
+                                onPickerClose={handlePickerClose}
+                                multiselect={true}
+                                navHidden={true}
+                                authImmediate={false}
+                                viewId={'DOCS'}
+                
+                >
+                <div className="flex flex-col w-auto justify-center items-center">
                 <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
                 <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
-
+                </div>
+                </GooglePicker>
 
 
                 </div>

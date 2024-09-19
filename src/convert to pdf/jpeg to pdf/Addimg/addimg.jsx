@@ -1,13 +1,15 @@
 import { MdOutlineAddCircle } from "react-icons/md";
 import { HiComputerDesktop } from "react-icons/hi2";
-import { FaDropbox } from "react-icons/fa6";
-import { FaGoogleDrive } from "react-icons/fa";
+// import { FaDropbox } from "react-icons/fa6";
+// import { FaGoogleDrive } from "react-icons/fa";
+
 import axios from "axios";
 import { useState,useRef,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setItems } from "../jpgtopdfSlicer";
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
+import GooglePicker from "react-google-picker";
 
 export function AddImg({setArray,array,setLoading}){
     const [Opacity,setOpacity]=useState(false)
@@ -93,6 +95,39 @@ export function AddImg({setArray,array,setLoading}){
       uploadDropboxFile()
     };
 
+    
+    const handlePickerResponse = (data) => {
+      console.log(data)
+    //   data.docs.forEach((element,i)=>{
+    //     formData.append(`file[${i}]`,JSON.stringify({
+    //       file_id: element.id
+    //     }))
+
+    //  });
+    //  async function uploadDropboxFile(){
+    //   try{
+    //     setLoading(true)
+    //     const response = await axios.post("http://127.0.0.1:8000/fileUpload/upload/jpg/vi/drive/",formData,{
+    //       headers: {  
+    //         'Content-Type': 'multipart/form-data',  
+    //        }, 
+    //     })
+
+    //     // globDispatch(setItems(response.data))
+    //     console.log(response.data)
+    //     setLoading(false)
+    //   }catch(error){
+    //     console.log(error)
+    //     setLoading(false)
+    //   }
+    // }
+    // uploadDropboxFile()
+
+      
+    };
+
+  
+
     return(
         
             <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
@@ -120,13 +155,26 @@ export function AddImg({setArray,array,setLoading}){
                 </div>
                 
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-
+                <GooglePicker
+                                clientId="147520737867-34ojeprcvpuabeld5hc2eiqcqpoac6u3.apps.googleusercontent.com"
+                                developerKey="AIzaSyBJiBytjllOzanfx6mOusBfxbfk_uVXLgc"
+                                scope={['https://www.googleapis.com/auth/drive.file']}
+                                onChange={handlePickerResponse}
+                                // onAuthFailed={handleAuthFailure}
+                                // onPickerClose={handlePickerClose}
+                                multiselect={true}
+                                navHidden={true}
+                                authImmediate={false}
+                                viewId={'DOCS'}
+                
+                >
                 <div className="flex flex-col w-auto justify-center items-center">
-
-                      <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
-                      <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
+                <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
+                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
                 </div>
-       
+                </GooglePicker>
+
+
                 </div>
 
 
