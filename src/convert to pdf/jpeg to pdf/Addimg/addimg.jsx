@@ -1,9 +1,10 @@
 import { MdOutlineAddCircle } from "react-icons/md";
 import { HiComputerDesktop } from "react-icons/hi2";
-
+// import { FaDropbox } from "react-icons/fa6";
+// import { FaGoogleDrive } from "react-icons/fa";
 
 import axios from "axios";
-import { useRef, } from "react";
+import { useState,useRef,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setItems } from "../jpgtopdfSlicer";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +12,9 @@ import DropboxChooser from 'react-dropbox-chooser';
 
 
 export function AddImg({setArray,array,setLoading}){
-
+    const [Opacity,setOpacity]=useState(false)
     const inputref = useRef(null)
-
+    const [Imgfile,setImgfile]= useState(null)
 
 
     const formData = new FormData();
