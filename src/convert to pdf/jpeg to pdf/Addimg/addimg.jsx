@@ -4,7 +4,7 @@ import { HiComputerDesktop } from "react-icons/hi2";
 // import { FaGoogleDrive } from "react-icons/fa";
 
 import axios from "axios";
-import { useState,useRef,useEffect } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setItems } from "../jpgtopdfSlicer";
 import { useNavigate } from "react-router-dom";
@@ -12,9 +12,9 @@ import DropboxChooser from 'react-dropbox-chooser';
 
 
 export function AddImg({setArray,array,setLoading}){
-    const [Opacity,setOpacity]=useState(false)
+
     const inputref = useRef(null)
-    const [Imgfile,setImgfile]= useState(null)
+
 
 
     const formData = new FormData();
@@ -57,10 +57,7 @@ export function AddImg({setArray,array,setLoading}){
     }
 
 
-    function handleMouseMove(){
-        setOpacity((e)=>!e)
-        
-    }
+
     const handleSuccess = (files) => {
       files.forEach((element,i )=> {
         const link = element.link
