@@ -156,9 +156,9 @@ export function AddImg({setArray,array,setLoading}){
                 
                 <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
                 <GooglePicker
-                                clientId="147520737867-k0iibr11uo33pqi1var9mqjdl0gnk5fu.apps.googleusercontent.com"
-                                developerKey="AIzaSyC0XQlVkyafCGKNyqu8JsD2hylBKfMgXrI"
-                                scope={['https://www.googleapis.com/auth/drive.file']}
+                                clientId="647695804565-oc2pd96obt71sb7dtm331tvt5gep6kme.apps.googleusercontent.com"
+                                developerKey="AIzaSyAA0YzuEdiuYJtcy9PD36y1UqaC_wH3GDY"
+                                scope={['https://www.googleapis.com/auth/drive.readonly']}
                                 onChange={handlePickerResponse}
                                 // onAuthFailed={handleAuthFailure}
                                 // onPickerClose={handlePickerClose}
