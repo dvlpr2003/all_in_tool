@@ -9,6 +9,8 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {setDonwloadID} from "./wordtopdfSlicer"
 import { useNavigate } from "react-router-dom"
+import { DashboardNavMobRes } from "./Nav/DashboardNavMobRes"
+
 
 
 export default function Wordtopdf(){
@@ -48,6 +50,8 @@ export default function Wordtopdf(){
             <div className=" w-full max-w-screen-2xl h-auto bg-inherit flex min-[55px]:flex-col lg:flex-row relative z-0 mt-0">
                 <div className="lg:h-full min-[55px]:order-2   z-30 lg:order-1 min-[55px]:mt-auto min-[55px]:w-full lg:w-auto  "> 
                 <DashboardNav handleConvert={handleConvert}/>
+                <DashboardNavMobRes handleConvert = {handleConvert}/>
+                
                 </div> 
                 <div className=" w-full h-full padd flex relative min-[55px]:order-1 lg:order-2 bg-slate-50 flex-wrap overflow-scroll">
                     <AddImg setLoading={setLoading}/>
