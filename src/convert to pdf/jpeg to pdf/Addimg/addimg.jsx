@@ -1,7 +1,5 @@
-import { MdOutlineAddCircle } from "react-icons/md";
+
 import { HiComputerDesktop } from "react-icons/hi2";
-// import { FaDropbox } from "react-icons/fa6";
-// import { FaGoogleDrive } from "react-icons/fa";
 
 import axios from "axios";
 import { useRef } from "react";
