@@ -1,12 +1,5 @@
 import { useState,useEffect } from "react"
-import { MdKeyboardArrowDown } from "react-icons/md";
-import IconMenu from "./MenuIcon";
-import { ProductDt } from "./Submenu";
-import SideMenu from "./side menu/SideMenu";
 export default function Header(){
-    const [enter,setEnter]=useState(false)
-    const [Tool,setTool]=useState(false)
-    const [MenuIcon,setMenuIcon]=useState(false)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
     const [isOpen,setIsOpen] = useState(false)
 // screen innerWidth listener useEffect function

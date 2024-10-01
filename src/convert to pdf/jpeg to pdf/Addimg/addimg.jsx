@@ -38,7 +38,7 @@ export function AddImg({setArray,array,setLoading}){
                       },  
                      
               })
-                  // console.log(response.data)
+               
 
                   setLoading(false)
                   globDispatch(setItems(response.data))

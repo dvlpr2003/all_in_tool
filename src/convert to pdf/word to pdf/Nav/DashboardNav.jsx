@@ -19,45 +19,6 @@ export function DashboardNav({handleConvert}){
 
 
             <div className="flex flex-col justify-between flex-1 mt-6 ">
-            {/* <nav className="px-4">
-                <div
-                className={`flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg ${Margin?"bg-gray-100 text-gray-700":""}  hover:bg-gray-100  hover:text-gray-700 cursor-pointer`}
-                onClick={()=>{dispatch({"type":"margin"})}}
-                >
-                <PiSquareLogoDuotone className={`text-xl font-bold`}/>
-
-                <span className="mx-4 font-medium">Margin</span>
-                </div>
-
-                <div
-                className={`flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg ${Orientation?"bg-gray-100 text-gray-700":""}  hover:bg-gray-100   hover:text-gray-700 cursor-pointer`}
-                onClick={()=>{dispatch({"type":"orientation"})}}
-                >
-                <HiOutlineRectangleGroup className={`text-2xl font-bold`}/>
-
-                <span className="mx-4 font-medium">Page Orientation</span>
-                </div>
-
-                <div
-                className={`flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg ${PageSize?"bg-gray-100 text-gray-700":""}  hover:bg-gray-100  hover:text-gray-700 cursor-pointer`}
-                onClick={()=>{dispatch({"type":"page size"})}}
-                >
-                <MdOutlineDocumentScanner className={`text-2xl font-bold`}/>
-
-
-                <span className="mx-4 font-medium">Page size</span>
-                </div>
-
-                <label
-                className="flex items-center px-4 py-2 mt-5 text-gray-500 transition-colors duration-300 transform rounded-lg    cursor-pointer"
-                htmlFor='check'
-                >
-                <input type="checkbox"  className="w-8 h-8 ml-1" id="check" onChange={()=>setMerge((e)=>!e)}/>
-
-                <span className="mx-4 font-medium ">Merge all images in one PDF file</span>
-                </label>
-            </nav> */}
-
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
             <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " onClick={handleConvert} >
             convert to PDF

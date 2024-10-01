@@ -13,7 +13,6 @@ export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch
 
             <aside className={`min-[55px]:hidden lg:flex flex-col w-72 h-screen  py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l`}>
             <div href="#" className="mx-auto border w-full flex justify-center items-center border-t-transparent border-x-transparent mt-16">
-            {/* <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/educ.png" alt="Logo" /> */}
             <span className=" text-gray-500 text-2xl mb-3">JPEG TO PDF</span>
             </div>
 

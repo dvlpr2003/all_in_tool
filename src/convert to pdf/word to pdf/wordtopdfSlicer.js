@@ -15,7 +15,7 @@ const wordSlice = createSlice({
 
     setWordItems: (state, action) => {
 
-      state.WordItems = [...state.WordItems,...action.payload]; // Sets the array to a new array
+      state.WordItems = [...state.WordItems,...action.payload]; 
     },
     removeWordItem: (state, action) => {
   
@@ -34,8 +34,8 @@ const wordSlice = createSlice({
   },
 });
 
-// Export actions
+
 export const {  setWordItems,removeWordItem,setDonwloadID,MergeSet } =wordSlice.actions;
 
-// Export the reducer to be included in the store
+
 export default wordSlice.reducer;

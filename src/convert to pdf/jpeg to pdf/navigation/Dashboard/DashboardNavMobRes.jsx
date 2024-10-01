@@ -9,19 +9,7 @@ export function DashboardNavMobRes({isPopup,dispatch,Margin,Orientation,PageSize
     return(
         <>
         <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center bg-white z-0" >
-        
-         {/* <MobPopup 
-         isPopup={isPopup} 
-         Margin={Margin} 
-         Orientation={Orientation} 
-         PageSize={PageSize} 
-         setMargin={setMargin} 
-         setPageSize={setPageSize} 
-         setOrientation={setOrientation} 
-         Margin_dispatch={Margin_dispatch} 
-         Orientation_dispatch={Orientation_dispatch} 
-         PageSz_dispatch={PageSz_dispatch}
-         /> */}
+
          
             <div className="flex w-full justify-around gap-2 m-4 ">
                 {/* margin */}

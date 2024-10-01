@@ -1,4 +1,3 @@
-
 import axios from "axios"
 import Loader from "../../Loader/Loader"
 import { AddImg } from "./Addimg/addimg"
@@ -31,7 +30,7 @@ export default function Wordtopdf(){
                             'Content-Type': 'multipart/form-data',  
                         }, 
                     });
-                    console.log(response.data)
+                   
                     globDispatch(setDonwloadID(response.data["id"]))
                     setLoading(false)
                     navigate("/word-to-pdf/download")
@@ -80,12 +79,6 @@ export default function Wordtopdf(){
                         <span>Uploading</span>
 
                         </div>
-                        {/* <div className=" border border-red-600 w-96 h-28 rounded-xl flex justify-center items-center">
-                            <span className="text-red-600 text-base">Something went wrong</span>
-
-                        </div> */}
-
-
 
                     </div>
                 </div>

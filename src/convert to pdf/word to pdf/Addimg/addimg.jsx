@@ -1,10 +1,7 @@
-import { MdOutlineAddCircle } from "react-icons/md";
 import { HiComputerDesktop } from "react-icons/hi2";
-import { FaDropbox } from "react-icons/fa6";
-import { FaGoogleDrive } from "react-icons/fa";
 import axios from "axios";
-import { useState,useRef,useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState,useRef } from "react";
+import { useDispatch} from "react-redux";
 import {setWordItems} from "../wordtopdfSlicer"
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
@@ -62,7 +59,6 @@ export function AddImg({setLoading}){
       files.forEach((element,i )=> {
         const link = element.link
         const contentLink = link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-        // console.log(contentLink)
         formData.append(`file[${i}]`,JSON.stringify({
           name:element.name,
           file:contentLink,
@@ -78,7 +74,6 @@ export function AddImg({setLoading}){
                   },  
                 
           })
-              // console.log(response.data)
 
               setLoading(false)
               globDispatch(setWordItems(response.data))
@@ -95,10 +90,6 @@ export function AddImg({setLoading}){
     }
 
 
-    // function handleMouseMove(){
-    //     setOpacity((e)=>!e)
-        
-    // }
     const [selectedFiles, setSelectedFiles] = useState([]);
 
     const handleFileSelection = (data) => {

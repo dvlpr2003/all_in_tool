@@ -122,10 +122,7 @@ export const JpgDownloadPage = ()=>{
             </div>
 
         </div>
-        {/* <div className=' w-full h-screen flex justify-center items-center'>
 
-    
-        </div> */}
 
       </section>
     

@@ -6,9 +6,6 @@ function IconMenu({setMenuIcon,MenuIcon}){
         <div className="flex justify-center items-center gap-5 menu" onClick={()=>setMenuIcon((e)=>!e)}>
         <span className="min-[55px]:text-lg min-[660px]:text-lg">{MenuIcon?"Close":"Menu"}</span>
         {MenuIcon?<RxCross2  className="menu-icon min-[55px]:text-2xl min-[660px]:text-2xl"/>:<HiOutlineMenuAlt1 className="menu-icon min-[55px]:text-2xl min-[660px]:text-2xl" />}
-        
-
-
         </div>
         
     )

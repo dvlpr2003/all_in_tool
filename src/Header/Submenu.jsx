@@ -5,7 +5,7 @@ import Organize from "./submenu items/Organize";
 import Edit from "./submenu items/Edit";
 
 
-export function ProductDt({Tool,enter,setTool,setEnter,isMobile}){
+export function ProductDt({Tool,setTool,isMobile}){
    
     return(
         <div className={` absolute border bg-white about-menu ${Tool?"flex":"hidden"} ${isMobile?"hidden":""} gap-5 text-black  shadow-md  transition-all  `}>
