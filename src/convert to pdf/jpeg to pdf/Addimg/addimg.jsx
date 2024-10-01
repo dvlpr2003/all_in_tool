@@ -1,6 +1,4 @@
-
 import { HiComputerDesktop } from "react-icons/hi2";
-
 import axios from "axios";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -12,16 +10,12 @@ import DropboxChooser from 'react-dropbox-chooser';
 export function AddImg({setArray,array,setLoading}){
 
     const inputref = useRef(null)
-
-
-
     const formData = new FormData();
     const globDispatch = useDispatch();
     const navigate = useNavigate()
 
     function handleInputEvent(Event){
             const Imagefile= Object.entries(Event.target.files)
-      
             const finalItems = Object.entries(Imagefile)
             finalItems.forEach((element,i )=> {
               formData.append(`file[${i}]`,element[1][1])
