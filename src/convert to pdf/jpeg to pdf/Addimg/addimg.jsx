@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
 
 
-export function AddImg({setArray,array,setLoading}){
-
+export function AddImg({setLoading}){
     const inputref = useRef(null)
     const formData = new FormData();
     const globDispatch = useDispatch();

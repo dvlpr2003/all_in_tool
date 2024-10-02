@@ -6,6 +6,7 @@ import AddImgHome from "./convert to pdf/jpeg to pdf/Addimg/AddImgHome";
 import { JpgDownloadPage } from "./convert to pdf/jpeg to pdf/Download_page/Download";
 import Wordtopdf from "./convert to pdf/word to pdf/word_to_pdf_main";
 import { WordDownloadPage  }  from "./convert to pdf/word to pdf/Download_page/Download";
+import AnnotatePdf from "./convert to pdf/annotate_pdf/annotate";
 
 function App(){
   const router = createBrowserRouter(
@@ -15,7 +16,7 @@ function App(){
         children:[
           {
             
-            element:(<Wordtopdf/>),
+            element:(<AnnotatePdf/>),
             path:"/"
           },
           {
@@ -34,7 +35,8 @@ function App(){
           {
             element:(<JpgDownloadPage/>),
             path:"jpg-to-pdf/download"
-          }
+          },
+
 
 
         ]
