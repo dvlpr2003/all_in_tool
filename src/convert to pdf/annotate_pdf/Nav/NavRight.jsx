@@ -40,7 +40,7 @@ export function NavRight({handleConvert}){
         <aside className={`min-[55px]:flex lg:hidden flex-col w-auto h-screen   overflow-y-auto bg-slate-50 justify-center `}>
             <div className="flex w-full justify-center items-center h-full overflow-y-hidden">
             <div className="">
-            <IoMdArrowDropleft  className="text-slate-900 text-3xl" onClick={()=>setRightOpen((i)=>!i)}/>
+            <IoMdArrowDropleft  className={`text-slate-900 text-3xl ${isRightOpen?"rotate-180":""}`} onClick={()=>setRightOpen((i)=>!i)}/>
             </div>
 
             { isRightOpen &&<div className=" w-52 h-full mt-10 flex flex-col  items-center gap-4 pt-10 overflow-y-scroll pb-3 bg-white border-l rtl:border-r rtl:border-l">
