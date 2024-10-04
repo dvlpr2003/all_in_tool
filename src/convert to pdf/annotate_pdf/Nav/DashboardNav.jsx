@@ -1,9 +1,10 @@
+import { useState } from "react";
+import { IoMdArrowDropleft } from "react-icons/io";
 
-export function DashboardNav({handleConvert}){
+export function DashboardNav({handleConvert,isLeftOpen,setLeftOpen,setRightOpen}){
 
     return(
-    
-
+    <>
             <aside className={`min-[55px]:hidden lg:flex flex-col w-72 h-screen  py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l`}>
             <div href="#" className="mx-auto border w-full flex justify-center items-center border-t-transparent border-x-transparent mt-16">
             <span className=" text-gray-500 text-2xl mb-3">Annotate PDF</span>
@@ -36,7 +37,24 @@ export function DashboardNav({handleConvert}){
         </aside>
 
 
+        <aside className={`min-[55px]:flex lg:hidden flex-col w-auto h-screen   overflow-y-auto bg-slate-50 justify-center `}>
+            <div className="flex w-full justify-center items-center h-full overflow-y-hidden">
 
-    
+            { isLeftOpen &&<div className={` w-64 h-full mt-10 flex flex-col  items-center gap-4 pt-10 overflow-y-scroll pb-3 bg-white border-l rtl:border-r rtl:border-l  `}>
+                    <div href="#" className="mx-auto border w-full flex justify-center items-center border-t-transparent border-x-transparent mt-16">
+                    <span className=" text-gray-500 text-2xl mb-3">Annotate PDF</span>
+                    </div>
+                </div>}
+            <div className="">
+            <IoMdArrowDropleft  className={`text-slate-900 text-3xl ${isLeftOpen?"rotate-0":"rotate-180"}`} onClick={()=>{setLeftOpen((i)=>!i); setRightOpen(false)}}/>
+            </div>
+
+            </div>
+
+
+
+            
+        </aside>
+    </>
     )
 }

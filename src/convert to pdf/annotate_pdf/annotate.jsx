@@ -14,6 +14,9 @@ import { NavRight } from "./Nav/NavRight"
 
 export default function AnnotatePdf(){
     const [isLoading,setLoading]=useState(false)
+    const [isLeftOpen,setLeftOpen]=useState(false)
+    const [isRightOpen,setRightOpen]=useState(false)
+
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
     const globDispatch = useDispatch()
@@ -48,7 +51,7 @@ export default function AnnotatePdf(){
         <section className="  h-screen  w-full  flex justify-center ">
             <div className=" w-full flex ">
                 <div className="w-auto  h-full ">
-                    <DashboardNav/>
+                    <DashboardNav setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isLeftOpen={isLeftOpen}/>
 
                 </div>
                 <div className="w-full  bg-slate-50">
@@ -56,7 +59,7 @@ export default function AnnotatePdf(){
                 </div>
 
                 <div className="w-auto  h-full justify-end ml-auto">
-                    <NavRight/>
+                    <NavRight setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isRightOpen={isRightOpen}/>
 
                 </div>
 
