@@ -12,8 +12,7 @@ export default function AppLayout(){
         </header>
     
         <main className="flex justify-center min-h-full overflow-scroll z-30 " >
-            <Outlet
-            />
+            <Outlet/>
         </main>
 
         </>

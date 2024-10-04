@@ -9,6 +9,8 @@ import {setDonwloadID} from "./wordtopdfSlicer"
 import { useNavigate } from "react-router-dom"
 import { DashboardNavMobRes } from "./Nav/DashboardNavMobRes"
 import { NavRight } from "./Nav/NavRight"
+import { IoArrowForwardCircleSharp } from "react-icons/io5";
+
 
 
 
@@ -49,18 +51,22 @@ export default function AnnotatePdf(){
     return(
         <>
         <section className="  h-screen  w-full  flex justify-center ">
-            <div className=" w-full flex ">
-                <div className="w-auto  h-full ">
-                    <DashboardNav setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isLeftOpen={isLeftOpen}/>
+            <div className=" w-full flex flex-col relative">
+                <div className="w-full flex h-auto">
 
-                </div>
-                <div className="w-full  bg-slate-50">
-                    
-                </div>
+                
+                    <div className="w-auto  h-full ">
+                        <DashboardNav setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isLeftOpen={isLeftOpen}/>
 
-                <div className="w-auto  h-full justify-end ml-auto">
-                    <NavRight setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isRightOpen={isRightOpen}/>
+                    </div>
+                    <div className="w-full  bg-slate-50">
+                        
+                    </div>
 
+                    <div className="w-auto  h-full justify-end ml-auto">
+                        <NavRight setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isRightOpen={isRightOpen}/>
+
+                    </div>
                 </div>
 
 
@@ -84,7 +90,19 @@ export default function AnnotatePdf(){
                     </div>
                 </div>
                 }
+                <div className="w-full  h-7 absolute bottom-6">
+                    <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center bg-blue-600 z-0" >
+            
+                        <div className="flex w-full justify-around gap-2 m-4 ">
+                            <div className=" text-gray-500 flex  justify-center items-center gap-2 cursor-pointer">
+                            <IoArrowForwardCircleSharp className="text-xl text-white" onClick={handleConvert} />
+                            <span className="text-sm text-white">Convert to PDF</span>
+                            </div>
+                        </div>
 
+                    </div>
+
+                </div>
 
             </div>
             
