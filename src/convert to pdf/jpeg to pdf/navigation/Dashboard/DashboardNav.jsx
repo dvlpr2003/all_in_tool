@@ -4,6 +4,10 @@ import { MdOutlineDocumentScanner } from "react-icons/md";
 import { RxBorderWidth } from "react-icons/rx";
 import { IoArrowForwardCircleSharp } from "react-icons/io5";
 import { HiOutlineUpload } from "react-icons/hi";
+import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
+
+
 
 
 export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch,array,setMerge}){
@@ -56,6 +60,9 @@ export function DashboardNav({Orientation,Margin,PageSize,handleConvert,dispatch
 
                 <span className="mx-4 font-medium ">Merge all images in one PDF file</span>
                 </label>
+
+
+
             </nav>
 
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">

@@ -59,7 +59,10 @@ export default function AnnotatePdf(){
                         <DashboardNav setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isLeftOpen={isLeftOpen}/>
 
                     </div>
-                    <div className="w-full  bg-slate-50">
+                    <div className="w-full  bg-slate-50 flex flex-col">
+                        <div className="anno-width anno-height border border-black">
+
+                        </div>
                         
                     </div>
 
