@@ -127,3 +127,10 @@
     width: 29.416rem;
     height: 41.627rem;
   }
+  .input-percent::-webkit-inner-spin-button,.input-percent::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-percent{
+  -moz-appearance: textfield;
+}

@@ -37,6 +37,7 @@ export default function AnnotatePdf(){
     const [isLoading,setLoading]=useState(false)
     const [isLeftOpen,setLeftOpen]=useState(false)
     const [isRightOpen,setRightOpen]=useState(false)
+    const [value,setValue]=useState('')
 
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
@@ -125,72 +126,32 @@ export default function AnnotatePdf(){
     const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); // New width for lev-2
     const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); // New width for lev-4
     const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); // New height for lev-4
-
+    const handleInputChange = (e) => {
+        // Get the current cursor position
+        const cursorPosition = e.target.selectionStart;
+        
+        // Get the input value without the % symbol
+        let inputValue = e.target.value.replace(/%/g, "").replace(/[^0-9]/g, "");
+        
+        // Handle backspace - if the length is decreasing, remove the last digit
+        if (e.target.value.length < value.length && value.length > 0) {
+          inputValue = inputValue.slice(0, -1);
+        }
+        
+        // Don't allow values over 100
+        if (parseInt(inputValue) > 100) {
+          inputValue = "100";
+        }
+        
+        // Add the % symbol if we have a number
+        if (inputValue) {
+          setValue(inputValue + "%");
+        } else {
+          setValue("");
+        }
+      };
     return(
         <> 
-
-        
-        {/* <section className="  h-screen  w-full  flex justify-center ">
-            <div className=" w-full flex flex-col relative">
-                <div className="w-full flex h-auto">
-
-                
-                    <div className="w-auto  h-full ">
-                        <DashboardNav setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isLeftOpen={isLeftOpen}/>
-
-                    </div>
-                    <div className="w-full  bg-slate-50 flex flex-col">
-
-                        
-                    </div>
-
-                    <div className="w-auto  h-full justify-end ml-auto">
-                        <NavRight setLeftOpen={setLeftOpen} setRightOpen={setRightOpen} isRightOpen={isRightOpen}/>
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-               { isLoading&&<div className="  absolute z-50  w-full h-full bg-white opacity-95 flex justify-center items-center">
-                    <div className="opacity-100 flex flex-col justify-center items-center ">
-
-                        <div className="flex flex-col justify-center items-center gap-3">
-                        <Loader/>
-                        <span>Uploading</span>
-
-                        </div>
-
-                    </div>
-                </div>
-                }
-                <div className="w-full  h-7 absolute bottom-6">
-                    <div className=" w-full h-auto min-[55px]:flex lg:hidden justify-center items-center bg-blue-600 z-0" >
-            
-                        <div className="flex w-full justify-around gap-2 m-4 ">
-                            <div className=" text-gray-500 flex  justify-center items-center gap-2 cursor-pointer">
-                            <IoArrowForwardCircleSharp className="text-xl text-white" onClick={handleConvert} />
-                            <span className="text-sm text-white">Convert to PDF</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-            
-
-        </section> */}
-
-
             <div className='main w-screen  bg-slate-100 overflow-auto  border border-black relative '
                 onWheel={handleWheel}
                 onContextMenu={handleContextMenu}                                           
@@ -242,7 +203,7 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
-                <div className=" bg-transparent absolute bottom-[1px]  z-50 h-[60px] w-full flex justify-center items-center  ">
+                <div className=" bg-transparent absolute bottom-[20px]  z-50 h-[60px] w-full flex justify-center items-center  ">
                     <div className="w-full h-full relative flex justify-center items-center">
                         <div className=" bg-white shadow-xl w-1/2 h-full absolute  flex items-center">
                             <div className="flex-1 flex h-full justify-center items-center ">
@@ -251,7 +212,7 @@ export default function AnnotatePdf(){
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <input type="text"  className="border  w-12 h-8 rounded-sm bg-slate-50 p-2"/>
+                                    <input type="text" value={value} onChange={handleInputChange} className="input-percent border  w-12 h-8 rounded-sm bg-slate-50 text-center outline-none " style={{content:"%"}}/>
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
