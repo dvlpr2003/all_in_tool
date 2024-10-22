@@ -86,7 +86,7 @@ export default function AnnotatePdf(){
     };
     const handleWheel = (e) => {
       if (e.ctrlKey) { // Check if Ctrl is pressed
-        e.preventDefault(); // Prevent default zoom behavior of the browser
+         // Prevent default zoom behavior of the browser
   
         if (e.deltaY < 0) {
           // Scrolling up (zoom in)
@@ -118,7 +118,10 @@ export default function AnnotatePdf(){
       
     }, [handleWheel]);
     useEffect(()=>{
-        setValue(`${zoom}%`)
+        if (zoom >0){
+
+            setValue(`${zoom}%`)
+        }
         
     },[zoom])
   
@@ -146,17 +149,25 @@ export default function AnnotatePdf(){
         }
         
         // Don't allow values over 100
-        if (parseInt(inputValue) > 100) {
-          inputValue = "100";
+        if (parseInt(inputValue) > 200) {
+          inputValue = "200";
         }
         
         // Add the % symbol if we have a number
         if (inputValue) {
           setValue(inputValue + "%");
+          setZoom(Number(inputValue))
         } else {
           setValue("");
         }
       };
+    const handleIncrement=()=>{
+        setZoom((e)=>e+1)
+
+    }
+    const handleDecrement=()=>{
+        setZoom((e)=>e-1)
+    }
     return(
         <> 
             <div className='main w-screen  bg-slate-100 overflow-auto  border border-black relative '
@@ -214,16 +225,16 @@ export default function AnnotatePdf(){
                     <div className="w-full h-full relative flex justify-center items-center">
                         <div className=" bg-white shadow-xl w-1/2 h-full absolute  flex items-center">
                             <div className="flex-1 flex h-full justify-center items-center ">
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <div className="flex-1 flex justify-center items-center"><FiMinusCircle className="text-slate-700 text-xl"/></div>
+                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleDecrement}>
+                                    <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 text-xl"/></div>
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
                                     <input type="text" value={value} onChange={handleInputChange} className="input-percent border  w-12 h-8 rounded-sm bg-slate-50 text-center outline-none " style={{content:"%"}}/>
 
                                 </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <div className="flex-1 flex justify-center items-center"><FiPlusCircle  className="text-slate-700 text-xl"/></div>
+                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleIncrement}>
+                                    <div className="flex-1 flex justify-center items-center" ><FiPlusCircle  className="text-slate-700 text-xl"/></div>
 
                                 </div>
 
@@ -231,7 +242,7 @@ export default function AnnotatePdf(){
 
                             <div className="flex-1 flex h-full justify-center items-center ">
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"> <MdKeyboardArrowLeft className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 text-xl"/></div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                                     <div className="flex-1 flex justify-center items-center ">
@@ -239,12 +250,12 @@ export default function AnnotatePdf(){
                                             <input type="number"  className="input-percent max-w-8 w-auto outline-none text-center"/>
                                     
                                             <div className="text-center text-lg">|</div>
-                                            <div className="mr-1 ml-1 ">2</div>
+                                            <div className="mr-1 ml-1 pt-1">2</div>
                                         </div>
                                         </div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"><MdKeyboardArrowRight  className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 text-xl"/></div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer">
                                     <div className=" flex-1 flex justify-center items-center"><BsLayersFill  className="text-slate-700 text-xl"/></div>
@@ -280,6 +291,7 @@ export default function AnnotatePdf(){
                                     style={{
                                     padding: `${1.2 * zoom}px`, // Scale padding based on zoom
                                     }}
+                                    key={index}
                                 >
                                     
                                     <div
@@ -289,7 +301,7 @@ export default function AnnotatePdf(){
                                         height: `${newHeightLev4}px`, // Adjust height based on zoom for lev-4
                                         zIndex:0
                                         }}
-                                        key={index}
+                                        
                                     >
                                         <img
                                         src="https://d3jq6id3uwlfp0.cloudfront.net/media/upload_Files/annotate_file/b38dc85f-7470-451c-8efe-92cec8015c4f_page_1.jpg"
