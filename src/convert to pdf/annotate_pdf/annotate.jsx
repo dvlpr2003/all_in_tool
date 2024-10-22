@@ -23,8 +23,7 @@ import { FiMinusCircle } from "react-icons/fi";
 import { BsLayersFill } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
-
-
+import { BsSlashLg } from "react-icons/bs";
 
 
 
@@ -37,37 +36,37 @@ export default function AnnotatePdf(){
     const [isLoading,setLoading]=useState(false)
     const [isLeftOpen,setLeftOpen]=useState(false)
     const [isRightOpen,setRightOpen]=useState(false)
-    const [value,setValue]=useState('')
-
+    
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
     const globDispatch = useDispatch()
     const navigate = useNavigate()
-
+    
     async function handleConvert(){
-            formdata.append("items",JSON.stringify(wordItems))
-            if (wordItems.length !== 0 ){
-                    
-                try{
-                    setLoading(true)
-                    const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/convert-word-to-pdf/",formdata,{
-                        headers: {  
-                            'Content-Type': 'multipart/form-data',  
-                        }, 
-                    });
-                   
-                    globDispatch(setDonwloadID(response.data["id"]))
-                    setLoading(false)
-                    navigate("/word-to-pdf/download")
-                }catch(error){
-                    setLoading(false)
-                    console.log(error)
-                }
-    }
-
-
+        formdata.append("items",JSON.stringify(wordItems))
+        if (wordItems.length !== 0 ){
+            
+            try{
+                setLoading(true)
+                const response = await axios.post("http://127.0.0.1:8000/convert_to_pdf/convert-word-to-pdf/",formdata,{
+                    headers: {  
+                        'Content-Type': 'multipart/form-data',  
+                    }, 
+                });
+                
+                globDispatch(setDonwloadID(response.data["id"]))
+                setLoading(false)
+                navigate("/word-to-pdf/download")
+            }catch(error){
+                setLoading(false)
+                console.log(error)
+            }
+        }
+        
+        
     }
     const [zoom, setZoom] = useState(1); // Initial zoom level of 1
+    const [value,setValue]=useState(`1%`)
     const [offsetX, setOffsetX] = useState(0); // Mouse X offset
     const [offsetY, setOffsetY] = useState(0); // Mouse Y offset
     const containerRef = useRef(null);
@@ -91,13 +90,16 @@ export default function AnnotatePdf(){
   
         if (e.deltaY < 0) {
           // Scrolling up (zoom in)
-          setZoom((prevZoom) => Math.min(prevZoom + 1, 2000)); // Increase zoom level by 1
+          setZoom((prevZoom) => Math.min(prevZoom + 1, 200)); // Increase zoom level by 1
+           // Increase zoom level by 1
         } else {
           // Scrolling down (zoom out)
           setZoom((prevZoom) => Math.max(prevZoom - 1, 1)); // Decrease zoom level by 1
+          
         }
       }
     };
+    
   
     useEffect(() => {
       const container = containerRef.current;
@@ -113,7 +115,12 @@ export default function AnnotatePdf(){
           container.removeEventListener('wheel', wheelListener);
         };
       }
+      
     }, [handleWheel]);
+    useEffect(()=>{
+        setValue(`${zoom}%`)
+        
+    },[zoom])
   
   
   
@@ -220,7 +227,6 @@ export default function AnnotatePdf(){
 
                                 </div>
 
-
                             </div>
 
                             <div className="flex-1 flex h-full justify-center items-center ">
@@ -228,12 +234,19 @@ export default function AnnotatePdf(){
                                     <div className="flex-1 flex justify-center items-center"> <MdKeyboardArrowLeft className="text-slate-700 text-xl"/></div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"><RiShapesFill  className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center ">
+                                        <div className="flex justify-center items-center  w-14">
+                                            <input type="number"  className="input-percent max-w-8 w-auto outline-none text-center"/>
+                                    
+                                            <div className="text-center text-lg">|</div>
+                                            <div className="mr-1 ml-1 ">2</div>
+                                        </div>
+                                        </div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                                     <div className="flex-1 flex justify-center items-center"><MdKeyboardArrowRight  className="text-slate-700 text-xl"/></div>
                                 </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
+                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer">
                                     <div className=" flex-1 flex justify-center items-center"><BsLayersFill  className="text-slate-700 text-xl"/></div>
                                 </div>
 
