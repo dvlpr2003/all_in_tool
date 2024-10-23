@@ -1,14 +1,13 @@
 import axios from "axios"
 import Loader from "../../Loader/Loader"
-import DashboardEdit from "./DashboardEdit"
-import { DashboardNav } from "./Nav/DashboardNav"
+
 import "./style/index.css"
 import { useState,useEffect,useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {setDonwloadID} from "./wordtopdfSlicer"
 import { useNavigate } from "react-router-dom"
-import { DashboardNavMobRes } from "./Nav/DashboardNavMobRes"
-import { NavRight } from "./Nav/NavRight"
+import { RightSlide } from "./Nav/RightSlide"
+import { LeftSlide } from "./Nav/LeftSlide"
 import { HiPencil } from "react-icons/hi2";
 import { PiTextTFill } from "react-icons/pi";
 import { RiShapesFill } from "react-icons/ri";
@@ -158,7 +157,7 @@ export default function AnnotatePdf(){
     }
     return(
         <> 
-            <div className='main w-screen  bg-slate-100 overflow-auto  border border-black relative '
+            <div className='main w-screen  bg-slate-100 overflow-auto  relative '
                 onWheel={handleWheel}
                 onContextMenu={handleContextMenu}                                           
                 ref={containerRef}
@@ -260,16 +259,10 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
-                <div className={`fixed top-0 left-0 z-50 h-full w-72 bg-white text-white transform ${
-                        isLeftOpen ? 'translate-x-0' : '-translate-x-full'
-                        } transition-transform duration-300 ease-in-out`}>
+                <LeftSlide isLeftOpen={isLeftOpen}/>
 
-                </div> {/* left slide*/}
-                <div className={`fixed top-0 right-0 h-full w-72 z-50 bg-white text-white transform ${
-                isRightOpen ? 'translate-x-0' : 'translate-x-full'
-                } transition-transform duration-300 ease-in-out`}>
+                <RightSlide isRightOpen={isRightOpen}/>
 
-                </div>{/* right slide*/}
                         
                         <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]' 
                         >
