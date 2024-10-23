@@ -23,10 +23,7 @@ import { FiMinusCircle } from "react-icons/fi";
 import { BsLayersFill } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { BsSlashLg } from "react-icons/bs";
-
-
-
+import { TbBoxMultiple } from "react-icons/tb";
 
 
 
@@ -34,8 +31,9 @@ import { BsSlashLg } from "react-icons/bs";
 
 export default function AnnotatePdf(){
     const [isLoading,setLoading]=useState(false)
-    const [isLeftOpen,setLeftOpen]=useState(false)
-    const [isRightOpen,setRightOpen]=useState(false)
+    const [isLeftOpen, setIsLeftOpen] = useState(true);
+    const [isRightOpen, setIsRightOpen] = useState(false);
+    
     
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
@@ -65,36 +63,30 @@ export default function AnnotatePdf(){
         
         
     }
-    const [zoom, setZoom] = useState(1); // Initial zoom level of 1
+    const [zoom, setZoom] = useState(1); 
     const [value,setValue]=useState(`1%`)
-    const [offsetX, setOffsetX] = useState(0); // Mouse X offset
-    const [offsetY, setOffsetY] = useState(0); // Mouse Y offset
+    const [offsetX, setOffsetX] = useState(0);
+    const [offsetY, setOffsetY] = useState(0);
     const containerRef = useRef(null);
   
-    const baseWidthLev1Lev2 = 334.26; // Initial width for lev-1 and lev-2
-    const incrementLev1Lev2 = 12.38; // Increment value for each zoom level for lev-1 and lev-2
+    const baseWidthLev1Lev2 = 334.26;
+    const incrementLev1Lev2 = 12.38; 
   
-    const baseWidthLev4 = 312.3; // Initial width for lev-4 and img
-    const incrementWidthLev4 = 11.9; // Increment value for lev-4 width
+    const baseWidthLev4 = 312.3; 
+    const incrementWidthLev4 = 11.9; 
   
-    const baseHeightLev4 = 454.68; // Initial height for lev-4 and img
-    const incrementHeightLev4 = 16.84; // Increment value for lev-4 height
+    const baseHeightLev4 = 454.68;
+    const incrementHeightLev4 = 16.84; 
   
-    // Handle zoom only when Ctrl + Mouse Wheel is used
     const handleContextMenu = (event) => {
       event.preventDefault();
     };
     const handleWheel = (e) => {
-      if (e.ctrlKey) { // Check if Ctrl is pressed
-         // Prevent default zoom behavior of the browser
-  
+      if (e.ctrlKey) {
         if (e.deltaY < 0) {
-          // Scrolling up (zoom in)
-          setZoom((prevZoom) => Math.min(prevZoom + 1, 200)); // Increase zoom level by 1
-           // Increase zoom level by 1
+          setZoom((prevZoom) => Math.min(prevZoom + 1, 200)); 
         } else {
-          // Scrolling down (zoom out)
-          setZoom((prevZoom) => Math.max(prevZoom - 1, 1)); // Decrease zoom level by 1
+          setZoom((prevZoom) => Math.max(prevZoom - 1, 1)); 
           
         }
       }
@@ -124,36 +116,26 @@ export default function AnnotatePdf(){
         }
         
     },[zoom])
-  
-  
-  
-    // Calculate new width based on zoom level
+
     const calculateZoomedWidth = (baseWidth, increment) => {
       return Math.max(baseWidth, baseWidth + (increment * (zoom - 1)));
     };
   
-    const newWidthLev1 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); // New width for lev-1
-    const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); // New width for lev-2
-    const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); // New width for lev-4
-    const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); // New height for lev-4
+    const newWidthLev1 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
+    const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
+    const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); 
+    const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); 
     const handleInputChange = (e) => {
-        // Get the current cursor position
+        
         const cursorPosition = e.target.selectionStart;
-        
-        // Get the input value without the % symbol
         let inputValue = e.target.value.replace(/%/g, "").replace(/[^0-9]/g, "");
-        
-        // Handle backspace - if the length is decreasing, remove the last digit
         if (e.target.value.length < value.length && value.length > 0) {
           inputValue = inputValue.slice(0, -1);
         }
-        
-        // Don't allow values over 100
         if (parseInt(inputValue) > 200) {
           inputValue = "200";
         }
         
-        // Add the % symbol if we have a number
         if (inputValue) {
           setValue(inputValue + "%");
           setZoom(Number(inputValue))
@@ -167,6 +149,12 @@ export default function AnnotatePdf(){
     }
     const handleDecrement=()=>{
         setZoom((e)=>e-1)
+    }
+    const handleRideSlide = ()=>{
+        setIsRightOpen((e)=>!e)
+    }
+    const handleCloseLft=()=>{
+        setIsLeftOpen((e)=>!e)
     }
     return(
         <> 
@@ -225,6 +213,10 @@ export default function AnnotatePdf(){
                     <div className="w-full h-full relative flex justify-center items-center">
                         <div className=" bg-white shadow-xl w-1/2 h-full absolute  flex items-center">
                             <div className="flex-1 flex h-full justify-center items-center ">
+                            <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleCloseLft}>
+                                    <div className="flex-1 flex justify-center items-center" ><TbBoxMultiple className={` text-xl ${isLeftOpen?"text-blue-600":"text-slate-700"}`}/></div>
+
+                                </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleDecrement}>
                                     <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 text-xl"/></div>
 
@@ -241,6 +233,7 @@ export default function AnnotatePdf(){
                             </div>
 
                             <div className="flex-1 flex h-full justify-center items-center ">
+                                
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                                     <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 text-xl"/></div>
                                 </div>
@@ -257,8 +250,8 @@ export default function AnnotatePdf(){
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                                     <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 text-xl"/></div>
                                 </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer">
-                                    <div className=" flex-1 flex justify-center items-center"><BsLayersFill  className="text-slate-700 text-xl"/></div>
+                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer" onClick={handleRideSlide}>
+                                    <div className=" flex-1 flex justify-center items-center" ><BsLayersFill  className={` text-xl ${isRightOpen?"text-blue-600":"text-slate-700"}`}/></div>
                                 </div>
 
                             </div>
@@ -267,6 +260,16 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
+                <div className={`fixed top-0 left-0 z-50 h-full w-72 bg-white text-white transform ${
+                        isLeftOpen ? 'translate-x-0' : '-translate-x-full'
+                        } transition-transform duration-300 ease-in-out`}>
+
+                </div> {/* left slide*/}
+                <div className={`fixed top-0 right-0 h-full w-72 z-50 bg-white text-white transform ${
+                isRightOpen ? 'translate-x-0' : 'translate-x-full'
+                } transition-transform duration-300 ease-in-out`}>
+
+                </div>{/* right slide*/}
                         
                         <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]' 
                         >
@@ -333,6 +336,9 @@ export default function AnnotatePdf(){
                             
 
                         </div>
+
+
+
 
             </div>
         </>
