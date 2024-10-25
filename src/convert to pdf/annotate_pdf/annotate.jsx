@@ -32,6 +32,7 @@ export default function AnnotatePdf(){
     const [isLoading,setLoading]=useState(false)
     const [isLeftOpen, setIsLeftOpen] = useState(true);
     const [isRightOpen, setIsRightOpen] = useState(false);
+    const [isWidthInRange, setIsWidthInRange] = useState(false);
     
     
     const formdata = new FormData()
@@ -142,28 +143,57 @@ export default function AnnotatePdf(){
           setValue("");
         }
       };
-    const handleIncrement=()=>{
-        setZoom((e)=>e+1)
+      const checkWidthInRange = () => {
+          const width = window.innerWidth;
+          setIsWidthInRange(width >= 55 && width <= 950);
+        };
+        useEffect(() => {
+            // Check initial width on mount
+            checkWidthInRange();
+      
+            
+            // Add resize listener to update width range status
+            window.addEventListener('resize', checkWidthInRange);
+            
+            // Clean up listener on unmount
+            return () => window.removeEventListener('resize', checkWidthInRange);
+        }, []);
+        
+        
+        const handleIncrement=()=>{
+            setZoom((e)=>e+1)
+    
+        }
+        const handleDecrement=()=>{
+            setZoom((e)=>e-1)
+        }
+        const handleRideSlide = ()=>{
+            setIsRightOpen((e)=>!e)
+            if(isWidthInRange){
+                setIsLeftOpen(false)
 
-    }
-    const handleDecrement=()=>{
-        setZoom((e)=>e-1)
-    }
-    const handleRideSlide = ()=>{
-        setIsRightOpen((e)=>!e)
-    }
-    const handleCloseLft=()=>{
-        setIsLeftOpen((e)=>!e)
-    }
-    return(
-        <> 
+            }
+        }
+        const handleCloseLft=()=>{
+            setIsLeftOpen((e)=>!e)
+            if(isWidthInRange){
+                setIsRightOpen(false)
+
+            }
+            
+        }
+        
+        
+        
+        return(
+            <> 
             <div className='main w-screen  bg-slate-100 overflow-auto  relative '
                 onWheel={handleWheel}
                 onContextMenu={handleContextMenu}                                           
                 ref={containerRef}
             >
-                <div className=" bg-inherit absolute top-[80px]  z-50 h-[35px] w-full flex justify-center items-center  ">
-                    <div className="w-full  h-full border border-black relative flex justify-center items-center">
+                <div className=" bg-transparent absolute top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  ">
+                    <div className="lg:w-1/2 min-[55px]:w-full h-full  relative flex justify-center items-center">
                         <div className=" shadow-xl w-full h-full absolute bg-white flex items-center">
 
                             <div className="flex-1 flex h-full justify-center items-center ">
@@ -259,7 +289,7 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
-                <LeftSlide isLeftOpen={isLeftOpen}/>
+                <LeftSlide isLeftOpen={isLeftOpen} setIsLeftOpen={setIsLeftOpen}/>
 
                 <RightSlide isRightOpen={isRightOpen}/>
 
