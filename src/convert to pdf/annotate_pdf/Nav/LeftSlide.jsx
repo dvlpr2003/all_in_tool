@@ -9,9 +9,9 @@ export const LeftSlide = ({isLeftOpen,setIsLeftOpen})=>{
 
 
 
-                <div className="w-full h-full border border-black relative">
-                    <div className="border border-red-600 w-full h-full absolute top-20 flex flex-col ">
-                        <div className="w-full h-10 border border-green-600 flex justify-end items-center pr-2">
+                <div className="w-full h-full border relative">
+                    <div className=" w-full h-full absolute top-20 flex flex-col ">
+                        <div className="w-full h-10  flex justify-end items-center pr-5">
                             <div className=" rounded-sm flex justify-center items-center  "><RxCross2 className="text-slate-400 text-xl cursor-pointer hover:text-black" onClick={()=>setIsLeftOpen((e)=>!e)}/></div>
 
                         </div>

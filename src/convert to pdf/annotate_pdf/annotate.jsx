@@ -238,16 +238,16 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
-                <div className=" bg-transparent absolute bottom-[20px]  z-50 h-[60px] w-full flex justify-center items-center  ">
-                    <div className="w-full h-full relative flex justify-center items-center">
-                        <div className=" bg-white shadow-xl w-1/2 h-full absolute  flex items-center">
+                <div className=" bg-transparent absolute bottom-[5px]  z-30 h-[40px] w-full flex justify-center items-center  ">
+                    <div className="lg:w-1/2 min-[55px]:w-full h-full relative flex justify-center items-center">
+                        <div className=" bg-white shadow-xl w-full h-full absolute  flex items-center">
                             <div className="flex-1 flex h-full justify-center items-center ">
                             <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleCloseLft}>
-                                    <div className="flex-1 flex justify-center items-center" ><TbBoxMultiple className={` text-xl ${isLeftOpen?"text-blue-600":"text-slate-700"}`}/></div>
+                                    <div className="flex-1 flex justify-center items-center" ><TbBoxMultiple className={`  ${isLeftOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleDecrement}>
-                                    <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
@@ -255,7 +255,7 @@ export default function AnnotatePdf(){
 
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleIncrement}>
-                                    <div className="flex-1 flex justify-center items-center" ><FiPlusCircle  className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" ><FiPlusCircle  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
 
                                 </div>
 
@@ -264,7 +264,7 @@ export default function AnnotatePdf(){
                             <div className="flex-1 flex h-full justify-center items-center ">
                                 
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                                     <div className="flex-1 flex justify-center items-center ">
@@ -277,10 +277,10 @@ export default function AnnotatePdf(){
                                         </div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 text-xl"/></div>
+                                    <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
                                 </div>
                                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer" onClick={handleRideSlide}>
-                                    <div className=" flex-1 flex justify-center items-center" ><BsLayersFill  className={` text-xl ${isRightOpen?"text-blue-600":"text-slate-700"}`}/></div>
+                                    <div className=" flex-1 flex justify-center items-center" ><BsLayersFill  className={`  ${isRightOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
                                 </div>
 
                             </div>
