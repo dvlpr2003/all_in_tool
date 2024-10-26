@@ -8,7 +8,6 @@ export const LeftSlide = ({isLeftOpen,setIsLeftOpen})=>{
             } transition-transform duration-300 ease-in-out`}>
 
 
-
                 <div className="w-full h-full border relative">
                     <div className=" w-full h-full absolute top-20 flex flex-col ">
                         <div className="w-full h-10  flex justify-end items-center pr-5">
