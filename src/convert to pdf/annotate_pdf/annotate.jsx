@@ -206,9 +206,10 @@ export default function AnnotatePdf(){
         return(
             <> 
             <div className='main w-screen  bg-slate-100 overflow-auto  relative '
-                onWheel={handleWheel}
+                
                 onContextMenu={handleContextMenu}                                           
                 ref={containerRef}
+                style={{touchAction:"none"}}
             >
                 <div className=" bg-transparent absolute top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  ">
                     <div className="lg:w-1/2 min-[55px]:w-full h-full  relative flex justify-center items-center">
