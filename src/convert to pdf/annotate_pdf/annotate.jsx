@@ -33,12 +33,14 @@ export default function AnnotatePdf(){
     const [isLeftOpen, setIsLeftOpen] = useState(true);
     const [isRightOpen, setIsRightOpen] = useState(false);
     const [isWidthInRange, setIsWidthInRange] = useState(false);
-    
-    
+    const [zoom, setZoom] = useState(1); 
+    const [value,setValue]=useState(`1%`)
+    const containerRef = useRef(null);
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
     const globDispatch = useDispatch()
     const navigate = useNavigate()
+    const [initialDistance, setInitialDistance] = useState(null); // Track initial touch distance for mobile
     
     async function handleConvert(){
         formdata.append("items",JSON.stringify(wordItems))
@@ -63,11 +65,7 @@ export default function AnnotatePdf(){
         
         
     }
-    const [zoom, setZoom] = useState(1); 
-    const [value,setValue]=useState(`1%`)
-    const [offsetX, setOffsetX] = useState(0);
-    const [offsetY, setOffsetY] = useState(0);
-    const containerRef = useRef(null);
+
   
     const baseWidthLev1Lev2 = 334.26;
     const incrementLev1Lev2 = 12.38; 
@@ -82,33 +80,53 @@ export default function AnnotatePdf(){
       event.preventDefault();
     };
     const handleWheel = (e) => {
-      if (e.ctrlKey) {
-        if (e.deltaY < 0) {
-          setZoom((prevZoom) => Math.min(prevZoom + 1, 200)); 
-        } else {
-          setZoom((prevZoom) => Math.max(prevZoom - 1, 1)); 
-          
+        if (e.ctrlKey) {
+          e.preventDefault();
+          setZoom((prevZoom) => (e.deltaY < 0 ? Math.min(prevZoom + 1, 2000) : Math.max(prevZoom - 1, 1)));
         }
-      }
+      };
+     // Calculate distance between two touch points
+    const calculateTouchDistance = (touches) => {
+        const [touch1, touch2] = touches;
+        return Math.sqrt((touch2.pageX - touch1.pageX) ** 2 + (touch2.pageY - touch1.pageY) ** 2);
     };
-    
-  
+    // Handle pinch zoom on mobile
+    const handleTouchStart = (e) => {
+        if (e.touches.length === 2) {
+        setInitialDistance(calculateTouchDistance(e.touches));
+        }
+    };
+    const handleTouchMove = (e) => {
+        if (e.touches.length === 2) {
+          const newDistance = calculateTouchDistance(e.touches);
+          const scaleFactor = newDistance / initialDistance;
+          setZoom((prevZoom) => Math.max(1, prevZoom * scaleFactor));
+          setInitialDistance(newDistance); // Update initial distance for next calculation
+        }
+      };
+
     useEffect(() => {
-      const container = containerRef.current;
-      if (container) {
-        const wheelListener = (e) => {
-          if (e.ctrlKey) {
-            e.preventDefault();
-            handleWheel(e);
-          }
-        };
-        container.addEventListener('wheel', wheelListener, { passive: false });
+        const container = containerRef.current;
+        if (container) {
+        container.addEventListener('wheel', handleWheel, { passive: false });
+        container.addEventListener('touchstart', handleTouchStart, { passive: false });
+        container.addEventListener('touchmove', handleTouchMove, { passive: false });
+
         return () => {
-          container.removeEventListener('wheel', wheelListener);
+            container.removeEventListener('wheel', handleWheel);
+            container.removeEventListener('touchstart', handleTouchStart);
+            container.removeEventListener('touchmove', handleTouchMove);
         };
-      }
-      
-    }, [handleWheel]);
+        }
+    }, [initialDistance]);
+    const calculateZoomedDimension = (base, increment) => base + (increment * (zoom - 1));
+    const newWidthLev1 = calculateZoomedDimension(61.9, 12.38);
+    const newWidthLev4 = calculateZoomedDimension(59.5, 11.9);
+    const newHeightLev4 = calculateZoomedDimension(84.2, 16.84);
+    
+        
+  
+
     useEffect(()=>{
         if (zoom >0){
 
@@ -121,10 +139,10 @@ export default function AnnotatePdf(){
       return Math.max(baseWidth, baseWidth + (increment * (zoom - 1)));
     };
   
-    const newWidthLev1 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
+    // const newWidthLev1 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
     const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
-    const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); 
-    const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); 
+    // const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); 
+    // const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); 
     const handleInputChange = (e) => {
         
         const cursorPosition = e.target.selectionStart;
