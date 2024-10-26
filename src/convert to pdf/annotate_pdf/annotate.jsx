@@ -6,23 +6,15 @@ import { useState,useEffect,useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {setDonwloadID} from "./wordtopdfSlicer"
 import { useNavigate } from "react-router-dom"
+
+
 import { RightSlide } from "./Nav/RightSlide"
 import { LeftSlide } from "./Nav/LeftSlide"
-import { HiPencil } from "react-icons/hi2";
-import { PiTextTFill } from "react-icons/pi";
-import { RiShapesFill } from "react-icons/ri";
-import { FaRegImage } from "react-icons/fa6";
-import { MdPanTool } from "react-icons/md";
-import { FaSave } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import { BsArrowClockwise } from "react-icons/bs";
-import { BsArrowCounterclockwise } from "react-icons/bs";
-import { FiPlusCircle } from "react-icons/fi";
-import { FiMinusCircle } from "react-icons/fi";
-import { BsLayersFill } from "react-icons/bs";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { TbBoxMultiple } from "react-icons/tb";
+import { ToolTop } from "./Nav/ToolTop"
+import { ToolBottom } from "./Nav/ToolBottom"
+
+
+
 
 
 
@@ -143,63 +135,12 @@ export default function AnnotatePdf(){
     const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
     // const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); 
     // const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); 
-    const handleInputChange = (e) => {
-        
-        const cursorPosition = e.target.selectionStart;
-        let inputValue = e.target.value.replace(/%/g, "").replace(/[^0-9]/g, "");
-        if (e.target.value.length < value.length && value.length > 0) {
-          inputValue = inputValue.slice(0, -1);
-        }
-        if (parseInt(inputValue) > 200) {
-          inputValue = "200";
-        }
-        
-        if (inputValue) {
-          setValue(inputValue + "%");
-          setZoom(Number(inputValue))
-        } else {
-          setValue("");
-        }
-      };
-      const checkWidthInRange = () => {
-          const width = window.innerWidth;
-          setIsWidthInRange(width >= 55 && width <= 950);
-        };
-        useEffect(() => {
-            // Check initial width on mount
-            checkWidthInRange();
-      
-            
-            // Add resize listener to update width range status
-            window.addEventListener('resize', checkWidthInRange);
-            
-            // Clean up listener on unmount
-            return () => window.removeEventListener('resize', checkWidthInRange);
-        }, []);
-        
-        
-        const handleIncrement=()=>{
-            setZoom((e)=>e+1)
-    
-        }
-        const handleDecrement=()=>{
-            setZoom((e)=>e-1)
-        }
-        const handleRideSlide = ()=>{
-            setIsRightOpen((e)=>!e)
-            if(isWidthInRange){
-                setIsLeftOpen(false)
 
-            }
-        }
-        const handleCloseLft=()=>{
-            setIsLeftOpen((e)=>!e)
-            if(isWidthInRange){
-                setIsRightOpen(false)
 
-            }
-            
-        }
+
+        
+        
+
         
         
         
@@ -211,110 +152,30 @@ export default function AnnotatePdf(){
                 ref={containerRef}
                 style={{touchAction:"none"}}
             >
-                <div className=" bg-transparent absolute min-[55px]:top-[65px] lg:top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  " style={{touchAction:"auto"}}>
-                    <div className="lg:w-1/2 min-[55px]:w-full h-full  relative flex justify-center items-center">
-                        <div className=" shadow-xl w-full h-full absolute bg-white flex items-center">
+                <ToolTop/>
+                <ToolBottom 
+                isLeftOpen={isLeftOpen} 
+                isRightOpen={isRightOpen} 
+                setIsLeftOpen={setIsLeftOpen} 
+                setIsRightOpen={setIsRightOpen} 
+                setZoom={setZoom} value={value} 
+                setValue={setValue} 
+                isWidthInRange ={isWidthInRange} 
+                setIsWidthInRange ={setIsWidthInRange}
+                />
 
-                            <div className="flex-1 flex h-full justify-center items-center ">
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className=" flex-1 flex justify-center items-center"><HiPencil  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"> <PiTextTFill  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"><RiShapesFill  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"><FaRegImage className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center"><MdPanTool  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
+                <LeftSlide 
+                isLeftOpen={isLeftOpen} 
+                setIsLeftOpen={setIsLeftOpen}
+                />
 
-                            </div>
-                            <div className="flex-1 flex h-full justify-center items-center ">
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <div className="flex-1 flex justify-center items-center"><BsArrowClockwise  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <div className="flex-1 flex justify-center items-center"><BsArrowCounterclockwise className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <div className="flex-1 flex justify-center items-center"><MdDelete  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer ">
-                                    <div className="flex-1 flex justify-center items-center"><FaSave className="text-slate-700 min-[55px]:text-sm lg:text-xl" /></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                </div>
-                <div className=" bg-transparent absolute lg:bottom-[20px] bottom-[0px]  z-30 h-[40px] w-full flex justify-center items-center  " style={{touchAction:"auto"}}>
-                    <div className="lg:w-1/2 min-[55px]:w-full h-full relative flex justify-center items-center">
-                        <div className=" bg-white shadow-xl w-full h-full absolute  flex items-center">
-                            <div className="flex-1 flex h-full justify-center items-center ">
-                            <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleCloseLft}>
-                                    <div className="flex-1 flex justify-center items-center" ><TbBoxMultiple className={`  ${isLeftOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleDecrement}>
-                                    <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                                    <input type="text" value={value} onChange={handleInputChange} className="input-percent border  w-12 h-8 rounded-sm bg-slate-50 text-center outline-none " style={{content:"%"}}/>
-
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleIncrement}>
-                                    <div className="flex-1 flex justify-center items-center" ><FiPlusCircle  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-
-                                </div>
-
-                            </div>
-
-                            <div className="flex-1 flex h-full justify-center items-center ">
-                                
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center ">
-                                        <div className="flex justify-center items-center  w-14">
-                                            <input type="number"  className="input-percent max-w-8 w-auto outline-none text-center"/>
-                                    
-                                            <div className="text-center text-lg">|</div>
-                                            <div className="mr-1 ml-1 pt-1">2</div>
-                                        </div>
-                                        </div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                                    <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
-                                </div>
-                                <div className="flex-1 h-full flex justify-center items-center cursor-pointer" onClick={handleRideSlide}>
-                                    <div className=" flex-1 flex justify-center items-center" ><BsLayersFill  className={`  ${isRightOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                </div>
-                <LeftSlide isLeftOpen={isLeftOpen} setIsLeftOpen={setIsLeftOpen}/>
-
-                <RightSlide isRightOpen={isRightOpen} setIsRightOpen={setIsRightOpen}/>
+                <RightSlide 
+                isRightOpen={isRightOpen} 
+                setIsRightOpen={setIsRightOpen}
+                />
 
                         
-                        <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]' 
-                        >
+                <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]'>
                             <div className='flex-1  overflow-auto h-auto  p-0  box-border overflow-y-auto overflow-x-auto relative text-center'
                             >
                             <div className='bg-slate-100 m-0 p-0 border-0 align-baseline'>
@@ -362,26 +223,9 @@ export default function AnnotatePdf(){
                                     ))}
                                 </div>
                             </div>
-
-
-
                             </div>
-
-
                             </div>
-
-
-
-
-
-
-                            
-
                         </div>
-
-
-
-
             </div>
         </>
     )
