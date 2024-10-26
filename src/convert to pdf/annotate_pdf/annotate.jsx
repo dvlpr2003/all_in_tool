@@ -211,7 +211,7 @@ export default function AnnotatePdf(){
                 ref={containerRef}
                 style={{touchAction:"none"}}
             >
-                <div className=" bg-transparent absolute top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  ">
+                <div className=" bg-transparent absolute top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  " style={{touchAction:"auto"}}>
                     <div className="lg:w-1/2 min-[55px]:w-full h-full  relative flex justify-center items-center">
                         <div className=" shadow-xl w-full h-full absolute bg-white flex items-center">
 
@@ -257,7 +257,7 @@ export default function AnnotatePdf(){
                     </div>
                     
                 </div>
-                <div className=" bg-transparent absolute bottom-[5px]  z-30 h-[40px] w-full flex justify-center items-center  ">
+                <div className=" bg-transparent absolute bottom-[5px]  z-30 h-[40px] w-full flex justify-center items-center  " style={{touchAction:"auto"}}>
                     <div className="lg:w-1/2 min-[55px]:w-full h-full relative flex justify-center items-center">
                         <div className=" bg-white shadow-xl w-full h-full absolute  flex items-center">
                             <div className="flex-1 flex h-full justify-center items-center ">
