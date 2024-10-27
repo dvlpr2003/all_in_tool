@@ -1,6 +1,5 @@
 import axios from "axios"
 import Loader from "../../Loader/Loader"
-
 import "./style/index.css"
 import { useState,useEffect,useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,6 +11,7 @@ import { RightSlide } from "./Nav/RightSlide"
 import { LeftSlide } from "./Nav/LeftSlide"
 import { ToolTop } from "./Nav/ToolTop"
 import { ToolBottom } from "./Nav/ToolBottom"
+import { Shape } from "./Tools/Shapes"
 
 
 
@@ -130,19 +130,9 @@ export default function AnnotatePdf(){
     const calculateZoomedWidth = (baseWidth, increment) => {
       return Math.max(baseWidth, baseWidth + (increment * (zoom - 1)));
     };
-  
-    // const newWidthLev1 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
     const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
-    // const newWidthLev4 = calculateZoomedWidth(baseWidthLev4, incrementWidthLev4); 
-    // const newHeightLev4 = calculateZoomedWidth(baseHeightLev4, incrementHeightLev4); 
-
-
-
-        
-        
-
-        
-        
+  
+ 
         
         return(
             <> 
@@ -173,6 +163,7 @@ export default function AnnotatePdf(){
                 isRightOpen={isRightOpen} 
                 setIsRightOpen={setIsRightOpen}
                 />
+
 
                         
                 <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]'>
