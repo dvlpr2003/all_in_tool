@@ -1,17 +1,9 @@
-import { IoIosSquareOutline } from "react-icons/io";
-
-import { PiCircleThin } from "react-icons/pi";
-
-import { FiTriangle } from "react-icons/fi";
-import { PiStarLight } from "react-icons/pi";
-import { MdOutlineHexagon } from "react-icons/md";
-import { CiHeart } from "react-icons/ci";
-
+import { IoIosHeart } from "react-icons/io";
 
 export const Shape = ({isShape,setIsShape})=>{
     return(
-        <div className={`w-40 h-full border absolute z-50  top-11 rounded-md bg-white shadow-md ${isShape?"flex":"hidden"} items-center justify-center px-10`}>
-            <div className="flex gap-3 ">
+        <div className={`w-auto h-full border absolute z-50  top-11 rounded-md bg-white shadow-md ${isShape?"flex":"hidden"} items-center justify-center px-5`}>
+            <div className="flex gap-3  justify-center items-center">
                 <div className="square">
                     <svg
                     width={20}
@@ -93,6 +85,10 @@ export const Shape = ({isShape,setIsShape})=>{
                         />
 
                     </svg>
+                </div>
+                <div className="heart flex justify-center items-center">
+                <IoIosHeart className="text-2xl text-slate-700" />
+
                 </div>
               
 

@@ -24,8 +24,8 @@ export const ToolTop = ()=>{
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                         <div className="flex-1 flex justify-center items-center"> <PiTextTFill  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
                     </div>
-                    <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer relative" onClick={()=>setIsShape((e)=>!e)}>
-                        <div className="flex-1 flex justify-center items-center"><RiShapesFill  className={`min-[55px]:text-sm lg:text-xl ${isShape?"text-blue-600": 'text-slate-700'}`} /></div>
+                    <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer relative" >
+                        <div className="flex-1 flex justify-center items-center"><RiShapesFill  className={`min-[55px]:text-sm lg:text-xl ${isShape?"text-blue-600": 'text-slate-700'}`} onClick={()=>setIsShape((e)=>!e)}/></div>
                          <Shape isShape={isShape} setIsShape={setIsShape}/>
 
                     </div>
