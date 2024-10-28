@@ -28,6 +28,9 @@ export default function AnnotatePdf(){
     const [zoom, setZoom] = useState(1); 
     const [value,setValue]=useState(`1%`)
     const containerRef = useRef(null);
+    const [shapes, setShapes] = useState([]);
+    const [selectedShape, setSelectedShape] = useState(null);
+
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
     const globDispatch = useDispatch()
@@ -131,6 +134,190 @@ export default function AnnotatePdf(){
       return Math.max(baseWidth, baseWidth + (increment * (zoom - 1)));
     };
     const newWidthLev2 = calculateZoomedWidth(baseWidthLev1Lev2, incrementLev1Lev2); 
+
+
+
+
+
+
+// shapes
+    const handleShapeClick = (id, e) => {
+        e.stopPropagation();
+        setSelectedShape(id);
+    };
+
+    const handleCanvasShapeDragStart = (e, id) => {
+        const shape = shapes.find(s => s.id === id);
+        if (!shape) return;
+
+        const startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        const startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+        const startPosX = shape.x;
+        const startPosY = shape.y;
+
+        const handleMove = (moveEvent) => {
+        const currentX = moveEvent.type === 'touchmove' ? moveEvent.touches[0].clientX : moveEvent.clientX;
+        const currentY = moveEvent.type === 'touchmove' ? moveEvent.touches[0].clientY : moveEvent.clientY;
+        
+        const deltaX = currentX - startX;
+        const deltaY = currentY - startY;
+
+        setShapes(shapes.map(s => {
+            if (s.id !== id) return s;
+            return {
+            ...s,
+            x: startPosX + deltaX,
+            y: startPosY + deltaY
+            };
+        }));
+        };
+
+        const handleEnd = () => {
+        document.removeEventListener('mousemove', handleMove);
+        document.removeEventListener('mouseup', handleEnd);
+        document.removeEventListener('touchmove', handleMove);
+        document.removeEventListener('touchend', handleEnd);
+        };
+
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchmove', handleMove);
+        document.addEventListener('touchend', handleEnd);
+    };
+    const handleResize = (e, id, corner) => {
+        e.stopPropagation();
+        const shape = shapes.find(s => s.id === id);
+        if (!shape) return;
+
+        const startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        const startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+        const startWidth = shape.width;
+        const startHeight = shape.height;
+
+        const handleMove = (moveEvent) => {
+        const currentX = moveEvent.type === 'touchmove' ? moveEvent.touches[0].clientX : moveEvent.clientX;
+        const currentY = moveEvent.type === 'touchmove' ? moveEvent.touches[0].clientY : moveEvent.clientY;
+        
+        const deltaX = currentX - startX;
+        const deltaY = currentY - startY;
+
+        setShapes(shapes.map(s => {
+            if (s.id !== id) return s;
+
+            let newWidth = startWidth;
+            let newHeight = startHeight;
+
+            switch (corner) {
+            case 'se':
+                newWidth = Math.max(50, startWidth + deltaX);
+                newHeight = Math.max(50, startHeight + deltaY);
+                break;
+            case 'sw':
+                newWidth = Math.max(50, startWidth - deltaX);
+                newHeight = Math.max(50, startHeight + deltaY);
+                break;
+            case 'ne':
+                newWidth = Math.max(50, startWidth + deltaX);
+                newHeight = Math.max(50, startHeight - deltaY);
+                break;
+            case 'nw':
+                newWidth = Math.max(50, startWidth - deltaX);
+                newHeight = Math.max(50, startHeight - deltaY);
+                break;
+            }
+
+            return {
+            ...s,
+            width: newWidth,
+            height: newHeight
+            };
+        }));
+        };
+
+        const handleEnd = () => {
+        document.removeEventListener('mousemove', handleMove);
+        document.removeEventListener('mouseup', handleEnd);
+        document.removeEventListener('touchmove', handleMove);
+        document.removeEventListener('touchend', handleEnd);
+        };
+
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchmove', handleMove);
+        document.addEventListener('touchend', handleEnd);
+    };
+    const renderShape = (shape) => {
+        const isSelected = selectedShape === shape.id;
+        const style = {
+          position: 'absolute',
+          left: `${shape.x}px`,
+          top: `${shape.y}px`,
+          width: `${shape.width}px`,
+          height: `${shape.height}px`,
+          border: isSelected ? '2px solid blue' : 'none',
+          cursor: 'move',
+          zIndex: shape.zIndex,
+          touchAction: 'none', // Prevents default touch behaviors
+        };
+    
+        const resizeHandle = (corner) => (
+          <div
+            className="absolute w-3 h-3 bg-blue-500 rounded-full cursor-se-resize"
+            style={{
+              top: corner.includes('n') ? '-4px' : 'auto',
+              bottom: corner.includes('s') ? '-4px' : 'auto',
+              left: corner.includes('w') ? '-4px' : 'auto',
+              right: corner.includes('e') ? '-4px' : 'auto',
+              touchAction: 'none',
+            }}
+            onMouseDown={(e) => handleResize(e, shape.id, corner)}
+            onTouchStart={(e) => handleResize(e, shape.id, corner)}
+          />
+        );
+    
+        let shapeContent;
+        switch (shape.type) {
+          case 'square':
+            shapeContent = <div className="w-full h-full bg-red-200" />;
+            break;
+          case 'circle':
+            shapeContent = <div className="w-full h-full bg-blue-200 rounded-full" />;
+            break;
+          case 'triangle':
+            shapeContent = (
+              <div
+                className="w-full h-full"
+                style={{
+                  clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+                  backgroundColor: 'rgb(154, 230, 180)'
+                }}
+              />
+            );
+            break;
+          default:
+            shapeContent = null;
+        }
+    
+        return (
+          <div
+            key={shape.id}
+            style={style}
+            onClick={(e) => handleShapeClick(shape.id, e)}
+            onMouseDown={(e) => handleCanvasShapeDragStart(e, shape.id)}
+            onTouchStart={(e) => handleCanvasShapeDragStart(e, shape.id)}
+          >
+            {shapeContent}
+            {isSelected && (
+              <>
+                {resizeHandle('nw')}
+                {resizeHandle('ne')}
+                {resizeHandle('sw')}
+                {resizeHandle('se')}
+              </>
+            )}
+          </div>
+        );
+      };
   
  
         
@@ -142,7 +329,7 @@ export default function AnnotatePdf(){
                 ref={containerRef}
                 style={{touchAction:"none"}}
             >
-                <ToolTop/>
+                <ToolTop shapes={shapes} setShapes={setShapes}/>
                 <ToolBottom 
                 isLeftOpen={isLeftOpen} 
                 isRightOpen={isRightOpen} 
@@ -209,6 +396,9 @@ export default function AnnotatePdf(){
                                         }}
                                         className='pointer-events-none align-middle overflow-clip border-0 image-orientation-from-image'
                                         />
+                                        
+                                        {shapes.map(renderShape)}
+                                        
                                     </div>
                                 </div>
                                     ))}

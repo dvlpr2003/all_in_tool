@@ -1,10 +1,23 @@
 import { IoIosHeart } from "react-icons/io";
 
-export const Shape = ({isShape,setIsShape})=>{
+export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
+    const addShape = (type) => {
+        const newShape = {
+          id: Date.now(),
+          type,
+          x: 100,
+          y: 100,
+          width: 100,
+          height: 100,
+          zIndex: shapes.length,
+          name: `${type.charAt(0).toUpperCase() + type.slice(1)} ${shapes.length + 1}`
+        };
+        setShapes([...shapes, newShape]);
+      };
     return(
         <div className={`w-auto h-full border absolute z-50  top-11 rounded-md bg-white shadow-md ${isShape?"flex":"hidden"} items-center justify-center px-5`}>
             <div className="flex gap-3  justify-center items-center">
-                <div className="square">
+                <div className="square" onClick={()=>addShape("square")}>
                     <svg
                     width={20}
                     height={20}
@@ -22,7 +35,7 @@ export const Shape = ({isShape,setIsShape})=>{
                 </div>
 
 
-                <div className="circle">
+                <div className="circle" >
                     <svg
                     width={20}
                     height={20}
