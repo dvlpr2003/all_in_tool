@@ -1,18 +1,25 @@
 import { IoIosHeart } from "react-icons/io";
+import { useState } from "react";
 
-export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
-    const addShape = (type) => {
+export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize})=>{
+
+    const addShape = (shapeType) => {
+        const defaultSize = 50 * (zoom / 100);
+        const centerX = containerSize.width / 2 - defaultSize / 2;
+        const centerY = containerSize.height / 2 - defaultSize / 2;
+    
         const newShape = {
           id: Date.now(),
-          type,
-          x: 100,
-          y: 100,
-          width: 100,
-          height: 100,
-          zIndex: shapes.length,
-          name: `${type.charAt(0).toUpperCase() + type.slice(1)} ${shapes.length + 1}`
+          type: shapeType,
+          x: centerX,
+          y: centerY,
+          width: defaultSize,
+          height: defaultSize
         };
+    
         setShapes([...shapes, newShape]);
+    
+        
       };
     return(
         <div className={`w-auto h-full border absolute z-50  top-11 rounded-md bg-white shadow-md ${isShape?"flex":"hidden"} items-center justify-center px-5`}>
@@ -35,7 +42,7 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
                 </div>
 
 
-                <div className="circle" >
+                <div className="circle" onClick={()=>addShape("circle")}>
                     <svg
                     width={20}
                     height={20}
@@ -52,7 +59,7 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
                 </div>
 
 
-                <div className="star">
+                <div className="star" onClick={()=>addShape("star")}>
                     <svg
                     width={20}
                     height={20}
@@ -68,7 +75,7 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
                     </svg>
                 </div>
 
-                <div className="triangle">
+                <div className="triangle" onClick={()=>addShape("triangle")}>
                     <svg
                     width={20}
                     height={20}
@@ -84,7 +91,7 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
                     </svg>
                 </div>
 
-                <div className="hexagon">
+                <div className="hexagon" onClick={()=>addShape("hexagon")} >
                     <svg
                     width={20}
                     height={20}
@@ -99,7 +106,7 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes})=>{
 
                     </svg>
                 </div>
-                <div className="heart flex justify-center items-center">
+                <div className="heart flex justify-center items-center" onClick={()=>addShape("heart")}>
                 <IoIosHeart className="text-2xl text-slate-700" />
 
                 </div>

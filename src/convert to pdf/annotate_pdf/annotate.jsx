@@ -30,6 +30,8 @@ export default function AnnotatePdf(){
     const containerRef = useRef(null);
     const [shapes, setShapes] = useState([]);
     const [selectedShape, setSelectedShape] = useState(null);
+    const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
 
     const formdata = new FormData()
     const wordItems = useSelector((state)=>state.word.WordItems)
@@ -77,7 +79,7 @@ export default function AnnotatePdf(){
     const handleWheel = (e) => {
         if (e.ctrlKey) {
           e.preventDefault();
-          setZoom((prevZoom) => (e.deltaY < 0 ? Math.min(prevZoom + 1, 2000) : Math.max(prevZoom - 1, 1)));
+          setZoom((prevZoom) => (e.deltaY < 0 ? Math.min(prevZoom + 1, 200) : Math.max(prevZoom - 1, 1)));
         }
       };
      // Calculate distance between two touch points
@@ -259,6 +261,7 @@ export default function AnnotatePdf(){
           zIndex: shape.zIndex,
           touchAction: 'none', // Prevents default touch behaviors
         };
+
     
         const resizeHandle = (corner) => (
           <div
@@ -319,6 +322,7 @@ export default function AnnotatePdf(){
         );
       };
   
+
  
         
         return(
@@ -329,7 +333,7 @@ export default function AnnotatePdf(){
                 ref={containerRef}
                 style={{touchAction:"none"}}
             >
-                <ToolTop shapes={shapes} setShapes={setShapes}/>
+                <ToolTop shapes={shapes} setShapes={setShapes} containerSize={containerSize} setContainerSize={setContainerSize} zoom={zoom}/>
                 <ToolBottom 
                 isLeftOpen={isLeftOpen} 
                 isRightOpen={isRightOpen} 
@@ -353,10 +357,10 @@ export default function AnnotatePdf(){
 
 
                         
-                <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px]'>
+                <div className='small-div h-screen bg-slate-100 flex items-stretch box-border overflow-hidden pt-[112px] relative'>
                             <div className='flex-1  overflow-auto h-auto  p-0  box-border overflow-y-auto overflow-x-auto relative text-center'
                             >
-                            <div className='bg-slate-100 m-0 p-0 border-0 align-baseline'>
+                            <div className='bg-slate-100 m-0 p-0 border-0 align-baseline relative'>
                             <div
                                 className="lev-1 flex justify-center  mt-0 mb-0 mr-auto ml-auto p-0 relative transition-none flex-wrap text-center "
                                 style={{
@@ -371,7 +375,7 @@ export default function AnnotatePdf(){
                                 >
                                 {[1].map((index) => (
                                 <div
-                                    className="lev-3 block box-border text-center"
+                                    className="lev-3 block box-border text-center relative"
                                     style={{
                                     padding: `${1.2 * zoom}px`, // Scale padding based on zoom
                                     }}
@@ -379,7 +383,7 @@ export default function AnnotatePdf(){
                                 >
                                     
                                     <div
-                                        className="lev-4 overflow-hidden  shadow-lg relative select-none"
+                                        className="lev-4 overflow-hidden  shadow-lg  select-none relative"
                                         style={{
                                         width: `${newWidthLev4}px`, // Adjust width based on zoom for lev-4
                                         height: `${newHeightLev4}px`, // Adjust height based on zoom for lev-4
@@ -387,17 +391,18 @@ export default function AnnotatePdf(){
                                         }}
                                         
                                     >
+                                      {/* <div className="flex absolute w-10 h-20 border border-black bg-black left-1/2 right-1/2">d</div> */}
                                         <img
                                         src="https://d3jq6id3uwlfp0.cloudfront.net/media/upload_Files/annotate_file/b38dc85f-7470-451c-8efe-92cec8015c4f_page_1.jpg"
                                         alt=""
                                         style={{
-                                            width: `${newWidthLev4}px`, // Adjust width based on zoom for img
-                                            height: `${newHeightLev4}px`, // Adjust height based on zoom for img
+                                          width: `${newWidthLev4}px`, // Adjust width based on zoom for img
+                                          height: `${newHeightLev4}px`, // Adjust height based on zoom for img
                                         }}
                                         className='pointer-events-none align-middle overflow-clip border-0 image-orientation-from-image'
                                         />
-                                        
                                         {shapes.map(renderShape)}
+                                        
                                         
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@ import { BsArrowCounterclockwise } from "react-icons/bs";
 import { Shape } from "../Tools/Shapes";
 import { useState } from "react";
 
-export const ToolTop = ({shapes, setShapes})=>{
+export const ToolTop = ({shapes, setShapes,containerSize,zoom})=>{
     const [isShape,setIsShape]=useState(false)
     return(
         <div className=" bg-transparent absolute min-[55px]:top-[65px] lg:top-[80px]  z-30 h-[40px] w-full flex justify-center items-center  " style={{touchAction:"auto"}}>
@@ -26,7 +26,7 @@ export const ToolTop = ({shapes, setShapes})=>{
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer relative" >
                         <div className="flex-1 flex justify-center items-center"><RiShapesFill  className={`min-[55px]:text-sm lg:text-xl ${isShape?"text-blue-600": 'text-slate-700'}`} onClick={()=>setIsShape((e)=>!e)}/></div>
-                         <Shape isShape={isShape} setIsShape={setIsShape} setShapes={setShapes} shapes={shapes} />
+                         <Shape isShape={isShape} setIsShape={setIsShape} setShapes={setShapes} shapes={shapes}  containerSize={containerSize} zoom={zoom}/>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
