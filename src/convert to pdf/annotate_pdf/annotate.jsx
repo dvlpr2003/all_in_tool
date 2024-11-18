@@ -635,7 +635,7 @@ export default function AnnotatePdf(){
                       >
                         <img
                           className="pdf-img pointer-events-none image-orientation-from-image vertical-align-middle border-0 overflow-clip-margin-content-box overflow-clip"
-                          src="https://d3jq6id3uwlfp0.cloudfront.net/media/upload_Files/annotate_file/161becde-fb46-4969-a2d5-71d183ae1f02_page_2.jpg"
+                          src="https://d3jq6id3uwlfp0.cloudfront.net/media/upload_Files/annotate_file/b38dc85f-7470-451c-8efe-92cec8015c4f_page_1.jpg"
                           alt="PDF Image"
                           style={{
                             width: `${calculatedPageWidth}px`,
