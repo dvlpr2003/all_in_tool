@@ -27,9 +27,8 @@ export default function AnnotatePdf(){
     const [isWidthInRange, setIsWidthInRange] = useState(false);
     const [zoom, setZoom] = useState(1); 
     const [value,setValue]=useState(`1%`)
-    const containerRef = useRef(null);
- 
-    const [selectedShape, setSelectedShape] = useState(null);
+
+
     const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
 
@@ -104,6 +103,7 @@ export default function AnnotatePdf(){
       const calculateSize = (size) => size * (zoomLevel / 100);
 
       const handleAddShape = (shapeType) => {
+        console.log(shapeType)
         const pageCanvasElement = pageCanvasRef.current;
         const centerX = (pageCanvasElement.clientWidth / 2) / (zoomLevel / 100);
         const centerY = (pageCanvasElement.clientHeight / 2) / (zoomLevel / 100);
@@ -474,6 +474,7 @@ export default function AnnotatePdf(){
             onTouchStart={(e) => handleTouchStart(e, shape.id)} // Add touch start
             onTouchMove={handleMouseMove} // Add touch move
             onTouchEnd={handleTouchEnd} // Add touch end
+            className={isSelected?"border border-black":'none'}
           >
             {shapeElement}
       
@@ -484,12 +485,12 @@ export default function AnnotatePdf(){
                     {/* Line Handlers */}
                     <div
                       onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'left-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'start')}
+                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'left-center')}
                       className="absolute top-[50%] left-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
                     ></div>
                     <div
                       onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'right-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'end')}
+                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'right-center')}
                       className="absolute top-[50%] right-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
                     ></div>
                   </>
@@ -564,6 +565,27 @@ export default function AnnotatePdf(){
           }
         }}
         >
+                <ToolTop shapes={shapes} setShapes={setShapes} containerSize={containerSize} setContainerSize={setContainerSize} zoom={zoom} handleAddShape={handleAddShape}/>
+                <ToolBottom 
+                isLeftOpen={isLeftOpen} 
+                isRightOpen={isRightOpen} 
+                setIsLeftOpen={setIsLeftOpen} 
+                setIsRightOpen={setIsRightOpen} 
+                setZoom={setZoom} value={value} 
+                setValue={setValue} 
+                isWidthInRange ={isWidthInRange} 
+                setIsWidthInRange ={setIsWidthInRange}
+                />
+
+                <LeftSlide 
+                isLeftOpen={isLeftOpen} 
+                setIsLeftOpen={setIsLeftOpen}
+                />
+
+                <RightSlide 
+                isRightOpen={isRightOpen} 
+                setIsRightOpen={setIsRightOpen}
+                />
           {/* <div className="shape-controls flex justify-center mt-4 mb-4">
             <button onClick={() => handleAddShape('square')} className="m-2 px-4 py-2 bg-gray-300 rounded">
               Add Square
@@ -622,7 +644,7 @@ export default function AnnotatePdf(){
                     <div className="editor-page block box-border shadow-2xl" style={{ padding: `${calculatedPadding}px` }}>
                       <div
                         ref={pageCanvasRef}
-                        className="page-canvas z-[3000] overflow-hidden relative select-none"
+                        className="page-canvas z-40 overflow-hidden relative select-none"
                         style={{
                           width: `${calculatedPageWidth}px`,
                           height: `${calculatedPageHeight}px`,
@@ -634,7 +656,7 @@ export default function AnnotatePdf(){
                         }}
                       >
                         <img
-                          className="pdf-img pointer-events-none image-orientation-from-image vertical-align-middle border-0 overflow-clip-margin-content-box overflow-clip"
+                          className="pdf-img pointer-events-none z-30 image-orientation-from-image vertical-align-middle border-0 overflow-clip-margin-content-box overflow-clip"
                           src="https://d3jq6id3uwlfp0.cloudfront.net/media/upload_Files/annotate_file/b38dc85f-7470-451c-8efe-92cec8015c4f_page_1.jpg"
                           alt="PDF Image"
                           style={{
