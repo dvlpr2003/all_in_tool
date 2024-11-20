@@ -9,7 +9,9 @@ import { BsArrowClockwise } from "react-icons/bs";
 import { BsArrowCounterclockwise } from "react-icons/bs";
 import { RxTransparencyGrid } from "react-icons/rx";
 import { RxBorderWidth } from "react-icons/rx";
-
+import { Tooltip } from "@mui/material";
+import {Button} from "@mui/material";
+import {Box} from "@mui/material";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 
 import { Shape } from "../Tools/Shapes";
@@ -25,40 +27,93 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
 
                 <div className="flex-1 flex h-full justify-center items-center ">
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom" className=" flex-1 flex justify-center items-center"><HiPencil  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div  className=" flex-1 flex justify-center items-center">
+
+                        <Tooltip title="Draw" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <HiPencil  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+                        </div>
                         
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div className="flex-1 flex justify-center items-center"> <PiTextTFill  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center"> 
+                        <Tooltip title="Add Text" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <PiTextTFill  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box >
+                        </Tooltip>
+                        </div>
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer relative" >
-                        <div className="flex-1 flex justify-center items-center"><RiShapesFill  className={`min-[55px]:text-sm lg:text-xl ${isShape?"text-blue-600": 'text-slate-700'}`} onClick={()=>setIsShape((e)=>!e)}/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                        <Tooltip title="Add Shape" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>setIsShape((e)=>!e)}>
+                                <RiShapesFill  className={`min-[55px]:text-sm lg:text-xl ${isShape?"text-blue-600": 'text-slate-700'}`} />
+                            </Box >
+                        </Tooltip>
+                        </div>
                          <Shape isShape={isShape} setIsShape={setIsShape} setShapes={setShapes} shapes={shapes}  containerSize={containerSize} zoom={zoom} handleAddShape={handleAddShape}/>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div className="flex-1 flex justify-center items-center"><FaRegImage className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                        <Tooltip title="Add Image" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <FaRegImage className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+
+                            </Box >
+                        </Tooltip>
+
+                        </div>
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div className="flex-1 flex justify-center items-center"><MdPanTool  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                            <MdPanTool  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                        </div>
                     </div>
 
                 </div>
                 <div className="flex-1 flex h-full justify-center items-center ">
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                        <div className="flex-1 flex justify-center items-center"><BsArrowClockwise  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                        <Tooltip title="Redo" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <BsArrowClockwise  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+                        </div>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                        <div className="flex-1 flex justify-center items-center"><BsArrowCounterclockwise className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                        <Tooltip title="Undo" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <BsArrowCounterclockwise className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box >
+                        </Tooltip>
+                        </div>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
-                        <div className="flex-1 flex justify-center items-center"><MdDelete  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center">
+                            <Tooltip title="Delete" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <MdDelete  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box >
+                            </Tooltip>
+                        </div>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer ">
-                        <div className="flex-1 flex justify-center items-center"><FaSave className="text-slate-700 min-[55px]:text-sm lg:text-xl" /></div>
+                        <div className="flex-1 flex justify-center items-center">
+                            <Tooltip title="Save" arrow sx={{zIndex:"2000"}}>
+                                <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                                    <FaSave className="text-slate-700 min-[55px]:text-sm lg:text-xl" />
+                                </Box>
+                            </Tooltip>
+                        </div>
 
                     </div>
 
@@ -70,42 +125,73 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
             
             <div className=" shadow-xl w-full h-9 absolute bg-white flex items-center">
                 <div className="flex-1 flex h-full justify-center items-center ">
-                    <div className="flex-1 h-full flex justify-center items-center border-r gap-6 cursor-pointer">
-                        <div className="border-2 border-dashed border-slate-400 w-4 h-4">
+                    <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
+                            <div  className=" flex-1 flex justify-center items-center">
 
-                        </div>
-                        <div className="w-4 h-4 bg-blue-600">
-
-                        </div>
+                            <Tooltip title="Border" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{width:"1rem",height:"1rem",border:"2px dashed #94a3b8"}}></Box>
+                            </Tooltip>
+                            </div>
+                            
                     </div>
+                    <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
+                            <div  className=" flex-1 flex justify-center items-center">
 
-                    <div className="flex-1 h-full flex justify-center items-center border-r gap-3 cursor-pointer relative px-2" >
-                        <div>
-                        <RxTransparencyGrid className="w-4 h-4"/>
-                        </div>
-                        <select name="" id="" className="border-[1.5px] rounded-sm ">
-                            <option value="100">100%</option>
-                            <option value="75">75%</option>
-                            <option value="50">50%</option>
-                            <option value="25">25%</option>
-                            <option value="10">10%</option>
-
-
-                        </select>
-
+                            <Tooltip title="Background color" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{width:"1rem",height:"1rem",backgroundColor:"#2563eb"}}></Box>
+                            </Tooltip>
+                            </div>
+                            
                     </div>
-                    <div className="flex-1 h-full flex justify-center items-center gap-3 border-r cursor-pointer px-2">
+                    <div className="flex-2 h-full flex justify-center items-center  cursor-pointer mx-2">
+                            <div  className=" flex-1 flex justify-center items-center">
 
-                        <div className="flex justify-center items-center">
-                        <RxBorderWidth  className="text-slate-700 text-xl"/>
-
-                        </div>
-                        <div className="border-[1.5px] rounded-sm flex justify-center items-center">
-                            <input type="number" className="text-center w-16"  />
-                        </div>
-
+                            <Tooltip title="Opacity" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <RxTransparencyGrid className="w-4 h-4 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                            </Tooltip>
+                            </div>
+                            
+                    </div>
+                    <div className="flex-2 h-full flex justify-center items-center border-r cursor-pointer pr-1">
+                            <div  className=" flex-1 flex justify-center items-center">
+                                <select name="" id="" className="border-[1.5px] rounded-sm ">
+                                    <option value="100">100%</option>
+                                    <option value="75">75%</option>
+                                    <option value="50">50%</option>
+                                    <option value="25">25%</option>
+                                    <option value="10">10%</option>
+                                </select>
+                            </div>
+                            
                     </div>
      
+
+                </div>
+
+                <div className="flex-2 h-full flex justify-center items-center  cursor-pointer pl-1 ">
+                    <div className="flex-2 h-full flex justify-center items-center  cursor-pointer">
+                                <div  className=" flex-2 flex justify-center items-center">
+                                <Tooltip title="Stroke" arrow sx={{zIndex:"2000"}}>
+                                    <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                                    <   RxBorderWidth  className="text-slate-700 text-xl mr-1 min-[55px]:text-sm lg:text-xl"/>
+                                    </Box >
+                                </Tooltip>
+                                
+
+                                </div>
+                                
+                    </div>
+                    <div className="flex-2 h-full flex justify-center items-center border-r cursor-pointer pr-1">
+                            <div  className=" flex-1 flex justify-center items-center">
+                                <div className="border-[1.5px] rounded-sm">
+
+                                     <input type="number" className="text-center w-16"  />
+                                </div>
+                            </div>
+                            
+                    </div>
 
                 </div>
                 <div className="flex-1 flex h-full justify-center items-center ">
