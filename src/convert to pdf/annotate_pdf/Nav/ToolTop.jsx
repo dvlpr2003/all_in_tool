@@ -17,8 +17,9 @@ import { MdOutlineArrowDropDown } from "react-icons/md";
 import { Shape } from "../Tools/Shapes";
 import { useState } from "react";
 
-export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>{
+export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isWidthInRange})=>{
     const [isShape,setIsShape]=useState(false)
+    
     return(
         <div className=" bg-transparent absolute min-[55px]:top-[65px] lg:top-[80px]  z-50 h-[80px] w-full flex flex-col justify-center items-center  " style={{touchAction:"auto"}}>
         <div className="lg:w-1/2 min-[55px]:w-full h-full  relative flex justify-center items-center ">
@@ -129,7 +130,7 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
                             <div  className=" flex-1 flex justify-center items-center">
 
                             <Tooltip title="Border" arrow sx={{zIndex:"2000"}}>
-                            <Box component={"div"} sx={{width:"1rem",height:"1rem",border:"2px dashed #94a3b8"}}></Box>
+                            <Box component={"div"} sx={{width:`${isWidthInRange?"0.7rem":"1rem"}`,height:`${isWidthInRange?"0.7rem":"1rem"}`,border:"2px dashed #94a3b8"}}></Box>
                             </Tooltip>
                             </div>
                             
@@ -138,7 +139,7 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
                             <div  className=" flex-1 flex justify-center items-center">
 
                             <Tooltip title="Background color" arrow sx={{zIndex:"2000"}}>
-                            <Box component={"div"} sx={{width:"1rem",height:"1rem",backgroundColor:"#2563eb"}}></Box>
+                            <Box component={"div"} sx={{width:`${isWidthInRange?"0.7rem":"1rem"}`,height:`${isWidthInRange?"0.7rem":"1rem"}`,backgroundColor:"#2563eb"}}></Box>
                             </Tooltip>
                             </div>
                             
@@ -148,7 +149,7 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
 
                             <Tooltip title="Opacity" arrow sx={{zIndex:"2000"}}>
                             <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
-                            <RxTransparencyGrid className="w-4 h-4 min-[55px]:text-sm lg:text-xl"/>
+                            <RxTransparencyGrid className="min-[55px]:text-sm lg:text-xl"/>
                             </Box>
                             </Tooltip>
                             </div>
@@ -156,8 +157,8 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
                     </div>
                     <div className="flex-2 h-full flex justify-center items-center border-r cursor-pointer pr-1">
                             <div  className=" flex-1 flex justify-center items-center">
-                                <select name="" id="" className="border-[1.5px] rounded-sm ">
-                                    <option value="100">100%</option>
+                                <select name="" id="" className="border-[1.5px] rounded-sm min-[55px]:w-11 min-[55px]:h-7 lg:w-14 min-[55px]:text-[8px] lg:text-[12px]">
+                                    <option value="100" >100%</option>
                                     <option value="75">75%</option>
                                     <option value="50">50%</option>
                                     <option value="25">25%</option>
@@ -185,9 +186,9 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape})=>
                     </div>
                     <div className="flex-2 h-full flex justify-center items-center border-r cursor-pointer pr-1">
                             <div  className=" flex-1 flex justify-center items-center">
-                                <div className="border-[1.5px] rounded-sm">
+                                <div className="border-[1.5px] rounded-sm ">
 
-                                     <input type="number" className="text-center w-16"  />
+                                     <input type="number" className="text-center min-[55px]:w-11 min-[55px]:h-7 lg:w-14 min-[55px]:text-[8px] lg:text-[12px] appearance-none"  />
                                 </div>
                             </div>
                             

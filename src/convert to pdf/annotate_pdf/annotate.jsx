@@ -565,7 +565,15 @@ export default function AnnotatePdf(){
           }
         }}
         >
-                <ToolTop shapes={shapes} setShapes={setShapes} containerSize={containerSize} setContainerSize={setContainerSize} zoom={zoom} handleAddShape={handleAddShape}/>
+                <ToolTop 
+                shapes={shapes} 
+                setShapes={setShapes} 
+                containerSize={containerSize} 
+                setContainerSize={setContainerSize} 
+                zoom={zoom} 
+                handleAddShape={handleAddShape}
+                isWidthInRange={isWidthInRange}
+                />
                 <ToolBottom 
                 isLeftOpen={isLeftOpen} 
                 isRightOpen={isRightOpen} 

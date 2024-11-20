@@ -5,6 +5,8 @@ import { BsLayersFill } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { TbBoxMultiple } from "react-icons/tb";
+import { Box } from "@mui/material";
+import {Tooltip} from "@mui/material";
 
 export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,setZoom,value,setValue,isWidthInRange,setIsWidthInRange})=>{
     const checkWidthInRange = () => {
@@ -22,6 +24,7 @@ export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,s
         // Clean up listener on unmount
         return () => window.removeEventListener('resize', checkWidthInRange);
     }, []);
+  
 
     const handleIncrement=()=>{
         setZoom((e)=>e+1)
@@ -69,11 +72,24 @@ export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,s
             <div className=" bg-white shadow-xl w-full h-full absolute  flex items-center">
                 <div className="flex-1 flex h-full justify-center items-center ">
                 <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleCloseLft}>
-                        <div className="flex-1 flex justify-center items-center" ><TbBoxMultiple className={`  ${isLeftOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
+                        <div className="flex-1 flex justify-center items-center" >
+                        <Tooltip title="All images" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <TbBoxMultiple className={`  ${isLeftOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/>
+                            </Box>
+                        </Tooltip>
+                        </div>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleDecrement}>
-                        <div className="flex-1 flex justify-center items-center" ><FiMinusCircle className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center" >
+                        <Tooltip title="Zoom out" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <FiMinusCircle className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+
+                        </div>
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r">
@@ -81,7 +97,14 @@ export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,s
 
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer border-r" onClick={handleIncrement}>
-                        <div className="flex-1 flex justify-center items-center" ><FiPlusCircle  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center" >
+                        <Tooltip title="Zoom in" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <FiPlusCircle  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+
+                        </div>
 
                     </div>
 
@@ -90,7 +113,14 @@ export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,s
                 <div className="flex-1 flex h-full justify-center items-center ">
                     
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div className="flex-1 flex justify-center items-center" > <MdKeyboardArrowLeft className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center" >
+                        <Tooltip title="Previous image" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                             <MdKeyboardArrowLeft className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+                            
+                        </div>
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
                         <div className="flex-1 flex justify-center items-center ">
@@ -103,10 +133,23 @@ export const ToolBottom =({isLeftOpen,isRightOpen,setIsLeftOpen,setIsRightOpen,s
                             </div>
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center border-r cursor-pointer">
-                        <div className="flex-1 flex justify-center items-center" ><MdKeyboardArrowRight  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/></div>
+                        <div className="flex-1 flex justify-center items-center" >
+                        <Tooltip title="Next image" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <MdKeyboardArrowRight  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            </Box>
+                        </Tooltip>
+                        </div>
                     </div>
                     <div className="flex-1 h-full flex justify-center items-center cursor-pointer" onClick={handleRideSlide}>
-                        <div className=" flex-1 flex justify-center items-center" ><BsLayersFill  className={`  ${isRightOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/></div>
+                        <div className=" flex-1 flex justify-center items-center" >
+                        <Tooltip title="Layers" arrow sx={{zIndex:"2000"}}>
+                            <Box component={"div"} sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            <BsLayersFill  className={`  ${isRightOpen?"text-blue-600":"text-slate-700"} min-[55px]:text-sm lg:text-xl`}/>
+                            </Box>
+                        </Tooltip>
+
+                        </div>
                     </div>
 
                 </div>
