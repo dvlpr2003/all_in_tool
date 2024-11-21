@@ -3,7 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 
 export const LeftSlide = ({isLeftOpen,setIsLeftOpen})=>{
     return(
-        <div className={` flex justify-center items-center fixed top-0 left-0 z-40 h-full w-72 bg-white text-white transform ${
+        <div className={` flex justify-center items-center fixed top-0 left-0 z-50 h-full w-72 bg-white text-white transform ${
             isLeftOpen ? 'translate-x-0' : '-translate-x-full'
             } transition-transform duration-300 ease-in-out`}>
 

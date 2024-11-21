@@ -1,5 +1,7 @@
 import { IoIosHeart } from "react-icons/io";
 import { useState } from "react";
+import { Tooltip } from "@mui/material";
+import {Box} from "@mui/material";
 
 export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,handleAddShape})=>{
 
@@ -7,7 +9,8 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,ha
     return(
         <div className={`w-auto h-full border absolute z-50  top-11 rounded-md bg-white shadow-md ${isShape?"flex":"hidden"} items-center justify-center px-5`}>
             <div className="flex gap-3  justify-center items-center">
-                <div className="square" onClick={()=>{handleAddShape("square"); setIsShape(false)}}>
+                <Tooltip title="Square" arrow>
+                <Box className="square" onClick={()=>{handleAddShape("square"); setIsShape(false)}}>
                     <svg
                     width={20}
                     height={20}
@@ -22,27 +25,29 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,ha
                         />
 
                     </svg>
-                </div>
+                </Box>
+                </Tooltip>
 
+                <Tooltip title="Circle" arrow>
+                    <Box className="circle" onClick={()=>{handleAddShape("circle"); setIsShape(false)}}>
+                        <svg
+                        width={20}
+                        height={20}
+                        viewBox="0 0 100 100"
+                        >
+                            <path
+                            d="M50 0 A50 50 0 1 0 50 100 A50 50 0 1 0 50 0"
+                            fill="#334155"
+                            stroke="#334155"
+                            
+                            />
 
-                <div className="circle" onClick={()=>{handleAddShape("circle"); setIsShape(false)}}>
-                    <svg
-                    width={20}
-                    height={20}
-                    viewBox="0 0 100 100"
-                    >
-                        <path
-                        d="M50 0 A50 50 0 1 0 50 100 A50 50 0 1 0 50 0"
-                        fill="#334155"
-                        stroke="#334155"
-                        
-                        />
+                        </svg>
+                    </Box>
+                </Tooltip>
 
-                    </svg>
-                </div>
-
-
-                <div className="star" onClick={()=>{handleAddShape("star"); setIsShape(false)}}>
+                <Tooltip title="Star" arrow>
+                <Box className="star" onClick={()=>{handleAddShape("star"); setIsShape(false)}}>
                     <svg
                     width={20}
                     height={20}
@@ -56,9 +61,11 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,ha
                         />
 
                     </svg>
-                </div>
+                </Box>
+                </Tooltip>
 
-                <div className="triangle" onClick={()=>{handleAddShape("triangle"); setIsShape(false)}}>
+                <Tooltip title="Triangle" arrow>
+                <Box className="triangle" onClick={()=>{handleAddShape("triangle"); setIsShape(false)}}>
                     <svg
                     width={20}
                     height={20}
@@ -72,9 +79,10 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,ha
                         />
 
                     </svg>
-                </div>
-
-                <div className="hexagon" onClick={()=>{handleAddShape("pentagon"); setIsShape(false)}} >
+                </Box>
+                </Tooltip>
+                <Tooltip title="Pentagon" arrow>
+                <Box className="hexagon" onClick={()=>{handleAddShape("pentagon"); setIsShape(false)}} >
                     <svg
                     width={20}
                     height={20}
@@ -88,11 +96,16 @@ export const Shape = ({isShape,setIsShape,setShapes,shapes,zoom,containerSize,ha
                         />
 
                     </svg>
-                </div>
-                <div className="heart flex justify-center items-center" onClick={()=>{handleAddShape("heart"); setIsShape(false)}}>
+                </Box>
+                </Tooltip>
+
+                <Tooltip title="Heart" arrow>
+
+                <Box className="heart flex justify-center items-center" onClick={()=>{handleAddShape("heart"); setIsShape(false)}}>
                 <IoIosHeart className="text-2xl text-slate-700" />
 
-                </div>
+                </Box>
+                </Tooltip>
               
 
             </div>
