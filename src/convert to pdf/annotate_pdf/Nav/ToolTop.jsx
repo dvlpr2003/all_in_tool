@@ -12,13 +12,18 @@ import { RxBorderWidth } from "react-icons/rx";
 import { Tooltip } from "@mui/material";
 import {Button} from "@mui/material";
 import {Box} from "@mui/material";
+import Slider, { SliderThumb } from '@mui/material/Slider';
+import { MdRotate90DegreesCw } from "react-icons/md";
+
+import { styled } from '@mui/material/styles';
 import { MdOutlineArrowDropDown } from "react-icons/md";
 
 import { Shape } from "../Tools/Shapes";
 import { useState } from "react";
 
-export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isWidthInRange})=>{
+export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isWidthInRange,selectedShapeId})=>{
     const [isShape,setIsShape]=useState(false)
+    const [RotateValue,setRotateValue]=useState(0)
 
     // Pencil tooltip
     const [PenciltooltipOpen, setPencilTooltipOpen] = useState(false);
@@ -195,8 +200,17 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isW
 
 
 
+    const handleRotate=(e)=>{
+      setShapes((prevShapes) =>
+      prevShapes.map((shape) =>
+        shape.id === selectedShapeId ? { ...shape, rotate: e.target.value } : shape
+      )
+      );
 
-
+      setRotateValue(Number(e.target.value > 180?180:e.target.value))
+      
+    }
+  
     
     return(
         <div className=" bg-transparent absolute min-[55px]:top-[65px] lg:top-[80px]  z-50 h-[80px] w-full flex flex-col justify-center items-center  " style={{touchAction:"auto"}}>
@@ -510,7 +524,57 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isW
                     </div>
 
                 </div>
-                <div className="flex-1 flex h-full justify-center items-center ">
+                <div className="flex-1 flex h-full justify-start items-center ml-4">
+                  
+                  <div className="w-44 flex justify-center items-center gap-3">
+                    <div className="flex justify-center items-center">
+                      <Tooltip 
+                      title="Rotate shape"
+                      sx={{zIndex:"2000"}}
+                      arrow
+                      >
+                        <Box
+                        component={"div"}
+
+                        >
+
+                        <MdRotate90DegreesCw className="text-slate-700 text-xl mr-1 min-[55px]:text-sm lg:text-xl"/>
+                        </Box>
+                      </Tooltip>
+                    </div>
+                  <Slider
+                  value={RotateValue}
+                  onChange={handleRotate}
+                  
+                  aria-labelledby="input-slider"
+                  min={-180}
+                  max={180}
+                  
+                  sx={{
+                    "& .MuiSlider-thumb": {
+                      width: 12, // Adjust thumb size (optional)
+                      height: 12, // Adjust thumb size (optional)
+                      boxShadow: "none", // Remove glow effect
+                      transition: "none", // Disable animations
+                      "&:hover": {
+                        boxShadow: "none", // No effect on hover
+                      },
+                    },
+                    "& .MuiSlider-thumb:focus, & .MuiSlider-thumb:hover, & .MuiSlider-thumb.Mui-active": {
+                      boxShadow: "none", // Remove all hover, focus, and active effects
+                    },
+                    "& .MuiSlider-track": {
+                      transition: "none", // Remove track animations
+                    },
+                    "& .MuiSlider-rail": {
+                      transition: "none", // Remove rail animations
+                    },
+                  }}
+                  
+                />
+                  <input type="number"  value={RotateValue}  className="w-14 border rounded-sm text-center" onChange={handleRotate}/>
+                  </div>
+
 
 
                 </div>

@@ -33,9 +33,6 @@ export default function AnnotatePdf(){
 
 
 
-
-
-
     const [zoomLevel, setZoomLevel] = useState(100);
     const [shapes, setShapes] = useState([]);
     const [selectedShapeId, setSelectedShapeId] = useState(null);
@@ -73,6 +70,7 @@ export default function AnnotatePdf(){
         
         
     }
+    
     const workareaRef = useRef(null);
     const pageCanvasRef = useRef(null);
     const resizingDataRef = useRef(null);
@@ -115,6 +113,7 @@ export default function AnnotatePdf(){
           width: 10,  // Default width
           height: 10, // Default height
           color: 'white',
+          rotate:0,
           points: [], // To store the points for shapes like triangle, pentagon, etc.
         };
       
@@ -215,7 +214,6 @@ export default function AnnotatePdf(){
         };
       };
       const handleResizeStart = (event, shapeId, resizeDirection) => {
-        event.preventDefault(); // Prevent scrolling on touch devices
         const clientX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
         const clientY = event.type === 'mousedown' ? event.clientY : event.touches[0].clientY;
       
@@ -232,10 +230,6 @@ export default function AnnotatePdf(){
         };
       };
       const handleMouseMove = (event) => {
-        if (event.type === 'touchmove') {
-          event.preventDefault();
-        }
-      
         // Check for resizing
         if (resizingDataRef.current) {
           const {
@@ -352,8 +346,8 @@ export default function AnnotatePdf(){
         }
       };
       const handleMouseUp = () => {
-        resizingDataRef.current = null; // Clear resizing data
-        setDraggingShape(null); // Clear dragging state
+        resizingDataRef.current = null; 
+        setDraggingShape(null);
       };
       const handleTouchEnd = () => {
         resizingDataRef.current = null;
@@ -366,6 +360,7 @@ export default function AnnotatePdf(){
           left: `${calculatePosition(shape.position.left)}px`,
           width: `${calculateSize(shape.width)}px`,
           height: `${calculateSize(shape.height)}px`,
+          transform:`rotate(${shape.rotate}deg)`,
           position: 'absolute',
           cursor: 'move',
           userSelect: 'none',
@@ -546,24 +541,9 @@ export default function AnnotatePdf(){
           </div>
         );
       };
-      
-
-
-
-    
-
-      
-
-
-
-        
+      console.log(selectedShapeId)       
       return (
         <div className="main mt-[60px] w-full overflow-hidden " onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}
-        onTouchMove={(e) => {
-          if (isDragging) {
-            e.preventDefault(); // Disable scrolling
-          }
-        }}
         >
                 <ToolTop 
                 shapes={shapes} 
@@ -573,6 +553,7 @@ export default function AnnotatePdf(){
                 zoom={zoom} 
                 handleAddShape={handleAddShape}
                 isWidthInRange={isWidthInRange}
+                selectedShapeId = {selectedShapeId}
                 />
                 <ToolBottom 
                 isLeftOpen={isLeftOpen} 
@@ -593,36 +574,7 @@ export default function AnnotatePdf(){
                 <RightSlide 
                 isRightOpen={isRightOpen} 
                 setIsRightOpen={setIsRightOpen}
-                />
-          {/* <div className="shape-controls flex justify-center mt-4 mb-4">
-            <button onClick={() => handleAddShape('square')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              Add Square
-            </button>
-            <button onClick={() => handleAddShape('circle')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              Add Circle
-            </button>
-            <button onClick={() => handleAddShape('star')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              star
-            </button>
-            <button onClick={() => handleAddShape('triangle')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              triangle
-            </button>
-            <button onClick={() => handleAddShape('line')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              line
-            </button>
-            <button onClick={() => handleAddShape('pentagon')} className="m-2 px-4 py-2 bg-gray-300 rounded">
-              pentagon
-            </button>
-            <input
-              type="color"
-              value={selectedShapeId ? shapes.find((s) => s.id === selectedShapeId)?.color : '#000000'}
-              onChange={handleColorChange}
-              disabled={!selectedShapeId}
-              className="ml-4"
-            />
-            <span className="ml-2">Zoom: {zoomLevel}%</span>
-          </div> */}
-    
+                />   
           <div className="tool flex items-stretch h-[calc(100vh-60px)] box-border relative overflow-hidden">
             <div
               ref={workareaRef}
@@ -630,13 +582,6 @@ export default function AnnotatePdf(){
               style={{
                 overflowX:isDragging?"hidden":"auto",
                 overflowY:isDragging?"hidden":"auto"
-              }}
-    
-    
-              onTouchMove={(e) => {
-                if (isDragging) {
-                  e.preventDefault(); // Prevent scrolling when dragging
-                }
               }}
               
             >
@@ -656,11 +601,6 @@ export default function AnnotatePdf(){
                         style={{
                           width: `${calculatedPageWidth}px`,
                           height: `${calculatedPageHeight}px`,
-                        }}
-                        onTouchMove={(e) => {
-                          if (isDragging) {
-                            e.preventDefault(); // Prevent scrolling when dragging
-                          }
                         }}
                       >
                         <img
