@@ -494,67 +494,90 @@ export default function AnnotatePdf(){
       
             {isSelected && (
               <>
-                {shape.type === 'line' ? (
-                  <>
-                    {/* Line Handlers */}
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'left-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'left-center')}
-                      className="absolute top-[50%] left-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'right-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'right-center')}
-                      className="absolute top-[50%] right-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
-                    ></div>
-                  </>
-                ) : (
-                  <>
-                    {/* Corner Handlers */}
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-left')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-left')}
-                      className="absolute top-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-right')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-right')}
-                      className="absolute top-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-left')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-left')}
-                      className="absolute bottom-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-right')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-right')}
-                      className="absolute bottom-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
-                    ></div>
-      
-                    {/* Center Handlers */}
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-center')}
-                      className="absolute top-[-4px] left-[50%] translate-x-[-50%] w-2 h-2 z-50 bg-green-500 cursor-ns-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-center')}
-                      className="absolute bottom-[-4px] left-[50%] translate-x-[-50%] w-2 h-2 z-50 bg-green-500 cursor-ns-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'left-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'left-center')}
-                      className="absolute top-[50%] left-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-green-500 cursor-ew-resize rounded-full"
-                    ></div>
-                    <div
-                      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'right-center')}
-                      onTouchStart={(e) => handleResizeStart(e, shape.id, 'right-center')}
-                      className="absolute top-[50%] right-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-green-500 cursor-ew-resize rounded-full"
-                    ></div>
-                  </>
-                )}
+{shape.type === 'line' ? (
+  <>
+    {/* Line Handlers */}
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'left-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'start')}
+      className="absolute top-[50%] left-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'right-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'end')}
+      className="absolute top-[50%] right-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-pointer rounded-full"
+    ></div>
+  </>
+) : shape.type === 'star' || shape.type === 'heart' || shape.type === 'pentagon' || shape.type === 'rectangle'|| shape.type === "triangle" || shape.type === "circle"? (
+  <>
+    {/* Corner Handlers for Specific Shapes */}
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-left')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-left')}
+      className="absolute top-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-right')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-right')}
+      className="absolute top-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-left')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-left')}
+      className="absolute bottom-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-right')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-right')}
+      className="absolute bottom-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
+    ></div>
+  </>
+) : (
+  <>
+    {/* Corner and Center Handlers for Other Shapes */}
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-left')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-left')}
+      className="absolute top-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-right')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-right')}
+      className="absolute top-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-left')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-left')}
+      className="absolute bottom-[-4px] left-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nesw-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-right')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-right')}
+      className="absolute bottom-[-4px] right-[-4px] w-2 h-2 z-50 bg-blue-500 cursor-nwse-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'top-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'top-center')}
+      className="absolute top-[-4px] left-[50%] translate-x-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-ns-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'bottom-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'bottom-center')}
+      className="absolute bottom-[-4px] left-[50%] translate-x-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-ns-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'left-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'left-center')}
+      className="absolute top-[50%] left-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-ew-resize rounded-full"
+    ></div>
+    <div
+      onMouseDown={(e) => handleResizeMouseDown(e, shape.id, 'right-center')}
+      onTouchStart={(e) => handleResizeStart(e, shape.id, 'right-center')}
+      className="absolute top-[50%] right-[-4px] translate-y-[-50%] w-2 h-2 z-50 bg-blue-500 cursor-ew-resize rounded-full"
+    ></div>
+  </>
+)}
+
               </>
             )}
           </div>
