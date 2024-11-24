@@ -354,6 +354,25 @@ export default function AnnotatePdf(){
         setDraggingShape(null);
         setIsDragging(false);
       }
+
+
+
+      useEffect(() => {
+        const disableTouchScroll = (event) => {
+          if (resizingDataRef.current) {
+            event.preventDefault(); // Prevent scrolling during resize
+          }
+        };
+      
+        document.addEventListener('touchmove', disableTouchScroll, { passive: false });
+        console.log("gommala")
+      
+        return () => {
+          document.removeEventListener('touchmove', disableTouchScroll,{passive:false});
+        };
+      
+      }, []);
+      
       const renderShape = (shape) => {
         const style = {
           top: `${calculatePosition(shape.position.top)}px`,
