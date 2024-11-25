@@ -261,33 +261,97 @@ export default function AnnotatePdf(){
       
             switch (resizeDirection) {
               case 'top-left': {
-                const delta = Math.min(-deltaX, -deltaY);
-                newWidth = Math.max(initialWidth + delta, 1);
-                newHeight = newWidth / aspectRatio;
-                newLeft = initialPosition.left - (newWidth - initialWidth);
-                newTop = initialPosition.top - (newHeight - initialHeight);
-                break;
+                if (shape.type === 'rectangle' 
+                || shape.type === "circle" 
+                || shape.type === 'triangle' 
+                || shape.type === "pentagon" 
+                || shape.type === "star"
+                || shape.type === "heart"
+                ){
+                  const delta = Math.min(-deltaX, -deltaY);
+                  newWidth = Math.max(initialWidth + delta, 1);
+                  newHeight = newWidth / aspectRatio;
+                  newLeft = initialPosition.left - (newWidth - initialWidth);
+                  newTop = initialPosition.top - (newHeight - initialHeight);
+                  break;
+                }else{
+    
+                  newWidth = Math.max(initialWidth - deltaX, 1);
+                  newHeight = Math.max(initialHeight - deltaY, 1);
+                  newLeft = initialPosition.left + deltaX;
+                  newTop = initialPosition.top + deltaY;
+                  break;
+                }
+    
               }
               case 'top-right': {
-                const delta = Math.min(deltaX, -deltaY);
-                newWidth = Math.max(initialWidth + delta, 1);
-                newHeight = newWidth / aspectRatio;
-                newTop = initialPosition.top - (newHeight - initialHeight);
-                break;
+                if (
+                  shape.type === 'rectangle' 
+                  || shape.type === "circle" 
+                  || shape.type === 'triangle' 
+                  || shape.type === "pentagon" 
+                  || shape.type === "star"
+                  || shape.type === "heart"
+                  ){
+                  const delta = Math.min(deltaX, -deltaY);
+                  newWidth = Math.max(initialWidth + delta, 1);
+                  newHeight = newWidth / aspectRatio;
+                  newTop = initialPosition.top - (newHeight - initialHeight);
+                  break;
+                }else {
+                  newWidth = Math.max(initialWidth + deltaX, 1);
+                  newHeight = Math.max(initialHeight - deltaY, 1);
+                  newTop = initialPosition.top + deltaY;
+                  break;
+    
+                }
+                
               }
               case 'bottom-left': {
-                const delta = Math.min(-deltaX, deltaY);
-                newWidth = Math.max(initialWidth + delta, 1);
-                newHeight = newWidth / aspectRatio;
-                newLeft = initialPosition.left - (newWidth - initialWidth);
-                break;
+                if (
+                  shape.type === 'rectangle' 
+                  || shape.type === "circle" 
+                  || shape.type === 'triangle' 
+                  || shape.type === "pentagon" 
+                  || shape.type === "star"
+                  || shape.type === "heart"
+                  ){
+                  const delta = Math.min(-deltaX, deltaY);
+                  newWidth = Math.max(initialWidth + delta, 1);
+                  newHeight = newWidth / aspectRatio;
+                  newLeft = initialPosition.left - (newWidth - initialWidth);
+                  break;
+                }else{
+                  newWidth = Math.max(initialWidth - deltaX, 1);
+                  newHeight = Math.max(initialHeight + deltaY, 1);
+                  newLeft = initialPosition.left + deltaX;
+                  break;
+                }
               }
               case 'bottom-right': {
-                const delta = Math.min(deltaX, deltaY);
-                newWidth = Math.max(initialWidth + delta, 1);
-                newHeight = newWidth / aspectRatio;
-                break;
+                if (
+                  shape.type === 'rectangle' 
+                  || shape.type === "circle" 
+                  || shape.type === 'triangle' 
+                  || shape.type === "pentagon" 
+                  || shape.type === "star"
+                  || shape.type === "heart"
+                  ){
+    
+                  const delta = Math.min(deltaX, deltaY);
+                  newWidth = Math.max(initialWidth + delta, 1);
+                  newHeight = newWidth / aspectRatio;
+                  break;
+                }else{
+    
+                  newWidth = Math.max(initialWidth + deltaX, 1);
+                  newHeight = Math.max(initialHeight + deltaY, 1);
+                  break;
+    
+                }
+    
               }
+              
               case 'top-center': {
                 newHeight = Math.max(initialHeight - deltaY, 1);
                 newTop = initialPosition.top + deltaY;
