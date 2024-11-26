@@ -2,7 +2,6 @@ import { HiPencil } from "react-icons/hi2";
 import { PiTextTFill } from "react-icons/pi";
 import { RiShapesFill } from "react-icons/ri";
 import { FaRegImage } from "react-icons/fa6";
-import { MdPanTool } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { BsArrowClockwise } from "react-icons/bs";
@@ -10,13 +9,10 @@ import { BsArrowCounterclockwise } from "react-icons/bs";
 import { RxTransparencyGrid } from "react-icons/rx";
 import { RxBorderWidth } from "react-icons/rx";
 import { Tooltip } from "@mui/material";
-import {Button} from "@mui/material";
 import {Box} from "@mui/material";
-import Slider, { SliderThumb } from '@mui/material/Slider';
+import Slider from '@mui/material/Slider';
 import { MdRotate90DegreesCw } from "react-icons/md";
 
-import { styled } from '@mui/material/styles';
-import { MdOutlineArrowDropDown } from "react-icons/md";
 
 import { Shape } from "../Tools/Shapes";
 import { useState } from "react";
