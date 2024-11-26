@@ -37,8 +37,10 @@ export default function AnnotatePdf(){
     const [shapes, setShapes] = useState([]);
     const [selectedShapeId, setSelectedShapeId] = useState(null);
     const [draggingShape, setDraggingShape] = useState(null);
-    const [resizingShape, setResizingShape] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
+
+    const [history, setHistory] = useState([]);
+    const [historyIndex, setHistoryIndex] = useState(-1);
 
 
     const formdata = new FormData()
@@ -99,6 +101,11 @@ export default function AnnotatePdf(){
       const calculatedPageHeight = Math.max(initialPageHeight, initialPageHeight * (zoomLevel / 100));
       const calculatePosition = (position) => position * (zoomLevel / 100);
       const calculateSize = (size) => size * (zoomLevel / 100);
+
+
+
+
+
 
       const handleAddShape = (shapeType) => {
         console.log(shapeType)
@@ -165,10 +172,37 @@ export default function AnnotatePdf(){
         }
       
         setShapes([...shapes, defaultShape]);
+        updateHistory([...shapes, defaultShape]);
       };
+
+      // update history for redo and undo operation
+      const updateHistory = (newShapes) => {
+        const newHistory = history.slice(0, historyIndex + 1); // Keep only the relevant history
+        newHistory.push(newShapes);
+        setHistory(newHistory);
+        setHistoryIndex(newHistory.length - 1); // Move history index to the latest state
+      }; 
+
+      const handleUndo = () => {
+        if (historyIndex > 0) {
+          setHistoryIndex(historyIndex - 1);
+          setShapes(history[historyIndex - 1]);
+        }
+      };
+      
+      const handleRedo = () => {
+        if (historyIndex < history.length - 1) {
+          setHistoryIndex(historyIndex + 1);
+          setShapes(history[historyIndex + 1]);
+        }
+      };
+
+
       const handleShapeClick = (shapeId) => {
         setSelectedShapeId(shapeId);
       };
+
+
       const handleColorChange = (event) => {
         const newColor = event.target.value;
         setShapes(
@@ -177,6 +211,8 @@ export default function AnnotatePdf(){
           )
         );
       };
+
+
       const handleMouseDown = (event, shapeId) => {
         if (resizingDataRef.current) return; // Prevent dragging while resizing
       
@@ -187,6 +223,8 @@ export default function AnnotatePdf(){
         setDraggingShape({ shapeId, offsetX, offsetY });
         setSelectedShapeId(shapeId); // Ensure the shape is selected
       };
+
+
       const handleTouchStart = (event, shapeId) => {
         if (resizingDataRef.current) return; // Prevent dragging while resizing
       
@@ -199,6 +237,8 @@ export default function AnnotatePdf(){
         setIsDragging(true); // Start dragging
         setSelectedShapeId(shapeId); // Ensure the shape is selected
       };
+
+
       const handleResizeMouseDown = (event, shapeId, resizeDirection) => {
         event.stopPropagation();
         const shape = shapes.find((shape) => shape.id === shapeId);
@@ -213,6 +253,7 @@ export default function AnnotatePdf(){
           resizeDirection,
         };
       };
+
       const handleResizeStart = (event, shapeId, resizeDirection) => {
         const clientX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
         const clientY = event.type === 'mousedown' ? event.clientY : event.touches[0].clientY;
@@ -229,6 +270,8 @@ export default function AnnotatePdf(){
           resizeDirection,
         };
       };
+
+
       const handleMouseMove = (event) => {
         // Check for resizing
         if (resizingDataRef.current) {
@@ -409,10 +452,14 @@ export default function AnnotatePdf(){
           setShapes(updatedShapes);
         }
       };
+
+
       const handleMouseUp = () => {
         resizingDataRef.current = null; 
         setDraggingShape(null);
       };
+
+
       const handleTouchEnd = () => {
         resizingDataRef.current = null;
         setDraggingShape(null);
@@ -436,6 +483,8 @@ export default function AnnotatePdf(){
         };
       
       }, []);
+
+
       
       const renderShape = (shape) => {
         const style = {
@@ -647,7 +696,9 @@ export default function AnnotatePdf(){
           </div>
         );
       };
-      console.log(selectedShapeId)       
+
+
+         
       return (
         <div className="main mt-[60px] w-full overflow-hidden " onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}
         >
@@ -660,6 +711,8 @@ export default function AnnotatePdf(){
                 handleAddShape={handleAddShape}
                 isWidthInRange={isWidthInRange}
                 selectedShapeId = {selectedShapeId}
+                handleRedo = {handleRedo}
+                handleUndo = {handleUndo}
                 />
                 <ToolBottom 
                 isLeftOpen={isLeftOpen} 

@@ -21,7 +21,16 @@ import { MdOutlineArrowDropDown } from "react-icons/md";
 import { Shape } from "../Tools/Shapes";
 import { useState } from "react";
 
-export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isWidthInRange,selectedShapeId})=>{
+export const ToolTop = ({shapes,
+   setShapes,
+   containerSize,
+   zoom,
+   handleAddShape,
+   isWidthInRange,
+   selectedShapeId,
+   handleUndo,
+   handleRedo
+  })=>{
     const [isShape,setIsShape]=useState(false)
     const [RotateValue,setRotateValue]=useState(0)
 
@@ -328,7 +337,7 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isW
                             sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}
                             onClick={handleClickRedo}
                             >
-                            <BsArrowClockwise  className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            <BsArrowClockwise onClick={handleRedo} className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
                             </Box>
                         </Tooltip>
                         </div>
@@ -350,7 +359,7 @@ export const ToolTop = ({shapes, setShapes,containerSize,zoom,handleAddShape,isW
                             sx={{flex:1, display:"flex",justifyContent:"center",alignItems:"center"}}
                             onClick={handleClickUndo}
                             >
-                            <BsArrowCounterclockwise className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
+                            <BsArrowCounterclockwise onClick={handleUndo} className="text-slate-700 min-[55px]:text-sm lg:text-xl"/>
                             </Box >
                         </Tooltip>
                         </div>
