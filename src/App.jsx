@@ -7,6 +7,8 @@ import { JpgDownloadPage } from "./convert to pdf/jpeg to pdf/Download_page/Down
 import Wordtopdf from "./convert to pdf/word to pdf/word_to_pdf_main";
 import { WordDownloadPage  }  from "./convert to pdf/word to pdf/Download_page/Download";
 import AnnotatePdf from "./convert to pdf/annotate_pdf/annotate";
+import PPTtopdf from "./convert to pdf/PPT-to-PDF/ppt_to_pdf_main";
+import { PPTxDownloadPage } from "./convert to pdf/PPT-to-PDF/Download_page/Download";
 
 function App(){
   const router = createBrowserRouter(
@@ -16,7 +18,7 @@ function App(){
         children:[
           {
             
-            element:(<AnnotatePdf/>),
+            element:(<Home/>),
             path:"/"
           },
           {
@@ -36,7 +38,15 @@ function App(){
             element:(<JpgDownloadPage/>),
             path:"jpg-to-pdf/download"
           },
-
+          {
+            element:(<PPTtopdf/>),
+            path:"/ppt-to-pdf/"
+          },
+          {
+            element:(<PPTxDownloadPage/>),
+            path:"ppt-to-pdf/download"
+            
+          },
 
 
         ]
