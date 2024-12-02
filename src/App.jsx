@@ -10,6 +10,9 @@ import AnnotatePdf from "./convert to pdf/annotate_pdf/annotate";
 import PPTtopdf from "./convert to pdf/PPT-to-PDF/ppt_to_pdf_main";
 import { PPTxDownloadPage } from "./convert to pdf/PPT-to-PDF/Download_page/Download";
 
+import Exceltopdf from "./convert to pdf/excel_to_pdf/excel_to_pdf_main";
+import { ExcelDownloadPage } from "./convert to pdf/excel_to_pdf/Download_page/Download";
+
 function App(){
   const router = createBrowserRouter(
     [
@@ -46,6 +49,15 @@ function App(){
             element:(<PPTxDownloadPage/>),
             path:"ppt-to-pdf/download"
             
+          },
+          {
+            element:(<Exceltopdf/>),
+            path:"/excel-to-pdf/"
+            
+          },
+          {
+            element:(<ExcelDownloadPage/>),
+            path:"excel-to-pdf/download"
           },
 
 
