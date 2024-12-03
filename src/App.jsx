@@ -13,6 +13,10 @@ import { PPTxDownloadPage } from "./convert to pdf/PPT-to-PDF/Download_page/Down
 import Exceltopdf from "./convert to pdf/excel_to_pdf/excel_to_pdf_main";
 import { ExcelDownloadPage } from "./convert to pdf/excel_to_pdf/Download_page/Download";
 
+
+import PDFtoPPTX from "./convert from pdf /pdf_to_pptx/pdf_to_pptx_main";
+import { PDFtoPPTxDownloadPage } from "./convert from pdf /pdf_to_pptx/Download_page/Download";
+
 function App(){
   const router = createBrowserRouter(
     [
@@ -59,6 +63,17 @@ function App(){
             element:(<ExcelDownloadPage/>),
             path:"excel-to-pdf/download"
           },
+
+// convert from 
+          {
+            element:(<PDFtoPPTX/>),
+            path:"/pdf-to-pptx/"
+            
+          },
+          {
+            element:(<PDFtoPPTxDownloadPage/>),
+            path:"pdf-to-pptx/download"
+          }
 
 
         ]

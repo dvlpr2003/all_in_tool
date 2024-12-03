@@ -13,14 +13,17 @@ import { useSelector } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 
-export const ExcelDownloadPage = ()=>{
+export const PDFtoPPTxDownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
-    const downloadID = useSelector((state) => state.excel.downloadID);
+    const downloadID = useSelector((state) => state.pdf_to_pptx.downloadID);
     useEffect(()=>{
         if (downloadID === ""){
-            navigate("/excel-to-pdf")
+            navigate("/pdf-to-pptx")
+
+
         }
+
     },[])
     
 
