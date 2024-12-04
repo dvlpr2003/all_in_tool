@@ -20,7 +20,7 @@ export default function DashboardEdit(){
                 <PPTxDelete globDispatch = {globDispatch}  id = {e.id}/>
 
                 <div className="w-full h-full border border-gray-300 flex justify-center items-center shadow-md">
-                    <img src="https://d3jq6id3uwlfp0.cloudfront.net/utils/ppt.png" alt=""  className="w-auto h-16" draggable={false}/>
+                    <img src="https://d3jq6id3uwlfp0.cloudfront.net/utils/pdf.png" alt=""  className="w-auto h-16" draggable={false}/>
 
 
                 </div>

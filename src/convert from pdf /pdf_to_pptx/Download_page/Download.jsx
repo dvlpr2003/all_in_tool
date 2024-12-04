@@ -17,6 +17,7 @@ export const PDFtoPPTxDownloadPage = ()=>{
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
     const downloadID = useSelector((state) => state.pdf_to_pptx.downloadID);
+    console.log(downloadID)
     useEffect(()=>{
         if (downloadID === ""){
             navigate("/pdf-to-pptx")

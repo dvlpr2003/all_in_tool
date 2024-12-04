@@ -30,7 +30,7 @@ export default function PDFtoPPTX(){
                             'Content-Type': 'multipart/form-data',  
                         }, 
                     });
-                   console.log(response.data)
+                   console.log(response.data["id"])
                     globDispatch(setDonwloadID(response.data["id"]))
                     setLoading(false)
                     navigate("/pdf-to-pptx/download")
