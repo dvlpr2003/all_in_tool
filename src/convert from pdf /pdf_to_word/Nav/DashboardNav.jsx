@@ -6,7 +6,7 @@ export function DashboardNav({handleConvert}){
 
             <aside className={`min-[55px]:hidden lg:flex flex-col w-72 h-screen  py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l`}>
             <div href="#" className="mx-auto border w-full flex justify-center items-center border-t-transparent border-x-transparent mt-16">
-            <span className=" text-gray-500 text-2xl mb-3">PDF TO PPTX</span>
+            <span className=" text-gray-500 text-2xl mb-3">PDF TO WORD</span>
             </div>
 
 
@@ -14,7 +14,7 @@ export function DashboardNav({handleConvert}){
             <div className="flex flex-col justify-between flex-1 mt-6 ">
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
             <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " onClick={handleConvert} >
-            convert to PDF
+            Convert to word
             <div className="icon">
                 <svg
                 height="24"

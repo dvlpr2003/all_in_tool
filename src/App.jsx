@@ -16,6 +16,8 @@ import { ExcelDownloadPage } from "./convert to pdf/excel_to_pdf/Download_page/D
 
 import PDFtoPPTX from "./convert from pdf /pdf_to_pptx/pdf_to_pptx_main";
 import { PDFtoPPTxDownloadPage } from "./convert from pdf /pdf_to_pptx/Download_page/Download";
+import PDFtoWORD from "./convert from pdf /pdf_to_word/pdf_to_word_main";
+import { WORDDownloadPage } from "./convert from pdf /pdf_to_word/Download_page/Download";
 
 function App(){
   const router = createBrowserRouter(
@@ -73,6 +75,14 @@ function App(){
           {
             element:(<PDFtoPPTxDownloadPage/>),
             path:"pdf-to-pptx/download"
+          },
+          {
+            element:(<PDFtoWORD/>),
+            path:"/pdf-to-word/"
+          },
+          {
+            element:(<WORDDownloadPage/>),
+            path:"pdf-to-word/download"
           }
 
 

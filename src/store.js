@@ -4,6 +4,7 @@ import wordReducer from "./convert to pdf/word to pdf/wordtopdfSlicer"
 import pptReducer from "./convert to pdf/PPT-to-PDF/ppttopdfSlicer"
 import excelReducer from "./convert to pdf/excel_to_pdf/exceltopdfSlicer"
 import pdf_to_pptxReducer from "./convert from pdf /pdf_to_pptx/pdftopptxSlicer"
+import pdf_to_wordReducer from "./convert from pdf /pdf_to_word/pdftowordSlicer"
 const store = configureStore({
   reducer: {
     items: itemsReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
     ppt:pptReducer,
     excel:excelReducer,
     pdf_to_pptx:pdf_to_pptxReducer,
+    pdf_to_word:pdf_to_wordReducer,
 
     
 
