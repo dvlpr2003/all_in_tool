@@ -8,8 +8,8 @@ export function DashboardNav({handleConvert}){
             </div>
             <div className="flex flex-col justify-between flex-1 mt-6 ">
                 <div className="flex flex-col justify-center items-center gap-4">
-
-                    <div className="border w-[20rem] h-20 flex rounded-md  cursor-pointer">
+                    
+                    <div className="border w-[20rem] h-20 flex rounded-lg  cursor-pointer">
                         <div className="w-16 flex justify-center items-center">
                             <div className="border border-blue-500 rounded-full w-7 h-7 flex justify-center items-center">
                                 <div className="bg-blue-600 w-5 h-5 rounded-full">
@@ -27,8 +27,7 @@ export function DashboardNav({handleConvert}){
                         </div>
 
                     </div>
-
-                    <div className="border w-[20rem] h-20 flex rounded-md  cursor-pointer">
+                    <div className="border w-[20rem] h-20 flex rounded-lg  cursor-pointer">
                         <div className="w-16 flex justify-center items-center">
                             <div className="border  rounded-full w-7 h-7 flex justify-center items-center">
                                 <div className=" w-5 h-5 rounded-full">
@@ -52,8 +51,6 @@ export function DashboardNav({handleConvert}){
                         </div>
 
                     </div>
-
-
 
                 </div>
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
