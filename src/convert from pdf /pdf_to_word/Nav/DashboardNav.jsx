@@ -14,7 +14,7 @@ export function DashboardNav({handleConvert}){
             <div className="flex flex-col justify-between flex-1 mt-6 ">
             <div className="h-auto  mt-auto mb-2  w-full  lg:flex flex-col min-[55px]:hidden justify-center items-center cursor-pointer ">
             <button className="cssbuttons-io-button bg-blue-600 border-blue-600 " onClick={handleConvert} >
-            Convert to word
+            Convert to .docx
             <div className="icon">
                 <svg
                 height="24"

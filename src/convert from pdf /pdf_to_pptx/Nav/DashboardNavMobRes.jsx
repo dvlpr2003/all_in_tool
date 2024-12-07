@@ -9,7 +9,7 @@ export function DashboardNavMobRes({handleConvert}){
             <div className="flex w-full justify-around gap-2 m-4 ">
                 <div className=" text-gray-500 flex  justify-center items-center gap-2 cursor-pointer">
                 <IoArrowForwardCircleSharp className="text-xl text-white" onClick={handleConvert} />
-                <span className="text-sm text-white">Convert to PDF</span>
+                <span className="text-sm text-white">Convert to PPTX</span>
                 </div>
             </div>
 

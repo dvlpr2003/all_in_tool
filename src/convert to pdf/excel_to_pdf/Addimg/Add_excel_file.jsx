@@ -1,11 +1,14 @@
-import { HiComputerDesktop } from "react-icons/hi2";
+
 import axios from "axios";
 import { useState,useRef } from "react";
 import { useDispatch} from "react-redux";
 import {setExcelItems} from "../exceltopdfSlicer"
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
-import GooglePicker from "react-google-picker";
+import { FaGoogleDrive } from "react-icons/fa6";
+import { BsDropbox } from "react-icons/bs";
+import { GoFileDirectoryFill } from "react-icons/go";
+
 
 
 export function AddExcelFile({setLoading}){
@@ -91,8 +94,6 @@ export function AddExcelFile({setLoading}){
     }
 
 
-    const [selectedFiles, setSelectedFiles] = useState([]);
-
     const handleFileSelection = (data) => {
       console.log(data)
     };
@@ -109,49 +110,36 @@ export function AddExcelFile({setLoading}){
     return(
         
             <div className=" w-auto h-auto absolute top-20 right-0 left-0 z-40 p-2 flex justify-center items-center" >
-              <div className=" w-auto h-auto  flex gap-2">
-                <label htmlFor = "flupload-com" className="border rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md">
+              <div className=" w-auto h-auto  flex gap-2 ">
+                <label htmlFor = "flupload-com" className="rounded-md bg-white  flex flex-col justify-center items-center gap-1 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 h-14 shadow-md  hover:shadow-xl group">
 
-                <HiComputerDesktop className="min-[55px]:text-lg min-[600px]:text-2xl text-gray-600"/>
-                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Computer</span>
-                <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple accept=".xls, .xlsx" />
+                <GoFileDirectoryFill className="min-[55px]:text-lg min-[600px]:text-xl text-slate-800 group-hover:text-blue-600"/>
+
+                <input type="file" className="hidden" id="flupload-com"  onChange={handleInputEvent} ref={inputref} multiple accept=".xlsx,.xls"/>
                   
                 </label>
 
-                <div className=" border rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                <DropboxChooser 
-                appKey ={"omvo50s697s13xb"}
-                multiselect={true}
-                extensions={[".xls",".xlsx"]}
+                <div className=" rounded-md bg-white flex gap-1 flex-col justify-center items-center cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md hover:shadow-xl group" >
+                <DropboxChooser appKey ={"omvo50s697s13xb"}  
                 success={handleSuccess} 
+                multiselect ={true}
+                extensions={['.png', '.jpg', '.jpeg']}
                 >
-                <div className="flex flex-col w-auto justify-center items-center">
-                  <img className={"w-auto h-6 sm:h-7"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/dropbox.png" alt="dropbox" draggable={false}/>
+                <div className="flex flex-col w-auto justify-center items-center ">
 
-                  <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500 ">Dropbox</span>
+                  {/* <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500 ">Dropbox</span> */}
+                  <BsDropbox className="min-[55px]:text-lg min-[600px]:text-xl text-slate-800 group-hover:text-blue-600"/>
+
                 </div>
                 </DropboxChooser>
                 </div>
-
-                <div className="border rounded-md bg-white flex gap-2 flex-col justify-center items-center pt-2 cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md" >
-                <GooglePicker
-                                clientId="147520737867-bbo44ffprqqh7d76gocir1dt9l79svjc.apps.googleusercontent.com"
-                                developerKey="AIzaSyDEJYMiedbP6K7K1pAxcmUeWN0BfMSBxlI"
-                                scope={['https://www.googleapis.com/auth/drive.file']}
-                                onChange={handleFileSelection}
-                                onAuthFailed={handleAuthFailure}
-                                onPickerClose={handlePickerClose}
-                                multiselect={true}
-                                navHidden={true}
-                                authImmediate={false}
-                                viewId={'DOCS'}
                 
-                >
-                <div className="flex flex-col w-auto justify-center items-center">
-                <img className={"w-auto h-5"} src="https://d3jq6id3uwlfp0.cloudfront.net/logo-image/Drive.png" alt="google-drive" draggable={false}/>
-                <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span>
+                <div className=" rounded-md bg-white flex gap-2 flex-col justify-center items-center  cursor-pointer min-[55px]:w-24 min-[600px]:w-44 shadow-md hover:shadow-xl group" >
+
+                <div className="flex flex-col w-auto justify-center items-center ">
+                <FaGoogleDrive  className="min-[55px]:text-lg min-[600px]:text-xl text-slate-800 group-hover:text-blue-600"/>
+                {/* <span className="min-[55px]:text-sm min-[600px]:text-md text-gray-500">Drive</span> */}
                 </div>
-                </GooglePicker>
 
 
                 </div>

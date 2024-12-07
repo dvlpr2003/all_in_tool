@@ -6,34 +6,34 @@ import { DashboardNav } from "./Nav/DashboardNav"
 import "./style/index.css"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {setDonwloadID} from "./pdftowordSlicer"
+import {setDonwloadID} from "./pdftojpgSlicer"
 import { useNavigate } from "react-router-dom"
 import { DashboardNavMobRes } from "./Nav/DashboardNavMobRes"
 
 
 
-export default function PDFtoWORD(){
+export default function PDFtoJPG(){
     const [isLoading,setLoading]=useState(false)
     const formdata = new FormData()
-    const WORDItems = useSelector((state)=>state.pdf_to_word.pdf_Items)
+    const JPGItems = useSelector((state)=>state.pdf_to_jpg.pdf_Items)
     const globDispatch = useDispatch()
     const navigate = useNavigate()
 
     async function handleConvert(){
-            formdata.append("items",JSON.stringify(WORDItems))
-            if (WORDItems.length !== 0 ){
+            formdata.append("items",JSON.stringify(JPGItems))
+            if (JPGItems.length != 0 ){
                     
                 try{
                     setLoading(true)
-                    const response = await axios.post("http://127.0.0.1:8000/convert_from_pdf/pdf-to-word/",formdata,{
+                    const response = await axios.post("http://127.0.0.1:8000/convert_from_pdf/pdf-to-pptx/",formdata,{
                         headers: {  
                             'Content-Type': 'multipart/form-data',  
                         }, 
                     });
-                   console.log(response.data)
+                   console.log(response.data["id"])
                     globDispatch(setDonwloadID(response.data["id"]))
                     setLoading(false)
-                    navigate("/pdf-to-word/download")
+                    navigate("/pdf-to-pptx/download")
                 }catch(error){
                     setLoading(false)
                     console.log(error)

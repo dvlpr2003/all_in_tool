@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useState,useRef } from "react";
 import { useDispatch} from "react-redux";
-import {setFromPPTXItems} from "../pdftopptxSlicer"
+import {setFromJPGItems} from "../pdftojpgSlicer"
 import { useNavigate } from "react-router-dom";
 import DropboxChooser from 'react-dropbox-chooser';
 import { FaGoogleDrive } from "react-icons/fa6";
@@ -44,7 +44,7 @@ export function AddPDFFile({setLoading}){
               })
 
                   setLoading(false)
-                  globDispatch(setFromPPTXItems(response.data))
+                  globDispatch(setFromJPGItems(response.data))
                   console.log(response.data)
 
                 
@@ -79,7 +79,7 @@ export function AddPDFFile({setLoading}){
           })
 
               setLoading(false)
-              globDispatch(setFromPPTXItems(response.data))
+              globDispatch(setFromJPGItems(response.data))
 
             
           }catch(error){
@@ -93,7 +93,6 @@ export function AddPDFFile({setLoading}){
     }
 
 
-    const [selectedFiles, setSelectedFiles] = useState([]);
 
     const handleFileSelection = (data) => {
       console.log(data)

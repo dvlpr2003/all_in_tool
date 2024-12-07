@@ -18,6 +18,8 @@ import PDFtoPPTX from "./convert from pdf /pdf_to_pptx/pdf_to_pptx_main";
 import { PDFtoPPTxDownloadPage } from "./convert from pdf /pdf_to_pptx/Download_page/Download";
 import PDFtoWORD from "./convert from pdf /pdf_to_word/pdf_to_word_main";
 import { WORDDownloadPage } from "./convert from pdf /pdf_to_word/Download_page/Download";
+import PDFtoJPG from "./convert from pdf /pdf_to_img/pdf_to_jpg_main";
+import { PDFtoJPGDownloadPage } from "./convert from pdf /pdf_to_img/Download_page/Download";
 
 function App(){
   const router = createBrowserRouter(
@@ -83,8 +85,15 @@ function App(){
           {
             element:(<WORDDownloadPage/>),
             path:"pdf-to-word/download"
+          },
+          {
+            element:(<PDFtoJPG/>),
+            path:"/pdf-to-jpg/"
+          },
+          {
+            element:(<PDFtoJPGDownloadPage/>),
+            path:"pdf-to-jpg/download"
           }
-
 
         ]
 

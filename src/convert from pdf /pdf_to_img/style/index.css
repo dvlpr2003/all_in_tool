@@ -1,0 +1,129 @@
+
+.padd {
+    padding-top: 8.70rem;
+  }
+  .grid-ind{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+      gap: 1rem;
+      justify-items: center;
+      align-items: center;
+  }
+  .scale-ind{
+    scale: 0.8;
+  }
+  .icon-color-ind {
+      color: rgb(85, 83, 83);
+  }
+  .img-w-h-port {
+    width: 169px;
+    height: 218.706px;
+  }
+  .img-w-h-land {
+    width: 218.706px;
+    height:  170px;
+  }
+  .usletter-port {
+    width: 165px;
+    height: 218.706px;
+  }
+  .usletter-land {
+    width: 218.706px;
+    height: 168px;
+  }
+  
+    .draggable {
+      display: flex;
+      background-color: white;
+      cursor: grab;
+      color: #ffffff;
+      touch-action: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .dragging {
+      cursor: grabbing;
+      transform: scale(1.05);
+      
+    }
+  
+    .invisible {
+      opacity: 0.5;
+    }
+    .draggable .prevent {
+      pointer-events: none;
+  }
+    .dragging-mob {
+      opacity: 0.7;
+      transform: scale(1.05); 
+    }
+    
+    .dragging-clone {
+      z-index: 1000; 
+      pointer-events: none;
+    }
+    
+  
+    
+  
+  
+  
+    /* convert to PDF button*/ 
+  .cssbuttons-io-button {
+    /* margin-bottom: 1rem; */
+   
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.6em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #2563eb;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    width: 20rem;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.6em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #2563eb;
+    right: 0.3em;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  
+  
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #2563eb;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  
+  
+  
+  
+  
